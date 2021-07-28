@@ -1,0 +1,1707 @@
+define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/services/text_input.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/text_form_field.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/font_awesome_flutter/src/fa_icon.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/widgets/animated_cross_fade.dart', 'packages/flutter/src/foundation/key.dart', 'packages/flutter/src/material/icons.dart'], (function load__packages__flutter_login__src__widgets__animated_text_form_field_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__services__text_input$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__painting__alignment$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__text_form_field$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__widgets__icon$46dart, packages__font_awesome_flutter__src__fa_icon$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__widgets__animated_cross_fade$46dart, packages__flutter__src__foundation__key$46dart, packages__flutter__src__material__icons$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const editable_text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__editable_text;
+  const focus_manager = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_manager;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  const input_decorator = packages__flutter__src__material__icon_button$46dart.src__material__input_decorator;
+  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
+  const text_form_field = packages__flutter__src__material__text_form_field$46dart.src__material__text_form_field;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const font_awesome_flutter = packages__font_awesome_flutter__src__fa_icon$46dart.font_awesome_flutter;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
+  const animated_cross_fade = packages__flutter__src__widgets__animated_cross_fade$46dart.src__widgets__animated_cross_fade;
+  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  var animated_text_form_field = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    TextFieldInertiaDirectionL: () => (T.TextFieldInertiaDirectionL = dart.constFn(dart.legacy(animated_text_form_field.TextFieldInertiaDirection)))(),
+    TweenOfdouble: () => (T.TweenOfdouble = dart.constFn(tween.Tween$(core.double)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    WidgetN: () => (T.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
+    BuildContextAndWidgetNToTransform: () => (T.BuildContextAndWidgetNToTransform = dart.constFn(dart.fnType(basic.Transform, [framework.BuildContext, T.WidgetN()])))(),
+    BuildContextAndWidgetNToConstrainedBox: () => (T.BuildContextAndWidgetNToConstrainedBox = dart.constFn(dart.fnType(basic.ConstrainedBox, [framework.BuildContext, T.WidgetN()])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    WidgetAndKeyAndWidget__ToStack: () => (T.WidgetAndKeyAndWidget__ToStack = dart.constFn(dart.fnType(basic.Stack, [framework.Widget, key.Key, framework.Widget, key.Key])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: animated_text_form_field.TextFieldInertiaDirection.prototype,
+        [_name$]: "TextFieldInertiaDirection.left",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: animated_text_form_field.TextFieldInertiaDirection.prototype,
+        [_name$]: "TextFieldInertiaDirection.right",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], T.TextFieldInertiaDirectionL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: curves._Linear.prototype
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: curves.Interval.prototype,
+        [Interval_curve]: C[4] || CT.C4,
+        [Interval_end]: 1,
+        [Interval_begin]: 0
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 9,
+        [_Location_line]: 184,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "transform",
+        [_Location_column]: 9,
+        [_Location_line]: 185,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 188,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 36,
+        [_Location_line]: 183,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 7,
+        [_Location_line]: 182,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 183,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 190,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 181,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 15,
+        [_Location_line]: 200,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 201,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17, C[18] || CT.C18], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 199,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "cursorColor",
+        [_Location_column]: 7,
+        [_Location_line]: 211,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 7,
+        [_Location_line]: 212,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "focusNode",
+        [_Location_column]: 7,
+        [_Location_line]: 213,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 214,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "keyboardType",
+        [_Location_column]: 7,
+        [_Location_line]: 215,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textInputAction",
+        [_Location_column]: 7,
+        [_Location_line]: 216,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "obscureText",
+        [_Location_column]: 7,
+        [_Location_line]: 217,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onFieldSubmitted",
+        [_Location_column]: 7,
+        [_Location_line]: 218,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onSaved",
+        [_Location_column]: 7,
+        [_Location_line]: 219,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "validator",
+        [_Location_column]: 7,
+        [_Location_line]: 220,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enabled",
+        [_Location_column]: 7,
+        [_Location_line]: 221,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autocorrect",
+        [_Location_column]: 7,
+        [_Location_line]: 222,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autofillHints",
+        [_Location_column]: 7,
+        [_Location_line]: 223,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.constList([C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30, C[31] || CT.C31, C[32] || CT.C32, C[33] || CT.C33], T._LocationL());
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[20] || CT.C20,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 210,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 13,
+        [_Location_line]: 232,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.constList([C[36] || CT.C36, C[37] || CT.C37], T._LocationL());
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[35] || CT.C35,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 231,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 230,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 11,
+        [_Location_line]: 231,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 235,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[39] || CT.C39,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 229,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scale",
+        [_Location_column]: 9,
+        [_Location_line]: 228,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 229,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46], T._LocationL());
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[44] || CT.C44,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 227,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "offset",
+        [_Location_column]: 11,
+        [_Location_line]: 244,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 245,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[49] || CT.C49, C[50] || CT.C50], T._LocationL());
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[48] || CT.C48,
+        [_Location_name]: null,
+        [_Location_column]: 48,
+        [_Location_line]: 243,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 9,
+        [_Location_line]: 242,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 9,
+        [_Location_line]: 243,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 247,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.constList([C[53] || CT.C53, C[54] || CT.C54, C[55] || CT.C55], T._LocationL());
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[52] || CT.C52,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 241,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 41,
+        [_Location_line]: 312,
+        [_Location_file]: null
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 47,
+        [_Location_line]: 312,
+        [_Location_file]: null
+      });
+    },
+    get C57() {
+      return C[57] = dart.constList([C[58] || CT.C58, C[59] || CT.C59], T._LocationL());
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[57] || CT.C57,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 312,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 250000
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 15,
+        [_Location_line]: 323,
+        [_Location_file]: null
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 15,
+        [_Location_line]: 324,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C[62] = dart.constList([C[63] || CT.C63, C[64] || CT.C64], T._LocationL());
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[62] || CT.C62,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 322,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 19,
+        [_Location_line]: 328,
+        [_Location_file]: null
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 13,
+        [_Location_line]: 329,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "semanticLabel",
+        [_Location_column]: 13,
+        [_Location_line]: 330,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.constList([C[67] || CT.C67, C[68] || CT.C68, C[69] || CT.C69], T._LocationL());
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[66] || CT.C66,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 327,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 19,
+        [_Location_line]: 333,
+        [_Location_file]: null
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 13,
+        [_Location_line]: 334,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "semanticLabel",
+        [_Location_column]: 13,
+        [_Location_line]: 335,
+        [_Location_file]: null
+      });
+    },
+    get C71() {
+      return C[71] = dart.constList([C[72] || CT.C72, C[73] || CT.C73, C[74] || CT.C74], T._LocationL());
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[71] || CT.C71,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 332,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 11,
+        [_Location_line]: 317,
+        [_Location_file]: null
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "firstCurve",
+        [_Location_column]: 11,
+        [_Location_line]: 318,
+        [_Location_file]: null
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "secondCurve",
+        [_Location_column]: 11,
+        [_Location_line]: 319,
+        [_Location_file]: null
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 320,
+        [_Location_file]: null
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "layoutBuilder",
+        [_Location_column]: 11,
+        [_Location_line]: 321,
+        [_Location_file]: null
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "firstChild",
+        [_Location_column]: 11,
+        [_Location_line]: 327,
+        [_Location_file]: null
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "secondChild",
+        [_Location_column]: 11,
+        [_Location_line]: 332,
+        [_Location_file]: null
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossFadeState",
+        [_Location_column]: 11,
+        [_Location_line]: 337,
+        [_Location_file]: null
+      });
+    },
+    get C76() {
+      return C[76] = dart.constList([C[77] || CT.C77, C[78] || CT.C78, C[79] || CT.C79, C[80] || CT.C80, C[81] || CT.C81, C[82] || CT.C82, C[83] || CT.C83, C[84] || CT.C84], T._LocationL());
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[76] || CT.C76,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 316,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 9,
+        [_Location_line]: 314,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dragStartBehavior",
+        [_Location_column]: 9,
+        [_Location_line]: 315,
+        [_Location_file]: null
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 316,
+        [_Location_file]: null
+      });
+    },
+    get C86() {
+      return C[86] = dart.constList([C[87] || CT.C87, C[88] || CT.C88, C[89] || CT.C89], T._LocationL());
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[86] || CT.C86,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 313,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "interval",
+        [_Location_column]: 7,
+        [_Location_line]: 305,
+        [_Location_file]: null
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "loadingController",
+        [_Location_column]: 7,
+        [_Location_line]: 306,
+        [_Location_file]: null
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "inertiaController",
+        [_Location_column]: 7,
+        [_Location_line]: 307,
+        [_Location_file]: null
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 7,
+        [_Location_line]: 308,
+        [_Location_file]: null
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enabled",
+        [_Location_column]: 7,
+        [_Location_line]: 309,
+        [_Location_file]: null
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autofillHints",
+        [_Location_column]: 7,
+        [_Location_line]: 310,
+        [_Location_file]: null
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "labelText",
+        [_Location_column]: 7,
+        [_Location_line]: 311,
+        [_Location_file]: null
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "prefixIcon",
+        [_Location_column]: 7,
+        [_Location_line]: 312,
+        [_Location_file]: null
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "suffixIcon",
+        [_Location_column]: 7,
+        [_Location_line]: 313,
+        [_Location_file]: null
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "obscureText",
+        [_Location_column]: 7,
+        [_Location_line]: 342,
+        [_Location_file]: null
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "keyboardType",
+        [_Location_column]: 7,
+        [_Location_line]: 343,
+        [_Location_file]: null
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textInputAction",
+        [_Location_column]: 7,
+        [_Location_line]: 344,
+        [_Location_file]: null
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 7,
+        [_Location_line]: 345,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "focusNode",
+        [_Location_column]: 7,
+        [_Location_line]: 346,
+        [_Location_file]: null
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "validator",
+        [_Location_column]: 7,
+        [_Location_line]: 347,
+        [_Location_file]: null
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onFieldSubmitted",
+        [_Location_column]: 7,
+        [_Location_line]: 348,
+        [_Location_file]: null
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onSaved",
+        [_Location_column]: 7,
+        [_Location_line]: 349,
+        [_Location_file]: null
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "inertiaDirection",
+        [_Location_column]: 7,
+        [_Location_line]: 350,
+        [_Location_file]: null
+      });
+    },
+    get C91() {
+      return C[91] = dart.constList([C[92] || CT.C92, C[93] || CT.C93, C[94] || CT.C94, C[95] || CT.C95, C[96] || CT.C96, C[97] || CT.C97, C[98] || CT.C98, C[99] || CT.C99, C[100] || CT.C100, C[101] || CT.C101, C[102] || CT.C102, C[103] || CT.C103, C[104] || CT.C104, C[105] || CT.C105, C[106] || CT.C106, C[107] || CT.C107, C[108] || CT.C108, C[109] || CT.C109], T._LocationL());
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[91] || CT.C91,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 304,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart"
+      });
+    }
+  }, false);
+  var C = Array(110).fill(void 0);
+  var I = [
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_text_form_field.dart",
+    "package:flutter_login/src/widgets/animated_text_form_field.dart"
+  ];
+  var _name$ = dart.privateName(animated_text_form_field, "_name");
+  animated_text_form_field.TextFieldInertiaDirection = class TextFieldInertiaDirection extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (animated_text_form_field.TextFieldInertiaDirection.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 7, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 7, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = animated_text_form_field.TextFieldInertiaDirection.prototype;
+  dart.addTypeTests(animated_text_form_field.TextFieldInertiaDirection);
+  dart.addTypeCaches(animated_text_form_field.TextFieldInertiaDirection);
+  dart.setLibraryUri(animated_text_form_field.TextFieldInertiaDirection, I[1]);
+  dart.setFieldSignature(animated_text_form_field.TextFieldInertiaDirection, () => ({
+    __proto__: dart.getFields(animated_text_form_field.TextFieldInertiaDirection.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(animated_text_form_field.TextFieldInertiaDirection, ['toString']);
+  animated_text_form_field.TextFieldInertiaDirection.left = C[0] || CT.C0;
+  animated_text_form_field.TextFieldInertiaDirection.right = C[1] || CT.C1;
+  animated_text_form_field.TextFieldInertiaDirection.values = C[2] || CT.C2;
+  var interval$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.interval");
+  var loadingController$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.loadingController");
+  var inertiaController$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.inertiaController");
+  var width$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.width");
+  var enabled$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.enabled");
+  var autocorrect$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.autocorrect");
+  var autofillHints$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.autofillHints");
+  var labelText$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.labelText");
+  var prefixIcon$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.prefixIcon");
+  var suffixIcon$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.suffixIcon");
+  var keyboardType$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.keyboardType");
+  var textInputAction$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.textInputAction");
+  var obscureText$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.obscureText");
+  var controller$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.controller");
+  var focusNode$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.focusNode");
+  var validator$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.validator");
+  var onFieldSubmitted$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.onFieldSubmitted");
+  var onSaved$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.onSaved");
+  var inertiaDirection$ = dart.privateName(animated_text_form_field, "AnimatedTextFormField.inertiaDirection");
+  var Interval_curve = dart.privateName(curves, "Interval.curve");
+  var Interval_end = dart.privateName(curves, "Interval.end");
+  var Interval_begin = dart.privateName(curves, "Interval.begin");
+  animated_text_form_field.AnimatedTextFormField = class AnimatedTextFormField extends framework.StatefulWidget {
+    get interval() {
+      return this[interval$];
+    }
+    set interval(value) {
+      super.interval = value;
+    }
+    get loadingController() {
+      return this[loadingController$];
+    }
+    set loadingController(value) {
+      super.loadingController = value;
+    }
+    get inertiaController() {
+      return this[inertiaController$];
+    }
+    set inertiaController(value) {
+      super.inertiaController = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get enabled() {
+      return this[enabled$];
+    }
+    set enabled(value) {
+      super.enabled = value;
+    }
+    get autocorrect() {
+      return this[autocorrect$];
+    }
+    set autocorrect(value) {
+      super.autocorrect = value;
+    }
+    get autofillHints() {
+      return this[autofillHints$];
+    }
+    set autofillHints(value) {
+      super.autofillHints = value;
+    }
+    get labelText() {
+      return this[labelText$];
+    }
+    set labelText(value) {
+      super.labelText = value;
+    }
+    get prefixIcon() {
+      return this[prefixIcon$];
+    }
+    set prefixIcon(value) {
+      super.prefixIcon = value;
+    }
+    get suffixIcon() {
+      return this[suffixIcon$];
+    }
+    set suffixIcon(value) {
+      super.suffixIcon = value;
+    }
+    get keyboardType() {
+      return this[keyboardType$];
+    }
+    set keyboardType(value) {
+      super.keyboardType = value;
+    }
+    get textInputAction() {
+      return this[textInputAction$];
+    }
+    set textInputAction(value) {
+      super.textInputAction = value;
+    }
+    get obscureText() {
+      return this[obscureText$];
+    }
+    set obscureText(value) {
+      super.obscureText = value;
+    }
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    get focusNode() {
+      return this[focusNode$];
+    }
+    set focusNode(value) {
+      super.focusNode = value;
+    }
+    get validator() {
+      return this[validator$];
+    }
+    set validator(value) {
+      super.validator = value;
+    }
+    get onFieldSubmitted() {
+      return this[onFieldSubmitted$];
+    }
+    set onFieldSubmitted(value) {
+      super.onFieldSubmitted = value;
+    }
+    get onSaved() {
+      return this[onSaved$];
+    }
+    set onSaved(value) {
+      super.onSaved = value;
+    }
+    get inertiaDirection() {
+      return this[inertiaDirection$];
+    }
+    set inertiaDirection(value) {
+      super.inertiaDirection = value;
+    }
+    createState() {
+      return new animated_text_form_field._AnimatedTextFormFieldState.new();
+    }
+  };
+  (animated_text_form_field.AnimatedTextFormField.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let interval = opts && 'interval' in opts ? opts.interval : C[3] || CT.C3;
+    let width = opts && 'width' in opts ? opts.width : null;
+    if (width == null) dart.nullFailed(I[0], 30, 19, "width");
+    let loadingController = opts && 'loadingController' in opts ? opts.loadingController : null;
+    let inertiaController = opts && 'inertiaController' in opts ? opts.inertiaController : null;
+    let inertiaDirection = opts && 'inertiaDirection' in opts ? opts.inertiaDirection : null;
+    let enabled = opts && 'enabled' in opts ? opts.enabled : true;
+    if (enabled == null) dart.nullFailed(I[0], 34, 10, "enabled");
+    let labelText = opts && 'labelText' in opts ? opts.labelText : null;
+    let prefixIcon = opts && 'prefixIcon' in opts ? opts.prefixIcon : null;
+    let suffixIcon = opts && 'suffixIcon' in opts ? opts.suffixIcon : null;
+    let keyboardType = opts && 'keyboardType' in opts ? opts.keyboardType : null;
+    let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+    let obscureText = opts && 'obscureText' in opts ? opts.obscureText : false;
+    if (obscureText == null) dart.nullFailed(I[0], 40, 10, "obscureText");
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let focusNode = opts && 'focusNode' in opts ? opts.focusNode : null;
+    let validator = opts && 'validator' in opts ? opts.validator : null;
+    let onFieldSubmitted = opts && 'onFieldSubmitted' in opts ? opts.onFieldSubmitted : null;
+    let onSaved = opts && 'onSaved' in opts ? opts.onSaved : null;
+    let autocorrect = opts && 'autocorrect' in opts ? opts.autocorrect : false;
+    if (autocorrect == null) dart.nullFailed(I[0], 46, 10, "autocorrect");
+    let autofillHints = opts && 'autofillHints' in opts ? opts.autofillHints : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[interval$] = interval;
+    this[width$] = width;
+    this[loadingController$] = loadingController;
+    this[inertiaController$] = inertiaController;
+    this[inertiaDirection$] = inertiaDirection;
+    this[enabled$] = enabled;
+    this[labelText$] = labelText;
+    this[prefixIcon$] = prefixIcon;
+    this[suffixIcon$] = suffixIcon;
+    this[keyboardType$] = keyboardType;
+    this[textInputAction$] = textInputAction;
+    this[obscureText$] = obscureText;
+    this[controller$] = controller;
+    this[focusNode$] = focusNode;
+    this[validator$] = validator;
+    this[onFieldSubmitted$] = onFieldSubmitted;
+    this[onSaved$] = onSaved;
+    this[autocorrect$] = autocorrect;
+    this[autofillHints$] = autofillHints;
+    if (!(inertiaController == null && inertiaDirection == null || inertiaController != null && inertiaDirection != null)) dart.assertFailed(null, I[0], 48, 16, "(inertiaController == null && inertiaDirection == null) ||\n            (inertiaController != null && inertiaDirection != null)");
+    animated_text_form_field.AnimatedTextFormField.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = animated_text_form_field.AnimatedTextFormField.prototype;
+  dart.addTypeTests(animated_text_form_field.AnimatedTextFormField);
+  dart.addTypeCaches(animated_text_form_field.AnimatedTextFormField);
+  dart.setMethodSignature(animated_text_form_field.AnimatedTextFormField, () => ({
+    __proto__: dart.getMethods(animated_text_form_field.AnimatedTextFormField.__proto__),
+    createState: dart.fnType(animated_text_form_field._AnimatedTextFormFieldState, [])
+  }));
+  dart.setLibraryUri(animated_text_form_field.AnimatedTextFormField, I[1]);
+  dart.setFieldSignature(animated_text_form_field.AnimatedTextFormField, () => ({
+    __proto__: dart.getFields(animated_text_form_field.AnimatedTextFormField.__proto__),
+    interval: dart.finalFieldType(dart.nullable(curves.Interval)),
+    loadingController: dart.finalFieldType(dart.nullable(animation_controller.AnimationController)),
+    inertiaController: dart.finalFieldType(dart.nullable(animation_controller.AnimationController)),
+    width: dart.finalFieldType(core.double),
+    enabled: dart.finalFieldType(core.bool),
+    autocorrect: dart.finalFieldType(core.bool),
+    autofillHints: dart.finalFieldType(dart.nullable(core.Iterable$(core.String))),
+    labelText: dart.finalFieldType(dart.nullable(core.String)),
+    prefixIcon: dart.finalFieldType(dart.nullable(framework.Widget)),
+    suffixIcon: dart.finalFieldType(dart.nullable(framework.Widget)),
+    keyboardType: dart.finalFieldType(dart.nullable(text_input.TextInputType)),
+    textInputAction: dart.finalFieldType(dart.nullable(text_input.TextInputAction)),
+    obscureText: dart.finalFieldType(core.bool),
+    controller: dart.finalFieldType(dart.nullable(editable_text.TextEditingController)),
+    focusNode: dart.finalFieldType(dart.nullable(focus_manager.FocusNode)),
+    validator: dart.finalFieldType(dart.nullable(dart.fnType(dart.nullable(core.String), [dart.nullable(core.String)]))),
+    onFieldSubmitted: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.String]))),
+    onSaved: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.nullable(core.String)]))),
+    inertiaDirection: dart.finalFieldType(dart.nullable(animated_text_form_field.TextFieldInertiaDirection))
+  }));
+  var ___AnimatedTextFormFieldState_scaleAnimation = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#scaleAnimation");
+  var ___AnimatedTextFormFieldState_scaleAnimation_isSet = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#scaleAnimation#isSet");
+  var ___AnimatedTextFormFieldState_sizeAnimation = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#sizeAnimation");
+  var ___AnimatedTextFormFieldState_sizeAnimation_isSet = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#sizeAnimation#isSet");
+  var ___AnimatedTextFormFieldState_suffixIconOpacityAnimation = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#suffixIconOpacityAnimation");
+  var ___AnimatedTextFormFieldState_suffixIconOpacityAnimation_isSet = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#suffixIconOpacityAnimation#isSet");
+  var ___AnimatedTextFormFieldState_fieldTranslateAnimation = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#fieldTranslateAnimation");
+  var ___AnimatedTextFormFieldState_fieldTranslateAnimation_isSet = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#fieldTranslateAnimation#isSet");
+  var ___AnimatedTextFormFieldState_iconRotationAnimation = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#iconRotationAnimation");
+  var ___AnimatedTextFormFieldState_iconRotationAnimation_isSet = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#iconRotationAnimation#isSet");
+  var ___AnimatedTextFormFieldState_iconTranslateAnimation = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#iconTranslateAnimation");
+  var ___AnimatedTextFormFieldState_iconTranslateAnimation_isSet = dart.privateName(animated_text_form_field, "_#_AnimatedTextFormFieldState#iconTranslateAnimation#isSet");
+  var _updateSizeAnimation = dart.privateName(animated_text_form_field, "_updateSizeAnimation");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _buildInertiaAnimation = dart.privateName(animated_text_form_field, "_buildInertiaAnimation");
+  var _getInputDecoration = dart.privateName(animated_text_form_field, "_getInputDecoration");
+  animated_text_form_field._AnimatedTextFormFieldState = class _AnimatedTextFormFieldState extends framework.State$(animated_text_form_field.AnimatedTextFormField) {
+    get scaleAnimation() {
+      let t0;
+      return dart.test(this[___AnimatedTextFormFieldState_scaleAnimation_isSet]) ? (t0 = this[___AnimatedTextFormFieldState_scaleAnimation], t0) : dart.throw(new _internal.LateError.fieldNI("scaleAnimation"));
+    }
+    set scaleAnimation(t0) {
+      if (t0 == null) dart.nullFailed(I[0], 77, 26, "null");
+      this[___AnimatedTextFormFieldState_scaleAnimation_isSet] = true;
+      this[___AnimatedTextFormFieldState_scaleAnimation] = t0;
+    }
+    get sizeAnimation() {
+      let t1;
+      return dart.test(this[___AnimatedTextFormFieldState_sizeAnimation_isSet]) ? (t1 = this[___AnimatedTextFormFieldState_sizeAnimation], t1) : dart.throw(new _internal.LateError.fieldNI("sizeAnimation"));
+    }
+    set sizeAnimation(t1) {
+      if (t1 == null) dart.nullFailed(I[0], 78, 26, "null");
+      this[___AnimatedTextFormFieldState_sizeAnimation_isSet] = true;
+      this[___AnimatedTextFormFieldState_sizeAnimation] = t1;
+    }
+    get suffixIconOpacityAnimation() {
+      let t2;
+      return dart.test(this[___AnimatedTextFormFieldState_suffixIconOpacityAnimation_isSet]) ? (t2 = this[___AnimatedTextFormFieldState_suffixIconOpacityAnimation], t2) : dart.throw(new _internal.LateError.fieldNI("suffixIconOpacityAnimation"));
+    }
+    set suffixIconOpacityAnimation(t2) {
+      if (t2 == null) dart.nullFailed(I[0], 79, 26, "null");
+      this[___AnimatedTextFormFieldState_suffixIconOpacityAnimation_isSet] = true;
+      this[___AnimatedTextFormFieldState_suffixIconOpacityAnimation] = t2;
+    }
+    get fieldTranslateAnimation() {
+      let t3;
+      return dart.test(this[___AnimatedTextFormFieldState_fieldTranslateAnimation_isSet]) ? (t3 = this[___AnimatedTextFormFieldState_fieldTranslateAnimation], t3) : dart.throw(new _internal.LateError.fieldNI("fieldTranslateAnimation"));
+    }
+    set fieldTranslateAnimation(t3) {
+      if (t3 == null) dart.nullFailed(I[0], 81, 26, "null");
+      this[___AnimatedTextFormFieldState_fieldTranslateAnimation_isSet] = true;
+      this[___AnimatedTextFormFieldState_fieldTranslateAnimation] = t3;
+    }
+    get iconRotationAnimation() {
+      let t4;
+      return dart.test(this[___AnimatedTextFormFieldState_iconRotationAnimation_isSet]) ? (t4 = this[___AnimatedTextFormFieldState_iconRotationAnimation], t4) : dart.throw(new _internal.LateError.fieldNI("iconRotationAnimation"));
+    }
+    set iconRotationAnimation(t4) {
+      if (t4 == null) dart.nullFailed(I[0], 82, 26, "null");
+      this[___AnimatedTextFormFieldState_iconRotationAnimation_isSet] = true;
+      this[___AnimatedTextFormFieldState_iconRotationAnimation] = t4;
+    }
+    get iconTranslateAnimation() {
+      let t5;
+      return dart.test(this[___AnimatedTextFormFieldState_iconTranslateAnimation_isSet]) ? (t5 = this[___AnimatedTextFormFieldState_iconTranslateAnimation], t5) : dart.throw(new _internal.LateError.fieldNI("iconTranslateAnimation"));
+    }
+    set iconTranslateAnimation(t5) {
+      if (t5 == null) dart.nullFailed(I[0], 83, 26, "null");
+      this[___AnimatedTextFormFieldState_iconTranslateAnimation_isSet] = true;
+      this[___AnimatedTextFormFieldState_iconTranslateAnimation] = t5;
+    }
+    initState() {
+      let t6;
+      super.initState();
+      t6 = this.widget.inertiaController;
+      t6 == null ? null : t6.addStatusListener(dart.bind(this, 'handleAnimationStatus'));
+      let interval = this.widget.interval;
+      let loadingController = this.widget.loadingController;
+      if (loadingController != null) {
+        this.scaleAnimation = new (T.TweenOfdouble()).new({begin: 0.0, end: 1.0}).animate(new animations.CurvedAnimation.new({parent: loadingController, curve: animated_text_form_field._getInternalInterval(0.0, 0.2, dart.nullCheck(interval).begin, interval.end, curves.Curves.easeOutBack)}));
+        this.suffixIconOpacityAnimation = new (T.TweenOfdouble()).new({begin: 0.0, end: 1.0}).animate(new animations.CurvedAnimation.new({parent: loadingController, curve: animated_text_form_field._getInternalInterval(0.65, 1.0, interval.begin, interval.end)}));
+        this[_updateSizeAnimation]();
+      }
+      let inertiaController = this.widget.inertiaController;
+      let inertiaDirection = this.widget.inertiaDirection;
+      let sign = inertiaDirection == animated_text_form_field.TextFieldInertiaDirection.right ? 1 : -1;
+      if (inertiaController != null) {
+        this.fieldTranslateAnimation = new (T.TweenOfdouble()).new({begin: 0.0, end: sign * 15.0}).animate(new animations.CurvedAnimation.new({parent: inertiaController, curve: new curves.Interval.new(0.0, 0.5, {curve: curves.Curves.easeOut}), reverseCurve: curves.Curves.easeIn}));
+        this.iconRotationAnimation = new (T.TweenOfdouble()).new({begin: 0.0, end: sign * 3.141592653589793 / 12}).animate(new animations.CurvedAnimation.new({parent: inertiaController, curve: new curves.Interval.new(0.5, 1.0, {curve: curves.Curves.easeOut}), reverseCurve: curves.Curves.easeIn}));
+        this.iconTranslateAnimation = new (T.TweenOfdouble()).new({begin: 0.0, end: 8.0}).animate(new animations.CurvedAnimation.new({parent: inertiaController, curve: new curves.Interval.new(0.5, 1.0, {curve: curves.Curves.easeOut}), reverseCurve: curves.Curves.easeIn}));
+      }
+    }
+    [_updateSizeAnimation]() {
+      let interval = dart.nullCheck(this.widget.interval);
+      let loadingController = dart.nullCheck(this.widget.loadingController);
+      this.sizeAnimation = new (T.TweenOfdouble()).new({begin: 48.0, end: this.widget.width}).animate(new animations.CurvedAnimation.new({parent: loadingController, curve: animated_text_form_field._getInternalInterval(0.2, 1.0, interval.begin, interval.end, curves.Curves.linearToEaseOut), reverseCurve: curves.Curves.easeInExpo}));
+    }
+    didUpdateWidget(oldWidget) {
+      animated_text_form_field.AnimatedTextFormField.as(oldWidget);
+      if (oldWidget == null) dart.nullFailed(I[0], 156, 46, "oldWidget");
+      super.didUpdateWidget(oldWidget);
+      if (oldWidget.width != this.widget.width) {
+        this[_updateSizeAnimation]();
+      }
+    }
+    dispose() {
+      let t6;
+      t6 = this.widget.inertiaController;
+      t6 == null ? null : t6.removeStatusListener(dart.bind(this, 'handleAnimationStatus'));
+      super.dispose();
+    }
+    handleAnimationStatus(status) {
+      let t6;
+      if (dart.equals(status, animation.AnimationStatus.completed)) {
+        t6 = this.widget.inertiaController;
+        t6 == null ? null : t6.reverse();
+      }
+    }
+    [_buildInertiaAnimation](child) {
+      if (this.widget.inertiaController == null) {
+        return child;
+      }
+      return new transitions.AnimatedBuilder.new({animation: this.iconTranslateAnimation, builder: dart.fn((context, child) => {
+          let t6;
+          if (context == null) dart.nullFailed(I[0], 183, 17, "context");
+          return new basic.Transform.new({alignment: alignment.Alignment.center, transform: (t6 = vector_math_64.Matrix4.identity(), (() => {
+              t6.translate(this.iconTranslateAnimation.value);
+              t6.rotateZ(this.iconRotationAnimation.value);
+              return t6;
+            })()), child: child, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+        }, T.BuildContextAndWidgetNToTransform()), child: child, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+    }
+    [_getInputDecoration](theme) {
+      if (theme == null) dart.nullFailed(I[0], 194, 49, "theme");
+      return new input_decorator.InputDecoration.new({labelText: this.widget.labelText, prefixIcon: this[_buildInertiaAnimation](this.widget.prefixIcon), suffixIcon: this[_buildInertiaAnimation](this.widget.loadingController != null ? new transitions.FadeTransition.new({opacity: this.suffixIconOpacityAnimation, child: this.widget.suffixIcon, $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}) : this.widget.suffixIcon)});
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 208, 29, "context");
+      let theme = theme$.Theme.of(context);
+      let textField = new text_form_field.TextFormField.new({cursorColor: theme.primaryColor, controller: this.widget.controller, focusNode: this.widget.focusNode, decoration: this[_getInputDecoration](theme), keyboardType: this.widget.keyboardType, textInputAction: this.widget.textInputAction, obscureText: this.widget.obscureText, onFieldSubmitted: this.widget.onFieldSubmitted, onSaved: this.widget.onSaved, validator: this.widget.validator, enabled: this.widget.enabled, autocorrect: this.widget.autocorrect, autofillHints: this.widget.autofillHints, $creationLocationd_0dea112b090073317d4: C[19] || CT.C19});
+      if (this.widget.loadingController != null) {
+        textField = new transitions.ScaleTransition.new({scale: this.scaleAnimation, child: new transitions.AnimatedBuilder.new({animation: this.sizeAnimation, builder: dart.fn((context, child) => {
+              if (context == null) dart.nullFailed(I[0], 231, 21, "context");
+              return new basic.ConstrainedBox.new({constraints: new box.BoxConstraints.tightFor({width: this.sizeAnimation.value}), child: child, $creationLocationd_0dea112b090073317d4: C[34] || CT.C34});
+            }, T.BuildContextAndWidgetNToConstrainedBox()), child: textField, $creationLocationd_0dea112b090073317d4: C[38] || CT.C38}), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
+      }
+      if (this.widget.inertiaController != null) {
+        textField = new transitions.AnimatedBuilder.new({animation: this.fieldTranslateAnimation, builder: dart.fn((context, child) => {
+            if (context == null) dart.nullFailed(I[0], 243, 19, "context");
+            return new basic.Transform.translate({offset: new ui.Offset.new(this.fieldTranslateAnimation.value, 0.0), child: child, $creationLocationd_0dea112b090073317d4: C[47] || CT.C47});
+          }, T.BuildContextAndWidgetNToTransform()), child: textField, $creationLocationd_0dea112b090073317d4: C[51] || CT.C51});
+      }
+      return textField;
+    }
+  };
+  (animated_text_form_field._AnimatedTextFormFieldState.new = function() {
+    this[___AnimatedTextFormFieldState_scaleAnimation] = null;
+    this[___AnimatedTextFormFieldState_scaleAnimation_isSet] = false;
+    this[___AnimatedTextFormFieldState_sizeAnimation] = null;
+    this[___AnimatedTextFormFieldState_sizeAnimation_isSet] = false;
+    this[___AnimatedTextFormFieldState_suffixIconOpacityAnimation] = null;
+    this[___AnimatedTextFormFieldState_suffixIconOpacityAnimation_isSet] = false;
+    this[___AnimatedTextFormFieldState_fieldTranslateAnimation] = null;
+    this[___AnimatedTextFormFieldState_fieldTranslateAnimation_isSet] = false;
+    this[___AnimatedTextFormFieldState_iconRotationAnimation] = null;
+    this[___AnimatedTextFormFieldState_iconRotationAnimation_isSet] = false;
+    this[___AnimatedTextFormFieldState_iconTranslateAnimation] = null;
+    this[___AnimatedTextFormFieldState_iconTranslateAnimation_isSet] = false;
+    animated_text_form_field._AnimatedTextFormFieldState.__proto__.new.call(this);
+    ;
+  }).prototype = animated_text_form_field._AnimatedTextFormFieldState.prototype;
+  dart.addTypeTests(animated_text_form_field._AnimatedTextFormFieldState);
+  dart.addTypeCaches(animated_text_form_field._AnimatedTextFormFieldState);
+  dart.setMethodSignature(animated_text_form_field._AnimatedTextFormFieldState, () => ({
+    __proto__: dart.getMethods(animated_text_form_field._AnimatedTextFormFieldState.__proto__),
+    [_updateSizeAnimation]: dart.fnType(dart.void, []),
+    handleAnimationStatus: dart.fnType(dart.void, [dart.dynamic]),
+    [_buildInertiaAnimation]: dart.fnType(dart.nullable(framework.Widget), [dart.nullable(framework.Widget)]),
+    [_getInputDecoration]: dart.fnType(input_decorator.InputDecoration, [theme_data.ThemeData]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(animated_text_form_field._AnimatedTextFormFieldState, () => ({
+    __proto__: dart.getGetters(animated_text_form_field._AnimatedTextFormFieldState.__proto__),
+    scaleAnimation: animation.Animation$(core.double),
+    sizeAnimation: animation.Animation$(core.double),
+    suffixIconOpacityAnimation: animation.Animation$(core.double),
+    fieldTranslateAnimation: animation.Animation$(core.double),
+    iconRotationAnimation: animation.Animation$(core.double),
+    iconTranslateAnimation: animation.Animation$(core.double)
+  }));
+  dart.setSetterSignature(animated_text_form_field._AnimatedTextFormFieldState, () => ({
+    __proto__: dart.getSetters(animated_text_form_field._AnimatedTextFormFieldState.__proto__),
+    scaleAnimation: animation.Animation$(core.double),
+    sizeAnimation: animation.Animation$(core.double),
+    suffixIconOpacityAnimation: animation.Animation$(core.double),
+    fieldTranslateAnimation: animation.Animation$(core.double),
+    iconRotationAnimation: animation.Animation$(core.double),
+    iconTranslateAnimation: animation.Animation$(core.double)
+  }));
+  dart.setLibraryUri(animated_text_form_field._AnimatedTextFormFieldState, I[1]);
+  dart.setFieldSignature(animated_text_form_field._AnimatedTextFormFieldState, () => ({
+    __proto__: dart.getFields(animated_text_form_field._AnimatedTextFormFieldState.__proto__),
+    [___AnimatedTextFormFieldState_scaleAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedTextFormFieldState_scaleAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedTextFormFieldState_sizeAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedTextFormFieldState_sizeAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedTextFormFieldState_suffixIconOpacityAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedTextFormFieldState_suffixIconOpacityAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedTextFormFieldState_fieldTranslateAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedTextFormFieldState_fieldTranslateAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedTextFormFieldState_iconRotationAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedTextFormFieldState_iconRotationAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedTextFormFieldState_iconTranslateAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedTextFormFieldState_iconTranslateAnimation_isSet]: dart.fieldType(core.bool)
+  }));
+  var interval$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.interval");
+  var loadingController$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.loadingController");
+  var inertiaController$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.inertiaController");
+  var animatedWidth$ = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.animatedWidth");
+  var enabled$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.enabled");
+  var labelText$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.labelText");
+  var keyboardType$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.keyboardType");
+  var textInputAction$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.textInputAction");
+  var controller$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.controller");
+  var focusNode$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.focusNode");
+  var validator$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.validator");
+  var onFieldSubmitted$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.onFieldSubmitted");
+  var onSaved$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.onSaved");
+  var inertiaDirection$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.inertiaDirection");
+  var autofillHints$0 = dart.privateName(animated_text_form_field, "AnimatedPasswordTextFormField.autofillHints");
+  animated_text_form_field.AnimatedPasswordTextFormField = class AnimatedPasswordTextFormField extends framework.StatefulWidget {
+    get interval() {
+      return this[interval$0];
+    }
+    set interval(value) {
+      super.interval = value;
+    }
+    get loadingController() {
+      return this[loadingController$0];
+    }
+    set loadingController(value) {
+      super.loadingController = value;
+    }
+    get inertiaController() {
+      return this[inertiaController$0];
+    }
+    set inertiaController(value) {
+      super.inertiaController = value;
+    }
+    get animatedWidth() {
+      return this[animatedWidth$];
+    }
+    set animatedWidth(value) {
+      super.animatedWidth = value;
+    }
+    get enabled() {
+      return this[enabled$0];
+    }
+    set enabled(value) {
+      super.enabled = value;
+    }
+    get labelText() {
+      return this[labelText$0];
+    }
+    set labelText(value) {
+      super.labelText = value;
+    }
+    get keyboardType() {
+      return this[keyboardType$0];
+    }
+    set keyboardType(value) {
+      super.keyboardType = value;
+    }
+    get textInputAction() {
+      return this[textInputAction$0];
+    }
+    set textInputAction(value) {
+      super.textInputAction = value;
+    }
+    get controller() {
+      return this[controller$0];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    get focusNode() {
+      return this[focusNode$0];
+    }
+    set focusNode(value) {
+      super.focusNode = value;
+    }
+    get validator() {
+      return this[validator$0];
+    }
+    set validator(value) {
+      super.validator = value;
+    }
+    get onFieldSubmitted() {
+      return this[onFieldSubmitted$0];
+    }
+    set onFieldSubmitted(value) {
+      super.onFieldSubmitted = value;
+    }
+    get onSaved() {
+      return this[onSaved$0];
+    }
+    set onSaved(value) {
+      super.onSaved = value;
+    }
+    get inertiaDirection() {
+      return this[inertiaDirection$0];
+    }
+    set inertiaDirection(value) {
+      super.inertiaDirection = value;
+    }
+    get autofillHints() {
+      return this[autofillHints$0];
+    }
+    set autofillHints(value) {
+      super.autofillHints = value;
+    }
+    createState() {
+      return new animated_text_form_field._AnimatedPasswordTextFormFieldState.new();
+    }
+  };
+  (animated_text_form_field.AnimatedPasswordTextFormField.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let interval = opts && 'interval' in opts ? opts.interval : C[3] || CT.C3;
+    let animatedWidth = opts && 'animatedWidth' in opts ? opts.animatedWidth : null;
+    if (animatedWidth == null) dart.nullFailed(I[0], 259, 19, "animatedWidth");
+    let loadingController = opts && 'loadingController' in opts ? opts.loadingController : null;
+    let inertiaController = opts && 'inertiaController' in opts ? opts.inertiaController : null;
+    let inertiaDirection = opts && 'inertiaDirection' in opts ? opts.inertiaDirection : null;
+    let enabled = opts && 'enabled' in opts ? opts.enabled : true;
+    if (enabled == null) dart.nullFailed(I[0], 263, 10, "enabled");
+    let labelText = opts && 'labelText' in opts ? opts.labelText : null;
+    let keyboardType = opts && 'keyboardType' in opts ? opts.keyboardType : null;
+    let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let focusNode = opts && 'focusNode' in opts ? opts.focusNode : null;
+    let validator = opts && 'validator' in opts ? opts.validator : null;
+    let onFieldSubmitted = opts && 'onFieldSubmitted' in opts ? opts.onFieldSubmitted : null;
+    let onSaved = opts && 'onSaved' in opts ? opts.onSaved : null;
+    let autofillHints = opts && 'autofillHints' in opts ? opts.autofillHints : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[interval$0] = interval;
+    this[animatedWidth$] = animatedWidth;
+    this[loadingController$0] = loadingController;
+    this[inertiaController$0] = inertiaController;
+    this[inertiaDirection$0] = inertiaDirection;
+    this[enabled$0] = enabled;
+    this[labelText$0] = labelText;
+    this[keyboardType$0] = keyboardType;
+    this[textInputAction$0] = textInputAction;
+    this[controller$0] = controller;
+    this[focusNode$0] = focusNode;
+    this[validator$0] = validator;
+    this[onFieldSubmitted$0] = onFieldSubmitted;
+    this[onSaved$0] = onSaved;
+    this[autofillHints$0] = autofillHints;
+    if (!(inertiaController == null && inertiaDirection == null || inertiaController != null && inertiaDirection != null)) dart.assertFailed(null, I[0], 273, 16, "(inertiaController == null && inertiaDirection == null) ||\n            (inertiaController != null && inertiaDirection != null)");
+    animated_text_form_field.AnimatedPasswordTextFormField.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = animated_text_form_field.AnimatedPasswordTextFormField.prototype;
+  dart.addTypeTests(animated_text_form_field.AnimatedPasswordTextFormField);
+  dart.addTypeCaches(animated_text_form_field.AnimatedPasswordTextFormField);
+  dart.setMethodSignature(animated_text_form_field.AnimatedPasswordTextFormField, () => ({
+    __proto__: dart.getMethods(animated_text_form_field.AnimatedPasswordTextFormField.__proto__),
+    createState: dart.fnType(animated_text_form_field._AnimatedPasswordTextFormFieldState, [])
+  }));
+  dart.setLibraryUri(animated_text_form_field.AnimatedPasswordTextFormField, I[1]);
+  dart.setFieldSignature(animated_text_form_field.AnimatedPasswordTextFormField, () => ({
+    __proto__: dart.getFields(animated_text_form_field.AnimatedPasswordTextFormField.__proto__),
+    interval: dart.finalFieldType(dart.nullable(curves.Interval)),
+    loadingController: dart.finalFieldType(dart.nullable(animation_controller.AnimationController)),
+    inertiaController: dart.finalFieldType(dart.nullable(animation_controller.AnimationController)),
+    animatedWidth: dart.finalFieldType(core.double),
+    enabled: dart.finalFieldType(core.bool),
+    labelText: dart.finalFieldType(dart.nullable(core.String)),
+    keyboardType: dart.finalFieldType(dart.nullable(text_input.TextInputType)),
+    textInputAction: dart.finalFieldType(dart.nullable(text_input.TextInputAction)),
+    controller: dart.finalFieldType(dart.nullable(editable_text.TextEditingController)),
+    focusNode: dart.finalFieldType(dart.nullable(focus_manager.FocusNode)),
+    validator: dart.finalFieldType(dart.nullable(dart.fnType(dart.nullable(core.String), [dart.nullable(core.String)]))),
+    onFieldSubmitted: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.String]))),
+    onSaved: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.nullable(core.String)]))),
+    inertiaDirection: dart.finalFieldType(dart.nullable(animated_text_form_field.TextFieldInertiaDirection)),
+    autofillHints: dart.finalFieldType(dart.nullable(core.Iterable$(core.String)))
+  }));
+  var _obscureText = dart.privateName(animated_text_form_field, "_obscureText");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  animated_text_form_field._AnimatedPasswordTextFormFieldState = class _AnimatedPasswordTextFormFieldState extends framework.State$(animated_text_form_field.AnimatedPasswordTextFormField) {
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 303, 29, "context");
+      return new animated_text_form_field.AnimatedTextFormField.new({interval: this.widget.interval, loadingController: this.widget.loadingController, inertiaController: this.widget.inertiaController, width: this.widget.animatedWidth, enabled: this.widget.enabled, autofillHints: this.widget.autofillHints, labelText: this.widget.labelText, prefixIcon: new icon.Icon.new(font_awesome_flutter.FontAwesomeIcons.lock, {size: 20.0, $creationLocationd_0dea112b090073317d4: C[56] || CT.C56}), suffixIcon: new gesture_detector.GestureDetector.new({onTap: dart.fn(() => this.setState(dart.fn(() => this[_obscureText] = !dart.test(this[_obscureText]), T.VoidTovoid())), T.VoidTovoid()), dragStartBehavior: recognizer.DragStartBehavior.down, child: new animated_cross_fade.AnimatedCrossFade.new({duration: C[60] || CT.C60, firstCurve: curves.Curves.easeInOutSine, secondCurve: curves.Curves.easeInOutSine, alignment: alignment.Alignment.center, layoutBuilder: dart.fn((topChild, _, bottomChild, __) => {
+              if (topChild == null) dart.nullFailed(I[0], 321, 34, "topChild");
+              if (_ == null) dart.nullFailed(I[0], 321, 44, "_");
+              if (bottomChild == null) dart.nullFailed(I[0], 321, 54, "bottomChild");
+              if (__ == null) dart.nullFailed(I[0], 321, 67, "__");
+              return new basic.Stack.new({alignment: alignment.Alignment.center, children: T.JSArrayOfWidget().of([bottomChild, topChild]), $creationLocationd_0dea112b090073317d4: C[61] || CT.C61});
+            }, T.WidgetAndKeyAndWidget__ToStack()), firstChild: new icon.Icon.new(icons.Icons.visibility, {size: 25.0, semanticLabel: "show password", $creationLocationd_0dea112b090073317d4: C[65] || CT.C65}), secondChild: new icon.Icon.new(icons.Icons.visibility_off, {size: 25.0, semanticLabel: "hide password", $creationLocationd_0dea112b090073317d4: C[70] || CT.C70}), crossFadeState: dart.test(this[_obscureText]) ? animated_cross_fade.CrossFadeState.showFirst : animated_cross_fade.CrossFadeState.showSecond, $creationLocationd_0dea112b090073317d4: C[75] || CT.C75}), $creationLocationd_0dea112b090073317d4: C[85] || CT.C85}), obscureText: this[_obscureText], keyboardType: this.widget.keyboardType, textInputAction: this.widget.textInputAction, controller: this.widget.controller, focusNode: this.widget.focusNode, validator: this.widget.validator, onFieldSubmitted: this.widget.onFieldSubmitted, onSaved: this.widget.onSaved, inertiaDirection: this.widget.inertiaDirection, $creationLocationd_0dea112b090073317d4: C[90] || CT.C90});
+    }
+  };
+  (animated_text_form_field._AnimatedPasswordTextFormFieldState.new = function() {
+    this[_obscureText] = true;
+    animated_text_form_field._AnimatedPasswordTextFormFieldState.__proto__.new.call(this);
+    ;
+  }).prototype = animated_text_form_field._AnimatedPasswordTextFormFieldState.prototype;
+  dart.addTypeTests(animated_text_form_field._AnimatedPasswordTextFormFieldState);
+  dart.addTypeCaches(animated_text_form_field._AnimatedPasswordTextFormFieldState);
+  dart.setMethodSignature(animated_text_form_field._AnimatedPasswordTextFormFieldState, () => ({
+    __proto__: dart.getMethods(animated_text_form_field._AnimatedPasswordTextFormFieldState.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(animated_text_form_field._AnimatedPasswordTextFormFieldState, I[1]);
+  dart.setFieldSignature(animated_text_form_field._AnimatedPasswordTextFormFieldState, () => ({
+    __proto__: dart.getFields(animated_text_form_field._AnimatedPasswordTextFormFieldState.__proto__),
+    [_obscureText]: dart.fieldType(core.bool)
+  }));
+  animated_text_form_field._getInternalInterval = function _getInternalInterval(start, end, externalStart, externalEnd, curve = C[4] || CT.C4) {
+    if (start == null) dart.nullFailed(I[0], 13, 10, "start");
+    if (end == null) dart.nullFailed(I[0], 14, 10, "end");
+    if (externalStart == null) dart.nullFailed(I[0], 15, 10, "externalStart");
+    if (externalEnd == null) dart.nullFailed(I[0], 16, 10, "externalEnd");
+    if (curve == null) dart.nullFailed(I[0], 17, 9, "curve");
+    return new curves.Interval.new(dart.notNull(start) + (dart.notNull(end) - dart.notNull(start)) * dart.notNull(externalStart), dart.notNull(start) + (dart.notNull(end) - dart.notNull(start)) * dart.notNull(externalEnd), {curve: curve});
+  };
+  dart.trackLibraries("packages/flutter_login/src/widgets/animated_text_form_field.dart", {
+    "package:flutter_login/src/widgets/animated_text_form_field.dart": animated_text_form_field
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["animated_text_form_field.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../E:/packages/flutter_login/src/widgets/animated_text_form_field.dart.lib.js"}');
+  // Exports:
+  return {
+    src__widgets__animated_text_form_field: animated_text_form_field
+  };
+}));
+
+//# sourceMappingURL=animated_text_form_field.dart.lib.js.map

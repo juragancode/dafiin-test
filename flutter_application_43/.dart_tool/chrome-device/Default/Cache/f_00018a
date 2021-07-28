@@ -1,0 +1,996 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/widgets/icon_data.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/rendering/paragraph.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/widgets/implicit_animations.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter_login/src/widgets/ring.dart', 'packages/flutter/src/material/progress_indicator.dart'], (function load__packages__flutter_login__src__widgets__animated_icon_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__widgets__icon_data$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__rendering__paragraph$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__widgets__implicit_animations$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__material__colors$46dart, packages__flutter_login__src__widgets__ring$46dart, packages__flutter__src__material__progress_indicator$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const icon_data = packages__flutter__src__widgets__icon_data$46dart.src__widgets__icon_data;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const ink_well = packages__flutter__src__material__icon_button$46dart.src__material__ink_well;
+  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
+  const paragraph = packages__flutter__src__rendering__paragraph$46dart.src__rendering__paragraph;
+  const text_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_span;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const implicit_animations = packages__flutter__src__widgets__implicit_animations$46dart.src__widgets__implicit_animations;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const ring = packages__flutter_login__src__widgets__ring$46dart.src__widgets__ring;
+  const progress_indicator = packages__flutter__src__material__progress_indicator$46dart.src__material__progress_indicator;
+  var animated_icon = Object.create(dart.library);
+  var $ceilToDouble = dartx.ceilToDouble;
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    TweenOfdouble: () => (T.TweenOfdouble = dart.constFn(tween.Tween$(core.double)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    WidgetN: () => (T.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
+    BuildContextAndWidgetNToMaterial: () => (T.BuildContextAndWidgetNToMaterial = dart.constFn(dart.fnType(material.Material, [framework.BuildContext, T.WidgetN()])))(),
+    VoidToNvoid: () => (T.VoidToNvoid = dart.constFn(dart.nullable(T.VoidTovoid())))(),
+    boolTovoid: () => (T.boolTovoid = dart.constFn(dart.fnType(dart.void, [core.bool])))(),
+    BuildContextAndWidgetNToRing: () => (T.BuildContextAndWidgetNToRing = dart.constFn(dart.fnType(ring.Ring, [framework.BuildContext, T.WidgetN()])))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    ColorN: () => (T.ColorN = dart.constFn(dart.nullable(ui.Color)))(),
+    AlwaysStoppedAnimationOfColorN: () => (T.AlwaysStoppedAnimationOfColorN = dart.constFn(animations.AlwaysStoppedAnimation$(T.ColorN())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.2,
+        [Cubic_b]: 0,
+        [Cubic_a]: 0.4
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: curves.Interval.prototype,
+        [Interval_curve]: C[1] || CT.C1,
+        [Interval_end]: 0.65,
+        [Interval_begin]: 0
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shape",
+        [_Location_column]: 13,
+        [_Location_line]: 177,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 13,
+        [_Location_line]: 178,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shadowColor",
+        [_Location_column]: 13,
+        [_Location_line]: 179,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 13,
+        [_Location_line]: 180,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 185,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[3] || CT.C3,
+        [_Location_name]: null,
+        [_Location_column]: 40,
+        [_Location_line]: 176,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 36,
+        [_Location_line]: 199,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 42,
+        [_Location_line]: 199,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 199,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 17,
+        [_Location_line]: 196,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 17,
+        [_Location_line]: 197,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 17,
+        [_Location_line]: 198,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 199,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18], T._LocationL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 195,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "sizeFactor",
+        [_Location_column]: 15,
+        [_Location_line]: 193,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "axis",
+        [_Location_column]: 15,
+        [_Location_line]: 194,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 195,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.constList([C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23], T._LocationL());
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[20] || CT.C20,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 192,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 13,
+        [_Location_line]: 188,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "splashColor",
+        [_Location_column]: 13,
+        [_Location_line]: 189,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "customBorder",
+        [_Location_column]: 13,
+        [_Location_line]: 190,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHighlightChanged",
+        [_Location_column]: 13,
+        [_Location_line]: 191,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 192,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30], T._LocationL());
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[25] || CT.C25,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 187,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 175,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 11,
+        [_Location_line]: 176,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 187,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35], T._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 174,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 9,
+        [_Location_line]: 173,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 174,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.constList([C[38] || CT.C38, C[39] || CT.C39], T._LocationL());
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[37] || CT.C37,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 172,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 7,
+        [_Location_line]: 171,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 172,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.constList([C[42] || CT.C42, C[43] || CT.C43], T._LocationL());
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[41] || CT.C41,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 170,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 15,
+        [_Location_line]: 221,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 15,
+        [_Location_line]: 222,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "thickness",
+        [_Location_column]: 15,
+        [_Location_line]: 223,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.constList([C[46] || CT.C46, C[47] || CT.C47, C[48] || CT.C48], T._LocationL());
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[45] || CT.C45,
+        [_Location_name]: null,
+        [_Location_column]: 42,
+        [_Location_line]: 220,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 13,
+        [_Location_line]: 219,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 13,
+        [_Location_line]: 220,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.constList([C[51] || CT.C51, C[52] || CT.C52], T._LocationL());
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[50] || CT.C50,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 218,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 11,
+        [_Location_line]: 217,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 218,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.constList([C[55] || CT.C55, C[56] || CT.C56], T._LocationL());
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[54] || CT.C54,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 216,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "valueColor",
+        [_Location_column]: 15,
+        [_Location_line]: 232,
+        [_Location_file]: null
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "strokeWidth",
+        [_Location_column]: 15,
+        [_Location_line]: 234,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.constList([C[59] || CT.C59, C[60] || CT.C60], T._LocationL());
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[58] || CT.C58,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 231,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 13,
+        [_Location_line]: 229,
+        [_Location_file]: null
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 13,
+        [_Location_line]: 230,
+        [_Location_file]: null
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 231,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C[62] = dart.constList([C[63] || CT.C63, C[64] || CT.C64, C[65] || CT.C65], T._LocationL());
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[62] || CT.C62,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 228,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 7,
+        [_Location_line]: 214,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 215,
+        [_Location_file]: null
+      });
+    },
+    get C67() {
+      return C[67] = dart.constList([C[68] || CT.C68, C[69] || CT.C69], T._LocationL());
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[67] || CT.C67,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 213,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart"
+      });
+    }
+  }, false);
+  var C = Array(70).fill(void 0);
+  var I = [
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.1/lib/src/widgets/animated_icon.dart",
+    "package:flutter_login/src/widgets/animated_icon.dart"
+  ];
+  var tooltip$ = dart.privateName(animated_icon, "AnimatedIconButton.tooltip");
+  var color$ = dart.privateName(animated_icon, "AnimatedIconButton.color");
+  var loadingColor$ = dart.privateName(animated_icon, "AnimatedIconButton.loadingColor");
+  var onPressed$ = dart.privateName(animated_icon, "AnimatedIconButton.onPressed");
+  var controller$ = dart.privateName(animated_icon, "AnimatedIconButton.controller");
+  var icon$ = dart.privateName(animated_icon, "AnimatedIconButton.icon");
+  animated_icon.AnimatedIconButton = class AnimatedIconButton extends framework.StatefulWidget {
+    get tooltip() {
+      return this[tooltip$];
+    }
+    set tooltip(value) {
+      super.tooltip = value;
+    }
+    get color() {
+      return this[color$];
+    }
+    set color(value) {
+      super.color = value;
+    }
+    get loadingColor() {
+      return this[loadingColor$];
+    }
+    set loadingColor(value) {
+      super.loadingColor = value;
+    }
+    get onPressed() {
+      return this[onPressed$];
+    }
+    set onPressed(value) {
+      super.onPressed = value;
+    }
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    get icon() {
+      return this[icon$];
+    }
+    set icon(value) {
+      super.icon = value;
+    }
+    createState() {
+      return new animated_icon._AnimatedIconButtonState.new();
+    }
+  };
+  (animated_icon.AnimatedIconButton.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let tooltip = opts && 'tooltip' in opts ? opts.tooltip : null;
+    if (tooltip == null) dart.nullFailed(I[0], 12, 19, "tooltip");
+    let onPressed = opts && 'onPressed' in opts ? opts.onPressed : null;
+    if (onPressed == null) dart.nullFailed(I[0], 13, 19, "onPressed");
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    if (controller == null) dart.nullFailed(I[0], 14, 19, "controller");
+    let icon = opts && 'icon' in opts ? opts.icon : null;
+    if (icon == null) dart.nullFailed(I[0], 15, 19, "icon");
+    let loadingColor = opts && 'loadingColor' in opts ? opts.loadingColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[tooltip$] = tooltip;
+    this[onPressed$] = onPressed;
+    this[controller$] = controller;
+    this[icon$] = icon;
+    this[loadingColor$] = loadingColor;
+    this[color$] = color;
+    animated_icon.AnimatedIconButton.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = animated_icon.AnimatedIconButton.prototype;
+  dart.addTypeTests(animated_icon.AnimatedIconButton);
+  dart.addTypeCaches(animated_icon.AnimatedIconButton);
+  dart.setMethodSignature(animated_icon.AnimatedIconButton, () => ({
+    __proto__: dart.getMethods(animated_icon.AnimatedIconButton.__proto__),
+    createState: dart.fnType(animated_icon._AnimatedIconButtonState, [])
+  }));
+  dart.setLibraryUri(animated_icon.AnimatedIconButton, I[1]);
+  dart.setFieldSignature(animated_icon.AnimatedIconButton, () => ({
+    __proto__: dart.getFields(animated_icon.AnimatedIconButton.__proto__),
+    tooltip: dart.finalFieldType(core.String),
+    color: dart.finalFieldType(dart.nullable(ui.Color)),
+    loadingColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    onPressed: dart.finalFieldType(core.Function),
+    controller: dart.finalFieldType(animation_controller.AnimationController),
+    icon: dart.finalFieldType(icon_data.IconData)
+  }));
+  var ___AnimatedIconButtonState__sizeAnimation = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_sizeAnimation");
+  var ___AnimatedIconButtonState__sizeAnimation_isSet = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_sizeAnimation#isSet");
+  var ___AnimatedIconButtonState__buttonOpacityAnimation = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_buttonOpacityAnimation");
+  var ___AnimatedIconButtonState__buttonOpacityAnimation_isSet = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_buttonOpacityAnimation#isSet");
+  var ___AnimatedIconButtonState__ringThicknessAnimation = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_ringThicknessAnimation");
+  var ___AnimatedIconButtonState__ringThicknessAnimation_isSet = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_ringThicknessAnimation#isSet");
+  var ___AnimatedIconButtonState__ringOpacityAnimation = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_ringOpacityAnimation");
+  var ___AnimatedIconButtonState__ringOpacityAnimation_isSet = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_ringOpacityAnimation#isSet");
+  var ___AnimatedIconButtonState__colorAnimation = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_colorAnimation");
+  var ___AnimatedIconButtonState__colorAnimation_isSet = dart.privateName(animated_icon, "_#_AnimatedIconButtonState#_colorAnimation#isSet");
+  var _isLoading = dart.privateName(animated_icon, "_isLoading");
+  var _hover = dart.privateName(animated_icon, "_hover");
+  var _width = dart.privateName(animated_icon, "_width");
+  var _color = dart.privateName(animated_icon, "_color");
+  var _loadingColor = dart.privateName(animated_icon, "_loadingColor");
+  var _sizeAnimation = dart.privateName(animated_icon, "_sizeAnimation");
+  var _buttonOpacityAnimation = dart.privateName(animated_icon, "_buttonOpacityAnimation");
+  var _ringThicknessAnimation = dart.privateName(animated_icon, "_ringThicknessAnimation");
+  var _ringOpacityAnimation = dart.privateName(animated_icon, "_ringOpacityAnimation");
+  var _colorAnimation = dart.privateName(animated_icon, "_colorAnimation");
+  var _updateColorAnimation = dart.privateName(animated_icon, "_updateColorAnimation");
+  var _updateWidth = dart.privateName(animated_icon, "_updateWidth");
+  var Cubic_d = dart.privateName(curves, "Cubic.d");
+  var Cubic_c = dart.privateName(curves, "Cubic.c");
+  var Cubic_b = dart.privateName(curves, "Cubic.b");
+  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  var Interval_curve = dart.privateName(curves, "Interval.curve");
+  var Interval_end = dart.privateName(curves, "Interval.end");
+  var Interval_begin = dart.privateName(curves, "Interval.begin");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _buildButton = dart.privateName(animated_icon, "_buildButton");
+  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(animated_icon.AnimatedIconButton) {};
+  (State_SingleTickerProviderStateMixin$36.new = function() {
+    ticker_provider.SingleTickerProviderStateMixin$(animated_icon.AnimatedIconButton)[dart.mixinNew].call(this);
+    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(animated_icon.AnimatedIconButton));
+  animated_icon._AnimatedIconButtonState = class _AnimatedIconButtonState extends State_SingleTickerProviderStateMixin$36 {
+    get [_sizeAnimation]() {
+      let t0;
+      return dart.test(this[___AnimatedIconButtonState__sizeAnimation_isSet]) ? (t0 = this[___AnimatedIconButtonState__sizeAnimation], t0) : dart.throw(new _internal.LateError.fieldNI("_sizeAnimation"));
+    }
+    set [_sizeAnimation](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 33, 26, "null");
+      this[___AnimatedIconButtonState__sizeAnimation_isSet] = true;
+      this[___AnimatedIconButtonState__sizeAnimation] = t0;
+    }
+    get [_buttonOpacityAnimation]() {
+      let t1;
+      return dart.test(this[___AnimatedIconButtonState__buttonOpacityAnimation_isSet]) ? (t1 = this[___AnimatedIconButtonState__buttonOpacityAnimation], t1) : dart.throw(new _internal.LateError.fieldNI("_buttonOpacityAnimation"));
+    }
+    set [_buttonOpacityAnimation](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 34, 26, "null");
+      this[___AnimatedIconButtonState__buttonOpacityAnimation_isSet] = true;
+      this[___AnimatedIconButtonState__buttonOpacityAnimation] = t1;
+    }
+    get [_ringThicknessAnimation]() {
+      let t2;
+      return dart.test(this[___AnimatedIconButtonState__ringThicknessAnimation_isSet]) ? (t2 = this[___AnimatedIconButtonState__ringThicknessAnimation], t2) : dart.throw(new _internal.LateError.fieldNI("_ringThicknessAnimation"));
+    }
+    set [_ringThicknessAnimation](t2) {
+      if (t2 == null) dart.nullFailed(I[0], 35, 26, "null");
+      this[___AnimatedIconButtonState__ringThicknessAnimation_isSet] = true;
+      this[___AnimatedIconButtonState__ringThicknessAnimation] = t2;
+    }
+    get [_ringOpacityAnimation]() {
+      let t3;
+      return dart.test(this[___AnimatedIconButtonState__ringOpacityAnimation_isSet]) ? (t3 = this[___AnimatedIconButtonState__ringOpacityAnimation], t3) : dart.throw(new _internal.LateError.fieldNI("_ringOpacityAnimation"));
+    }
+    set [_ringOpacityAnimation](t3) {
+      if (t3 == null) dart.nullFailed(I[0], 36, 26, "null");
+      this[___AnimatedIconButtonState__ringOpacityAnimation_isSet] = true;
+      this[___AnimatedIconButtonState__ringOpacityAnimation] = t3;
+    }
+    get [_colorAnimation]() {
+      let t4;
+      return dart.test(this[___AnimatedIconButtonState__colorAnimation_isSet]) ? (t4 = this[___AnimatedIconButtonState__colorAnimation], t4) : dart.throw(new _internal.LateError.fieldNI("_colorAnimation"));
+    }
+    set [_colorAnimation](t4) {
+      if (t4 == null) dart.nullFailed(I[0], 37, 26, "null");
+      this[___AnimatedIconButtonState__colorAnimation_isSet] = true;
+      this[___AnimatedIconButtonState__colorAnimation] = t4;
+    }
+    initState() {
+      super.initState();
+      this[_buttonOpacityAnimation] = new (T.TweenOfdouble()).new({begin: 1.0, end: 0.0}).animate(new animations.CurvedAnimation.new({parent: this.widget.controller, curve: new curves.Threshold.new(0.65)}));
+      this[_ringThicknessAnimation] = new (T.TweenOfdouble()).new({begin: 20, end: 4}).animate(new animations.CurvedAnimation.new({parent: this.widget.controller, curve: new curves.Interval.new(0.65, 0.85)}));
+      this[_ringOpacityAnimation] = new (T.TweenOfdouble()).new({begin: 1.0, end: 0.0}).animate(new animations.CurvedAnimation.new({parent: this.widget.controller, curve: new curves.Interval.new(0.85, 1.0)}));
+      this.widget.controller.addStatusListener(dart.bind(this, 'handleStatusChanged'));
+    }
+    didChangeDependencies() {
+      this[_updateColorAnimation]();
+      this[_updateWidth]();
+      super.didChangeDependencies();
+    }
+    [_updateColorAnimation]() {
+      let t5, t5$;
+      let theme = theme$.Theme.of(this.context);
+      let buttonTheme = theme.floatingActionButtonTheme;
+      this[_color] = (t5 = this.widget.color, t5 == null ? buttonTheme.backgroundColor : t5);
+      this[_loadingColor] = (t5$ = this.widget.loadingColor, t5$ == null ? theme.accentColor : t5$);
+      this[_colorAnimation] = new tween.ColorTween.new({begin: this[_color], end: this[_loadingColor]}).animate(new animations.CurvedAnimation.new({parent: this.widget.controller, curve: C[0] || CT.C0}));
+    }
+    didUpdateWidget(oldWidget) {
+      animated_icon.AnimatedIconButton.as(oldWidget);
+      if (oldWidget == null) dart.nullFailed(I[0], 103, 43, "oldWidget");
+      super.didUpdateWidget(oldWidget);
+      if (!dart.equals(oldWidget.color, this.widget.color) || !dart.equals(oldWidget.loadingColor, this.widget.loadingColor)) {
+        this[_updateColorAnimation]();
+      }
+      if (oldWidget.tooltip != this.widget.tooltip) {
+        this[_updateWidth]();
+      }
+    }
+    dispose() {
+      super.dispose();
+      this.widget.controller.removeStatusListener(dart.bind(this, 'handleStatusChanged'));
+    }
+    handleStatusChanged(status) {
+      if (dart.equals(status, animation.AnimationStatus.forward)) {
+        this.setState(dart.fn(() => this[_isLoading] = true, T.VoidTovoid()));
+      }
+      if (dart.equals(status, animation.AnimationStatus.dismissed)) {
+        this.setState(dart.fn(() => this[_isLoading] = false, T.VoidTovoid()));
+      }
+    }
+    [_updateWidth]() {
+      let theme = theme$.Theme.of(this.context);
+      let fontSize = dart.nullCheck(dart.nullCheck(theme.textTheme.button).fontSize);
+      let renderParagraph = new paragraph.RenderParagraph.new(new text_span.TextSpan.new({text: this.widget.tooltip, style: new text_style.TextStyle.new({fontSize: fontSize, fontWeight: dart.nullCheck(theme.textTheme.button).fontWeight, letterSpacing: dart.nullCheck(theme.textTheme.button).letterSpacing})}), {textDirection: ui.TextDirection.ltr, maxLines: 1});
+      renderParagraph.layout(new box.BoxConstraints.new({minWidth: 120.0}));
+      let textWidth = renderParagraph.getMinIntrinsicWidth(fontSize)[$ceilToDouble]() + 45.0;
+      this[_width] = textWidth > 120.0 && textWidth < 240.0 ? textWidth : textWidth >= 240.0 ? 240.0 : 120.0;
+      this[_sizeAnimation] = new (T.TweenOfdouble()).new({begin: 1.0, end: 40 / dart.notNull(this[_width])}).animate(new animations.CurvedAnimation.new({parent: this.widget.controller, curve: new curves.Interval.new(0.0, 0.65, {curve: curves.Curves.fastOutSlowIn})}));
+    }
+    [_buildButton](theme) {
+      if (theme == null) dart.nullFailed(I[0], 168, 33, "theme");
+      let buttonTheme = theme.floatingActionButtonTheme;
+      return new transitions.FadeTransition.new({opacity: this[_buttonOpacityAnimation], child: new implicit_animations.AnimatedContainer.new({duration: new core.Duration.new({milliseconds: 300}), child: new transitions.AnimatedBuilder.new({animation: this[_colorAnimation], builder: dart.fn((context, child) => {
+              if (context == null) dart.nullFailed(I[0], 176, 21, "context");
+              return new material.Material.new({shape: buttonTheme.shape, color: this[_colorAnimation].value, shadowColor: this[_color], elevation: !dart.test(this[_isLoading]) ? dart.test(this[_hover]) ? dart.nullCheck(buttonTheme.highlightElevation) : dart.nullCheck(buttonTheme.elevation) : 0.0, child: child, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+            }, T.BuildContextAndWidgetNToMaterial()), child: new ink_well.InkWell.new({onTap: !dart.test(this[_isLoading]) ? T.VoidToNvoid().as(this.widget.onPressed) : null, splashColor: buttonTheme.splashColor, customBorder: buttonTheme.shape, onHighlightChanged: dart.fn(value => {
+                if (value == null) dart.nullFailed(I[0], 191, 34, "value");
+                return this.setState(dart.fn(() => this[_hover] = value, T.VoidTovoid()));
+              }, T.boolTovoid()), child: new transitions.SizeTransition.new({sizeFactor: this[_sizeAnimation], axis: basic_types.Axis.horizontal, child: new container.Container.new({width: 40, height: 40, alignment: alignment.Alignment.center, child: new icon.Icon.new(this.widget.icon, {color: colors.Colors.white, $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[19] || CT.C19}), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24}), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31}), $creationLocationd_0dea112b090073317d4: C[36] || CT.C36}), $creationLocationd_0dea112b090073317d4: C[40] || CT.C40});
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 210, 29, "context");
+      let theme = theme$.Theme.of(context);
+      return new basic.Stack.new({alignment: alignment.Alignment.center, children: (() => {
+          let t5 = T.JSArrayOfWidget().of([new transitions.FadeTransition.new({opacity: this[_ringOpacityAnimation], child: new transitions.AnimatedBuilder.new({animation: this[_ringThicknessAnimation], builder: dart.fn((context, child) => {
+                  if (context == null) dart.nullFailed(I[0], 220, 23, "context");
+                  return new ring.Ring.new({color: this.widget.loadingColor, size: 40, thickness: this[_ringThicknessAnimation].value, $creationLocationd_0dea112b090073317d4: C[44] || CT.C44});
+                }, T.BuildContextAndWidgetNToRing()), $creationLocationd_0dea112b090073317d4: C[49] || CT.C49}), $creationLocationd_0dea112b090073317d4: C[53] || CT.C53})]);
+          if (dart.test(this[_isLoading])) t5[$add](new basic.SizedBox.new({width: 40 - 4, height: 40 - 4, child: new progress_indicator.CircularProgressIndicator.new({valueColor: new (T.AlwaysStoppedAnimationOfColorN()).new(this.widget.loadingColor), strokeWidth: 4, $creationLocationd_0dea112b090073317d4: C[57] || CT.C57}), $creationLocationd_0dea112b090073317d4: C[61] || CT.C61}));
+          t5[$add](this[_buildButton](theme));
+          return t5;
+        })(), $creationLocationd_0dea112b090073317d4: C[66] || CT.C66});
+    }
+  };
+  (animated_icon._AnimatedIconButtonState.new = function() {
+    this[___AnimatedIconButtonState__sizeAnimation] = null;
+    this[___AnimatedIconButtonState__sizeAnimation_isSet] = false;
+    this[___AnimatedIconButtonState__buttonOpacityAnimation] = null;
+    this[___AnimatedIconButtonState__buttonOpacityAnimation_isSet] = false;
+    this[___AnimatedIconButtonState__ringThicknessAnimation] = null;
+    this[___AnimatedIconButtonState__ringThicknessAnimation_isSet] = false;
+    this[___AnimatedIconButtonState__ringOpacityAnimation] = null;
+    this[___AnimatedIconButtonState__ringOpacityAnimation_isSet] = false;
+    this[___AnimatedIconButtonState__colorAnimation] = null;
+    this[___AnimatedIconButtonState__colorAnimation_isSet] = false;
+    this[_isLoading] = false;
+    this[_hover] = false;
+    this[_width] = 120.0;
+    this[_color] = null;
+    this[_loadingColor] = null;
+    animated_icon._AnimatedIconButtonState.__proto__.new.call(this);
+    ;
+  }).prototype = animated_icon._AnimatedIconButtonState.prototype;
+  dart.addTypeTests(animated_icon._AnimatedIconButtonState);
+  dart.addTypeCaches(animated_icon._AnimatedIconButtonState);
+  dart.setMethodSignature(animated_icon._AnimatedIconButtonState, () => ({
+    __proto__: dart.getMethods(animated_icon._AnimatedIconButtonState.__proto__),
+    [_updateColorAnimation]: dart.fnType(dart.void, []),
+    handleStatusChanged: dart.fnType(dart.void, [dart.dynamic]),
+    [_updateWidth]: dart.fnType(dart.void, []),
+    [_buildButton]: dart.fnType(framework.Widget, [theme_data.ThemeData]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(animated_icon._AnimatedIconButtonState, () => ({
+    __proto__: dart.getGetters(animated_icon._AnimatedIconButtonState.__proto__),
+    [_sizeAnimation]: animation.Animation$(core.double),
+    [_buttonOpacityAnimation]: animation.Animation$(core.double),
+    [_ringThicknessAnimation]: animation.Animation$(core.double),
+    [_ringOpacityAnimation]: animation.Animation$(core.double),
+    [_colorAnimation]: animation.Animation$(dart.nullable(ui.Color))
+  }));
+  dart.setSetterSignature(animated_icon._AnimatedIconButtonState, () => ({
+    __proto__: dart.getSetters(animated_icon._AnimatedIconButtonState.__proto__),
+    [_sizeAnimation]: animation.Animation$(core.double),
+    [_buttonOpacityAnimation]: animation.Animation$(core.double),
+    [_ringThicknessAnimation]: animation.Animation$(core.double),
+    [_ringOpacityAnimation]: animation.Animation$(core.double),
+    [_colorAnimation]: animation.Animation$(dart.nullable(ui.Color))
+  }));
+  dart.setLibraryUri(animated_icon._AnimatedIconButtonState, I[1]);
+  dart.setFieldSignature(animated_icon._AnimatedIconButtonState, () => ({
+    __proto__: dart.getFields(animated_icon._AnimatedIconButtonState.__proto__),
+    [___AnimatedIconButtonState__sizeAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedIconButtonState__sizeAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedIconButtonState__buttonOpacityAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedIconButtonState__buttonOpacityAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedIconButtonState__ringThicknessAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedIconButtonState__ringThicknessAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedIconButtonState__ringOpacityAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___AnimatedIconButtonState__ringOpacityAnimation_isSet]: dart.fieldType(core.bool),
+    [___AnimatedIconButtonState__colorAnimation]: dart.fieldType(dart.nullable(animation.Animation$(dart.nullable(ui.Color)))),
+    [___AnimatedIconButtonState__colorAnimation_isSet]: dart.fieldType(core.bool),
+    [_isLoading]: dart.fieldType(core.bool),
+    [_hover]: dart.fieldType(core.bool),
+    [_width]: dart.fieldType(core.double),
+    [_color]: dart.fieldType(dart.nullable(ui.Color)),
+    [_loadingColor]: dart.fieldType(dart.nullable(ui.Color))
+  }));
+  dart.defineLazy(animated_icon._AnimatedIconButtonState, {
+    /*animated_icon._AnimatedIconButtonState._height*/get _height() {
+      return 40;
+    },
+    /*animated_icon._AnimatedIconButtonState._loadingCircleRadius*/get _loadingCircleRadius() {
+      return 20;
+    },
+    /*animated_icon._AnimatedIconButtonState._loadingCircleThickness*/get _loadingCircleThickness() {
+      return 4;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter_login/src/widgets/animated_icon.dart", {
+    "package:flutter_login/src/widgets/animated_icon.dart": animated_icon
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["animated_icon.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../E:/packages/flutter_login/src/widgets/animated_icon.dart.lib.js"}');
+  // Exports:
+  return {
+    src__widgets__animated_icon: animated_icon
+  };
+}));
+
+//# sourceMappingURL=animated_icon.dart.lib.js.map

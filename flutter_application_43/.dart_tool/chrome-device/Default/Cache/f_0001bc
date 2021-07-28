@@ -1,0 +1,3804 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/widgets/dismissible.dart', 'packages/flutter/src/foundation/key.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/rendering/tweens.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/box_shadow.dart', 'packages/flutter/src/painting/gradient.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/widgets/form.dart', 'packages/flutter/src/scheduler/binding.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/widgets/safe_area.dart', 'packages/flutter/src/widgets/async.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/material/progress_indicator.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/painting/strut_style.dart'], (function load__packages__another_flushbar__flushbar_route_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__widgets__dismissible$46dart, packages__flutter__src__foundation__key$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__rendering__tweens$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__box_shadow$46dart, packages__flutter__src__painting__gradient$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__widgets__form$46dart, packages__flutter__src__scheduler__binding$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__widgets__safe_area$46dart, packages__flutter__src__widgets__async$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__material__progress_indicator$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__painting__strut_style$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const navigator = packages__flutter__src__widgets__widget_span$46dart.src__widgets__navigator;
+  const overlay = packages__flutter__src__widgets__widget_span$46dart.src__widgets__overlay;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const routes = packages__flutter__src__widgets__widget_span$46dart.src__widgets__routes;
+  const focus_manager = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_manager;
+  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
+  const focus_scope = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_scope;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const box$ = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const dismissible = packages__flutter__src__widgets__dismissible$46dart.src__widgets__dismissible;
+  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const tweens = packages__flutter__src__rendering__tweens$46dart.src__rendering__tweens;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const box_shadow = packages__flutter__src__painting__box_shadow$46dart.src__painting__box_shadow;
+  const gradient = packages__flutter__src__painting__gradient$46dart.src__painting__gradient;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const form = packages__flutter__src__widgets__form$46dart.src__widgets__form;
+  const binding = packages__flutter__src__scheduler__binding$46dart.src__scheduler__binding;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const safe_area = packages__flutter__src__widgets__safe_area$46dart.src__widgets__safe_area;
+  const async$ = packages__flutter__src__widgets__async$46dart.src__widgets__async;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const progress_indicator = packages__flutter__src__material__progress_indicator$46dart.src__material__progress_indicator;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  var flushbar_route = Object.create(dart.library);
+  var flushbar = Object.create(dart.library);
+  var $add = dartx.add;
+  var $runtimeType = dartx.runtimeType;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $first = dartx.first;
+  var $clear = dartx.clear;
+  var $isEmpty = dartx.isEmpty;
+  dart._checkModuleNullSafetyMode(false);
+  var T$ = {
+    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    _LocationL: () => (T$._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    BuildContextToGestureDetector: () => (T$.BuildContextToGestureDetector = dart.constFn(dart.fnType(gesture_detector.GestureDetector, [framework.BuildContext])))(),
+    FutureOfRoutePopDisposition: () => (T$.FutureOfRoutePopDisposition = dart.constFn(async.Future$(navigator.RoutePopDisposition)))(),
+    JSArrayOfOverlayEntry: () => (T$.JSArrayOfOverlayEntry = dart.constFn(_interceptors.JSArray$(overlay.OverlayEntry)))(),
+    BuildContextToWidget: () => (T$.BuildContextToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext])))(),
+    WidgetN: () => (T$.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
+    BuildContextAndWidgetNToBackdropFilter: () => (T$.BuildContextAndWidgetNToBackdropFilter = dart.constFn(dart.fnType(basic.BackdropFilter, [framework.BuildContext, T$.WidgetN()])))(),
+    BuildContextAndWidgetNToContainer: () => (T$.BuildContextAndWidgetNToContainer = dart.constFn(dart.fnType(container.Container, [framework.BuildContext, T$.WidgetN()])))(),
+    boolN: () => (T$.boolN = dart.constFn(dart.nullable(core.bool)))(),
+    FutureOfboolN: () => (T$.FutureOfboolN = dart.constFn(async.Future$(T$.boolN())))(),
+    DismissDirectionToFutureOfboolN: () => (T$.DismissDirectionToFutureOfboolN = dart.constFn(dart.fnType(T$.FutureOfboolN(), [dismissible.DismissDirection])))(),
+    ValueKeyOfString: () => (T$.ValueKeyOfString = dart.constFn(key.ValueKey$(core.String)))(),
+    ObjectN: () => (T$.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
+    DismissDirectionTovoid: () => (T$.DismissDirectionTovoid = dart.constFn(dart.fnType(dart.void, [dismissible.DismissDirection])))(),
+    TweenOfdouble: () => (T$.TweenOfdouble = dart.constFn(tween.Tween$(core.double)))(),
+    FlushbarStatusN: () => (T$.FlushbarStatusN = dart.constFn(dart.nullable(flushbar.FlushbarStatus)))(),
+    FlushbarStatusNTovoid: () => (T$.FlushbarStatusNTovoid = dart.constFn(dart.fnType(dart.void, [T$.FlushbarStatusN()])))(),
+    StateOfStatefulWidget: () => (T$.StateOfStatefulWidget = dart.constFn(framework.State$(framework.StatefulWidget)))(),
+    GlobalKeyOfStateOfStatefulWidget: () => (T$.GlobalKeyOfStateOfStatefulWidget = dart.constFn(framework.GlobalKey$(T$.StateOfStatefulWidget())))(),
+    CompleterOfSize: () => (T$.CompleterOfSize = dart.constFn(async.Completer$(ui.Size)))(),
+    DurationTovoid: () => (T$.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))(),
+    AnimationStatusTovoid: () => (T$.AnimationStatusTovoid = dart.constFn(dart.fnType(dart.void, [animation.AnimationStatus])))(),
+    FutureBuilderOfSize: () => (T$.FutureBuilderOfSize = dart.constFn(async$.FutureBuilder$(ui.Size)))(),
+    AsyncSnapshotOfSize: () => (T$.AsyncSnapshotOfSize = dart.constFn(async$.AsyncSnapshot$(ui.Size)))(),
+    BuildContextAndAsyncSnapshotOfSizeToWidget: () => (T$.BuildContextAndAsyncSnapshotOfSizeToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, T$.AsyncSnapshotOfSize()])))(),
+    JSArrayOfWidget: () => (T$.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    BuildContextAndWidgetNToLinearProgressIndicator: () => (T$.BuildContextAndWidgetNToLinearProgressIndicator = dart.constFn(dart.fnType(progress_indicator.LinearProgressIndicator, [framework.BuildContext, T$.WidgetN()])))(),
+    FlushbarPositionL: () => (T$.FlushbarPositionL = dart.constFn(dart.legacy(flushbar.FlushbarPosition)))(),
+    FlushbarStyleL: () => (T$.FlushbarStyleL = dart.constFn(dart.legacy(flushbar.FlushbarStyle)))(),
+    FlushbarDismissDirectionL: () => (T$.FlushbarDismissDirectionL = dart.constFn(dart.legacy(flushbar.FlushbarDismissDirection)))(),
+    FlushbarStatusL: () => (T$.FlushbarStatusL = dart.constFn(dart.legacy(flushbar.FlushbarStatus)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 13,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 30,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T$._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 27,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 28,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6], T$._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 26,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: flushbar.FlushbarPosition.prototype,
+        [_name$]: "FlushbarPosition.TOP",
+        index: 0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: flushbar.FlushbarPosition.prototype,
+        [_name$]: "FlushbarPosition.BOTTOM",
+        index: 1
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 17,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 77,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T$._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 75,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 17,
+        [_Location_line]: 93,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 94,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16], T$._LocationL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 92,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "focused",
+        [_Location_column]: 15,
+        [_Location_line]: 89,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "container",
+        [_Location_column]: 15,
+        [_Location_line]: 90,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "explicitChildNodes",
+        [_Location_column]: 15,
+        [_Location_line]: 91,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 92,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.constList([C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22], T$._LocationL());
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[18] || CT.C18,
+        [_Location_name]: null,
+        [_Location_column]: 43,
+        [_Location_line]: 88,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 15,
+        [_Location_line]: 118,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 15,
+        [_Location_line]: 119,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.constList([C[25] || CT.C25, C[26] || CT.C26], T$._LocationL());
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[24] || CT.C24,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 117,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filter",
+        [_Location_column]: 13,
+        [_Location_line]: 114,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 117,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.constList([C[29] || CT.C29, C[30] || CT.C30], T$._LocationL());
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[28] || CT.C28,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 113,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 9,
+        [_Location_line]: 111,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 9,
+        [_Location_line]: 112,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33, C[34] || CT.C34], T$._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 110,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 15,
+        [_Location_line]: 135,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 15,
+        [_Location_line]: 136,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.constList([C[37] || CT.C37, C[38] || CT.C38], T$._LocationL());
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[36] || CT.C36,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 134,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filter",
+        [_Location_column]: 13,
+        [_Location_line]: 131,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 134,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.constList([C[41] || CT.C41, C[42] || CT.C42], T$._LocationL());
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[40] || CT.C40,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 130,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 9,
+        [_Location_line]: 128,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 9,
+        [_Location_line]: 129,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46], T$._LocationL());
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[44] || CT.C44,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 127,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 13,
+        [_Location_line]: 148,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 13,
+        [_Location_line]: 149,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[49] || CT.C49, C[50] || CT.C50], T$._LocationL());
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[48] || CT.C48,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 147,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 9,
+        [_Location_line]: 145,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 9,
+        [_Location_line]: 146,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.constList([C[53] || CT.C53, C[54] || CT.C54], T$._LocationL());
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[52] || CT.C52,
+        [_Location_name]: null,
+        [_Location_column]: 7,
+        [_Location_line]: 144,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 7,
+        [_Location_line]: 156,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 7,
+        [_Location_line]: 157,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.constList([C[57] || CT.C57, C[58] || CT.C58], T$._LocationL());
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[56] || CT.C56,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 155,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "direction",
+        [_Location_column]: 7,
+        [_Location_line]: 166,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "resizeDuration",
+        [_Location_column]: 7,
+        [_Location_line]: 167,
+        [_Location_file]: null
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "confirmDismiss",
+        [_Location_column]: 7,
+        [_Location_line]: 168,
+        [_Location_file]: null
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 7,
+        [_Location_line]: 175,
+        [_Location_file]: null
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onDismissed",
+        [_Location_column]: 7,
+        [_Location_line]: 176,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 187,
+        [_Location_file]: null
+      });
+    },
+    get C60() {
+      return C[60] = dart.constList([C[61] || CT.C61, C[62] || CT.C62, C[63] || CT.C63, C[64] || CT.C64, C[65] || CT.C65, C[66] || CT.C66], T$._LocationL());
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[60] || CT.C60,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 165,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 7,
+        [_Location_line]: 205,
+        [_Location_file]: null
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 206,
+        [_Location_file]: null
+      });
+    },
+    get C68() {
+      return C[68] = dart.constList([C[69] || CT.C69, C[70] || CT.C70], T$._LocationL());
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[68] || CT.C68,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 204,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart"
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: animation.AnimationStatus.prototype,
+        [_name]: "AnimationStatus.completed",
+        index: 3
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: animation.AnimationStatus.prototype,
+        [_name]: "AnimationStatus.forward",
+        index: 1
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: animation.AnimationStatus.prototype,
+        [_name]: "AnimationStatus.reverse",
+        index: 2
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: animation.AnimationStatus.prototype,
+        [_name]: "AnimationStatus.dismissed",
+        index: 0
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 16,
+        [EdgeInsets_right]: 16,
+        [EdgeInsets_top]: 16,
+        [EdgeInsets_left]: 16
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281348144.0
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: flushbar.FlushbarDismissDirection.prototype,
+        [_name$]: "FlushbarDismissDirection.VERTICAL",
+        index: 1
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: flushbar.FlushbarStyle.prototype,
+        [_name$]: "FlushbarStyle.FLOATING",
+        index: 0
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.165,
+        [Cubic_b]: 0.82,
+        [Cubic_a]: 0.075
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1000000
+      });
+    },
+    get C84() {
+      return C[84] = dart.constList([], T$._LocationL());
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[84] || CT.C84,
+        [_Location_name]: null,
+        [_Location_column]: 37,
+        [_Location_line]: 328,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[83] || CT.C83,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "minimum",
+        [_Location_column]: 11,
+        [_Location_line]: 435,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "bottom",
+        [_Location_column]: 11,
+        [_Location_line]: 445,
+        [_Location_file]: null
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "top",
+        [_Location_column]: 11,
+        [_Location_line]: 446,
+        [_Location_file]: null
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "left",
+        [_Location_column]: 11,
+        [_Location_line]: 447,
+        [_Location_file]: null
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "right",
+        [_Location_column]: 11,
+        [_Location_line]: 448,
+        [_Location_file]: null
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 449,
+        [_Location_file]: null
+      });
+    },
+    get C86() {
+      return C[86] = dart.constList([C[87] || CT.C87, C[88] || CT.C88, C[89] || CT.C89, C[90] || CT.C90, C[91] || CT.C91, C[92] || CT.C92], T$._LocationL());
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[86] || CT.C86,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 434,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 431,
+        [_Location_file]: null
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 434,
+        [_Location_file]: null
+      });
+    },
+    get C94() {
+      return C[94] = dart.constList([C[95] || CT.C95, C[96] || CT.C96], T$._LocationL());
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[94] || CT.C94,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 430,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "heightFactor",
+        [_Location_column]: 7,
+        [_Location_line]: 429,
+        [_Location_file]: null
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 430,
+        [_Location_file]: null
+      });
+    },
+    get C98() {
+      return C[98] = dart.constList([C[99] || CT.C99, C[100] || CT.C100], T$._LocationL());
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[98] || CT.C98,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 428,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 21,
+        [_Location_line]: 480,
+        [_Location_file]: null
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 21,
+        [_Location_line]: 481,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 21,
+        [_Location_line]: 482,
+        [_Location_file]: null
+      });
+    },
+    get C102() {
+      return C[102] = dart.constList([C[103] || CT.C103, C[104] || CT.C104, C[105] || CT.C105], T$._LocationL());
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[102] || CT.C102,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 479,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filter",
+        [_Location_column]: 19,
+        [_Location_line]: 477,
+        [_Location_file]: null
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 479,
+        [_Location_file]: null
+      });
+    },
+    get C107() {
+      return C[107] = dart.constList([C[108] || CT.C108, C[109] || CT.C109], T$._LocationL());
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[107] || CT.C107,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 476,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderRadius",
+        [_Location_column]: 17,
+        [_Location_line]: 475,
+        [_Location_file]: null
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 476,
+        [_Location_file]: null
+      });
+    },
+    get C111() {
+      return C[111] = dart.constList([C[112] || CT.C112, C[113] || CT.C113], T$._LocationL());
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[111] || CT.C111,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 474,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "future",
+        [_Location_column]: 11,
+        [_Location_line]: 467,
+        [_Location_file]: null
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 11,
+        [_Location_line]: 468,
+        [_Location_file]: null
+      });
+    },
+    get C115() {
+      return C[115] = dart.constList([C[116] || CT.C116, C[117] || CT.C117], T$._LocationL());
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[115] || CT.C115,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 466,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 465,
+        [_Location_file]: null
+      });
+    },
+    get C119() {
+      return C[119] = dart.constList([C[120] || CT.C120], T$._LocationL());
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[119] || CT.C119,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 464,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 8,
+        [EdgeInsets_right]: 8,
+        [EdgeInsets_top]: 16,
+        [EdgeInsets_left]: 8
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "node",
+        [_Location_column]: 11,
+        [_Location_line]: 517,
+        [_Location_file]: null
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autofocus",
+        [_Location_column]: 11,
+        [_Location_line]: 518,
+        [_Location_file]: null
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 519,
+        [_Location_file]: null
+      });
+    },
+    get C123() {
+      return C[123] = dart.constList([C[124] || CT.C124, C[125] || CT.C125, C[126] || CT.C126], T$._LocationL());
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[123] || CT.C123,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 516,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 9,
+        [_Location_line]: 514,
+        [_Location_file]: null
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 516,
+        [_Location_file]: null
+      });
+    },
+    get C128() {
+      return C[128] = dart.constList([C[129] || CT.C129, C[130] || CT.C130], T$._LocationL());
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[128] || CT.C128,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 513,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 7,
+        [_Location_line]: 500,
+        [_Location_file]: null
+      });
+    },
+    get C134() {
+      return C[134] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 7,
+        [_Location_line]: 501,
+        [_Location_file]: null
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 504,
+        [_Location_file]: null
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 513,
+        [_Location_file]: null
+      });
+    },
+    get C132() {
+      return C[132] = dart.constList([C[133] || CT.C133, C[134] || CT.C134, C[135] || CT.C135, C[136] || CT.C136], T$._LocationL());
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[132] || CT.C132,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 499,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C139() {
+      return C[139] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 13,
+        [_Location_line]: 545,
+        [_Location_file]: null
+      });
+    },
+    get C140() {
+      return C[140] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 546,
+        [_Location_file]: null
+      });
+    },
+    get C138() {
+      return C[138] = dart.constList([C[139] || CT.C139, C[140] || CT.C140], T$._LocationL());
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[138] || CT.C138,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 544,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C143() {
+      return C[143] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 9,
+        [_Location_line]: 541,
+        [_Location_file]: null
+      });
+    },
+    get C144() {
+      return C[144] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 542,
+        [_Location_file]: null
+      });
+    },
+    get C142() {
+      return C[142] = dart.constList([C[143] || CT.C143, C[144] || CT.C144], T$._LocationL());
+    },
+    get C141() {
+      return C[141] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[142] || CT.C142,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 540,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C147() {
+      return C[147] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 7,
+        [_Location_line]: 527,
+        [_Location_file]: null
+      });
+    },
+    get C148() {
+      return C[148] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 7,
+        [_Location_line]: 528,
+        [_Location_file]: null
+      });
+    },
+    get C149() {
+      return C[149] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 531,
+        [_Location_file]: null
+      });
+    },
+    get C150() {
+      return C[150] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 540,
+        [_Location_file]: null
+      });
+    },
+    get C146() {
+      return C[146] = dart.constList([C[147] || CT.C147, C[148] || CT.C148, C[149] || CT.C149, C[150] || CT.C150], T$._LocationL());
+    },
+    get C145() {
+      return C[145] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[146] || CT.C146,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 526,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C153() {
+      return C[153] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 15,
+        [_Location_line]: 559,
+        [_Location_file]: null
+      });
+    },
+    get C154() {
+      return C[154] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 15,
+        [_Location_line]: 560,
+        [_Location_file]: null
+      });
+    },
+    get C155() {
+      return C[155] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "valueColor",
+        [_Location_column]: 15,
+        [_Location_line]: 561,
+        [_Location_file]: null
+      });
+    },
+    get C152() {
+      return C[152] = dart.constList([C[153] || CT.C153, C[154] || CT.C154, C[155] || CT.C155], T$._LocationL());
+    },
+    get C151() {
+      return C[151] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[152] || CT.C152,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 558,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C158() {
+      return C[158] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 556,
+        [_Location_file]: null
+      });
+    },
+    get C159() {
+      return C[159] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 11,
+        [_Location_line]: 557,
+        [_Location_file]: null
+      });
+    },
+    get C157() {
+      return C[157] = dart.constList([C[158] || CT.C158, C[159] || CT.C159], T$._LocationL());
+    },
+    get C156() {
+      return C[156] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[157] || CT.C157,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 555,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C162() {
+      return C[162] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 9,
+        [_Location_line]: 568,
+        [_Location_file]: null
+      });
+    },
+    get C163() {
+      return C[163] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "valueColor",
+        [_Location_column]: 9,
+        [_Location_line]: 569,
+        [_Location_file]: null
+      });
+    },
+    get C161() {
+      return C[161] = dart.constList([C[162] || CT.C162, C[163] || CT.C163], T$._LocationL());
+    },
+    get C160() {
+      return C[160] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[161] || CT.C161,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 567,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C166() {
+      return C[166] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 23,
+        [_Location_line]: 600,
+        [_Location_file]: null
+      });
+    },
+    get C167() {
+      return C[167] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 605,
+        [_Location_file]: null
+      });
+    },
+    get C165() {
+      return C[165] = dart.constList([C[166] || CT.C166, C[167] || CT.C167], T$._LocationL());
+    },
+    get C164() {
+      return C[164] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[165] || CT.C165,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 599,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C170() {
+      return C[170] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 17,
+        [_Location_line]: 609,
+        [_Location_file]: null
+      });
+    },
+    get C171() {
+      return C[171] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 615,
+        [_Location_file]: null
+      });
+    },
+    get C169() {
+      return C[169] = dart.constList([C[170] || CT.C170, C[171] || CT.C171], T$._LocationL());
+    },
+    get C168() {
+      return C[168] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[169] || CT.C169,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 608,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C174() {
+      return C[174] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 13,
+        [_Location_line]: 595,
+        [_Location_file]: null
+      });
+    },
+    get C175() {
+      return C[175] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 13,
+        [_Location_line]: 596,
+        [_Location_file]: null
+      });
+    },
+    get C176() {
+      return C[176] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 597,
+        [_Location_file]: null
+      });
+    },
+    get C173() {
+      return C[173] = dart.constList([C[174] || CT.C174, C[175] || CT.C175, C[176] || CT.C176], T$._LocationL());
+    },
+    get C172() {
+      return C[172] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[173] || CT.C173,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 594,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C179() {
+      return C[179] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "flex",
+        [_Location_column]: 11,
+        [_Location_line]: 593,
+        [_Location_file]: null
+      });
+    },
+    get C180() {
+      return C[180] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 594,
+        [_Location_file]: null
+      });
+    },
+    get C178() {
+      return C[178] = dart.constList([C[179] || CT.C179, C[180] || CT.C180], T$._LocationL());
+    },
+    get C177() {
+      return C[177] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[178] || CT.C178,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 592,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C183() {
+      return C[183] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 11,
+        [_Location_line]: 625,
+        [_Location_file]: null
+      });
+    },
+    get C184() {
+      return C[184] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 626,
+        [_Location_file]: null
+      });
+    },
+    get C182() {
+      return C[182] = dart.constList([C[183] || CT.C183, C[184] || CT.C184], T$._LocationL());
+    },
+    get C181() {
+      return C[181] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[182] || CT.C182,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 624,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C187() {
+      return C[187] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 23,
+        [_Location_line]: 636,
+        [_Location_file]: null
+      });
+    },
+    get C188() {
+      return C[188] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 641,
+        [_Location_file]: null
+      });
+    },
+    get C186() {
+      return C[186] = dart.constList([C[187] || CT.C187, C[188] || CT.C188], T$._LocationL());
+    },
+    get C185() {
+      return C[185] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[186] || CT.C186,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 635,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C191() {
+      return C[191] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 17,
+        [_Location_line]: 645,
+        [_Location_file]: null
+      });
+    },
+    get C192() {
+      return C[192] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 651,
+        [_Location_file]: null
+      });
+    },
+    get C190() {
+      return C[190] = dart.constList([C[191] || CT.C191, C[192] || CT.C192], T$._LocationL());
+    },
+    get C189() {
+      return C[189] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[190] || CT.C190,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 644,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C195() {
+      return C[195] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 13,
+        [_Location_line]: 631,
+        [_Location_file]: null
+      });
+    },
+    get C196() {
+      return C[196] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 13,
+        [_Location_line]: 632,
+        [_Location_file]: null
+      });
+    },
+    get C197() {
+      return C[197] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 633,
+        [_Location_file]: null
+      });
+    },
+    get C194() {
+      return C[194] = dart.constList([C[195] || CT.C195, C[196] || CT.C196, C[197] || CT.C197], T$._LocationL());
+    },
+    get C193() {
+      return C[193] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[194] || CT.C194,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 630,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C200() {
+      return C[200] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "flex",
+        [_Location_column]: 11,
+        [_Location_line]: 629,
+        [_Location_file]: null
+      });
+    },
+    get C201() {
+      return C[201] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 630,
+        [_Location_file]: null
+      });
+    },
+    get C199() {
+      return C[199] = dart.constList([C[200] || CT.C200, C[201] || CT.C201], T$._LocationL());
+    },
+    get C198() {
+      return C[198] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[199] || CT.C199,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 628,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C204() {
+      return C[204] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 23,
+        [_Location_line]: 668,
+        [_Location_file]: null
+      });
+    },
+    get C205() {
+      return C[205] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 673,
+        [_Location_file]: null
+      });
+    },
+    get C203() {
+      return C[203] = dart.constList([C[204] || CT.C204, C[205] || CT.C205], T$._LocationL());
+    },
+    get C202() {
+      return C[202] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[203] || CT.C203,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 667,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C208() {
+      return C[208] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 17,
+        [_Location_line]: 677,
+        [_Location_file]: null
+      });
+    },
+    get C209() {
+      return C[209] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 683,
+        [_Location_file]: null
+      });
+    },
+    get C207() {
+      return C[207] = dart.constList([C[208] || CT.C208, C[209] || CT.C209], T$._LocationL());
+    },
+    get C206() {
+      return C[206] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[207] || CT.C207,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 676,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C212() {
+      return C[212] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 13,
+        [_Location_line]: 663,
+        [_Location_file]: null
+      });
+    },
+    get C213() {
+      return C[213] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 13,
+        [_Location_line]: 664,
+        [_Location_file]: null
+      });
+    },
+    get C214() {
+      return C[214] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 665,
+        [_Location_file]: null
+      });
+    },
+    get C211() {
+      return C[211] = dart.constList([C[212] || CT.C212, C[213] || CT.C213, C[214] || CT.C214], T$._LocationL());
+    },
+    get C210() {
+      return C[210] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[211] || CT.C211,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 662,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C217() {
+      return C[217] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "flex",
+        [_Location_column]: 11,
+        [_Location_line]: 661,
+        [_Location_file]: null
+      });
+    },
+    get C218() {
+      return C[218] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 662,
+        [_Location_file]: null
+      });
+    },
+    get C216() {
+      return C[216] = dart.constList([C[217] || CT.C217, C[218] || CT.C218], T$._LocationL());
+    },
+    get C215() {
+      return C[215] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[216] || CT.C216,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 660,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C221() {
+      return C[221] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 11,
+        [_Location_line]: 689,
+        [_Location_file]: null
+      });
+    },
+    get C222() {
+      return C[222] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 690,
+        [_Location_file]: null
+      });
+    },
+    get C220() {
+      return C[220] = dart.constList([C[221] || CT.C221, C[222] || CT.C222], T$._LocationL());
+    },
+    get C219() {
+      return C[219] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[220] || CT.C220,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 688,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C225() {
+      return C[225] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 11,
+        [_Location_line]: 697,
+        [_Location_file]: null
+      });
+    },
+    get C226() {
+      return C[226] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 698,
+        [_Location_file]: null
+      });
+    },
+    get C224() {
+      return C[224] = dart.constList([C[225] || CT.C225, C[226] || CT.C226], T$._LocationL());
+    },
+    get C223() {
+      return C[223] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[224] || CT.C224,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 696,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C229() {
+      return C[229] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 23,
+        [_Location_line]: 708,
+        [_Location_file]: null
+      });
+    },
+    get C230() {
+      return C[230] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 713,
+        [_Location_file]: null
+      });
+    },
+    get C228() {
+      return C[228] = dart.constList([C[229] || CT.C229, C[230] || CT.C230], T$._LocationL());
+    },
+    get C227() {
+      return C[227] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[228] || CT.C228,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 707,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C233() {
+      return C[233] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 17,
+        [_Location_line]: 717,
+        [_Location_file]: null
+      });
+    },
+    get C234() {
+      return C[234] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 723,
+        [_Location_file]: null
+      });
+    },
+    get C232() {
+      return C[232] = dart.constList([C[233] || CT.C233, C[234] || CT.C234], T$._LocationL());
+    },
+    get C231() {
+      return C[231] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[232] || CT.C232,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 716,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C237() {
+      return C[237] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 13,
+        [_Location_line]: 703,
+        [_Location_file]: null
+      });
+    },
+    get C238() {
+      return C[238] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 13,
+        [_Location_line]: 704,
+        [_Location_file]: null
+      });
+    },
+    get C239() {
+      return C[239] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 705,
+        [_Location_file]: null
+      });
+    },
+    get C236() {
+      return C[236] = dart.constList([C[237] || CT.C237, C[238] || CT.C238, C[239] || CT.C239], T$._LocationL());
+    },
+    get C235() {
+      return C[235] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[236] || CT.C236,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 702,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C242() {
+      return C[242] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "flex",
+        [_Location_column]: 11,
+        [_Location_line]: 701,
+        [_Location_file]: null
+      });
+    },
+    get C243() {
+      return C[243] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 702,
+        [_Location_file]: null
+      });
+    },
+    get C241() {
+      return C[241] = dart.constList([C[242] || CT.C242, C[243] || CT.C243], T$._LocationL());
+    },
+    get C240() {
+      return C[240] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[241] || CT.C241,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 700,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C246() {
+      return C[246] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 17,
+        [_Location_line]: 730,
+        [_Location_file]: null
+      });
+    },
+    get C247() {
+      return C[247] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 731,
+        [_Location_file]: null
+      });
+    },
+    get C245() {
+      return C[245] = dart.constList([C[246] || CT.C246, C[247] || CT.C247], T$._LocationL());
+    },
+    get C244() {
+      return C[244] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[245] || CT.C245,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 729,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C250() {
+      return C[250] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 15,
+        [_Location_line]: 745,
+        [_Location_file]: null
+      });
+    },
+    get C251() {
+      return C[251] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 15,
+        [_Location_line]: 746,
+        [_Location_file]: null
+      });
+    },
+    get C252() {
+      return C[252] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 15,
+        [_Location_line]: 747,
+        [_Location_file]: null
+      });
+    },
+    get C249() {
+      return C[249] = dart.constList([C[250] || CT.C250, C[251] || CT.C251, C[252] || CT.C252], T$._LocationL());
+    },
+    get C248() {
+      return C[248] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[249] || CT.C249,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 744,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C255() {
+      return C[255] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "future",
+        [_Location_column]: 9,
+        [_Location_line]: 741,
+        [_Location_file]: null
+      });
+    },
+    get C256() {
+      return C[256] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 9,
+        [_Location_line]: 742,
+        [_Location_file]: null
+      });
+    },
+    get C254() {
+      return C[254] = dart.constList([C[255] || CT.C255, C[256] || CT.C256], T$._LocationL());
+    },
+    get C253() {
+      return C[253] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[254] || CT.C254,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 740,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C259() {
+      return C[259] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 9,
+        [_Location_line]: 767,
+        [_Location_file]: null
+      });
+    },
+    get C260() {
+      return C[260] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 768,
+        [_Location_file]: null
+      });
+    },
+    get C258() {
+      return C[258] = dart.constList([C[259] || CT.C259, C[260] || CT.C260], T$._LocationL());
+    },
+    get C257() {
+      return C[257] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[258] || CT.C258,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 766,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C263() {
+      return C[263] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 24,
+        [_Location_line]: 780,
+        [_Location_file]: null
+      });
+    },
+    get C264() {
+      return C[264] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 11,
+        [_Location_line]: 781,
+        [_Location_file]: null
+      });
+    },
+    get C262() {
+      return C[262] = dart.constList([C[263] || CT.C263, C[264] || CT.C264], T$._LocationL());
+    },
+    get C261() {
+      return C[261] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[262] || CT.C262,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 779,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C267() {
+      return C[267] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 22,
+        [_Location_line]: 790,
+        [_Location_file]: null
+      });
+    },
+    get C268() {
+      return C[268] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 7,
+        [_Location_line]: 791,
+        [_Location_file]: null
+      });
+    },
+    get C266() {
+      return C[266] = dart.constList([C[267] || CT.C267, C[268] || CT.C268], T$._LocationL());
+    },
+    get C265() {
+      return C[265] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[266] || CT.C266,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 789,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart"
+      });
+    },
+    get C269() {
+      return C[269] = dart.constList([C[7] || CT.C7, C[8] || CT.C8], T$.FlushbarPositionL());
+    },
+    get C270() {
+      return C[270] = dart.const({
+        __proto__: flushbar.FlushbarStyle.prototype,
+        [_name$]: "FlushbarStyle.GROUNDED",
+        index: 1
+      });
+    },
+    get C271() {
+      return C[271] = dart.constList([C[79] || CT.C79, C[270] || CT.C270], T$.FlushbarStyleL());
+    },
+    get C272() {
+      return C[272] = dart.const({
+        __proto__: flushbar.FlushbarDismissDirection.prototype,
+        [_name$]: "FlushbarDismissDirection.HORIZONTAL",
+        index: 0
+      });
+    },
+    get C273() {
+      return C[273] = dart.constList([C[272] || CT.C272, C[78] || CT.C78], T$.FlushbarDismissDirectionL());
+    },
+    get C274() {
+      return C[274] = dart.const({
+        __proto__: flushbar.FlushbarStatus.prototype,
+        [_name$]: "FlushbarStatus.SHOWING",
+        index: 0
+      });
+    },
+    get C275() {
+      return C[275] = dart.const({
+        __proto__: flushbar.FlushbarStatus.prototype,
+        [_name$]: "FlushbarStatus.DISMISSED",
+        index: 1
+      });
+    },
+    get C276() {
+      return C[276] = dart.const({
+        __proto__: flushbar.FlushbarStatus.prototype,
+        [_name$]: "FlushbarStatus.IS_APPEARING",
+        index: 2
+      });
+    },
+    get C277() {
+      return C[277] = dart.const({
+        __proto__: flushbar.FlushbarStatus.prototype,
+        [_name$]: "FlushbarStatus.IS_HIDING",
+        index: 3
+      });
+    },
+    get C278() {
+      return C[278] = dart.constList([C[274] || CT.C274, C[275] || CT.C275, C[276] || CT.C276, C[277] || CT.C277], T$.FlushbarStatusL());
+    }
+  }, false);
+  var C = Array(279).fill(void 0);
+  var I = [
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar_route.dart",
+    "package:another_flushbar/flushbar_route.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.10.24/lib/flushbar.dart",
+    "package:another_flushbar/flushbar.dart"
+  ];
+  var flushbar$ = dart.privateName(flushbar_route, "FlushbarRoute.flushbar");
+  var currentStatus = dart.privateName(flushbar_route, "FlushbarRoute.currentStatus");
+  var dismissibleKeyGen = dart.privateName(flushbar_route, "FlushbarRoute.dismissibleKeyGen");
+  var _transitionCompleter = dart.privateName(flushbar_route, "_transitionCompleter");
+  var _filterBlurAnimation = dart.privateName(flushbar_route, "_filterBlurAnimation");
+  var _filterColorAnimation = dart.privateName(flushbar_route, "_filterColorAnimation");
+  var _initialAlignment = dart.privateName(flushbar_route, "_initialAlignment");
+  var _endAlignment = dart.privateName(flushbar_route, "_endAlignment");
+  var _wasDismissedBySwipe = dart.privateName(flushbar_route, "_wasDismissedBySwipe");
+  var _timer = dart.privateName(flushbar_route, "_timer");
+  var _result = dart.privateName(flushbar_route, "_result");
+  var _animation = dart.privateName(flushbar_route, "_animation");
+  var _controller = dart.privateName(flushbar_route, "_controller");
+  var _builder = dart.privateName(flushbar_route, "_builder");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _onStatusChanged = dart.privateName(flushbar_route, "_onStatusChanged");
+  var _configureAlignment = dart.privateName(flushbar_route, "_configureAlignment");
+  var _name$ = dart.privateName(flushbar, "_name");
+  var _createBackgroundOverlay = dart.privateName(flushbar_route, "_createBackgroundOverlay");
+  var _getDismissibleFlushbar = dart.privateName(flushbar_route, "_getDismissibleFlushbar");
+  var _getFlushbar = dart.privateName(flushbar_route, "_getFlushbar");
+  var _getDismissDirection = dart.privateName(flushbar_route, "_getDismissDirection");
+  var _cancelTimer = dart.privateName(flushbar_route, "_cancelTimer");
+  var _name = dart.privateName(animation, "_name");
+  var _handleStatusChanged = dart.privateName(flushbar_route, "_handleStatusChanged");
+  var _configureTimer = dart.privateName(flushbar_route, "_configureTimer");
+  const _is_FlushbarRoute_default = Symbol('_is_FlushbarRoute_default');
+  flushbar_route.FlushbarRoute$ = dart.generic(T => {
+    var CompleterOfT = () => (CompleterOfT = dart.constFn(async.Completer$(T)))();
+    var TN = () => (TN = dart.constFn(dart.nullable(T)))();
+    class FlushbarRoute extends routes.OverlayRoute$(T) {
+      get flushbar() {
+        return this[flushbar$];
+      }
+      set flushbar(value) {
+        super.flushbar = value;
+      }
+      get currentStatus() {
+        return this[currentStatus];
+      }
+      set currentStatus(value) {
+        this[currentStatus] = value;
+      }
+      get dismissibleKeyGen() {
+        return this[dismissibleKeyGen];
+      }
+      set dismissibleKeyGen(value) {
+        this[dismissibleKeyGen] = value;
+      }
+      [_configureAlignment](flushbarPosition) {
+        if (flushbarPosition == null) dart.nullFailed(I[0], 38, 45, "flushbarPosition");
+        switch (this.flushbar.flushbarPosition) {
+          case C[7] || CT.C7:
+          {
+            {
+              this[_initialAlignment] = new alignment.Alignment.new(-1.0, -2.0);
+              this[_endAlignment] = this.flushbar.endOffset != null ? new alignment.Alignment.new(-1.0, -1.0)['+'](new alignment.Alignment.new(dart.nullCheck(this.flushbar.endOffset).dx, dart.nullCheck(this.flushbar.endOffset).dy)) : new alignment.Alignment.new(-1.0, -1.0);
+              break;
+            }
+          }
+          case C[8] || CT.C8:
+          {
+            {
+              this[_initialAlignment] = new alignment.Alignment.new(-1.0, 2.0);
+              this[_endAlignment] = this.flushbar.endOffset != null ? new alignment.Alignment.new(-1.0, 1.0)['+'](new alignment.Alignment.new(dart.nullCheck(this.flushbar.endOffset).dx, dart.nullCheck(this.flushbar.endOffset).dy)) : new alignment.Alignment.new(-1.0, 1.0);
+              break;
+            }
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+      }
+      get completed() {
+        return this[_transitionCompleter].future;
+      }
+      get opaque() {
+        return false;
+      }
+      willPop() {
+        if (!dart.test(this.flushbar.isDismissible)) {
+          return T$.FutureOfRoutePopDisposition().value(navigator.RoutePopDisposition.doNotPop);
+        }
+        return T$.FutureOfRoutePopDisposition().value(navigator.RoutePopDisposition.pop);
+      }
+      createOverlayEntries() {
+        let overlays = T$.JSArrayOfOverlayEntry().of([]);
+        if (dart.test(this.flushbar.blockBackgroundInteraction)) {
+          overlays[$add](new overlay.OverlayEntry.new({builder: dart.fn(context => {
+              if (context == null) dart.nullFailed(I[0], 74, 36, "context");
+              return new gesture_detector.GestureDetector.new({onTap: dart.test(this.flushbar.isDismissible) ? dart.fn(() => this.flushbar.dismiss(), T$.VoidTovoid()) : null, child: this[_createBackgroundOverlay](), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+            }, T$.BuildContextToGestureDetector()), maintainState: false, opaque: this.opaque}));
+        }
+        overlays[$add](new overlay.OverlayEntry.new({builder: dart.fn(context => {
+            if (context == null) dart.nullFailed(I[0], 87, 34, "context");
+            let annotatedChild = new basic.Semantics.new({focused: false, container: true, explicitChildNodes: true, child: new transitions.AlignTransition.new({alignment: dart.nullCheck(this[_animation]), child: dart.test(this.flushbar.isDismissible) ? this[_getDismissibleFlushbar](this[_builder]) : this[_getFlushbar](), $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
+            return annotatedChild;
+          }, T$.BuildContextToWidget()), maintainState: false, opaque: this.opaque}));
+        return overlays;
+      }
+      [_createBackgroundOverlay]() {
+        if (this[_filterBlurAnimation] != null && this[_filterColorAnimation] != null) {
+          return new transitions.AnimatedBuilder.new({animation: dart.nullCheck(this[_filterBlurAnimation]), builder: dart.fn((context, child) => {
+              if (context == null) dart.nullFailed(I[0], 112, 19, "context");
+              return new basic.BackdropFilter.new({filter: ui.ImageFilter.blur({sigmaX: dart.nullCheck(this[_filterBlurAnimation]).value, sigmaY: dart.nullCheck(this[_filterBlurAnimation]).value}), child: new container.Container.new({constraints: new box$.BoxConstraints.expand(), color: dart.nullCheck(this[_filterColorAnimation]).value, $creationLocationd_0dea112b090073317d4: C[23] || CT.C23}), $creationLocationd_0dea112b090073317d4: C[27] || CT.C27});
+            }, T$.BuildContextAndWidgetNToBackdropFilter()), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31});
+        }
+        if (this[_filterBlurAnimation] != null) {
+          return new transitions.AnimatedBuilder.new({animation: dart.nullCheck(this[_filterBlurAnimation]), builder: dart.fn((context, child) => {
+              if (context == null) dart.nullFailed(I[0], 129, 19, "context");
+              return new basic.BackdropFilter.new({filter: ui.ImageFilter.blur({sigmaX: dart.nullCheck(this[_filterBlurAnimation]).value, sigmaY: dart.nullCheck(this[_filterBlurAnimation]).value}), child: new container.Container.new({constraints: new box$.BoxConstraints.expand(), color: colors.Colors.transparent, $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[39] || CT.C39});
+            }, T$.BuildContextAndWidgetNToBackdropFilter()), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
+        }
+        if (this[_filterColorAnimation] != null) {
+          new transitions.AnimatedBuilder.new({animation: dart.nullCheck(this[_filterColorAnimation]), builder: dart.fn((context, child) => {
+              if (context == null) dart.nullFailed(I[0], 146, 19, "context");
+              return new container.Container.new({constraints: new box$.BoxConstraints.expand(), color: dart.nullCheck(this[_filterColorAnimation]).value, $creationLocationd_0dea112b090073317d4: C[47] || CT.C47});
+            }, T$.BuildContextAndWidgetNToContainer()), $creationLocationd_0dea112b090073317d4: C[51] || CT.C51});
+        }
+        return new container.Container.new({constraints: new box$.BoxConstraints.expand(), color: colors.Colors.transparent, $creationLocationd_0dea112b090073317d4: C[55] || CT.C55});
+      }
+      [_getDismissibleFlushbar](child) {
+        if (child == null) dart.nullFailed(I[0], 164, 41, "child");
+        return new dismissible.Dismissible.new({direction: this[_getDismissDirection](), resizeDuration: null, confirmDismiss: dart.fn(_ => {
+            if (_ == null) dart.nullFailed(I[0], 168, 24, "_");
+            if (this.currentStatus == flushbar.FlushbarStatus.IS_APPEARING || this.currentStatus == flushbar.FlushbarStatus.IS_HIDING) {
+              return T$.FutureOfboolN().value(false);
+            }
+            return T$.FutureOfboolN().value(true);
+          }, T$.DismissDirectionToFutureOfboolN()), key: new (T$.ValueKeyOfString()).new(this.dismissibleKeyGen), onDismissed: dart.fn(_ => {
+            if (_ == null) dart.nullFailed(I[0], 176, 21, "_");
+            this.dismissibleKeyGen = dart.notNull(this.dismissibleKeyGen) + "1";
+            this[_cancelTimer]();
+            this[_wasDismissedBySwipe] = true;
+            if (dart.test(this.isCurrent)) {
+              dart.nullCheck(this.navigator).pop(T$.ObjectN());
+            } else {
+              dart.nullCheck(this.navigator).removeRoute(this);
+            }
+          }, T$.DismissDirectionTovoid()), child: this[_getFlushbar](), $creationLocationd_0dea112b090073317d4: C[59] || CT.C59});
+      }
+      [_getDismissDirection]() {
+        if (this.flushbar.dismissDirection == flushbar.FlushbarDismissDirection.HORIZONTAL) {
+          return dismissible.DismissDirection.horizontal;
+        } else {
+          if (this.flushbar.flushbarPosition == flushbar.FlushbarPosition.TOP) {
+            return dismissible.DismissDirection.up;
+          } else {
+            return dismissible.DismissDirection.down;
+          }
+        }
+      }
+      [_getFlushbar]() {
+        return new container.Container.new({margin: this.flushbar.margin, child: this[_builder], $creationLocationd_0dea112b090073317d4: C[67] || CT.C67});
+      }
+      get finishedWhenPopped() {
+        return dart.nullCheck(this[_controller]).status == animation.AnimationStatus.dismissed;
+      }
+      get animation() {
+        return this[_animation];
+      }
+      get controller() {
+        return this[_controller];
+      }
+      createAnimationController() {
+        if (!!dart.test(this[_transitionCompleter].isCompleted)) dart.assertFailed("Cannot reuse a " + dart.str(this[$runtimeType]) + " after disposing it.", I[0], 230, 12, "!_transitionCompleter.isCompleted");
+        if (!dart.test(this.flushbar.animationDuration['>='](core.Duration.zero))) dart.assertFailed(null, I[0], 232, 12, "flushbar.animationDuration >= Duration.zero");
+        return new animation_controller.AnimationController.new({duration: this.flushbar.animationDuration, debugLabel: this.debugLabel, vsync: dart.nullCheck(this.navigator)});
+      }
+      createAnimation() {
+        if (!!dart.test(this[_transitionCompleter].isCompleted)) dart.assertFailed("Cannot reuse a " + dart.str(this[$runtimeType]) + " after disposing it.", I[0], 244, 12, "!_transitionCompleter.isCompleted");
+        if (!(this[_controller] != null)) dart.assertFailed(null, I[0], 246, 12, "_controller != null");
+        return new tweens.AlignmentTween.new({begin: this[_initialAlignment], end: this[_endAlignment]}).animate(new animations.CurvedAnimation.new({parent: dart.nullCheck(this[_controller]), curve: this.flushbar.forwardAnimationCurve, reverseCurve: this.flushbar.reverseAnimationCurve}));
+      }
+      createBlurFilterAnimation() {
+        if (this.flushbar.routeBlur == null) return null;
+        return new (T$.TweenOfdouble()).new({begin: 0.0, end: this.flushbar.routeBlur}).animate(new animations.CurvedAnimation.new({parent: dart.nullCheck(this[_controller]), curve: new curves.Interval.new(0.0, 0.35, {curve: curves.Curves.easeInOutCirc})}));
+      }
+      createColorFilterAnimation() {
+        if (this.flushbar.routeColor == null) return null;
+        return new tween.ColorTween.new({begin: colors.Colors.transparent, end: this.flushbar.routeColor}).animate(new animations.CurvedAnimation.new({parent: dart.nullCheck(this[_controller]), curve: new curves.Interval.new(0.0, 0.35, {curve: curves.Curves.easeInOutCirc})}));
+      }
+      [_handleStatusChanged](status) {
+        if (status == null) dart.nullFailed(I[0], 288, 45, "status");
+        switch (status) {
+          case C[71] || CT.C71:
+          {
+            this.currentStatus = flushbar.FlushbarStatus.SHOWING;
+            if (this[_onStatusChanged] != null) dart.nullCheck(this[_onStatusChanged])(this.currentStatus);
+            if (dart.test(this.overlayEntries[$isNotEmpty])) this.overlayEntries[$first].opaque = this.opaque;
+            break;
+          }
+          case C[72] || CT.C72:
+          {
+            this.currentStatus = flushbar.FlushbarStatus.IS_APPEARING;
+            if (this[_onStatusChanged] != null) dart.nullCheck(this[_onStatusChanged])(this.currentStatus);
+            break;
+          }
+          case C[73] || CT.C73:
+          {
+            this.currentStatus = flushbar.FlushbarStatus.IS_HIDING;
+            if (this[_onStatusChanged] != null) dart.nullCheck(this[_onStatusChanged])(this.currentStatus);
+            if (dart.test(this.overlayEntries[$isNotEmpty])) this.overlayEntries[$first].opaque = false;
+            break;
+          }
+          case C[74] || CT.C74:
+          {
+            if (!!dart.test(this.overlayEntries[$first].opaque)) dart.assertFailed(null, I[0], 306, 16, "!overlayEntries.first.opaque");
+            this.currentStatus = flushbar.FlushbarStatus.DISMISSED;
+            if (this[_onStatusChanged] != null) dart.nullCheck(this[_onStatusChanged])(this.currentStatus);
+            if (!dart.test(this.isCurrent)) {
+              dart.nullCheck(this.navigator).finalizeRoute(this);
+              if (dart.test(this.overlayEntries[$isNotEmpty])) {
+                this.overlayEntries[$clear]();
+              }
+              if (!dart.test(this.overlayEntries[$isEmpty])) dart.assertFailed(null, I[0], 319, 18, "overlayEntries.isEmpty");
+            }
+            break;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+        this.changedInternalState();
+      }
+      install() {
+        if (!!dart.test(this[_transitionCompleter].isCompleted)) dart.assertFailed("Cannot install a " + dart.str(this[$runtimeType]) + " after disposing it.", I[0], 328, 12, "!_transitionCompleter.isCompleted");
+        this[_controller] = this.createAnimationController();
+        if (!(this[_controller] != null)) dart.assertFailed(dart.str(this[$runtimeType]) + ".createAnimationController() returned null.", I[0], 331, 12, "_controller != null");
+        this[_filterBlurAnimation] = this.createBlurFilterAnimation();
+        this[_filterColorAnimation] = this.createColorFilterAnimation();
+        this[_animation] = this.createAnimation();
+        if (!(this[_animation] != null)) dart.assertFailed(dart.str(this[$runtimeType]) + ".createAnimation() returned null.", I[0], 336, 12, "_animation != null");
+        super.install();
+      }
+      didPush() {
+        if (!(this[_controller] != null)) dart.assertFailed(dart.str(this[$runtimeType]) + ".didPush called before calling install() or after calling dispose().", I[0], 342, 12, "_controller != null");
+        if (!!dart.test(this[_transitionCompleter].isCompleted)) dart.assertFailed("Cannot reuse a " + dart.str(this[$runtimeType]) + " after disposing it.", I[0], 344, 12, "!_transitionCompleter.isCompleted");
+        dart.nullCheck(this[_animation]).addStatusListener(dart.bind(this, _handleStatusChanged));
+        this[_configureTimer]();
+        super.didPush();
+        return dart.nullCheck(this[_controller]).forward();
+      }
+      didReplace(oldRoute) {
+        if (!(this[_controller] != null)) dart.assertFailed(dart.str(this[$runtimeType]) + ".didReplace called before calling install() or after calling dispose().", I[0], 354, 12, "_controller != null");
+        if (!!dart.test(this[_transitionCompleter].isCompleted)) dart.assertFailed("Cannot reuse a " + dart.str(this[$runtimeType]) + " after disposing it.", I[0], 356, 12, "!_transitionCompleter.isCompleted");
+        if (flushbar_route.FlushbarRoute.is(oldRoute)) {
+          dart.nullCheck(this[_controller]).value = dart.nullCheck(oldRoute[_controller]).value;
+        }
+        dart.nullCheck(this[_animation]).addStatusListener(dart.bind(this, _handleStatusChanged));
+        super.didReplace(oldRoute);
+      }
+      didPop(result) {
+        TN().as(result);
+        if (!(this[_controller] != null)) dart.assertFailed(dart.str(this[$runtimeType]) + ".didPop called before calling install() or after calling dispose().", I[0], 367, 12, "_controller != null");
+        if (!!dart.test(this[_transitionCompleter].isCompleted)) dart.assertFailed("Cannot reuse a " + dart.str(this[$runtimeType]) + " after disposing it.", I[0], 369, 12, "!_transitionCompleter.isCompleted");
+        this[_result] = result;
+        this[_cancelTimer]();
+        if (dart.test(this[_wasDismissedBySwipe])) {
+          async.Timer.new(new core.Duration.new({milliseconds: 200}), dart.fn(() => {
+            dart.nullCheck(this[_controller]).reset();
+          }, T$.VoidTovoid()));
+          this[_wasDismissedBySwipe] = false;
+        } else {
+          dart.nullCheck(this[_controller]).reverse();
+        }
+        return super.didPop(result);
+      }
+      [_configureTimer]() {
+        if (this.flushbar.duration != null) {
+          if (this[_timer] != null && dart.test(dart.nullCheck(this[_timer]).isActive)) {
+            dart.nullCheck(this[_timer]).cancel();
+          }
+          this[_timer] = async.Timer.new(dart.nullCheck(this.flushbar.duration), dart.fn(() => {
+            if (dart.test(this.isCurrent)) {
+              dart.nullCheck(this.navigator).pop(T$.ObjectN());
+            } else if (dart.test(this.isActive)) {
+              dart.nullCheck(this.navigator).removeRoute(this);
+            }
+          }, T$.VoidTovoid()));
+        } else {
+          if (this[_timer] != null) {
+            dart.nullCheck(this[_timer]).cancel();
+          }
+        }
+      }
+      [_cancelTimer]() {
+        if (this[_timer] != null && dart.test(dart.nullCheck(this[_timer]).isActive)) {
+          dart.nullCheck(this[_timer]).cancel();
+        }
+      }
+      canTransitionTo(nextRoute) {
+        if (nextRoute == null) dart.nullFailed(I[0], 417, 47, "nextRoute");
+        return true;
+      }
+      canTransitionFrom(previousRoute) {
+        if (previousRoute == null) dart.nullFailed(I[0], 423, 49, "previousRoute");
+        return true;
+      }
+      dispose() {
+        let t0;
+        if (!!dart.test(this[_transitionCompleter].isCompleted)) dart.assertFailed("Cannot dispose a " + dart.str(this[$runtimeType]) + " twice.", I[0], 427, 12, "!_transitionCompleter.isCompleted");
+        t0 = this[_controller];
+        t0 == null ? null : t0.dispose();
+        this[_transitionCompleter].complete(this[_result]);
+        super.dispose();
+      }
+      get debugLabel() {
+        return dart.str(this[$runtimeType]);
+      }
+      toString() {
+        return dart.str(this[$runtimeType]) + "(animation: " + dart.str(this[_controller]) + ")";
+      }
+    }
+    (FlushbarRoute.new = function(opts) {
+      let flushbar = opts && 'flushbar' in opts ? opts.flushbar : null;
+      if (flushbar == null) dart.nullFailed(I[0], 24, 19, "flushbar");
+      let settings = opts && 'settings' in opts ? opts.settings : null;
+      this[_transitionCompleter] = CompleterOfT().new();
+      this[_filterBlurAnimation] = null;
+      this[_filterColorAnimation] = null;
+      this[_initialAlignment] = null;
+      this[_endAlignment] = null;
+      this[_wasDismissedBySwipe] = false;
+      this[_timer] = null;
+      this[_result] = null;
+      this[currentStatus] = null;
+      this[dismissibleKeyGen] = "";
+      this[_animation] = null;
+      this[_controller] = null;
+      this[flushbar$] = flushbar;
+      this[_builder] = new basic.Builder.new({builder: dart.fn(innerContext => {
+          if (innerContext == null) dart.nullFailed(I[0], 26, 51, "innerContext");
+          return new gesture_detector.GestureDetector.new({onTap: flushbar.onTap != null ? dart.fn(() => dart.nullCheck(flushbar.onTap)(flushbar), T$.VoidTovoid()) : null, child: flushbar, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+        }, T$.BuildContextToGestureDetector()), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+      this[_onStatusChanged] = flushbar.onStatusChanged;
+      FlushbarRoute.__proto__.new.call(this, {settings: settings});
+      this[_configureAlignment](this.flushbar.flushbarPosition);
+    }).prototype = FlushbarRoute.prototype;
+    dart.addTypeTests(FlushbarRoute);
+    FlushbarRoute.prototype[_is_FlushbarRoute_default] = true;
+    dart.addTypeCaches(FlushbarRoute);
+    dart.setMethodSignature(FlushbarRoute, () => ({
+      __proto__: dart.getMethods(FlushbarRoute.__proto__),
+      [_configureAlignment]: dart.fnType(dart.void, [flushbar.FlushbarPosition]),
+      createOverlayEntries: dart.fnType(core.Iterable$(overlay.OverlayEntry), []),
+      [_createBackgroundOverlay]: dart.fnType(framework.Widget, []),
+      [_getDismissibleFlushbar]: dart.fnType(framework.Widget, [framework.Widget]),
+      [_getDismissDirection]: dart.fnType(dismissible.DismissDirection, []),
+      [_getFlushbar]: dart.fnType(framework.Widget, []),
+      createAnimationController: dart.fnType(animation_controller.AnimationController, []),
+      createAnimation: dart.fnType(animation.Animation$(alignment.Alignment), []),
+      createBlurFilterAnimation: dart.fnType(dart.nullable(animation.Animation$(core.double)), []),
+      createColorFilterAnimation: dart.fnType(dart.nullable(animation.Animation$(dart.nullable(ui.Color))), []),
+      [_handleStatusChanged]: dart.fnType(dart.void, [animation.AnimationStatus]),
+      [_configureTimer]: dart.fnType(dart.void, []),
+      [_cancelTimer]: dart.fnType(dart.void, []),
+      canTransitionTo: dart.fnType(core.bool, [flushbar_route.FlushbarRoute]),
+      canTransitionFrom: dart.fnType(core.bool, [flushbar_route.FlushbarRoute])
+    }));
+    dart.setGetterSignature(FlushbarRoute, () => ({
+      __proto__: dart.getGetters(FlushbarRoute.__proto__),
+      completed: async.Future$(T),
+      opaque: core.bool,
+      animation: dart.nullable(animation.Animation$(alignment.Alignment)),
+      controller: dart.nullable(animation_controller.AnimationController),
+      debugLabel: core.String
+    }));
+    dart.setLibraryUri(FlushbarRoute, I[1]);
+    dart.setFieldSignature(FlushbarRoute, () => ({
+      __proto__: dart.getFields(FlushbarRoute.__proto__),
+      flushbar: dart.finalFieldType(flushbar.Flushbar),
+      [_builder]: dart.finalFieldType(basic.Builder),
+      [_transitionCompleter]: dart.finalFieldType(async.Completer$(T)),
+      [_onStatusChanged]: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.nullable(flushbar.FlushbarStatus)]))),
+      [_filterBlurAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+      [_filterColorAnimation]: dart.fieldType(dart.nullable(animation.Animation$(dart.nullable(ui.Color)))),
+      [_initialAlignment]: dart.fieldType(dart.nullable(alignment.Alignment)),
+      [_endAlignment]: dart.fieldType(dart.nullable(alignment.Alignment)),
+      [_wasDismissedBySwipe]: dart.fieldType(core.bool),
+      [_timer]: dart.fieldType(dart.nullable(async.Timer)),
+      [_result]: dart.fieldType(dart.nullable(T)),
+      currentStatus: dart.fieldType(dart.nullable(flushbar.FlushbarStatus)),
+      dismissibleKeyGen: dart.fieldType(core.String),
+      [_animation]: dart.fieldType(dart.nullable(animation.Animation$(alignment.Alignment))),
+      [_controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController))
+    }));
+    dart.defineExtensionMethods(FlushbarRoute, ['toString']);
+    return FlushbarRoute;
+  });
+  flushbar_route.FlushbarRoute = flushbar_route.FlushbarRoute$();
+  dart.addTypeTests(flushbar_route.FlushbarRoute, _is_FlushbarRoute_default);
+  flushbar_route.showFlushbar = function showFlushbar(T, opts) {
+    let context = opts && 'context' in opts ? opts.context : null;
+    if (context == null) dart.nullFailed(I[0], 442, 28, "context");
+    let flushbar = opts && 'flushbar' in opts ? opts.flushbar : null;
+    if (flushbar == null) dart.nullFailed(I[0], 442, 55, "flushbar");
+    return new (flushbar_route.FlushbarRoute$(T)).new({flushbar: flushbar, settings: new navigator.RouteSettings.new({name: "/flushbarRoute"})});
+  };
+  var onStatusChanged$ = dart.privateName(flushbar, "Flushbar.onStatusChanged");
+  var title$ = dart.privateName(flushbar, "Flushbar.title");
+  var titleSize$ = dart.privateName(flushbar, "Flushbar.titleSize");
+  var titleColor$ = dart.privateName(flushbar, "Flushbar.titleColor");
+  var message$ = dart.privateName(flushbar, "Flushbar.message");
+  var messageSize$ = dart.privateName(flushbar, "Flushbar.messageSize");
+  var messageColor$ = dart.privateName(flushbar, "Flushbar.messageColor");
+  var titleText$ = dart.privateName(flushbar, "Flushbar.titleText");
+  var messageText$ = dart.privateName(flushbar, "Flushbar.messageText");
+  var backgroundColor$ = dart.privateName(flushbar, "Flushbar.backgroundColor");
+  var leftBarIndicatorColor$ = dart.privateName(flushbar, "Flushbar.leftBarIndicatorColor");
+  var boxShadows$ = dart.privateName(flushbar, "Flushbar.boxShadows");
+  var backgroundGradient$ = dart.privateName(flushbar, "Flushbar.backgroundGradient");
+  var icon$ = dart.privateName(flushbar, "Flushbar.icon");
+  var shouldIconPulse$ = dart.privateName(flushbar, "Flushbar.shouldIconPulse");
+  var mainButton$ = dart.privateName(flushbar, "Flushbar.mainButton");
+  var onTap$ = dart.privateName(flushbar, "Flushbar.onTap");
+  var duration$ = dart.privateName(flushbar, "Flushbar.duration");
+  var showProgressIndicator$ = dart.privateName(flushbar, "Flushbar.showProgressIndicator");
+  var progressIndicatorController$ = dart.privateName(flushbar, "Flushbar.progressIndicatorController");
+  var progressIndicatorBackgroundColor$ = dart.privateName(flushbar, "Flushbar.progressIndicatorBackgroundColor");
+  var progressIndicatorValueColor$ = dart.privateName(flushbar, "Flushbar.progressIndicatorValueColor");
+  var isDismissible$ = dart.privateName(flushbar, "Flushbar.isDismissible");
+  var maxWidth$ = dart.privateName(flushbar, "Flushbar.maxWidth");
+  var margin$ = dart.privateName(flushbar, "Flushbar.margin");
+  var padding$ = dart.privateName(flushbar, "Flushbar.padding");
+  var borderRadius$ = dart.privateName(flushbar, "Flushbar.borderRadius");
+  var borderColor$ = dart.privateName(flushbar, "Flushbar.borderColor");
+  var borderWidth$ = dart.privateName(flushbar, "Flushbar.borderWidth");
+  var flushbarPosition$ = dart.privateName(flushbar, "Flushbar.flushbarPosition");
+  var positionOffset$ = dart.privateName(flushbar, "Flushbar.positionOffset");
+  var dismissDirection$ = dart.privateName(flushbar, "Flushbar.dismissDirection");
+  var flushbarStyle$ = dart.privateName(flushbar, "Flushbar.flushbarStyle");
+  var forwardAnimationCurve$ = dart.privateName(flushbar, "Flushbar.forwardAnimationCurve");
+  var reverseAnimationCurve$ = dart.privateName(flushbar, "Flushbar.reverseAnimationCurve");
+  var animationDuration$ = dart.privateName(flushbar, "Flushbar.animationDuration");
+  var barBlur$ = dart.privateName(flushbar, "Flushbar.barBlur");
+  var blockBackgroundInteraction$ = dart.privateName(flushbar, "Flushbar.blockBackgroundInteraction");
+  var routeBlur$ = dart.privateName(flushbar, "Flushbar.routeBlur");
+  var routeColor$ = dart.privateName(flushbar, "Flushbar.routeColor");
+  var userInputForm$ = dart.privateName(flushbar, "Flushbar.userInputForm");
+  var endOffset$ = dart.privateName(flushbar, "Flushbar.endOffset");
+  var flushbarRoute = dart.privateName(flushbar, "Flushbar.flushbarRoute");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var Cubic_d = dart.privateName(curves, "Cubic.d");
+  var Cubic_c = dart.privateName(curves, "Cubic.c");
+  var Cubic_b = dart.privateName(curves, "Cubic.b");
+  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  const _is_Flushbar_default = Symbol('_is_Flushbar_default');
+  flushbar.Flushbar$ = dart.generic(T => {
+    var TN = () => (TN = dart.constFn(dart.nullable(T)))();
+    var FlushbarRouteOfTN = () => (FlushbarRouteOfTN = dart.constFn(flushbar_route.FlushbarRoute$(TN())))();
+    var FlushbarRouteNOfTN = () => (FlushbarRouteNOfTN = dart.constFn(dart.nullable(FlushbarRouteOfTN())))();
+    var RouteOfT = () => (RouteOfT = dart.constFn(navigator.Route$(T)))();
+    var _FlushbarStateOfTN = () => (_FlushbarStateOfTN = dart.constFn(flushbar._FlushbarState$(TN())))();
+    class Flushbar extends framework.StatefulWidget {
+      get onStatusChanged() {
+        return this[onStatusChanged$];
+      }
+      set onStatusChanged(value) {
+        super.onStatusChanged = value;
+      }
+      get title() {
+        return this[title$];
+      }
+      set title(value) {
+        super.title = value;
+      }
+      get titleSize() {
+        return this[titleSize$];
+      }
+      set titleSize(value) {
+        super.titleSize = value;
+      }
+      get titleColor() {
+        return this[titleColor$];
+      }
+      set titleColor(value) {
+        super.titleColor = value;
+      }
+      get message() {
+        return this[message$];
+      }
+      set message(value) {
+        super.message = value;
+      }
+      get messageSize() {
+        return this[messageSize$];
+      }
+      set messageSize(value) {
+        super.messageSize = value;
+      }
+      get messageColor() {
+        return this[messageColor$];
+      }
+      set messageColor(value) {
+        super.messageColor = value;
+      }
+      get titleText() {
+        return this[titleText$];
+      }
+      set titleText(value) {
+        super.titleText = value;
+      }
+      get messageText() {
+        return this[messageText$];
+      }
+      set messageText(value) {
+        super.messageText = value;
+      }
+      get backgroundColor() {
+        return this[backgroundColor$];
+      }
+      set backgroundColor(value) {
+        super.backgroundColor = value;
+      }
+      get leftBarIndicatorColor() {
+        return this[leftBarIndicatorColor$];
+      }
+      set leftBarIndicatorColor(value) {
+        super.leftBarIndicatorColor = value;
+      }
+      get boxShadows() {
+        return this[boxShadows$];
+      }
+      set boxShadows(value) {
+        super.boxShadows = value;
+      }
+      get backgroundGradient() {
+        return this[backgroundGradient$];
+      }
+      set backgroundGradient(value) {
+        super.backgroundGradient = value;
+      }
+      get icon() {
+        return this[icon$];
+      }
+      set icon(value) {
+        super.icon = value;
+      }
+      get shouldIconPulse() {
+        return this[shouldIconPulse$];
+      }
+      set shouldIconPulse(value) {
+        super.shouldIconPulse = value;
+      }
+      get mainButton() {
+        return this[mainButton$];
+      }
+      set mainButton(value) {
+        super.mainButton = value;
+      }
+      get onTap() {
+        return this[onTap$];
+      }
+      set onTap(value) {
+        super.onTap = value;
+      }
+      get duration() {
+        return this[duration$];
+      }
+      set duration(value) {
+        super.duration = value;
+      }
+      get showProgressIndicator() {
+        return this[showProgressIndicator$];
+      }
+      set showProgressIndicator(value) {
+        super.showProgressIndicator = value;
+      }
+      get progressIndicatorController() {
+        return this[progressIndicatorController$];
+      }
+      set progressIndicatorController(value) {
+        super.progressIndicatorController = value;
+      }
+      get progressIndicatorBackgroundColor() {
+        return this[progressIndicatorBackgroundColor$];
+      }
+      set progressIndicatorBackgroundColor(value) {
+        super.progressIndicatorBackgroundColor = value;
+      }
+      get progressIndicatorValueColor() {
+        return this[progressIndicatorValueColor$];
+      }
+      set progressIndicatorValueColor(value) {
+        super.progressIndicatorValueColor = value;
+      }
+      get isDismissible() {
+        return this[isDismissible$];
+      }
+      set isDismissible(value) {
+        super.isDismissible = value;
+      }
+      get maxWidth() {
+        return this[maxWidth$];
+      }
+      set maxWidth(value) {
+        super.maxWidth = value;
+      }
+      get margin() {
+        return this[margin$];
+      }
+      set margin(value) {
+        super.margin = value;
+      }
+      get padding() {
+        return this[padding$];
+      }
+      set padding(value) {
+        super.padding = value;
+      }
+      get borderRadius() {
+        return this[borderRadius$];
+      }
+      set borderRadius(value) {
+        super.borderRadius = value;
+      }
+      get borderColor() {
+        return this[borderColor$];
+      }
+      set borderColor(value) {
+        super.borderColor = value;
+      }
+      get borderWidth() {
+        return this[borderWidth$];
+      }
+      set borderWidth(value) {
+        super.borderWidth = value;
+      }
+      get flushbarPosition() {
+        return this[flushbarPosition$];
+      }
+      set flushbarPosition(value) {
+        super.flushbarPosition = value;
+      }
+      get positionOffset() {
+        return this[positionOffset$];
+      }
+      set positionOffset(value) {
+        super.positionOffset = value;
+      }
+      get dismissDirection() {
+        return this[dismissDirection$];
+      }
+      set dismissDirection(value) {
+        super.dismissDirection = value;
+      }
+      get flushbarStyle() {
+        return this[flushbarStyle$];
+      }
+      set flushbarStyle(value) {
+        super.flushbarStyle = value;
+      }
+      get forwardAnimationCurve() {
+        return this[forwardAnimationCurve$];
+      }
+      set forwardAnimationCurve(value) {
+        super.forwardAnimationCurve = value;
+      }
+      get reverseAnimationCurve() {
+        return this[reverseAnimationCurve$];
+      }
+      set reverseAnimationCurve(value) {
+        super.reverseAnimationCurve = value;
+      }
+      get animationDuration() {
+        return this[animationDuration$];
+      }
+      set animationDuration(value) {
+        super.animationDuration = value;
+      }
+      get barBlur() {
+        return this[barBlur$];
+      }
+      set barBlur(value) {
+        super.barBlur = value;
+      }
+      get blockBackgroundInteraction() {
+        return this[blockBackgroundInteraction$];
+      }
+      set blockBackgroundInteraction(value) {
+        super.blockBackgroundInteraction = value;
+      }
+      get routeBlur() {
+        return this[routeBlur$];
+      }
+      set routeBlur(value) {
+        super.routeBlur = value;
+      }
+      get routeColor() {
+        return this[routeColor$];
+      }
+      set routeColor(value) {
+        super.routeColor = value;
+      }
+      get userInputForm() {
+        return this[userInputForm$];
+      }
+      set userInputForm(value) {
+        super.userInputForm = value;
+      }
+      get endOffset() {
+        return this[endOffset$];
+      }
+      set endOffset(value) {
+        super.endOffset = value;
+      }
+      get flushbarRoute() {
+        return this[flushbarRoute];
+      }
+      set flushbarRoute(value) {
+        this[flushbarRoute] = FlushbarRouteNOfTN().as(value);
+      }
+      show(context) {
+        if (context == null) dart.nullFailed(I[2], 260, 32, "context");
+        return async.async(TN(), (function* show() {
+          this.flushbarRoute = FlushbarRouteOfTN().as(flushbar_route.showFlushbar(T, {context: context, flushbar: this}));
+          return yield navigator.Navigator.of(context, {rootNavigator: false}).push(T, RouteOfT().as(this.flushbarRoute));
+        }).bind(this));
+      }
+      dismiss(result = null) {
+        TN().as(result);
+        return async.async(TN(), (function* dismiss() {
+          if (this.flushbarRoute == null) {
+            return null;
+          }
+          if (dart.test(dart.nullCheck(this.flushbarRoute).isCurrent)) {
+            dart.nullCheck(dart.nullCheck(this.flushbarRoute).navigator).pop(T, result);
+            return dart.nullCheck(this.flushbarRoute).completed;
+          } else if (dart.test(dart.nullCheck(this.flushbarRoute).isActive)) {
+            dart.nullCheck(dart.nullCheck(this.flushbarRoute).navigator).removeRoute(dart.nullCheck(this.flushbarRoute));
+          }
+          return null;
+        }).bind(this));
+      }
+      isShowing() {
+        if (this.flushbarRoute == null) {
+          return false;
+        }
+        return dart.nullCheck(this.flushbarRoute).currentStatus == flushbar.FlushbarStatus.SHOWING;
+      }
+      isDismissed() {
+        if (this.flushbarRoute == null) {
+          return false;
+        }
+        return dart.nullCheck(this.flushbarRoute).currentStatus == flushbar.FlushbarStatus.DISMISSED;
+      }
+      isAppearing() {
+        if (this.flushbarRoute == null) {
+          return false;
+        }
+        return dart.nullCheck(this.flushbarRoute).currentStatus == flushbar.FlushbarStatus.IS_APPEARING;
+      }
+      isHiding() {
+        if (this.flushbarRoute == null) {
+          return false;
+        }
+        return dart.nullCheck(this.flushbarRoute).currentStatus == flushbar.FlushbarStatus.IS_HIDING;
+      }
+      createState() {
+        return new (_FlushbarStateOfTN()).new();
+      }
+    }
+    (Flushbar.new = function(opts) {
+      let t0;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let title = opts && 'title' in opts ? opts.title : null;
+      let titleColor = opts && 'titleColor' in opts ? opts.titleColor : null;
+      let titleSize = opts && 'titleSize' in opts ? opts.titleSize : null;
+      let message = opts && 'message' in opts ? opts.message : null;
+      let messageSize = opts && 'messageSize' in opts ? opts.messageSize : null;
+      let messageColor = opts && 'messageColor' in opts ? opts.messageColor : null;
+      let titleText = opts && 'titleText' in opts ? opts.titleText : null;
+      let messageText = opts && 'messageText' in opts ? opts.messageText : null;
+      let icon = opts && 'icon' in opts ? opts.icon : null;
+      let shouldIconPulse = opts && 'shouldIconPulse' in opts ? opts.shouldIconPulse : true;
+      if (shouldIconPulse == null) dart.nullFailed(I[2], 27, 12, "shouldIconPulse");
+      let maxWidth = opts && 'maxWidth' in opts ? opts.maxWidth : null;
+      let margin = opts && 'margin' in opts ? opts.margin : C[75] || CT.C75;
+      if (margin == null) dart.nullFailed(I[2], 29, 18, "margin");
+      let padding = opts && 'padding' in opts ? opts.padding : C[76] || CT.C76;
+      if (padding == null) dart.nullFailed(I[2], 30, 18, "padding");
+      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
+      let borderColor = opts && 'borderColor' in opts ? opts.borderColor : null;
+      let borderWidth = opts && 'borderWidth' in opts ? opts.borderWidth : 1;
+      if (borderWidth == null) dart.nullFailed(I[2], 33, 14, "borderWidth");
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : C[77] || CT.C77;
+      if (backgroundColor == null) dart.nullFailed(I[2], 34, 13, "backgroundColor");
+      let leftBarIndicatorColor = opts && 'leftBarIndicatorColor' in opts ? opts.leftBarIndicatorColor : null;
+      let boxShadows = opts && 'boxShadows' in opts ? opts.boxShadows : null;
+      let backgroundGradient = opts && 'backgroundGradient' in opts ? opts.backgroundGradient : null;
+      let mainButton = opts && 'mainButton' in opts ? opts.mainButton : null;
+      let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let isDismissible = opts && 'isDismissible' in opts ? opts.isDismissible : true;
+      if (isDismissible == null) dart.nullFailed(I[2], 41, 12, "isDismissible");
+      let dismissDirection = opts && 'dismissDirection' in opts ? opts.dismissDirection : C[78] || CT.C78;
+      if (dismissDirection == null) dart.nullFailed(I[2], 42, 32, "dismissDirection");
+      let showProgressIndicator = opts && 'showProgressIndicator' in opts ? opts.showProgressIndicator : false;
+      if (showProgressIndicator == null) dart.nullFailed(I[2], 44, 12, "showProgressIndicator");
+      let progressIndicatorController = opts && 'progressIndicatorController' in opts ? opts.progressIndicatorController : null;
+      let progressIndicatorBackgroundColor = opts && 'progressIndicatorBackgroundColor' in opts ? opts.progressIndicatorBackgroundColor : null;
+      let progressIndicatorValueColor = opts && 'progressIndicatorValueColor' in opts ? opts.progressIndicatorValueColor : null;
+      let flushbarPosition = opts && 'flushbarPosition' in opts ? opts.flushbarPosition : C[8] || CT.C8;
+      if (flushbarPosition == null) dart.nullFailed(I[2], 48, 24, "flushbarPosition");
+      let positionOffset = opts && 'positionOffset' in opts ? opts.positionOffset : 0;
+      if (positionOffset == null) dart.nullFailed(I[2], 49, 14, "positionOffset");
+      let flushbarStyle = opts && 'flushbarStyle' in opts ? opts.flushbarStyle : C[79] || CT.C79;
+      if (flushbarStyle == null) dart.nullFailed(I[2], 50, 21, "flushbarStyle");
+      let forwardAnimationCurve = opts && 'forwardAnimationCurve' in opts ? opts.forwardAnimationCurve : C[80] || CT.C80;
+      if (forwardAnimationCurve == null) dart.nullFailed(I[2], 51, 13, "forwardAnimationCurve");
+      let reverseAnimationCurve = opts && 'reverseAnimationCurve' in opts ? opts.reverseAnimationCurve : C[80] || CT.C80;
+      if (reverseAnimationCurve == null) dart.nullFailed(I[2], 52, 13, "reverseAnimationCurve");
+      let animationDuration = opts && 'animationDuration' in opts ? opts.animationDuration : C[81] || CT.C81;
+      if (animationDuration == null) dart.nullFailed(I[2], 53, 16, "animationDuration");
+      let onStatusChanged = opts && 'onStatusChanged' in opts ? opts.onStatusChanged : null;
+      let barBlur = opts && 'barBlur' in opts ? opts.barBlur : 0;
+      if (barBlur == null) dart.nullFailed(I[2], 55, 14, "barBlur");
+      let blockBackgroundInteraction = opts && 'blockBackgroundInteraction' in opts ? opts.blockBackgroundInteraction : false;
+      if (blockBackgroundInteraction == null) dart.nullFailed(I[2], 56, 12, "blockBackgroundInteraction");
+      let routeBlur = opts && 'routeBlur' in opts ? opts.routeBlur : null;
+      let routeColor = opts && 'routeColor' in opts ? opts.routeColor : null;
+      let userInputForm = opts && 'userInputForm' in opts ? opts.userInputForm : null;
+      let endOffset = opts && 'endOffset' in opts ? opts.endOffset : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[title$] = title;
+      this[titleSize$] = titleSize;
+      this[titleColor$] = titleColor;
+      this[message$] = message;
+      this[messageSize$] = messageSize;
+      this[messageColor$] = messageColor;
+      this[titleText$] = titleText;
+      this[messageText$] = messageText;
+      this[icon$] = icon;
+      this[shouldIconPulse$] = shouldIconPulse;
+      this[maxWidth$] = maxWidth;
+      this[margin$] = margin;
+      this[padding$] = padding;
+      this[borderRadius$] = borderRadius;
+      this[borderColor$] = borderColor;
+      this[borderWidth$] = borderWidth;
+      this[backgroundColor$] = backgroundColor;
+      this[leftBarIndicatorColor$] = leftBarIndicatorColor;
+      this[boxShadows$] = boxShadows;
+      this[backgroundGradient$] = backgroundGradient;
+      this[mainButton$] = mainButton;
+      this[onTap$] = onTap;
+      this[duration$] = duration;
+      this[isDismissible$] = isDismissible;
+      this[dismissDirection$] = dismissDirection;
+      this[showProgressIndicator$] = showProgressIndicator;
+      this[progressIndicatorController$] = progressIndicatorController;
+      this[progressIndicatorBackgroundColor$] = progressIndicatorBackgroundColor;
+      this[progressIndicatorValueColor$] = progressIndicatorValueColor;
+      this[flushbarPosition$] = flushbarPosition;
+      this[positionOffset$] = positionOffset;
+      this[flushbarStyle$] = flushbarStyle;
+      this[forwardAnimationCurve$] = forwardAnimationCurve;
+      this[reverseAnimationCurve$] = reverseAnimationCurve;
+      this[animationDuration$] = animationDuration;
+      this[barBlur$] = barBlur;
+      this[blockBackgroundInteraction$] = blockBackgroundInteraction;
+      this[routeBlur$] = routeBlur;
+      this[routeColor$] = routeColor;
+      this[userInputForm$] = userInputForm;
+      this[onStatusChanged$] = onStatusChanged;
+      this[endOffset$] = endOffset;
+      this[flushbarRoute] = null;
+      Flushbar.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      onStatusChanged = (t0 = onStatusChanged, t0 == null ? dart.fn(status => {
+      }, T$.FlushbarStatusNTovoid()) : t0);
+    }).prototype = Flushbar.prototype;
+    dart.addTypeTests(Flushbar);
+    Flushbar.prototype[_is_Flushbar_default] = true;
+    dart.addTypeCaches(Flushbar);
+    dart.setMethodSignature(Flushbar, () => ({
+      __proto__: dart.getMethods(Flushbar.__proto__),
+      show: dart.fnType(async.Future$(dart.nullable(T)), [framework.BuildContext]),
+      dismiss: dart.fnType(async.Future$(dart.nullable(T)), [], [dart.nullable(core.Object)]),
+      isShowing: dart.fnType(core.bool, []),
+      isDismissed: dart.fnType(core.bool, []),
+      isAppearing: dart.fnType(core.bool, []),
+      isHiding: dart.fnType(core.bool, []),
+      createState: dart.fnType(framework.State$(framework.StatefulWidget), [])
+    }));
+    dart.setLibraryUri(Flushbar, I[3]);
+    dart.setFieldSignature(Flushbar, () => ({
+      __proto__: dart.getFields(Flushbar.__proto__),
+      onStatusChanged: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.nullable(flushbar.FlushbarStatus)]))),
+      title: dart.finalFieldType(dart.nullable(core.String)),
+      titleSize: dart.finalFieldType(dart.nullable(core.double)),
+      titleColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      message: dart.finalFieldType(dart.nullable(core.String)),
+      messageSize: dart.finalFieldType(dart.nullable(core.double)),
+      messageColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      titleText: dart.finalFieldType(dart.nullable(framework.Widget)),
+      messageText: dart.finalFieldType(dart.nullable(framework.Widget)),
+      backgroundColor: dart.finalFieldType(ui.Color),
+      leftBarIndicatorColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      boxShadows: dart.finalFieldType(dart.nullable(core.List$(box_shadow.BoxShadow))),
+      backgroundGradient: dart.finalFieldType(dart.nullable(gradient.Gradient)),
+      icon: dart.finalFieldType(dart.nullable(framework.Widget)),
+      shouldIconPulse: dart.finalFieldType(core.bool),
+      mainButton: dart.finalFieldType(dart.nullable(framework.Widget)),
+      onTap: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [flushbar.Flushbar]))),
+      duration: dart.finalFieldType(dart.nullable(core.Duration)),
+      showProgressIndicator: dart.finalFieldType(core.bool),
+      progressIndicatorController: dart.finalFieldType(dart.nullable(animation_controller.AnimationController)),
+      progressIndicatorBackgroundColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      progressIndicatorValueColor: dart.finalFieldType(dart.nullable(animation.Animation$(ui.Color))),
+      isDismissible: dart.finalFieldType(core.bool),
+      maxWidth: dart.finalFieldType(dart.nullable(core.double)),
+      margin: dart.finalFieldType(edge_insets.EdgeInsets),
+      padding: dart.finalFieldType(edge_insets.EdgeInsets),
+      borderRadius: dart.finalFieldType(dart.nullable(border_radius.BorderRadius)),
+      borderColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      borderWidth: dart.finalFieldType(core.double),
+      flushbarPosition: dart.finalFieldType(flushbar.FlushbarPosition),
+      positionOffset: dart.finalFieldType(core.double),
+      dismissDirection: dart.finalFieldType(flushbar.FlushbarDismissDirection),
+      flushbarStyle: dart.finalFieldType(flushbar.FlushbarStyle),
+      forwardAnimationCurve: dart.finalFieldType(curves.Curve),
+      reverseAnimationCurve: dart.finalFieldType(curves.Curve),
+      animationDuration: dart.finalFieldType(core.Duration),
+      barBlur: dart.finalFieldType(core.double),
+      blockBackgroundInteraction: dart.finalFieldType(core.bool),
+      routeBlur: dart.finalFieldType(dart.nullable(core.double)),
+      routeColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      userInputForm: dart.finalFieldType(dart.nullable(form.Form)),
+      endOffset: dart.finalFieldType(dart.nullable(ui.Offset)),
+      flushbarRoute: dart.fieldType(dart.nullable(flushbar_route.FlushbarRoute$(dart.nullable(T))))
+    }));
+    return Flushbar;
+  });
+  flushbar.Flushbar = flushbar.Flushbar$();
+  dart.addTypeTests(flushbar.Flushbar, _is_Flushbar_default);
+  var _pulseAnimationDuration = dart.privateName(flushbar, "_pulseAnimationDuration");
+  var _emptyWidget = dart.privateName(flushbar, "_emptyWidget");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  var _initialOpacity = dart.privateName(flushbar, "_initialOpacity");
+  var _finalOpacity = dart.privateName(flushbar, "_finalOpacity");
+  var _backgroundBoxKey = dart.privateName(flushbar, "_backgroundBoxKey");
+  var _fadeController = dart.privateName(flushbar, "_fadeController");
+  var ___FlushbarState__fadeAnimation = dart.privateName(flushbar, "_#_FlushbarState#_fadeAnimation");
+  var ___FlushbarState__fadeAnimation_isSet = dart.privateName(flushbar, "_#_FlushbarState#_fadeAnimation#isSet");
+  var ___FlushbarState__isTitlePresent = dart.privateName(flushbar, "_#_FlushbarState#_isTitlePresent");
+  var ___FlushbarState__isTitlePresent_isSet = dart.privateName(flushbar, "_#_FlushbarState#_isTitlePresent#isSet");
+  var ___FlushbarState__messageTopMargin = dart.privateName(flushbar, "_#_FlushbarState#_messageTopMargin");
+  var ___FlushbarState__messageTopMargin_isSet = dart.privateName(flushbar, "_#_FlushbarState#_messageTopMargin#isSet");
+  var _focusNode = dart.privateName(flushbar, "_focusNode");
+  var ___FlushbarState__focusAttachment = dart.privateName(flushbar, "_#_FlushbarState#_focusAttachment");
+  var ___FlushbarState__focusAttachment_isSet = dart.privateName(flushbar, "_#_FlushbarState#_focusAttachment#isSet");
+  var ___FlushbarState__boxHeightCompleter = dart.privateName(flushbar, "_#_FlushbarState#_boxHeightCompleter");
+  var ___FlushbarState__boxHeightCompleter_isSet = dart.privateName(flushbar, "_#_FlushbarState#_boxHeightCompleter#isSet");
+  var _progressAnimation = dart.privateName(flushbar, "_progressAnimation");
+  var _fadeAnimation = dart.privateName(flushbar, "_fadeAnimation");
+  var _isTitlePresent = dart.privateName(flushbar, "_isTitlePresent");
+  var _messageTopMargin = dart.privateName(flushbar, "_messageTopMargin");
+  var _focusAttachment = dart.privateName(flushbar, "_focusAttachment");
+  var _boxHeightCompleter = dart.privateName(flushbar, "_boxHeightCompleter");
+  var _configureLeftBarFuture = dart.privateName(flushbar, "_configureLeftBarFuture");
+  var _configureProgressIndicatorAnimation = dart.privateName(flushbar, "_configureProgressIndicatorAnimation");
+  var _configurePulseAnimation = dart.privateName(flushbar, "_configurePulseAnimation");
+  var _getFlushbar$ = dart.privateName(flushbar, "_getFlushbar");
+  var _generateInputFlushbar = dart.privateName(flushbar, "_generateInputFlushbar");
+  var _generateFlushbar = dart.privateName(flushbar, "_generateFlushbar");
+  var _buildProgressIndicator = dart.privateName(flushbar, "_buildProgressIndicator");
+  var _getAppropriateRowLayout = dart.privateName(flushbar, "_getAppropriateRowLayout");
+  var _buildLeftBarIndicator = dart.privateName(flushbar, "_buildLeftBarIndicator");
+  var _getTitleText = dart.privateName(flushbar, "_getTitleText");
+  var _getDefaultNotificationText = dart.privateName(flushbar, "_getDefaultNotificationText");
+  var _getIcon = dart.privateName(flushbar, "_getIcon");
+  var _getMainActionButton = dart.privateName(flushbar, "_getMainActionButton");
+  const _is__FlushbarState_default = Symbol('_is__FlushbarState_default');
+  flushbar._FlushbarState$ = dart.generic(K => {
+    const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(flushbar.Flushbar$(K)) {};
+    (State_TickerProviderStateMixin$36.new = function() {
+      ticker_provider.TickerProviderStateMixin$(flushbar.Flushbar$(K))[dart.mixinNew].call(this);
+      State_TickerProviderStateMixin$36.__proto__.new.call(this);
+    }).prototype = State_TickerProviderStateMixin$36.prototype;
+    dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(flushbar.Flushbar$(K)));
+    class _FlushbarState extends State_TickerProviderStateMixin$36 {
+      get [_fadeAnimation]() {
+        let t0;
+        return dart.test(this[___FlushbarState__fadeAnimation_isSet]) ? (t0 = this[___FlushbarState__fadeAnimation], t0) : dart.throw(new _internal.LateError.fieldNI("_fadeAnimation"));
+      }
+      set [_fadeAnimation](t0) {
+        if (t0 == null) dart.nullFailed(I[2], 335, 26, "null");
+        this[___FlushbarState__fadeAnimation_isSet] = true;
+        this[___FlushbarState__fadeAnimation] = t0;
+      }
+      get [_isTitlePresent]() {
+        let t1;
+        return dart.test(this[___FlushbarState__isTitlePresent_isSet]) ? (t1 = this[___FlushbarState__isTitlePresent], t1) : dart.throw(new _internal.LateError.fieldNI("_isTitlePresent"));
+      }
+      set [_isTitlePresent](t1) {
+        if (t1 == null) dart.nullFailed(I[2], 336, 13, "null");
+        this[___FlushbarState__isTitlePresent_isSet] = true;
+        this[___FlushbarState__isTitlePresent] = t1;
+      }
+      get [_messageTopMargin]() {
+        let t2;
+        return dart.test(this[___FlushbarState__messageTopMargin_isSet]) ? (t2 = this[___FlushbarState__messageTopMargin], t2) : dart.throw(new _internal.LateError.fieldNI("_messageTopMargin"));
+      }
+      set [_messageTopMargin](t2) {
+        if (t2 == null) dart.nullFailed(I[2], 337, 15, "null");
+        this[___FlushbarState__messageTopMargin_isSet] = true;
+        this[___FlushbarState__messageTopMargin] = t2;
+      }
+      get [_focusAttachment]() {
+        let t3;
+        return dart.test(this[___FlushbarState__focusAttachment_isSet]) ? (t3 = this[___FlushbarState__focusAttachment], t3) : dart.throw(new _internal.LateError.fieldNI("_focusAttachment"));
+      }
+      set [_focusAttachment](t3) {
+        if (t3 == null) dart.nullFailed(I[2], 339, 24, "null");
+        this[___FlushbarState__focusAttachment_isSet] = true;
+        this[___FlushbarState__focusAttachment] = t3;
+      }
+      get [_boxHeightCompleter]() {
+        let t4;
+        return dart.test(this[___FlushbarState__boxHeightCompleter_isSet]) ? (t4 = this[___FlushbarState__boxHeightCompleter], t4) : dart.throw(new _internal.LateError.fieldNI("_boxHeightCompleter"));
+      }
+      set [_boxHeightCompleter](t4) {
+        if (t4 == null) dart.nullFailed(I[2], 340, 24, "null");
+        this[___FlushbarState__boxHeightCompleter_isSet] = true;
+        this[___FlushbarState__boxHeightCompleter] = t4;
+      }
+      initState() {
+        let t5;
+        super.initState();
+        this[_backgroundBoxKey] = T$.GlobalKeyOfStateOfStatefulWidget().new();
+        this[_boxHeightCompleter] = T$.CompleterOfSize().new();
+        if (!(this.widget.userInputForm != null || this.widget.message != null && dart.nullCheck(this.widget.message)[$isNotEmpty] || this.widget.messageText != null)) dart.assertFailed("A message is mandatory if you are not using userInputForm. Set either a message or messageText", I[2], 352, 9, "widget.userInputForm != null ||\n            ((widget.message != null && widget.message!.isNotEmpty) ||\n                widget.messageText != null)");
+        this[_isTitlePresent] = this.widget.title != null || this.widget.titleText != null;
+        this[_messageTopMargin] = dart.test(this[_isTitlePresent]) ? 6.0 : this.widget.padding.top;
+        this[_configureLeftBarFuture]();
+        this[_configureProgressIndicatorAnimation]();
+        if (this.widget.icon != null && dart.test(this.widget.shouldIconPulse)) {
+          this[_configurePulseAnimation]();
+          t5 = this[_fadeController];
+          t5 == null ? null : t5.forward();
+        }
+        this[_focusNode] = new focus_manager.FocusScopeNode.new();
+        this[_focusAttachment] = dart.nullCheck(this[_focusNode]).attach(this.context);
+      }
+      dispose() {
+        let t5, t5$;
+        t5 = this[_fadeController];
+        t5 == null ? null : t5.dispose();
+        t5$ = this.widget.progressIndicatorController;
+        t5$ == null ? null : t5$.dispose();
+        this[_focusAttachment].detach();
+        dart.nullCheck(this[_focusNode]).dispose();
+        super.dispose();
+      }
+      [_configureLeftBarFuture]() {
+        dart.nullCheck(binding.SchedulerBinding.instance).addPostFrameCallback(dart.fn(_ => {
+          if (_ == null) dart.nullFailed(I[2], 384, 8, "_");
+          let keyContext = dart.nullCheck(this[_backgroundBoxKey]).currentContext;
+          if (keyContext != null) {
+            let box = box$.RenderBox.as(keyContext.findRenderObject());
+            this[_boxHeightCompleter].complete(box.size);
+          }
+        }, T$.DurationTovoid()));
+      }
+      [_configureProgressIndicatorAnimation]() {
+        if (dart.test(this.widget.showProgressIndicator) && this.widget.progressIndicatorController != null) {
+          this[_progressAnimation] = new animations.CurvedAnimation.new({curve: curves.Curves.linear, parent: dart.nullCheck(this.widget.progressIndicatorController)});
+        }
+      }
+      [_configurePulseAnimation]() {
+        this[_fadeController] = new animation_controller.AnimationController.new({vsync: this, duration: this[_pulseAnimationDuration]});
+        this[_fadeAnimation] = new (T$.TweenOfdouble()).new({begin: this[_initialOpacity], end: this[_finalOpacity]}).animate(new animations.CurvedAnimation.new({parent: dart.nullCheck(this[_fadeController]), curve: curves.Curves.linear}));
+        dart.nullCheck(this[_fadeController]).addStatusListener(dart.fn(status => {
+          if (status == null) dart.nullFailed(I[2], 413, 41, "status");
+          if (status == animation.AnimationStatus.completed) {
+            dart.nullCheck(this[_fadeController]).reverse();
+          }
+          if (status == animation.AnimationStatus.dismissed) {
+            dart.nullCheck(this[_fadeController]).forward();
+          }
+        }, T$.AnimationStatusTovoid()));
+        dart.nullCheck(this[_fadeController]).forward();
+      }
+      build(context) {
+        if (context == null) dart.nullFailed(I[2], 427, 29, "context");
+        return new basic.Align.new({heightFactor: 1.0, child: new material.Material.new({color: this.widget.flushbarStyle == flushbar.FlushbarStyle.FLOATING ? colors.Colors.transparent : this.widget.backgroundColor, child: new safe_area.SafeArea.new({minimum: this.widget.flushbarPosition == flushbar.FlushbarPosition.BOTTOM ? new edge_insets.EdgeInsets.only({bottom: media_query.MediaQuery.of(context).viewInsets.bottom}) : new edge_insets.EdgeInsets.only({top: media_query.MediaQuery.of(context).viewInsets.top}), bottom: this.widget.flushbarPosition == flushbar.FlushbarPosition.BOTTOM, top: this.widget.flushbarPosition == flushbar.FlushbarPosition.TOP, left: false, right: false, child: this[_getFlushbar$](), $creationLocationd_0dea112b090073317d4: C[85] || CT.C85}), $creationLocationd_0dea112b090073317d4: C[93] || CT.C93}), $creationLocationd_0dea112b090073317d4: C[97] || CT.C97});
+      }
+      [_getFlushbar$]() {
+        let flushbar = null;
+        if (this.widget.userInputForm != null) {
+          flushbar = this[_generateInputFlushbar]();
+        } else {
+          flushbar = this[_generateFlushbar]();
+        }
+        return new basic.Stack.new({children: T$.JSArrayOfWidget().of([new (T$.FutureBuilderOfSize()).new({future: this[_boxHeightCompleter].future, builder: dart.fn((context, snapshot) => {
+                if (context == null) dart.nullFailed(I[2], 468, 21, "context");
+                if (snapshot == null) dart.nullFailed(I[2], 468, 50, "snapshot");
+                if (dart.test(snapshot.hasData)) {
+                  if (this.widget.barBlur === 0) {
+                    return this[_emptyWidget];
+                  }
+                  return new basic.ClipRRect.new({borderRadius: this.widget.borderRadius, child: new basic.BackdropFilter.new({filter: ui.ImageFilter.blur({sigmaX: this.widget.barBlur, sigmaY: this.widget.barBlur}), child: new container.Container.new({height: dart.nullCheck(snapshot.data).height, width: dart.nullCheck(snapshot.data).width, decoration: new box_decoration.BoxDecoration.new({color: colors.Colors.transparent, borderRadius: this.widget.borderRadius}), $creationLocationd_0dea112b090073317d4: C[101] || CT.C101}), $creationLocationd_0dea112b090073317d4: C[106] || CT.C106}), $creationLocationd_0dea112b090073317d4: C[110] || CT.C110});
+                }
+                return this[_emptyWidget];
+              }, T$.BuildContextAndAsyncSnapshotOfSizeToWidget()), $creationLocationd_0dea112b090073317d4: C[114] || CT.C114}), flushbar]), $creationLocationd_0dea112b090073317d4: C[118] || CT.C118});
+      }
+      [_generateInputFlushbar]() {
+        return new container.Container.new({key: this[_backgroundBoxKey], constraints: this.widget.maxWidth != null ? new box$.BoxConstraints.new({maxWidth: dart.nullCheck(this.widget.maxWidth)}) : null, decoration: new box_decoration.BoxDecoration.new({color: this.widget.backgroundColor, gradient: this.widget.backgroundGradient, boxShadow: this.widget.boxShadows, borderRadius: this.widget.borderRadius, border: this.widget.borderColor != null ? box_border.Border.all({color: dart.nullCheck(this.widget.borderColor), width: this.widget.borderWidth}) : null}), child: new basic.Padding.new({padding: C[121] || CT.C121, child: new focus_scope.FocusScope.new({node: this[_focusNode], autofocus: true, child: dart.nullCheck(this.widget.userInputForm), $creationLocationd_0dea112b090073317d4: C[122] || CT.C122}), $creationLocationd_0dea112b090073317d4: C[127] || CT.C127}), $creationLocationd_0dea112b090073317d4: C[131] || CT.C131});
+      }
+      [_generateFlushbar]() {
+        return new container.Container.new({key: this[_backgroundBoxKey], constraints: this.widget.maxWidth != null ? new box$.BoxConstraints.new({maxWidth: dart.nullCheck(this.widget.maxWidth)}) : null, decoration: new box_decoration.BoxDecoration.new({color: this.widget.backgroundColor, gradient: this.widget.backgroundGradient, boxShadow: this.widget.boxShadows, borderRadius: this.widget.borderRadius, border: this.widget.borderColor != null ? box_border.Border.all({color: dart.nullCheck(this.widget.borderColor), width: this.widget.borderWidth}) : null}), child: new basic.Column.new({mainAxisSize: flex.MainAxisSize.min, children: T$.JSArrayOfWidget().of([this[_buildProgressIndicator](), new basic.Row.new({mainAxisSize: flex.MainAxisSize.max, children: this[_getAppropriateRowLayout](), $creationLocationd_0dea112b090073317d4: C[137] || CT.C137})]), $creationLocationd_0dea112b090073317d4: C[141] || CT.C141}), $creationLocationd_0dea112b090073317d4: C[145] || CT.C145});
+      }
+      [_buildProgressIndicator]() {
+        if (dart.test(this.widget.showProgressIndicator) && this[_progressAnimation] != null) {
+          return new transitions.AnimatedBuilder.new({animation: dart.nullCheck(this[_progressAnimation]), builder: dart.fn((_, __) => {
+              if (_ == null) dart.nullFailed(I[2], 557, 21, "_");
+              return new progress_indicator.LinearProgressIndicator.new({value: dart.nullCheck(this[_progressAnimation]).value, backgroundColor: this.widget.progressIndicatorBackgroundColor, valueColor: this.widget.progressIndicatorValueColor, $creationLocationd_0dea112b090073317d4: C[151] || CT.C151});
+            }, T$.BuildContextAndWidgetNToLinearProgressIndicator()), $creationLocationd_0dea112b090073317d4: C[156] || CT.C156});
+        }
+        if (dart.test(this.widget.showProgressIndicator)) {
+          return new progress_indicator.LinearProgressIndicator.new({backgroundColor: this.widget.progressIndicatorBackgroundColor, valueColor: this.widget.progressIndicatorValueColor, $creationLocationd_0dea112b090073317d4: C[160] || CT.C160});
+        }
+        return this[_emptyWidget];
+      }
+      [_getAppropriateRowLayout]() {
+        let t5, t5$, t5$0, t5$1;
+        let buttonRightPadding = null;
+        let iconPadding = 0.0;
+        if (dart.notNull(this.widget.padding.right) - 12 < 0) {
+          buttonRightPadding = 4.0;
+        } else {
+          buttonRightPadding = dart.notNull(this.widget.padding.right) - 12;
+        }
+        if (dart.notNull(this.widget.padding.left) > 16.0) {
+          iconPadding = this.widget.padding.left;
+        }
+        if (this.widget.icon == null && this.widget.mainButton == null) {
+          return T$.JSArrayOfWidget().of([this[_buildLeftBarIndicator](), new basic.Expanded.new({flex: 1, child: new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.stretch, mainAxisSize: flex.MainAxisSize.min, children: T$.JSArrayOfWidget().of([dart.test(this[_isTitlePresent]) ? new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({top: this.widget.padding.top, left: this.widget.padding.left, right: this.widget.padding.right}), child: this[_getTitleText](), $creationLocationd_0dea112b090073317d4: C[164] || CT.C164}) : this[_emptyWidget], new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({top: this[_messageTopMargin], left: this.widget.padding.left, right: this.widget.padding.right, bottom: this.widget.padding.bottom}), child: (t5 = this.widget.messageText, t5 == null ? this[_getDefaultNotificationText]() : t5), $creationLocationd_0dea112b090073317d4: C[168] || CT.C168})]), $creationLocationd_0dea112b090073317d4: C[172] || CT.C172}), $creationLocationd_0dea112b090073317d4: C[177] || CT.C177})]);
+        } else if (this.widget.icon != null && this.widget.mainButton == null) {
+          return T$.JSArrayOfWidget().of([this[_buildLeftBarIndicator](), new basic.ConstrainedBox.new({constraints: new box$.BoxConstraints.tightFor({width: 42.0 + dart.notNull(iconPadding)}), child: this[_getIcon](), $creationLocationd_0dea112b090073317d4: C[181] || CT.C181}), new basic.Expanded.new({flex: 1, child: new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.stretch, mainAxisSize: flex.MainAxisSize.min, children: T$.JSArrayOfWidget().of([dart.test(this[_isTitlePresent]) ? new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({top: this.widget.padding.top, left: 4.0, right: this.widget.padding.left}), child: this[_getTitleText](), $creationLocationd_0dea112b090073317d4: C[185] || CT.C185}) : this[_emptyWidget], new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({top: this[_messageTopMargin], left: 4.0, right: this.widget.padding.right, bottom: this.widget.padding.bottom}), child: (t5$ = this.widget.messageText, t5$ == null ? this[_getDefaultNotificationText]() : t5$), $creationLocationd_0dea112b090073317d4: C[189] || CT.C189})]), $creationLocationd_0dea112b090073317d4: C[193] || CT.C193}), $creationLocationd_0dea112b090073317d4: C[198] || CT.C198})]);
+        } else if (this.widget.icon == null && this.widget.mainButton != null) {
+          return T$.JSArrayOfWidget().of([this[_buildLeftBarIndicator](), new basic.Expanded.new({flex: 1, child: new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.stretch, mainAxisSize: flex.MainAxisSize.min, children: T$.JSArrayOfWidget().of([dart.test(this[_isTitlePresent]) ? new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({top: this.widget.padding.top, left: this.widget.padding.left, right: this.widget.padding.right}), child: this[_getTitleText](), $creationLocationd_0dea112b090073317d4: C[202] || CT.C202}) : this[_emptyWidget], new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({top: this[_messageTopMargin], left: this.widget.padding.left, right: 8.0, bottom: this.widget.padding.bottom}), child: (t5$0 = this.widget.messageText, t5$0 == null ? this[_getDefaultNotificationText]() : t5$0), $creationLocationd_0dea112b090073317d4: C[206] || CT.C206})]), $creationLocationd_0dea112b090073317d4: C[210] || CT.C210}), $creationLocationd_0dea112b090073317d4: C[215] || CT.C215}), new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({right: buttonRightPadding}), child: this[_getMainActionButton](), $creationLocationd_0dea112b090073317d4: C[219] || CT.C219})]);
+        } else {
+          return T$.JSArrayOfWidget().of([this[_buildLeftBarIndicator](), new basic.ConstrainedBox.new({constraints: new box$.BoxConstraints.tightFor({width: 42.0 + dart.notNull(iconPadding)}), child: this[_getIcon](), $creationLocationd_0dea112b090073317d4: C[223] || CT.C223}), new basic.Expanded.new({flex: 1, child: new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.stretch, mainAxisSize: flex.MainAxisSize.min, children: T$.JSArrayOfWidget().of([dart.test(this[_isTitlePresent]) ? new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({top: this.widget.padding.top, left: 4.0, right: 8.0}), child: this[_getTitleText](), $creationLocationd_0dea112b090073317d4: C[227] || CT.C227}) : this[_emptyWidget], new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({top: this[_messageTopMargin], left: 4.0, right: 8.0, bottom: this.widget.padding.bottom}), child: (t5$1 = this.widget.messageText, t5$1 == null ? this[_getDefaultNotificationText]() : t5$1), $creationLocationd_0dea112b090073317d4: C[231] || CT.C231})]), $creationLocationd_0dea112b090073317d4: C[235] || CT.C235}), $creationLocationd_0dea112b090073317d4: C[240] || CT.C240}), this[_getMainActionButton]() != null ? new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({right: buttonRightPadding}), child: this[_getMainActionButton](), $creationLocationd_0dea112b090073317d4: C[244] || CT.C244}) : this[_emptyWidget]]);
+        }
+      }
+      [_buildLeftBarIndicator]() {
+        if (this.widget.leftBarIndicatorColor != null) {
+          return new (T$.FutureBuilderOfSize()).new({future: this[_boxHeightCompleter].future, builder: dart.fn((buildContext, snapshot) => {
+              if (buildContext == null) dart.nullFailed(I[2], 742, 32, "buildContext");
+              if (snapshot == null) dart.nullFailed(I[2], 742, 66, "snapshot");
+              if (dart.test(snapshot.hasData)) {
+                return new container.Container.new({width: 8.0, height: dart.nullCheck(snapshot.data).height, decoration: new box_decoration.BoxDecoration.new({borderRadius: this.widget.borderRadius == null ? null : new border_radius.BorderRadius.only({topLeft: dart.nullCheck(this.widget.borderRadius).topLeft, bottomLeft: dart.nullCheck(this.widget.borderRadius).bottomLeft}), color: this.widget.leftBarIndicatorColor}), $creationLocationd_0dea112b090073317d4: C[248] || CT.C248});
+              } else {
+                return this[_emptyWidget];
+              }
+            }, T$.BuildContextAndAsyncSnapshotOfSizeToWidget()), $creationLocationd_0dea112b090073317d4: C[253] || CT.C253});
+        } else {
+          return this[_emptyWidget];
+        }
+      }
+      [_getIcon]() {
+        if (this.widget.icon != null && icon.Icon.is(this.widget.icon) && dart.test(this.widget.shouldIconPulse)) {
+          return new transitions.FadeTransition.new({opacity: this[_fadeAnimation], child: this.widget.icon, $creationLocationd_0dea112b090073317d4: C[257] || CT.C257});
+        } else if (this.widget.icon != null) {
+          return this.widget.icon;
+        } else {
+          return this[_emptyWidget];
+        }
+      }
+      [_getTitleText]() {
+        let t6, t6$, t6$0, t5;
+        t5 = this.widget.titleText;
+        return t5 == null ? new text.Text.new((t6 = this.widget.title, t6 == null ? "" : t6), {style: new text_style.TextStyle.new({fontSize: (t6$ = this.widget.titleSize, t6$ == null ? 16.0 : t6$), color: (t6$0 = this.widget.titleColor, t6$0 == null ? colors.Colors.white : t6$0), fontWeight: ui.FontWeight.bold}), $creationLocationd_0dea112b090073317d4: C[261] || CT.C261}) : t5;
+      }
+      [_getDefaultNotificationText]() {
+        let t5, t5$, t5$0;
+        return new text.Text.new((t5 = this.widget.message, t5 == null ? "" : t5), {style: new text_style.TextStyle.new({fontSize: (t5$ = this.widget.messageSize, t5$ == null ? 14.0 : t5$), color: (t5$0 = this.widget.messageColor, t5$0 == null ? colors.Colors.white : t5$0)}), $creationLocationd_0dea112b090073317d4: C[265] || CT.C265});
+      }
+      [_getMainActionButton]() {
+        if (this.widget.mainButton != null) {
+          return this.widget.mainButton;
+        } else {
+          return null;
+        }
+      }
+    }
+    (_FlushbarState.new = function() {
+      this[_pulseAnimationDuration] = C[81] || CT.C81;
+      this[_emptyWidget] = C[82] || CT.C82;
+      this[_initialOpacity] = 1.0;
+      this[_finalOpacity] = 0.4;
+      this[_backgroundBoxKey] = null;
+      this.currentStatus = null;
+      this[_fadeController] = null;
+      this[___FlushbarState__fadeAnimation] = null;
+      this[___FlushbarState__fadeAnimation_isSet] = false;
+      this[___FlushbarState__isTitlePresent] = null;
+      this[___FlushbarState__isTitlePresent_isSet] = false;
+      this[___FlushbarState__messageTopMargin] = null;
+      this[___FlushbarState__messageTopMargin_isSet] = false;
+      this[_focusNode] = null;
+      this[___FlushbarState__focusAttachment] = null;
+      this[___FlushbarState__focusAttachment_isSet] = false;
+      this[___FlushbarState__boxHeightCompleter] = null;
+      this[___FlushbarState__boxHeightCompleter_isSet] = false;
+      this[_progressAnimation] = null;
+      _FlushbarState.__proto__.new.call(this);
+      ;
+    }).prototype = _FlushbarState.prototype;
+    dart.addTypeTests(_FlushbarState);
+    _FlushbarState.prototype[_is__FlushbarState_default] = true;
+    dart.addTypeCaches(_FlushbarState);
+    dart.setMethodSignature(_FlushbarState, () => ({
+      __proto__: dart.getMethods(_FlushbarState.__proto__),
+      [_configureLeftBarFuture]: dart.fnType(dart.void, []),
+      [_configureProgressIndicatorAnimation]: dart.fnType(dart.void, []),
+      [_configurePulseAnimation]: dart.fnType(dart.void, []),
+      build: dart.fnType(framework.Widget, [framework.BuildContext]),
+      [_getFlushbar$]: dart.fnType(framework.Widget, []),
+      [_generateInputFlushbar]: dart.fnType(framework.Widget, []),
+      [_generateFlushbar]: dart.fnType(framework.Widget, []),
+      [_buildProgressIndicator]: dart.fnType(framework.Widget, []),
+      [_getAppropriateRowLayout]: dart.fnType(core.List$(framework.Widget), []),
+      [_buildLeftBarIndicator]: dart.fnType(framework.Widget, []),
+      [_getIcon]: dart.fnType(dart.nullable(framework.Widget), []),
+      [_getTitleText]: dart.fnType(dart.nullable(framework.Widget), []),
+      [_getDefaultNotificationText]: dart.fnType(text.Text, []),
+      [_getMainActionButton]: dart.fnType(dart.nullable(framework.Widget), [])
+    }));
+    dart.setGetterSignature(_FlushbarState, () => ({
+      __proto__: dart.getGetters(_FlushbarState.__proto__),
+      [_fadeAnimation]: animation.Animation$(core.double),
+      [_isTitlePresent]: core.bool,
+      [_messageTopMargin]: core.double,
+      [_focusAttachment]: focus_manager.FocusAttachment,
+      [_boxHeightCompleter]: async.Completer$(ui.Size)
+    }));
+    dart.setSetterSignature(_FlushbarState, () => ({
+      __proto__: dart.getSetters(_FlushbarState.__proto__),
+      [_fadeAnimation]: animation.Animation$(core.double),
+      [_isTitlePresent]: core.bool,
+      [_messageTopMargin]: core.double,
+      [_focusAttachment]: focus_manager.FocusAttachment,
+      [_boxHeightCompleter]: async.Completer$(ui.Size)
+    }));
+    dart.setLibraryUri(_FlushbarState, I[3]);
+    dart.setFieldSignature(_FlushbarState, () => ({
+      __proto__: dart.getFields(_FlushbarState.__proto__),
+      [_pulseAnimationDuration]: dart.finalFieldType(core.Duration),
+      [_emptyWidget]: dart.finalFieldType(framework.Widget),
+      [_initialOpacity]: dart.finalFieldType(core.double),
+      [_finalOpacity]: dart.finalFieldType(core.double),
+      [_backgroundBoxKey]: dart.fieldType(dart.nullable(framework.GlobalKey$(framework.State$(framework.StatefulWidget)))),
+      currentStatus: dart.fieldType(dart.nullable(flushbar.FlushbarStatus)),
+      [_fadeController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+      [___FlushbarState__fadeAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+      [___FlushbarState__fadeAnimation_isSet]: dart.fieldType(core.bool),
+      [___FlushbarState__isTitlePresent]: dart.fieldType(dart.nullable(core.bool)),
+      [___FlushbarState__isTitlePresent_isSet]: dart.fieldType(core.bool),
+      [___FlushbarState__messageTopMargin]: dart.fieldType(dart.nullable(core.double)),
+      [___FlushbarState__messageTopMargin_isSet]: dart.fieldType(core.bool),
+      [_focusNode]: dart.fieldType(dart.nullable(focus_manager.FocusScopeNode)),
+      [___FlushbarState__focusAttachment]: dart.fieldType(dart.nullable(focus_manager.FocusAttachment)),
+      [___FlushbarState__focusAttachment_isSet]: dart.fieldType(core.bool),
+      [___FlushbarState__boxHeightCompleter]: dart.fieldType(dart.nullable(async.Completer$(ui.Size))),
+      [___FlushbarState__boxHeightCompleter_isSet]: dart.fieldType(core.bool),
+      [_progressAnimation]: dart.fieldType(dart.nullable(animations.CurvedAnimation))
+    }));
+    return _FlushbarState;
+  });
+  flushbar._FlushbarState = flushbar._FlushbarState$();
+  dart.addTypeTests(flushbar._FlushbarState, _is__FlushbarState_default);
+  flushbar.FlushbarPosition = class FlushbarPosition extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (flushbar.FlushbarPosition.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[2], 807, 6, "index");
+    if (_name == null) dart.nullFailed(I[2], 807, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = flushbar.FlushbarPosition.prototype;
+  dart.addTypeTests(flushbar.FlushbarPosition);
+  dart.addTypeCaches(flushbar.FlushbarPosition);
+  dart.setLibraryUri(flushbar.FlushbarPosition, I[3]);
+  dart.setFieldSignature(flushbar.FlushbarPosition, () => ({
+    __proto__: dart.getFields(flushbar.FlushbarPosition.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(flushbar.FlushbarPosition, ['toString']);
+  flushbar.FlushbarPosition.TOP = C[7] || CT.C7;
+  flushbar.FlushbarPosition.BOTTOM = C[8] || CT.C8;
+  flushbar.FlushbarPosition.values = C[269] || CT.C269;
+  flushbar.FlushbarStyle = class FlushbarStyle extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (flushbar.FlushbarStyle.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[2], 810, 6, "index");
+    if (_name == null) dart.nullFailed(I[2], 810, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = flushbar.FlushbarStyle.prototype;
+  dart.addTypeTests(flushbar.FlushbarStyle);
+  dart.addTypeCaches(flushbar.FlushbarStyle);
+  dart.setLibraryUri(flushbar.FlushbarStyle, I[3]);
+  dart.setFieldSignature(flushbar.FlushbarStyle, () => ({
+    __proto__: dart.getFields(flushbar.FlushbarStyle.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(flushbar.FlushbarStyle, ['toString']);
+  flushbar.FlushbarStyle.FLOATING = C[79] || CT.C79;
+  flushbar.FlushbarStyle.GROUNDED = C[270] || CT.C270;
+  flushbar.FlushbarStyle.values = C[271] || CT.C271;
+  flushbar.FlushbarDismissDirection = class FlushbarDismissDirection extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (flushbar.FlushbarDismissDirection.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[2], 815, 6, "index");
+    if (_name == null) dart.nullFailed(I[2], 815, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = flushbar.FlushbarDismissDirection.prototype;
+  dart.addTypeTests(flushbar.FlushbarDismissDirection);
+  dart.addTypeCaches(flushbar.FlushbarDismissDirection);
+  dart.setLibraryUri(flushbar.FlushbarDismissDirection, I[3]);
+  dart.setFieldSignature(flushbar.FlushbarDismissDirection, () => ({
+    __proto__: dart.getFields(flushbar.FlushbarDismissDirection.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(flushbar.FlushbarDismissDirection, ['toString']);
+  flushbar.FlushbarDismissDirection.HORIZONTAL = C[272] || CT.C272;
+  flushbar.FlushbarDismissDirection.VERTICAL = C[78] || CT.C78;
+  flushbar.FlushbarDismissDirection.values = C[273] || CT.C273;
+  flushbar.FlushbarStatus = class FlushbarStatus extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (flushbar.FlushbarStatus.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[2], 822, 6, "index");
+    if (_name == null) dart.nullFailed(I[2], 822, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = flushbar.FlushbarStatus.prototype;
+  dart.addTypeTests(flushbar.FlushbarStatus);
+  dart.addTypeCaches(flushbar.FlushbarStatus);
+  dart.setLibraryUri(flushbar.FlushbarStatus, I[3]);
+  dart.setFieldSignature(flushbar.FlushbarStatus, () => ({
+    __proto__: dart.getFields(flushbar.FlushbarStatus.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(flushbar.FlushbarStatus, ['toString']);
+  flushbar.FlushbarStatus.SHOWING = C[274] || CT.C274;
+  flushbar.FlushbarStatus.DISMISSED = C[275] || CT.C275;
+  flushbar.FlushbarStatus.IS_APPEARING = C[276] || CT.C276;
+  flushbar.FlushbarStatus.IS_HIDING = C[277] || CT.C277;
+  flushbar.FlushbarStatus.values = C[278] || CT.C278;
+  dart.defineLazy(flushbar, {
+    /*flushbar.FLUSHBAR_ROUTE_NAME*/get FLUSHBAR_ROUTE_NAME() {
+      return "/flushbarRoute";
+    }
+  }, false);
+  dart.trackLibraries("packages/another_flushbar/flushbar_route.dart", {
+    "package:another_flushbar/flushbar_route.dart": flushbar_route,
+    "package:another_flushbar/flushbar.dart": flushbar
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["flushbar_route.dart","flushbar.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAQiB;;;;;;MAYC;;;;;;MA6IT;;;;;;;YA5HmC;AACxC,gBAAQ,AAAS;;;;AAG8B,cAAzC,0BAAoB,4BAAU,CAAC,KAAK,CAAC;AACiH,cAAtJ,sBAAgB,AAAS,AAAU,kCAAU,AAAsB,4BAAZ,CAAC,KAAK,CAAC,UAAO,4BAA4B,AAAE,eAApB,AAAS,6BAAiC,AAAE,eAApB,AAAS,gCAAiB,4BAAU,CAAC,KAAK,CAAC;AAClJ;;;;;;AAIwC,cAAxC,0BAAoB,4BAAU,CAAC,KAAK;AACgH,cAApJ,sBAAgB,AAAS,AAAU,kCAAU,AAAqB,4BAAX,CAAC,KAAK,UAAO,4BAA4B,AAAE,eAApB,AAAS,6BAAiC,AAAE,eAApB,AAAS,gCAAiB,4BAAU,CAAC,KAAK;AAChJ;;;;;AAXN;;;MAcF;;AAE2B,cAAA,AAAqB;MAAM;;AACnC;MAAK;;AAItB,uBAAK,AAAS;AACZ,gBAAc,wCAA0B;;AAG1C,cAAc,wCAA0B;MAC1C;;AAIQ,uBAAyB;AAE/B,sBAAI,AAAS;AAWV,UAVD,AAAS,QAAD,OACN,uCACa;kBAAc;AACrB,oBAAO,4DACE,AAAS,+BAAgB,cAAM,AAAS,4CAAY,aACpD;mEAGI,eACP;;AAsBf,QAlBD,AAAS,QAAD,OACN,uCACa;gBAAc;AACR,iCAAiB,kCACnB,kBACE,0BACS,aACb,gDACgB,eAAV,oCACJ,AAAS,+BACV,8BAAwB,kBACxB;AAGV,kBAAO,eAAc;wDAER,eACP;AAGd,cAAO,SAAQ;MACjB;;AAGE,YAAI,sCAAgC;AAClC,gBAAO,iDAC0B,eAApB,sCACF,SAAC,SAAS;kBAAT;AACR,oBAAO,uCACe,6BACY,AAAE,eAAtB,2CACoB,AAAE,eAAtB,4CACL,0CACuB,yCACA,AAAE,eAAvB;;;AAOjB,YAAI;AACF,gBAAO,iDAC0B,eAApB,sCACF,SAAC,SAAS;kBAAT;AACR,oBAAO,uCACe,6BACY,AAAE,eAAtB,2CACoB,AAAE,eAAtB,4CACL,0CACuB,yCACd;;;AAOxB,YAAI;AASD,UARD,gDACkC,eAArB,uCACF,SAAC,SAAS;kBAAT;AACR,oBAAO,2CACuB,yCACA,AAAE,eAAvB;;;AAMf,cAAO,2CACuB,yCACd;MAElB;;YAKsC;AACpC,cAAO,6CACM,8CACK,sBACA;gBAAC;AACf,gBAAI,AAAc,sBAAkB,wCAChC,AAAc,sBAAkB;AAClC,oBAAc,0BAAM;;AAEtB,kBAAc,0BAAM;yDAEjB,gCAAI,sCACI;gBAAC;AACY,YAAxB,yBAAkB,aAAlB,0BAAqB;AACP,YAAd;AAC2B,YAA3B,6BAAuB;AAEvB,0BAAI;AACc,cAAP,AAAE,eAAX;;AAE4B,cAAnB,AAAE,eAAX,4BAAuB;;kDAGpB;MAEX;;AAGE,YAAI,AAAS,AAAiB,kCAA4B;AACxD,gBAAwB;;AAExB,cAAI,AAAS,AAAiB,kCAAoB;AAChD,kBAAwB;;AAExB,kBAAwB;;;MAG9B;;AAGE,cAAO,sCACG,AAAS,6BACV;MAEX;;AAII,cAAW,AAAE,AAAO,gBAApB,6BAAuC;MAAS;;AAIb;MAAU;;AAOV;MAAW;;AAOhD,aAAO,WAAC,AAAqB,2DACzB,AAAiD,6BAAhC,sBAAW;AAChC,uBAAO,AAAS,AAAkB,sCAAY;AAC9C,cAAO,6DACK,AAAS,6CACP,wBACI,eAAT;MAEX;;AAME,aAAO,WAAC,AAAqB,2DACzB,AAAiD,6BAAhC,sBAAW;AAChC,cAAO,AAAY;AACnB,cAAO,AAA6D,uCAAvC,8BAAwB,8BACnD,4CACqB,eAAX,2BACD,AAAS,mDACF,AAAS;MAG7B;;AAGE,YAAI,AAAS,AAAU,iCAAS,MAAO;AAEvC,cAAO,AAA2C,sCAA9B,UAAU,AAAS,kCACrC,4CACqB,eAAX,2BACD,wBACL,KACA,cACc;MAItB;;AAGE,YAAI,AAAS,AAAW,kCAAS,MAAO;AAExC,cAAO,AACF,kCAD2B,gCAAkB,AAAS,mCAEzD,4CACqB,eAAX,2BACD,wBACL,KACA,cACc;MAItB;;YAG0C;AACxC,gBAAQ,MAAM;;;AAE4B,YAAtC,qBAA+B;AAC/B,gBAAI,gCAA0C,AAAC,AAAe,eAAhC,wBAAkB;AAChD,0BAAI,AAAe,mCAAY,AAAe,AAAM,AAAe,qCAAN;AAE7D;;;;AAE2C,YAA3C,qBAA+B;AAC/B,gBAAI,gCAA0C,AAAC,AAAe,eAAhC,wBAAkB;AAChD;;;;AAEwC,YAAxC,qBAA+B;AAC/B,gBAAI,gCAA0C,AAAC,AAAe,eAAhC,wBAAkB;AAChD,0BAAI,AAAe,mCAAY,AAAe,AAAM,AAAc,qCAAL;AAC7D;;;;AAEA,iBAAO,WAAC,AAAe,AAAM;AAKW,YAAxC,qBAA+B;AAC/B,gBAAI,gCAA0C,AAAC,AAAe,eAAhC,wBAAkB;AAEhD,2BAAK;AAC2B,cAArB,AAAE,eAAX,8BAAyB;AACzB,4BAAI,AAAe;AACK,gBAAtB,AAAe;;AAEjB,6BAAO,AAAe;;AAExB;;;;AAhCJ;;;AAkCsB,QAAtB;MACF;;AAIE,aAAO,WAAC,AAAqB,2DACzB,AAAmD,+BAAhC,sBAAW;AACO,QAAzC,oBAAc;AACd,cAAO,AAAY,8CAC0C,SAAvD,sBAAW;AACiC,QAAlD,6BAAuB;AAC6B,QAApD,8BAAwB;AACM,QAA9B,mBAAa;AACb,cAAO,AAAW,6CAAwD,SAA7C,sBAAW;AACzB,QAAT;MACR;;AAIE,cAAO,AAAY,8CACmE,SAAhF,sBAAW;AACjB,aAAO,WAAC,AAAqB,2DACzB,AAAiD,6BAAhC,sBAAW;AACmB,QAAzC,AAAE,eAAZ,8CAA8B;AACb,QAAjB;AACe,QAAT;AACN,cAAkB,AAAE,gBAAb;MACT;iBAGgC;AAC9B,cAAO,AAAY,8CACsE,SAAnF,sBAAW;AACjB,aAAO,WAAC,AAAqB,2DACzB,AAAiD,6BAAhC,sBAAW;AAChC,YAAa,gCAAT,QAAQ;AACsC,UAArC,AAAE,eAAb,2BAAyC,AAAE,eAAtB,AAAS,QAAD;;AAEoB,QAAzC,AAAE,eAAZ,8CAA8B;AACJ,QAApB,iBAAW,QAAQ;MAC3B;;gBAGe;AACb,cAAO,AAAY,8CACkE,SAA/E,sBAAW;AACjB,aAAO,WAAC,AAAqB,2DACzB,AAAiD,6BAAhC,sBAAW;AAEhB,QAAhB,gBAAU,MAAM;AACF,QAAd;AAEA,sBAAI;AAGA,UAFF,gBAAM,qCAAuB,OAAM;AACb,YAAT,AAAE,eAAb;;AAG0B,UAA5B,6BAAuB;;AAED,UAAX,AAAE,eAAb;;AAGF,cAAa,cAAO,MAAM;MAC5B;;AAGE,YAAI,AAAS;AACX,cAAI,kCAAwB,AAAE,eAAR;AACJ,YAAV,AAAE,eAAR;;AAQA,UANF,eAAS,gBAAuB,eAAjB,AAAS,yBAAW;AACjC,0BAAI;AACc,cAAP,AAAE,eAAX;kBACK,eAAI;AACmB,cAAnB,AAAE,eAAX,4BAAuB;;;;AAI3B,cAAI;AACc,YAAV,AAAE,eAAR;;;MAGN;;AAGE,YAAI,kCAAwB,AAAE,eAAR;AACJ,UAAV,AAAE,eAAR;;MAEJ;;YAM4C;AAAc;MAAI;;YAMhB;AAAkB;MAAI;;;AAIlE,aAAO,WAAC,AAAqB,2DACzB,AAAsC,+BAAnB,sBAAW;AACZ,aAAtB;4BAAa;AACyB,QAAtC,AAAqB,oCAAS;AACf,QAAT;MACR;;AAGyB,cAAc,UAAZ;MAAY;;AAGlB,cAAuC,UAArC,sBAAW,0BAAa,qBAAW;MAAE;;;UA9Z5C;;UACC;MAdE,6BAAuB;MAGvB;MACA;MACR;MACA;MACN,6BAAuB;MACrB;MACJ;MACa;MA6IT,0BAAoB;MAuDL;MAOD;MAxML;MAED,iBAAE,gCAAiB;cAAc;AACxC,gBAAO,kDAED,AAAS,AAAM,QAAP,iBAAiB,cAAoB,AAAC,eAAf,AAAS,QAAD,QAAQ,QAAQ,sBAAI,aACxD,QAAQ;;MAGF,yBAAE,AAAS,QAAD;AAC3B,wDAAgB,QAAQ;AACkB,MAA9C,0BAAoB,AAAS;IAC/B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;QAsZyB;;QAA2B;;AACpD,UAAO,uDACK,QAAQ,YACR;EAEd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MCjVgC;;;;;;MAGhB;;;;;;MAGA;;;;;;MAGD;;;;;;MAGC;;;;;;MAGA;;;;;;MAGD;;;;;;MAGC;;;;;;MAGA;;;;;;MAGF;;;;;;MAIC;;;;;;MAKU;;;;;;MAGP;;;;;;MAIF;;;;;;MAGH;;;;;;MAGG;;;;;;MAGD;;;;;;MAGG;;;;;;MAIL;;;;;;MAIgB;;;;;;MAGd;;;;;;MAGW;;;;;;MAKb;;;;;;MAGG;;;;;;MAGG;;;;;;MAIA;;;;;;MAIG;;;;;;MAGP;;;;;;MAGA;;;;;;MAIU;;;;;;MAEV;;;;;;MAIkB;;;;;;MAKX;;;;;;MAGR;;;;;;MAGA;;;;;;MAGG;;;;;;MAKF;;;;;;MAIF;;;;;;MAMG;;;;;;MAKD;;;;;;MAGD;;;;;;MAIE;;;;;;MAEW;;;;;;;YAGI;AAAd;AAIe,UAH5B,qBAGE,uBAHc,yCACL,OAAO,YACN;AAGZ,gBAAO,OAAgB,AAClB,uBADqB,OAAO,kBAAiB,gBAC1B,cAAd;QACZ;;;gBAIuB;AAAL;AAEhB,cAAI,AAAc;AAChB,kBAAO;;AAGT,wBAAiB,AAAE,eAAf;AACmC,YAAb,AAAE,eAAb,AAAE,eAAf,sCAA8B,MAAM;AACpC,kBAAoB,AAAE,gBAAf;gBACF,eAAiB,AAAE,eAAf;AAI4C,YAA7B,AAAE,eAAb,AAAE,eAAf,2CAAmD,eAAb;;AAGxC,gBAAO;QACT;;;AAIE,YAAG,AAAc;AACf,gBAAO;;AAET,cAAoB,AAAE,AAAc,gBAA7B,qCAA+C;MACxD;;AAIE,YAAG,AAAc;AACf,gBAAO;;AAET,cAAoB,AAAE,AAAc,gBAA7B,qCAA+C;MACxD;;AAGE,YAAG,AAAc;AACf,gBAAO;;AAET,cAAoB,AAAE,AAAc,gBAA7B,qCAA+C;MACxD;;AAGE,YAAG,AAAc;AACf,gBAAO;;AAET,cAAoB,AAAE,AAAc,gBAA7B,qCAA+C;MACxD;;AAGuB;MAAoB;;;;UAjTjC;UACE;UACD;UACC;UACA;UACA;UACD;UACC;UACA;UACA;UACH;;UACG;UACG;;UACA;;UACG;UACP;UACA;;UACD;;UACC;UACU;UACP;UACF;UACD;UACG;UACL;;UACoB;;UAEpB;;UACgB;UACd;UACW;UACD;;UACV;;UACO;;UACR;;UACA;;UACG;;UACe;UACjB;;UACF;;UACG;UACD;UACD;UACE;;MAEA,eAAE,KAAK;MACH,mBAAE,SAAS;MACV,oBAAE,UAAU;MACf,iBAAE,OAAO;MACL,qBAAE,WAAW;MACZ,sBAAE,YAAY;MACjB,mBAAE,SAAS;MACT,qBAAE,WAAW;MACpB,cAAE,IAAI;MACK,yBAAE,eAAe;MACxB,kBAAE,QAAQ;MACZ,gBAAE,MAAM;MACP,iBAAE,OAAO;MACJ,sBAAE,YAAY;MACf,qBAAE,WAAW;MACb,qBAAE,WAAW;MACT,yBAAE,eAAe;MACX,+BAAE,qBAAqB;MAClC,oBAAE,UAAU;MACJ,4BAAE,kBAAkB;MAC5B,oBAAE,UAAU;MACjB,eAAE,KAAK;MACJ,kBAAE,QAAQ;MACL,uBAAE,aAAa;MACZ,0BAAE,gBAAgB;MACb,+BAAE,qBAAqB;MACjB,qCAAE,2BAA2B;MACxB,0CAAE,gCAAgC;MACvC,qCAAE,2BAA2B;MACxC,0BAAE,gBAAgB;MACpB,wBAAE,cAAc;MACjB,uBAAE,aAAa;MACP,+BAAE,qBAAqB;MACvB,+BAAE,qBAAqB;MAC3B,2BAAE,iBAAiB;MAC7B,iBAAE,OAAO;MACU,oCAAE,0BAA0B;MAC7C,mBAAE,SAAS;MACV,oBAAE,UAAU;MACT,uBAAE,aAAa;MACb,yBAAE,eAAe;MACvB,mBAAE,SAAS;MACF,sBAAE;AACrB,8CAAW,GAAG;AAC8B,MAAhD,mBAAkC,KAAhB,eAAe,EAAf,aAAmB,QAAC;;IACxC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAoOuB;MAAc;;;AAAd;;MAAc;;;AAC3B;MAAe;;;AAAf;;MAAe;;;AACb;MAAiB;;;AAAjB;;MAAiB;;;AAER;MAAgB;;;AAAhB;;MAAgB;;;AAChB;MAAmB;;;AAAnB;;MAAmB;;;AAMrB,QAAX;AAEyB,QAA/B,0BAAoB;AACmB,QAAvC,4BAAsB;AAEtB,cACI,AAAO,AAAsB,qCACvB,AAAO,+BAAiC,AAAE,eAAhB,AAAO,qCAC/B,AAAO,oDACf;AAEgE,QAApE,wBAAmB,AAAO,AAAc,6BAAG,AAAO;AACY,QAA9D,oCAAoB,yBAAkB,MAAM,AAAO,AAAQ;AAElC,QAAzB;AACsC,QAAtC;AAEA,YAAI,AAAO,sCAAgB,AAAO;AACN,UAA1B;AAC0B,eAA1B;8BAAiB;;AAGU,QAA7B,mBAAa;AACiC,QAA9C,yBAA6B,AAAE,eAAZ,yBAAmB;MACxC;;;AAI4B,aAA1B;4BAAiB;AAC4B,cAA7C,AAAO;sBAAA,OAA6B;AAEX,QAAzB,AAAiB;AACI,QAAX,AAAE,eAAZ;AACe,QAAT;MACR;;AAYG,QATwB,AAAE,eAAV,wDACf;cAAC;AACO,2BAA8B,AAAE,eAAnB;AAEnB,cAAI,UAAU;AACN,sBAAoC,kBAA9B,AAAW,UAAD;AACgB,YAAtC,AAAoB,mCAAS,AAAI,GAAD;;;MAIxC;;AAGE,sBAAI,AAAO,sCACP,AAAO;AAE6D,UADtE,2BAAqB,2CACH,8BAAkD,eAAlC,AAAO;;MAE7C;;AAIyE,QADvE,wBACI,yDAA2B,gBAAgB;AAM9C,QALD,uBAAiB,AAAkD,qCAArC,4BAAsB,8BAClD,4CACyB,eAAf,+BACM;AAWhB,QAPa,AAAE,eAAjB,yCAAmC;cAAC;AAClC,cAAI,AAAO,MAAD,IAAoB;AACF,YAAX,AAAE,eAAjB;;AAEF,cAAI,AAAO,MAAD,IAAoB;AACF,YAAX,AAAE,eAAjB;;;AAIsB,QAAX,AAAE,eAAjB;MACF;;YAI0B;AACxB,cAAO,oCACS,YACP,kCACE,AAAO,AAAc,6BAAiB,kCAChC,4BACP,AAAO,oCACN,qCACI,AAAO,AAAiB,gCAAoB,mCACpC,yCACM,AAAY,AAAW,0BAApB,OAAO,wBAChB,sCAAqB,AAAY,AAAW,0BAApB,OAAO,4BAOxC,AAAO,AAAiB,gCAAoB,uCAC/C,AAAO,AAAiB,gCAAoB,qCAC3C,cACC,cACA;MAIf;;AAGS;AAEP,YAAI,AAAO;AAC0B,UAAnC,WAAW;;AAEmB,UAA9B,WAAW;;AAGb,cAAO,gCACK,yBACR,4CACU,AAAoB,2CACnB,SAAC,SAA6B;oBAA7B;oBAA6B;AACrC,8BAAI,AAAS,QAAD;AACV,sBAAI,AAAO,AAAQ,wBAAG;AAEpB,0BAAO;;AAET,wBAAO,wCACS,AAAO,iCACd,sCACe,6BACR,AAAO,6BAAiB,AAAO,8BACpC,qCACgB,AAAE,eAAf,AAAS,QAAD,sBACI,AAAE,eAAf,AAAS,QAAD,0BACH,6CACI,yCACA,AAAO;;AAM/B,sBAAO;gIAGX,QAAQ;MAGd;;AAGE,cAAO,mCACA,sCACQ,AAAO,AAAS,+BACvB,uCAAwC,eAAf,AAAO,0BAChC,kBACM,6CACH,AAAO,uCACJ,AAAO,2CACN,AAAO,sCACJ,AAAO,kCACb,AAAO,AAAY,kCACd,8BAA6B,eAAlB,AAAO,iCAAqB,AAAO,4BACrD,eAED,0DAGE,sCACC,6BACK,aACgB,eAApB,AAAO;MAItB;;AAGE,cAAO,mCACA,sCACQ,AAAO,AAAS,+BACvB,uCAAwC,eAAf,AAAO,0BAChC,kBACM,6CACH,AAAO,uCACJ,AAAO,2CACN,AAAO,sCACJ,AAAO,kCACb,AAAO,AAAY,kCACd,8BAA6B,eAAlB,AAAO,iCAAqB,AAAO,4BACrD,eAED,oCACsB,iCACjB,yBACR,iCACA,iCAC6B,iCACjB;MAKpB;;AAGE,sBAAI,AAAO,sCAAyB;AAClC,gBAAO,iDAC0B,eAAlB,oCACF,SAAC,GAAG;kBAAH;AACR,oBAAO,4DACoB,AAAE,eAApB,kDACU,AAAO,0DACZ,AAAO;;;AAK7B,sBAAI,AAAO;AACT,gBAAO,sEACY,AAAO,0DACZ,AAAO;;AAIvB,cAAO;MACT;;;AAGS;AACH,0BAAc;AAClB,YAAyB,AAAK,aAA1B,AAAO,AAAQ,6BAAQ,KAAK;AACR,UAAtB,qBAAqB;;AAEyB,UAA9C,qBAA0C,aAArB,AAAO,AAAQ,6BAAQ;;AAG9C,YAAwB,aAApB,AAAO,AAAQ,4BAAO;AACS,UAAjC,cAAc,AAAO,AAAQ;;AAG/B,YAAI,AAAO,AAAK,4BAAW,AAAO,AAAW;AAC3C,gBAAO,0BACL,gCACA,8BACQ,UACC,0CACkC,+CACZ,iCACT,mCACf,yBACK,gCACsB,sCACb,AAAO,AAAQ,+BACd,AAAO,AAAQ,iCACd,AAAO,AAAQ,oCAEjB,qFAET,oBACN,gCACsB,sCACb,+BACC,AAAO,AAAQ,iCACd,AAAO,AAAQ,mCACd,AAAO,AAAQ,sCAEC,KAAnB,AAAO,yBAAA,aAAe;cAMlC,KAAI,AAAO,4BAAgB,AAAO,AAAW;AAClD,gBAAe,0BACb,gCACA,2CAC8B,yCAAgB,AAAK,oBAAE,WAAW,YACvD,+EAET,8BACQ,UACC,0CACkC,+CACZ,iCACT,mCACf,yBACK,gCACsB,sCACb,AAAO,AAAQ,+BACd,YACC,AAAO,AAAQ,mCAEjB,qFAET,oBACN,gCACsB,sCACb,+BACC,YACC,AAAO,AAAQ,mCACd,AAAO,AAAQ,sCAEC,MAAnB,AAAO,yBAAA,cAAe;cAMlC,KAAI,AAAO,AAAK,4BAAW,AAAO;AACvC,gBAAe,0BACb,gCACA,8BACQ,UACC,0CACkC,+CACZ,iCACT,mCACf,yBACK,gCACsB,sCACb,AAAO,AAAQ,+BACd,AAAO,AAAQ,iCACd,AAAO,AAAQ,oCAEjB,qFAET,oBACN,gCACsB,sCACb,+BACC,AAAO,AAAQ,iCACd,aACC,AAAO,AAAQ,sCAEC,OAAnB,AAAO,yBAAA,eAAe,sOAKrC,gCACsB,wCAAY,kBAAkB,WAC3C;;AAIX,gBAAe,0BACb,gCACA,2CAC8B,yCAAgB,AAAK,oBAAE,WAAW,YACvD,+EAET,8BACQ,UACC,0CACkC,+CACZ,iCACT,mCACf,yBACK,gCACsB,sCACb,AAAO,AAAQ,+BACd,YACC,cAEF,qFAET,oBACN,gCACsB,sCACb,+BACC,YACC,aACC,AAAO,AAAQ,sCAEC,OAAnB,AAAO,yBAAA,eAAe,sOAKrC,AAAuB,uCACjB,gCACsB,wCAAY,kBAAkB,WAC3C,4FAET;;MAGZ;;AAGE,YAAI,AAAO;AACT,gBAAO,6CACG,AAAoB,2CACnB,SAAc,cAAkC;kBAAlC;kBAAkC;AACvD,4BAAI,AAAS,QAAD;AACV,sBAAO,qCACE,aACc,AAAE,eAAf,AAAS,QAAD,2BACJ,oDACI,AAAO,AAAa,mCAAU,OAAoB,8CAChC,AAAE,eAArB,AAAO,+CACe,AAAE,eAArB,AAAO,+CAChB,AAAO;;AAIlB,sBAAO;;;;AAKb,gBAAO;;MAEX;;AAGE,YAAI,AAAO,4BAA4B,aAAZ,AAAO,+BAAgB,AAAO;AACvD,gBAAO,8CACI,6BACF,AAAO;cAEX,KAAI,AAAO;AAChB,gBAAO,AAAO;;AAEd,gBAAO;;MAEX;;;AAGE,aAAO,AAAO;cAAA,cACV,mBACe,KAAb,AAAO,mBAAA,aAAS,kBACT,yCACwB,MAAjB,AAAO,uBAAA,cAAa,qBACL,OAAlB,AAAO,wBAAA,eAAqB,yCACZ;MAEnC;;;AAGE,cAAO,oBACU,KAAf,AAAO,qBAAA,aAAW,kBACX,yCAC0B,MAAnB,AAAO,yBAAA,cAAe,qBACL,OAApB,AAAO,0BAAA,eAAuB;MAE7C;;AAGE,YAAI,AAAO;AACT,gBAAO,AAAO;;AAEd,gBAAO;;MAEX;;;MA5de;MACF;MACA,wBAAkB;MAClB,sBAAgB;MAElB;MACK;MACK;8CACE;;+CACb;;iDACE;;MACI;gDACK;;mDACA;;MAEJ;;;IA8cnB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAGoC;;;QAA/B;;;;;EAA+B;;;;;;;;;;;;;;;;IAGI;;;QAAnC;;;;;EAAmC;;;;;;;;;;;;;;;;IAKa;;;QAAhD;;;;;EAAgD;;;;;;;;;;;;;;;;IAOa;;;QAA7D;;;;;EAA6D;;;;;;;;;;;;;;;;MA7yBrD,4BAAmB","file":"../../../../../../../E:/packages/another_flushbar/flushbar_route.dart.lib.js"}');
+  // Exports:
+  return {
+    flushbar_route: flushbar_route,
+    flushbar: flushbar
+  };
+}));
+
+//# sourceMappingURL=flushbar_route.dart.lib.js.map

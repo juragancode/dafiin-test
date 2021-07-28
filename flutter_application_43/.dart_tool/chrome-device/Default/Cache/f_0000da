@@ -1,0 +1,1060 @@
+define(['dart_sdk', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/widgets/page_view.dart', 'packages/flutter/src/animation/curves.dart', 'packages/another_transformer_page_view/src/index_controller.dart', 'packages/flutter/src/foundation/change_notifier.dart'], (function load__packages__another_transformer_page_view__src__another_transformer_page_view_dart(dart_sdk, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__widgets__page_view$46dart, packages__flutter__src__animation__curves$46dart, packages__another_transformer_page_view__src__index_controller$46dart, packages__flutter__src__foundation__change_notifier$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const notification_listener = packages__flutter__src__widgets__widget_span$46dart.src__widgets__notification_listener;
+  const scroll_notification = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_notification;
+  const binding = packages__flutter__src__widgets__widget_span$46dart.src__widgets__binding;
+  const page_view = packages__flutter__src__widgets__page_view$46dart.src__widgets__page_view;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const index_controller = packages__another_transformer_page_view__src__index_controller$46dart.src__index_controller;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  var another_transformer_page_view = Object.create(dart.library);
+  var $modulo = dartx['%'];
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $clamp = dartx.clamp;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    BuildContextAndintToWidget: () => (T.BuildContextAndintToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, core.int])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    WidgetN: () => (T.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
+    BuildContextAndWidgetNToWidget: () => (T.BuildContextAndWidgetNToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, T.WidgetN()])))(),
+    NotificationListenerOfScrollNotification: () => (T.NotificationListenerOfScrollNotification = dart.constFn(notification_listener.NotificationListener$(scroll_notification.ScrollNotification)))(),
+    ScrollNotificationTobool: () => (T.ScrollNotificationTobool = dart.constFn(dart.fnType(core.bool, [scroll_notification.ScrollNotification])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.25,
+        [Cubic_b]: 0.1,
+        [Cubic_a]: 0.25
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: basic_types.Axis.prototype,
+        [_name]: "Axis.horizontal",
+        index: 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([], T._LocationL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[3] || CT.C3,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 364,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_transformer_page_view-1.0.1/lib/src/another_transformer_page_view.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 9,
+        [_Location_line]: 357,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 9,
+        [_Location_line]: 358,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 356,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_transformer_page_view-1.0.1/lib/src/another_transformer_page_view.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 7,
+        [_Location_line]: 411,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 7,
+        [_Location_line]: 412,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPageChanged",
+        [_Location_column]: 7,
+        [_Location_line]: 413,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 7,
+        [_Location_line]: 414,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 7,
+        [_Location_line]: 415,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 7,
+        [_Location_line]: 416,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "pageSnapping",
+        [_Location_column]: 7,
+        [_Location_line]: 417,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "reverse",
+        [_Location_column]: 7,
+        [_Location_line]: 418,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 29,
+        [_Location_line]: 410,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_transformer_page_view-1.0.1/lib/src/another_transformer_page_view.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onNotification",
+        [_Location_column]: 9,
+        [_Location_line]: 424,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 437,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20, C[21] || CT.C21], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 423,
+        [_Location_file]: "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_transformer_page_view-1.0.1/lib/src/another_transformer_page_view.dart"
+      });
+    }
+  }, false);
+  var C = Array(22).fill(void 0);
+  var I = [
+    "package:another_transformer_page_view/src/another_transformer_page_view.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/another_transformer_page_view-1.0.1/lib/src/another_transformer_page_view.dart"
+  ];
+  var width$ = dart.privateName(another_transformer_page_view, "TransformInfo.width");
+  var height$ = dart.privateName(another_transformer_page_view, "TransformInfo.height");
+  var position$ = dart.privateName(another_transformer_page_view, "TransformInfo.position");
+  var index$ = dart.privateName(another_transformer_page_view, "TransformInfo.index");
+  var activeIndex$ = dart.privateName(another_transformer_page_view, "TransformInfo.activeIndex");
+  var fromIndex$ = dart.privateName(another_transformer_page_view, "TransformInfo.fromIndex");
+  var forward$ = dart.privateName(another_transformer_page_view, "TransformInfo.forward");
+  var done$ = dart.privateName(another_transformer_page_view, "TransformInfo.done");
+  var viewportFraction$ = dart.privateName(another_transformer_page_view, "TransformInfo.viewportFraction");
+  var scrollDirection$ = dart.privateName(another_transformer_page_view, "TransformInfo.scrollDirection");
+  another_transformer_page_view.TransformInfo = class TransformInfo extends core.Object {
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get position() {
+      return this[position$];
+    }
+    set position(value) {
+      super.position = value;
+    }
+    get index() {
+      return this[index$];
+    }
+    set index(value) {
+      super.index = value;
+    }
+    get activeIndex() {
+      return this[activeIndex$];
+    }
+    set activeIndex(value) {
+      super.activeIndex = value;
+    }
+    get fromIndex() {
+      return this[fromIndex$];
+    }
+    set fromIndex(value) {
+      super.fromIndex = value;
+    }
+    get forward() {
+      return this[forward$];
+    }
+    set forward(value) {
+      super.forward = value;
+    }
+    get done() {
+      return this[done$];
+    }
+    set done(value) {
+      super.done = value;
+    }
+    get viewportFraction() {
+      return this[viewportFraction$];
+    }
+    set viewportFraction(value) {
+      super.viewportFraction = value;
+    }
+    get scrollDirection() {
+      return this[scrollDirection$];
+    }
+    set scrollDirection(value) {
+      super.scrollDirection = value;
+    }
+  };
+  (another_transformer_page_view.TransformInfo.new = function(opts) {
+    let index = opts && 'index' in opts ? opts.index : null;
+    let position = opts && 'position' in opts ? opts.position : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let activeIndex = opts && 'activeIndex' in opts ? opts.activeIndex : null;
+    let fromIndex = opts && 'fromIndex' in opts ? opts.fromIndex : null;
+    let forward = opts && 'forward' in opts ? opts.forward : null;
+    let done = opts && 'done' in opts ? opts.done : null;
+    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : null;
+    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : null;
+    this[index$] = index;
+    this[position$] = position;
+    this[width$] = width;
+    this[height$] = height;
+    this[activeIndex$] = activeIndex;
+    this[fromIndex$] = fromIndex;
+    this[forward$] = forward;
+    this[done$] = done;
+    this[viewportFraction$] = viewportFraction;
+    this[scrollDirection$] = scrollDirection;
+    ;
+  }).prototype = another_transformer_page_view.TransformInfo.prototype;
+  dart.addTypeTests(another_transformer_page_view.TransformInfo);
+  dart.addTypeCaches(another_transformer_page_view.TransformInfo);
+  dart.setLibraryUri(another_transformer_page_view.TransformInfo, I[0]);
+  dart.setFieldSignature(another_transformer_page_view.TransformInfo, () => ({
+    __proto__: dart.getFields(another_transformer_page_view.TransformInfo.__proto__),
+    width: dart.finalFieldType(dart.nullable(core.double)),
+    height: dart.finalFieldType(dart.nullable(core.double)),
+    position: dart.finalFieldType(dart.nullable(core.double)),
+    index: dart.finalFieldType(dart.nullable(core.int)),
+    activeIndex: dart.finalFieldType(dart.nullable(core.int)),
+    fromIndex: dart.finalFieldType(dart.nullable(core.int)),
+    forward: dart.finalFieldType(dart.nullable(core.bool)),
+    done: dart.finalFieldType(dart.nullable(core.bool)),
+    viewportFraction: dart.finalFieldType(dart.nullable(core.double)),
+    scrollDirection: dart.finalFieldType(dart.nullable(basic_types.Axis))
+  }));
+  var reverse$ = dart.privateName(another_transformer_page_view, "PageTransformer.reverse");
+  another_transformer_page_view.PageTransformer = class PageTransformer extends core.Object {
+    get reverse() {
+      return this[reverse$];
+    }
+    set reverse(value) {
+      super.reverse = value;
+    }
+  };
+  (another_transformer_page_view.PageTransformer.new = function(opts) {
+    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
+    if (reverse == null) dart.nullFailed(I[1], 77, 25, "reverse");
+    this[reverse$] = reverse;
+    ;
+  }).prototype = another_transformer_page_view.PageTransformer.prototype;
+  dart.addTypeTests(another_transformer_page_view.PageTransformer);
+  dart.addTypeCaches(another_transformer_page_view.PageTransformer);
+  dart.setLibraryUri(another_transformer_page_view.PageTransformer, I[0]);
+  dart.setFieldSignature(another_transformer_page_view.PageTransformer, () => ({
+    __proto__: dart.getFields(another_transformer_page_view.PageTransformer.__proto__),
+    reverse: dart.finalFieldType(core.bool)
+  }));
+  var builder$ = dart.privateName(another_transformer_page_view, "PageTransformerBuilder.builder");
+  another_transformer_page_view.PageTransformerBuilder = class PageTransformerBuilder extends another_transformer_page_view.PageTransformer {
+    get builder() {
+      return this[builder$];
+    }
+    set builder(value) {
+      super.builder = value;
+    }
+    transform(child, info) {
+      let t1, t0;
+      if (child == null) dart.nullFailed(I[1], 93, 27, "child");
+      if (info == null) dart.nullFailed(I[1], 93, 48, "info");
+      t0 = child;
+      t1 = info;
+      return this.builder(t0, t1);
+    }
+  };
+  (another_transformer_page_view.PageTransformerBuilder.new = function(opts) {
+    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
+    if (reverse == null) dart.nullFailed(I[1], 89, 32, "reverse");
+    let builder = opts && 'builder' in opts ? opts.builder : null;
+    if (builder == null) dart.nullFailed(I[1], 89, 63, "builder");
+    this[builder$] = builder;
+    another_transformer_page_view.PageTransformerBuilder.__proto__.new.call(this, {reverse: reverse});
+    ;
+  }).prototype = another_transformer_page_view.PageTransformerBuilder.prototype;
+  dart.addTypeTests(another_transformer_page_view.PageTransformerBuilder);
+  dart.addTypeCaches(another_transformer_page_view.PageTransformerBuilder);
+  dart.setMethodSignature(another_transformer_page_view.PageTransformerBuilder, () => ({
+    __proto__: dart.getMethods(another_transformer_page_view.PageTransformerBuilder.__proto__),
+    transform: dart.fnType(framework.Widget, [framework.Widget, another_transformer_page_view.TransformInfo])
+  }));
+  dart.setLibraryUri(another_transformer_page_view.PageTransformerBuilder, I[0]);
+  dart.setFieldSignature(another_transformer_page_view.PageTransformerBuilder, () => ({
+    __proto__: dart.getFields(another_transformer_page_view.PageTransformerBuilder.__proto__),
+    builder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.Widget, another_transformer_page_view.TransformInfo]))
+  }));
+  var loop$ = dart.privateName(another_transformer_page_view, "TransformerPageController.loop");
+  var itemCount$ = dart.privateName(another_transformer_page_view, "TransformerPageController.itemCount");
+  var reverse$0 = dart.privateName(another_transformer_page_view, "TransformerPageController.reverse");
+  another_transformer_page_view.TransformerPageController = class TransformerPageController extends page_view.PageController {
+    get loop() {
+      return this[loop$];
+    }
+    set loop(value) {
+      super.loop = value;
+    }
+    get itemCount() {
+      return this[itemCount$];
+    }
+    set itemCount(value) {
+      super.itemCount = value;
+    }
+    get reverse() {
+      return this[reverse$0];
+    }
+    set reverse(value) {
+      super.reverse = value;
+    }
+    getRenderIndexFromRealIndex(index) {
+      if (index == null) dart.nullFailed(I[1], 116, 40, "index");
+      return another_transformer_page_view.TransformerPageController._getRenderIndexFromRealIndex(index, this.loop, this.itemCount, this.reverse);
+    }
+    getRealItemCount() {
+      if (this.itemCount === 0) return 0;
+      return dart.test(this.loop) ? dart.nullCheck(this.itemCount) + 2000000000 : this.itemCount;
+    }
+    static _getRenderIndexFromRealIndex(index, loop, itemCount, reverse) {
+      if (index == null) dart.nullFailed(I[1], 126, 11, "index");
+      if (loop == null) dart.nullFailed(I[1], 126, 23, "loop");
+      if (reverse == null) dart.nullFailed(I[1], 126, 50, "reverse");
+      if (itemCount === 0) return 0;
+      let renderIndex = null;
+      if (dart.test(loop)) {
+        renderIndex = dart.notNull(index) - 1000000000;
+        renderIndex = renderIndex[$modulo](dart.nullCheck(itemCount));
+        if (dart.notNull(renderIndex) < 0) {
+          renderIndex = dart.notNull(renderIndex) + dart.notNull(itemCount);
+        }
+      } else {
+        renderIndex = index;
+      }
+      if (dart.test(reverse)) {
+        renderIndex = dart.nullCheck(itemCount) - dart.notNull(renderIndex) - 1;
+      }
+      return renderIndex;
+    }
+    get realPage() {
+      return super.page;
+    }
+    static _getRenderPageFromRealPage(page, loop, itemCount, reverse) {
+      if (loop == null) dart.nullFailed(I[1], 150, 26, "loop");
+      if (reverse == null) dart.nullFailed(I[1], 150, 53, "reverse");
+      let renderPage = null;
+      if (dart.test(loop)) {
+        renderPage = dart.nullCheck(page) - 1000000000;
+        renderPage = renderPage[$modulo](dart.nullCheck(itemCount));
+        if (dart.notNull(renderPage) < 0) {
+          renderPage = dart.notNull(renderPage) + dart.notNull(itemCount);
+        }
+      } else {
+        renderPage = page;
+      }
+      if (dart.test(reverse)) {
+        renderPage = dart.nullCheck(itemCount) - dart.nullCheck(renderPage) - 1;
+      }
+      return renderPage;
+    }
+    get page() {
+      return dart.test(this.loop) ? another_transformer_page_view.TransformerPageController._getRenderPageFromRealPage(this.realPage, this.loop, this.itemCount, this.reverse) : this.realPage;
+    }
+    getRealIndexFromRenderIndex(index) {
+      return another_transformer_page_view.TransformerPageController._getRealIndexFromRenderIndex(index, this.loop, this.itemCount, this.reverse);
+    }
+    static _getRealIndexFromRenderIndex(index, loop, itemCount, reverse) {
+      if (loop == null) dart.nullFailed(I[1], 180, 24, "loop");
+      if (reverse == null) dart.nullFailed(I[1], 180, 51, "reverse");
+      let result = null;
+      if (dart.test(reverse)) {
+        result = dart.nullCheck(itemCount) - dart.nullCheck(index) - 1;
+      } else {
+        result = dart.nullCheck(index);
+      }
+      if (dart.test(loop)) {
+        result = dart.notNull(result) + 1000000000;
+      }
+      return result;
+    }
+  };
+  (another_transformer_page_view.TransformerPageController.new = function(opts) {
+    let t0;
+    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
+    let keepPage = opts && 'keepPage' in opts ? opts.keepPage : true;
+    if (keepPage == null) dart.nullFailed(I[1], 105, 10, "keepPage");
+    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 1;
+    if (viewportFraction == null) dart.nullFailed(I[1], 106, 12, "viewportFraction");
+    let loop = opts && 'loop' in opts ? opts.loop : false;
+    if (loop == null) dart.nullFailed(I[1], 107, 10, "loop");
+    let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
+    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
+    if (reverse == null) dart.nullFailed(I[1], 109, 10, "reverse");
+    this[loop$] = loop;
+    this[itemCount$] = itemCount;
+    this[reverse$0] = reverse;
+    another_transformer_page_view.TransformerPageController.__proto__.new.call(this, {initialPage: dart.nullCheck(another_transformer_page_view.TransformerPageController._getRealIndexFromRenderIndex((t0 = initialPage, t0 == null ? 0 : t0), loop, itemCount, reverse)), keepPage: keepPage, viewportFraction: viewportFraction});
+    ;
+  }).prototype = another_transformer_page_view.TransformerPageController.prototype;
+  dart.addTypeTests(another_transformer_page_view.TransformerPageController);
+  dart.addTypeCaches(another_transformer_page_view.TransformerPageController);
+  dart.setMethodSignature(another_transformer_page_view.TransformerPageController, () => ({
+    __proto__: dart.getMethods(another_transformer_page_view.TransformerPageController.__proto__),
+    getRenderIndexFromRealIndex: dart.fnType(dart.nullable(core.int), [core.int]),
+    getRealItemCount: dart.fnType(dart.nullable(core.int), []),
+    getRealIndexFromRenderIndex: dart.fnType(dart.nullable(core.int), [dart.nullable(core.int)])
+  }));
+  dart.setGetterSignature(another_transformer_page_view.TransformerPageController, () => ({
+    __proto__: dart.getGetters(another_transformer_page_view.TransformerPageController.__proto__),
+    realPage: dart.nullable(core.double)
+  }));
+  dart.setLibraryUri(another_transformer_page_view.TransformerPageController, I[0]);
+  dart.setFieldSignature(another_transformer_page_view.TransformerPageController, () => ({
+    __proto__: dart.getFields(another_transformer_page_view.TransformerPageController.__proto__),
+    loop: dart.finalFieldType(core.bool),
+    itemCount: dart.finalFieldType(dart.nullable(core.int)),
+    reverse: dart.finalFieldType(core.bool)
+  }));
+  var transformer$ = dart.privateName(another_transformer_page_view, "TransformerPageView.transformer");
+  var scrollDirection$0 = dart.privateName(another_transformer_page_view, "TransformerPageView.scrollDirection");
+  var physics$ = dart.privateName(another_transformer_page_view, "TransformerPageView.physics");
+  var pageSnapping$ = dart.privateName(another_transformer_page_view, "TransformerPageView.pageSnapping");
+  var onPageChanged$ = dart.privateName(another_transformer_page_view, "TransformerPageView.onPageChanged");
+  var itemBuilder$ = dart.privateName(another_transformer_page_view, "TransformerPageView.itemBuilder");
+  var controller$ = dart.privateName(another_transformer_page_view, "TransformerPageView.controller");
+  var duration$ = dart.privateName(another_transformer_page_view, "TransformerPageView.duration");
+  var curve$ = dart.privateName(another_transformer_page_view, "TransformerPageView.curve");
+  var pageController$ = dart.privateName(another_transformer_page_view, "TransformerPageView.pageController");
+  var loop$0 = dart.privateName(another_transformer_page_view, "TransformerPageView.loop");
+  var itemCount$0 = dart.privateName(another_transformer_page_view, "TransformerPageView.itemCount");
+  var viewportFraction$0 = dart.privateName(another_transformer_page_view, "TransformerPageView.viewportFraction");
+  var index$0 = dart.privateName(another_transformer_page_view, "TransformerPageView.index");
+  var Cubic_d = dart.privateName(curves, "Cubic.d");
+  var Cubic_c = dart.privateName(curves, "Cubic.c");
+  var Cubic_b = dart.privateName(curves, "Cubic.b");
+  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  var _name = dart.privateName(basic_types, "_name");
+  another_transformer_page_view.TransformerPageView = class TransformerPageView extends framework.StatefulWidget {
+    get transformer() {
+      return this[transformer$];
+    }
+    set transformer(value) {
+      super.transformer = value;
+    }
+    get scrollDirection() {
+      return this[scrollDirection$0];
+    }
+    set scrollDirection(value) {
+      super.scrollDirection = value;
+    }
+    get physics() {
+      return this[physics$];
+    }
+    set physics(value) {
+      super.physics = value;
+    }
+    get pageSnapping() {
+      return this[pageSnapping$];
+    }
+    set pageSnapping(value) {
+      super.pageSnapping = value;
+    }
+    get onPageChanged() {
+      return this[onPageChanged$];
+    }
+    set onPageChanged(value) {
+      super.onPageChanged = value;
+    }
+    get itemBuilder() {
+      return this[itemBuilder$];
+    }
+    set itemBuilder(value) {
+      super.itemBuilder = value;
+    }
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    get duration() {
+      return this[duration$];
+    }
+    set duration(value) {
+      super.duration = value;
+    }
+    get curve() {
+      return this[curve$];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    get pageController() {
+      return this[pageController$];
+    }
+    set pageController(value) {
+      super.pageController = value;
+    }
+    get loop() {
+      return this[loop$0];
+    }
+    set loop(value) {
+      super.loop = value;
+    }
+    get itemCount() {
+      return this[itemCount$0];
+    }
+    set itemCount(value) {
+      super.itemCount = value;
+    }
+    get viewportFraction() {
+      return this[viewportFraction$0];
+    }
+    set viewportFraction(value) {
+      super.viewportFraction = value;
+    }
+    get index() {
+      return this[index$0];
+    }
+    set index(value) {
+      super.index = value;
+    }
+    static children(opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let index = opts && 'index' in opts ? opts.index : null;
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let curve = opts && 'curve' in opts ? opts.curve : C[0] || CT.C0;
+      if (curve == null) dart.nullFailed(I[1], 278, 13, "curve");
+      let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 1;
+      let loop = opts && 'loop' in opts ? opts.loop : false;
+      if (loop == null) dart.nullFailed(I[1], 280, 12, "loop");
+      let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[1] || CT.C1;
+      if (scrollDirection == null) dart.nullFailed(I[1], 281, 12, "scrollDirection");
+      let physics = opts && 'physics' in opts ? opts.physics : null;
+      let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
+      if (pageSnapping == null) dart.nullFailed(I[1], 283, 12, "pageSnapping");
+      let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
+      let controller = opts && 'controller' in opts ? opts.controller : null;
+      let transformer = opts && 'transformer' in opts ? opts.transformer : null;
+      let children = opts && 'children' in opts ? opts.children : null;
+      if (children == null) dart.nullFailed(I[1], 287, 29, "children");
+      let pageController = opts && 'pageController' in opts ? opts.pageController : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      return new another_transformer_page_view.TransformerPageView.new({itemCount: children[$length], itemBuilder: dart.fn((context, index) => {
+          if (context == null) dart.nullFailed(I[1], 291, 34, "context");
+          if (index == null) dart.nullFailed(I[1], 291, 47, "index");
+          return children[$_get](index);
+        }, T.BuildContextAndintToWidget()), pageController: pageController, transformer: transformer, pageSnapping: pageSnapping, key: key, index: index, duration: duration, curve: curve, viewportFraction: core.double.as(viewportFraction), scrollDirection: scrollDirection, physics: physics, onPageChanged: onPageChanged, controller: controller, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    }
+    createState() {
+      return new another_transformer_page_view._TransformerPageViewState.new();
+    }
+    static getRealIndexFromRenderIndex(opts) {
+      let reverse = opts && 'reverse' in opts ? opts.reverse : null;
+      if (reverse == null) dart.nullFailed(I[1], 315, 22, "reverse");
+      let index = opts && 'index' in opts ? opts.index : null;
+      let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
+      let loop = opts && 'loop' in opts ? opts.loop : null;
+      if (loop == null) dart.nullFailed(I[1], 315, 73, "loop");
+      let initPage = dart.test(reverse) ? dart.nullCheck(itemCount) - dart.nullCheck(index) - 1 : dart.nullCheck(index);
+      if (dart.test(loop)) {
+        initPage = initPage + 1000000000;
+      }
+      return initPage;
+    }
+    static createPageController(opts) {
+      let reverse = opts && 'reverse' in opts ? opts.reverse : null;
+      if (reverse == null) dart.nullFailed(I[1], 324, 22, "reverse");
+      let index = opts && 'index' in opts ? opts.index : null;
+      let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
+      let loop = opts && 'loop' in opts ? opts.loop : null;
+      if (loop == null) dart.nullFailed(I[1], 327, 21, "loop");
+      let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : null;
+      if (viewportFraction == null) dart.nullFailed(I[1], 328, 23, "viewportFraction");
+      return new page_view.PageController.new({initialPage: dart.nullCheck(another_transformer_page_view.TransformerPageView.getRealIndexFromRenderIndex({reverse: reverse, index: index, itemCount: itemCount, loop: loop})), viewportFraction: viewportFraction});
+    }
+  };
+  (another_transformer_page_view.TransformerPageView.new = function(opts) {
+    let t0;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let index = opts && 'index' in opts ? opts.index : null;
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    let curve = opts && 'curve' in opts ? opts.curve : C[0] || CT.C0;
+    if (curve == null) dart.nullFailed(I[1], 257, 10, "curve");
+    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 1;
+    if (viewportFraction == null) dart.nullFailed(I[1], 258, 10, "viewportFraction");
+    let loop = opts && 'loop' in opts ? opts.loop : false;
+    if (loop == null) dart.nullFailed(I[1], 259, 10, "loop");
+    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[1] || CT.C1;
+    if (scrollDirection == null) dart.nullFailed(I[1], 260, 10, "scrollDirection");
+    let physics = opts && 'physics' in opts ? opts.physics : null;
+    let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
+    if (pageSnapping == null) dart.nullFailed(I[1], 262, 10, "pageSnapping");
+    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let transformer = opts && 'transformer' in opts ? opts.transformer : null;
+    let itemBuilder = opts && 'itemBuilder' in opts ? opts.itemBuilder : null;
+    let pageController = opts && 'pageController' in opts ? opts.pageController : null;
+    let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
+    if (itemCount == null) dart.nullFailed(I[1], 268, 19, "itemCount");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[index$0] = index;
+    this[curve$] = curve;
+    this[viewportFraction$0] = viewportFraction;
+    this[loop$0] = loop;
+    this[scrollDirection$0] = scrollDirection;
+    this[physics$] = physics;
+    this[pageSnapping$] = pageSnapping;
+    this[onPageChanged$] = onPageChanged;
+    this[controller$] = controller;
+    this[transformer$] = transformer;
+    this[itemBuilder$] = itemBuilder;
+    this[pageController$] = pageController;
+    this[itemCount$0] = itemCount;
+    if (!(itemCount === 0 || itemBuilder != null || transformer != null)) dart.assertFailed(null, I[1], 269, 16, "itemCount == 0 || itemBuilder != null || transformer != null");
+    this[duration$] = (t0 = duration, t0 == null ? new core.Duration.new({milliseconds: 300}) : t0);
+    another_transformer_page_view.TransformerPageView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = another_transformer_page_view.TransformerPageView.prototype;
+  dart.addTypeTests(another_transformer_page_view.TransformerPageView);
+  dart.addTypeCaches(another_transformer_page_view.TransformerPageView);
+  dart.setMethodSignature(another_transformer_page_view.TransformerPageView, () => ({
+    __proto__: dart.getMethods(another_transformer_page_view.TransformerPageView.__proto__),
+    createState: dart.fnType(framework.State$(framework.StatefulWidget), [])
+  }));
+  dart.setLibraryUri(another_transformer_page_view.TransformerPageView, I[0]);
+  dart.setFieldSignature(another_transformer_page_view.TransformerPageView, () => ({
+    __proto__: dart.getFields(another_transformer_page_view.TransformerPageView.__proto__),
+    transformer: dart.finalFieldType(dart.nullable(another_transformer_page_view.PageTransformer)),
+    scrollDirection: dart.finalFieldType(basic_types.Axis),
+    physics: dart.finalFieldType(dart.nullable(scroll_physics.ScrollPhysics)),
+    pageSnapping: dart.finalFieldType(core.bool),
+    onPageChanged: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.nullable(core.int)]))),
+    itemBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, core.int]))),
+    controller: dart.finalFieldType(dart.nullable(index_controller.IndexController)),
+    duration: dart.finalFieldType(core.Duration),
+    curve: dart.finalFieldType(curves.Curve),
+    pageController: dart.finalFieldType(dart.nullable(another_transformer_page_view.TransformerPageController)),
+    loop: dart.finalFieldType(core.bool),
+    itemCount: dart.finalFieldType(core.int),
+    viewportFraction: dart.finalFieldType(core.double),
+    index: dart.finalFieldType(dart.nullable(core.int))
+  }));
+  var _size = dart.privateName(another_transformer_page_view, "_size");
+  var ___TransformerPageViewState__activeIndex = dart.privateName(another_transformer_page_view, "_#_TransformerPageViewState#_activeIndex");
+  var ___TransformerPageViewState__activeIndex_isSet = dart.privateName(another_transformer_page_view, "_#_TransformerPageViewState#_activeIndex#isSet");
+  var _currentPixels = dart.privateName(another_transformer_page_view, "_currentPixels");
+  var _done = dart.privateName(another_transformer_page_view, "_done");
+  var _fromIndex = dart.privateName(another_transformer_page_view, "_fromIndex");
+  var _transformer = dart.privateName(another_transformer_page_view, "_transformer");
+  var _pageController = dart.privateName(another_transformer_page_view, "_pageController");
+  var _controller = dart.privateName(another_transformer_page_view, "_controller");
+  var _activeIndex = dart.privateName(another_transformer_page_view, "_activeIndex");
+  var _buildItemNormal = dart.privateName(another_transformer_page_view, "_buildItemNormal");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _buildItem = dart.privateName(another_transformer_page_view, "_buildItem");
+  var _calcCurrentPixels = dart.privateName(another_transformer_page_view, "_calcCurrentPixels");
+  var _onIndexChanged = dart.privateName(another_transformer_page_view, "_onIndexChanged");
+  var _onGetSize = dart.privateName(another_transformer_page_view, "_onGetSize");
+  var _calcNextIndex = dart.privateName(another_transformer_page_view, "_calcNextIndex");
+  another_transformer_page_view._TransformerPageViewState = class _TransformerPageViewState extends framework.State$(another_transformer_page_view.TransformerPageView) {
+    get [_activeIndex]() {
+      let t0;
+      return dart.test(this[___TransformerPageViewState__activeIndex_isSet]) ? (t0 = this[___TransformerPageViewState__activeIndex], t0) : dart.throw(new _internal.LateError.fieldNI("_activeIndex"));
+    }
+    set [_activeIndex](t0) {
+      if (t0 == null) dart.nullFailed(I[1], 338, 12, "null");
+      this[___TransformerPageViewState__activeIndex_isSet] = true;
+      this[___TransformerPageViewState__activeIndex] = t0;
+    }
+    [_buildItemNormal](context, index) {
+      if (context == null) dart.nullFailed(I[1], 349, 40, "context");
+      if (index == null) dart.nullFailed(I[1], 349, 53, "index");
+      let renderIndex = dart.nullCheck(dart.nullCheck(this[_pageController]).getRenderIndexFromRealIndex(index));
+      let child = dart.nullCheck(this.widget.itemBuilder)(context, renderIndex);
+      return child;
+    }
+    [_buildItem](context, index) {
+      if (context == null) dart.nullFailed(I[1], 355, 34, "context");
+      if (index == null) dart.nullFailed(I[1], 355, 47, "index");
+      return new transitions.AnimatedBuilder.new({animation: dart.nullCheck(this[_pageController]), builder: dart.fn((c, w) => {
+          if (c == null) dart.nullFailed(I[1], 358, 32, "c");
+          let renderIndex = dart.nullCheck(this[_pageController]).getRenderIndexFromRealIndex(index);
+          let child = null;
+          if (this.widget.itemBuilder != null) {
+            child = dart.nullCheck(this.widget.itemBuilder)(context, dart.nullCheck(renderIndex));
+          }
+          child == null ? child = new container.Container.new({$creationLocationd_0dea112b090073317d4: C[2] || CT.C2}) : null;
+          if (this[_size] == null) {
+            return child;
+          }
+          let position = null;
+          let page = dart.nullCheck(this[_pageController]).realPage;
+          if (dart.test(dart.nullCheck(this[_transformer]).reverse)) {
+            position = dart.nullCheck(page) - dart.notNull(index);
+          } else {
+            position = dart.notNull(index) - dart.nullCheck(page);
+          }
+          position = dart.notNull(position) * dart.notNull(this.widget.viewportFraction);
+          let info = new another_transformer_page_view.TransformInfo.new({index: renderIndex, width: dart.nullCheck(this[_size]).width, height: dart.nullCheck(this[_size]).height, position: position[$clamp](-1.0, 1.0), activeIndex: dart.nullCheck(this[_pageController]).getRenderIndexFromRealIndex(this[_activeIndex]), fromIndex: this[_fromIndex], forward: dart.notNull(dart.nullCheck(this[_pageController]).position.pixels) - dart.nullCheck(this[_currentPixels]) >= 0, done: this[_done], scrollDirection: this.widget.scrollDirection, viewportFraction: this.widget.viewportFraction});
+          return dart.nullCheck(this[_transformer]).transform(child, info);
+        }, T.BuildContextAndWidgetNToWidget()), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+    }
+    [_calcCurrentPixels]() {
+      this[_currentPixels] = dart.nullCheck(dart.nullCheck(this[_pageController]).getRenderIndexFromRealIndex(this[_activeIndex])) * dart.notNull(dart.nullCheck(this[_pageController]).position.viewportDimension) * dart.notNull(this.widget.viewportFraction);
+      return this[_currentPixels];
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[1], 408, 29, "context");
+      let builder = this[_transformer] == null ? dart.bind(this, _buildItemNormal) : dart.bind(this, _buildItem);
+      let child = new page_view.PageView.builder({itemBuilder: builder, itemCount: dart.nullCheck(this[_pageController]).getRealItemCount(), onPageChanged: dart.bind(this, _onIndexChanged), controller: this[_pageController], scrollDirection: this.widget.scrollDirection, physics: this.widget.physics, pageSnapping: this.widget.pageSnapping, reverse: dart.nullCheck(this[_pageController]).reverse, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+      if (this[_transformer] == null) {
+        return child;
+      }
+      return new (T.NotificationListenerOfScrollNotification()).new({onNotification: dart.fn(notification => {
+          if (notification == null) dart.nullFailed(I[1], 424, 45, "notification");
+          if (scroll_notification.ScrollStartNotification.is(notification)) {
+            this[_calcCurrentPixels]();
+            this[_done] = false;
+            this[_fromIndex] = this[_activeIndex];
+          } else if (scroll_notification.ScrollEndNotification.is(notification)) {
+            this[_calcCurrentPixels]();
+            this[_fromIndex] = this[_activeIndex];
+            this[_done] = true;
+          }
+          return false;
+        }, T.ScrollNotificationTobool()), child: child, $creationLocationd_0dea112b090073317d4: C[18] || CT.C18});
+    }
+    [_onIndexChanged](index) {
+      if (index == null) dart.nullFailed(I[1], 440, 28, "index");
+      this[_activeIndex] = index;
+      if (this.widget.onPageChanged != null) {
+        dart.nullCheck(this.widget.onPageChanged)(dart.nullCheck(this[_pageController]).getRenderIndexFromRealIndex(index));
+      }
+    }
+    [_onGetSize](_) {
+      let size = null;
+      let renderObject = this.context.findRenderObject();
+      if (renderObject != null) {
+        let bounds = renderObject.paintBounds;
+        size = bounds.size;
+      }
+      this[_calcCurrentPixels]();
+      this.onGetSize(size);
+    }
+    onGetSize(size) {
+      if (dart.test(this.mounted)) {
+        this.setState(dart.fn(() => {
+          this[_size] = size;
+        }, T.VoidTovoid()));
+      }
+    }
+    initState() {
+      this[_transformer] = this.widget.transformer;
+      this[_pageController] = this.widget.pageController;
+      this[_pageController] == null ? this[_pageController] = new another_transformer_page_view.TransformerPageController.new({initialPage: this.widget.index, itemCount: this.widget.itemCount, loop: this.widget.loop, reverse: this.widget.transformer == null ? false : dart.nullCheck(this.widget.transformer).reverse}) : null;
+      this[_fromIndex] = this[_activeIndex] = dart.nullCheck(this[_pageController]).initialPage;
+      this[_controller] = this.getNotifier();
+      if (this[_controller] != null) {
+        dart.nullCheck(this[_controller]).addListener(dart.bind(this, 'onChangeNotifier'));
+      }
+      super.initState();
+    }
+    didUpdateWidget(oldWidget) {
+      let t1;
+      another_transformer_page_view.TransformerPageView.as(oldWidget);
+      if (oldWidget == null) dart.nullFailed(I[1], 491, 44, "oldWidget");
+      this[_transformer] = this.widget.transformer;
+      let index = (t1 = this.widget.index, t1 == null ? 0 : t1);
+      let created = false;
+      if (!dart.equals(this[_pageController], this.widget.pageController)) {
+        if (this.widget.pageController != null) {
+          this[_pageController] = this.widget.pageController;
+        } else {
+          created = true;
+          this[_pageController] = new another_transformer_page_view.TransformerPageController.new({initialPage: this.widget.index, itemCount: this.widget.itemCount, loop: this.widget.loop, reverse: this.widget.transformer == null ? false : dart.nullCheck(this.widget.transformer).reverse});
+        }
+      }
+      if (dart.nullCheck(this[_pageController]).getRenderIndexFromRealIndex(this[_activeIndex]) != index) {
+        this[_fromIndex] = this[_activeIndex] = dart.nullCheck(this[_pageController]).initialPage;
+        if (!created) {
+          let initPage = dart.nullCheck(dart.nullCheck(this[_pageController]).getRealIndexFromRenderIndex(index));
+          dart.nullCheck(this[_pageController]).animateToPage(initPage, {duration: this.widget.duration, curve: this.widget.curve});
+        }
+      }
+      if (this[_transformer] != null) {
+        dart.nullCheck(binding.WidgetsBinding.instance).addPostFrameCallback(dart.bind(this, _onGetSize));
+      }
+      if (!dart.equals(this[_controller], this.getNotifier())) {
+        if (this[_controller] != null) {
+          dart.nullCheck(this[_controller]).removeListener(dart.bind(this, 'onChangeNotifier'));
+        }
+        this[_controller] = this.getNotifier();
+        if (this[_controller] != null) {
+          dart.nullCheck(this[_controller]).addListener(dart.bind(this, 'onChangeNotifier'));
+        }
+      }
+      super.didUpdateWidget(oldWidget);
+    }
+    didChangeDependencies() {
+      if (this[_transformer] != null) {
+        dart.nullCheck(binding.WidgetsBinding.instance).addPostFrameCallback(dart.bind(this, _onGetSize));
+      }
+      super.didChangeDependencies();
+    }
+    getNotifier() {
+      return this.widget.controller;
+    }
+    [_calcNextIndex](next) {
+      if (next == null) dart.nullFailed(I[1], 546, 27, "next");
+      let currentIndex = this[_activeIndex];
+      if (dart.test(dart.nullCheck(this[_pageController]).reverse)) {
+        if (dart.test(next)) {
+          currentIndex = dart.notNull(currentIndex) - 1;
+        } else {
+          currentIndex = dart.notNull(currentIndex) + 1;
+        }
+      } else {
+        if (dart.test(next)) {
+          currentIndex = dart.notNull(currentIndex) + 1;
+        } else {
+          currentIndex = dart.notNull(currentIndex) - 1;
+        }
+      }
+      if (!dart.test(dart.nullCheck(this[_pageController]).loop)) {
+        if (dart.notNull(currentIndex) >= dart.nullCheck(dart.nullCheck(this[_pageController]).itemCount)) {
+          currentIndex = 0;
+        } else if (dart.notNull(currentIndex) < 0) {
+          currentIndex = dart.nullCheck(dart.nullCheck(this[_pageController]).itemCount) - 1;
+        }
+      }
+      return currentIndex;
+    }
+    onChangeNotifier() {
+      let event = dart.nullCheck(this.widget.controller).event;
+      let index = null;
+      switch (event) {
+        case 0:
+        {
+          {
+            index = dart.nullCheck(this[_pageController]).getRealIndexFromRenderIndex(dart.nullCheck(this.widget.controller).index);
+          }
+          break;
+        }
+        case -1:
+        case 1:
+        {
+          {
+            index = this[_calcNextIndex](event === 1);
+          }
+          break;
+        }
+        default:
+        {
+          return;
+        }
+      }
+      if (dart.test(dart.nullCheck(this.widget.controller).animation)) {
+        dart.nullCheck(this[_pageController]).animateToPage(dart.nullCheck(index), {duration: this.widget.duration, curve: this.widget.curve}).whenComplete(dart.bind(dart.nullCheck(this.widget.controller), 'complete'));
+      } else {
+        dart.nullCheck(this[_pageController]).jumpToPage(dart.nullCheck(index));
+        dart.nullCheck(this.widget.controller).complete();
+      }
+    }
+    dispose() {
+      super.dispose();
+      if (this[_controller] != null) {
+        dart.nullCheck(this[_controller]).removeListener(dart.bind(this, 'onChangeNotifier'));
+      }
+    }
+  };
+  (another_transformer_page_view._TransformerPageViewState.new = function() {
+    this[_size] = null;
+    this[___TransformerPageViewState__activeIndex] = null;
+    this[___TransformerPageViewState__activeIndex_isSet] = false;
+    this[_currentPixels] = null;
+    this[_done] = false;
+    this[_fromIndex] = null;
+    this[_transformer] = null;
+    this[_pageController] = null;
+    this[_controller] = null;
+    another_transformer_page_view._TransformerPageViewState.__proto__.new.call(this);
+    ;
+  }).prototype = another_transformer_page_view._TransformerPageViewState.prototype;
+  dart.addTypeTests(another_transformer_page_view._TransformerPageViewState);
+  dart.addTypeCaches(another_transformer_page_view._TransformerPageViewState);
+  dart.setMethodSignature(another_transformer_page_view._TransformerPageViewState, () => ({
+    __proto__: dart.getMethods(another_transformer_page_view._TransformerPageViewState.__proto__),
+    [_buildItemNormal]: dart.fnType(framework.Widget, [framework.BuildContext, core.int]),
+    [_buildItem]: dart.fnType(framework.Widget, [framework.BuildContext, core.int]),
+    [_calcCurrentPixels]: dart.fnType(dart.nullable(core.double), []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_onIndexChanged]: dart.fnType(dart.void, [core.int]),
+    [_onGetSize]: dart.fnType(dart.void, [dart.dynamic]),
+    onGetSize: dart.fnType(dart.void, [dart.nullable(ui.Size)]),
+    getNotifier: dart.fnType(dart.nullable(change_notifier.ChangeNotifier), []),
+    [_calcNextIndex]: dart.fnType(core.int, [core.bool]),
+    onChangeNotifier: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(another_transformer_page_view._TransformerPageViewState, () => ({
+    __proto__: dart.getGetters(another_transformer_page_view._TransformerPageViewState.__proto__),
+    [_activeIndex]: core.int
+  }));
+  dart.setSetterSignature(another_transformer_page_view._TransformerPageViewState, () => ({
+    __proto__: dart.getSetters(another_transformer_page_view._TransformerPageViewState.__proto__),
+    [_activeIndex]: core.int
+  }));
+  dart.setLibraryUri(another_transformer_page_view._TransformerPageViewState, I[0]);
+  dart.setFieldSignature(another_transformer_page_view._TransformerPageViewState, () => ({
+    __proto__: dart.getFields(another_transformer_page_view._TransformerPageViewState.__proto__),
+    [_size]: dart.fieldType(dart.nullable(ui.Size)),
+    [___TransformerPageViewState__activeIndex]: dart.fieldType(dart.nullable(core.int)),
+    [___TransformerPageViewState__activeIndex_isSet]: dart.fieldType(core.bool),
+    [_currentPixels]: dart.fieldType(dart.nullable(core.double)),
+    [_done]: dart.fieldType(core.bool),
+    [_fromIndex]: dart.fieldType(dart.nullable(core.int)),
+    [_transformer]: dart.fieldType(dart.nullable(another_transformer_page_view.PageTransformer)),
+    [_pageController]: dart.fieldType(dart.nullable(another_transformer_page_view.TransformerPageController)),
+    [_controller]: dart.fieldType(dart.nullable(change_notifier.ChangeNotifier))
+  }));
+  dart.defineLazy(another_transformer_page_view, {
+    /*another_transformer_page_view.kMaxValue*/get kMaxValue() {
+      return 2000000000;
+    },
+    /*another_transformer_page_view.kMiddleValue*/get kMiddleValue() {
+      return 1000000000;
+    },
+    /*another_transformer_page_view.kDefaultTransactionDuration*/get kDefaultTransactionDuration() {
+      return 300;
+    }
+  }, false);
+  dart.trackLibraries("packages/another_transformer_page_view/src/another_transformer_page_view.dart", {
+    "package:another_transformer_page_view/src/another_transformer_page_view.dart": another_transformer_page_view
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["another_transformer_page_view.dart"],"names":[],"mappings":"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","file":"../../../../../../../../E:/packages/another_transformer_page_view/src/another_transformer_page_view.dart.lib.js"}');
+  // Exports:
+  return {
+    src__another_transformer_page_view: another_transformer_page_view
+  };
+}));
+
+//# sourceMappingURL=another_transformer_page_view.dart.lib.js.map
