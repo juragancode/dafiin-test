@@ -1,315 +1,611 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__foundation__stack_frame_dart(dart_sdk, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__widgets__async_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__object$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
   const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
   const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var stack_frame = Object.create(dart.library);
-  var $trim = dartx.trim;
-  var $split = dartx.split;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $where = dartx.where;
-  var $map = dartx.map;
-  var $whereType = dartx.whereType;
-  var $toList = dartx.toList;
-  var $startsWith = dartx.startsWith;
-  var $_get = dartx._get;
-  var $replaceFirst = dartx.replaceFirst;
-  var $length = dartx.length;
-  var $first = dartx.first;
-  var $skip = dartx.skip;
-  var $join = dartx.join;
-  var $single = dartx.single;
-  var $replaceAll = dartx.replaceAll;
-  var $contains = dartx.contains;
-  var $runtimeType = dartx.runtimeType;
+  var async$ = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(true);
-  var T = {
-    StringTobool: () => (T.StringTobool = dart.constFn(dart.fnType(core.bool, [core.String])))(),
-    StackFrameN: () => (T.StackFrameN = dart.constFn(dart.nullable(stack_frame.StackFrame)))(),
-    StringToStackFrameN: () => (T.StringToStackFrameN = dart.constFn(dart.fnType(T.StackFrameN(), [core.String])))()
+  var T$ = {
+    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    ObjectAndStackTraceToNull: () => (T$.ObjectAndStackTraceToNull = dart.constFn(dart.fnType(core.Null, [core.Object, core.StackTrace])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
-      return C[0] = dart.fn(stack_frame.StackFrame.fromStackTraceLine, T.StringToStackFrameN());
+      return C[0] = dart.const({
+        __proto__: async$.ConnectionState.prototype,
+        [_name$]: "ConnectionState.none",
+        index: 0
+      });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: stack_frame.StackFrame.prototype,
-        [isConstructor$]: false,
-        [method$]: "asynchronous suspension",
-        [className$]: "",
-        [column$]: -1,
-        [line$]: -1,
-        [packagePath$]: "",
-        [$package$]: "",
-        [packageScheme$]: "",
-        [number$]: -1,
-        [source$]: "<asynchronous suspension>"
+        __proto__: async$.ConnectionState.prototype,
+        [_name$]: "ConnectionState.waiting",
+        index: 1
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: stack_frame.StackFrame.prototype,
-        [isConstructor$]: false,
-        [method$]: "...",
-        [className$]: "",
-        [column$]: -1,
-        [line$]: -1,
-        [packagePath$]: "",
-        [$package$]: "",
-        [packageScheme$]: "",
-        [number$]: -1,
-        [source$]: "..."
+        __proto__: async$.ConnectionState.prototype,
+        [_name$]: "ConnectionState.active",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: async$.ConnectionState.prototype,
+        [_name$]: "ConnectionState.done",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3], async$.ConnectionState);
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: core._StringStackTrace.prototype,
+        [_StringStackTrace__stackTrace]: ""
       });
     }
   }, false);
-  var C = Array(3).fill(void 0);
+  var C = Array(6).fill(void 0);
   var I = [
-    "file:///C:/flutter/packages/flutter/lib/src/foundation/stack_frame.dart",
-    "package:flutter/src/foundation/stack_frame.dart"
+    "package:flutter/src/widgets/async.dart",
+    "file:///C:/flutter/packages/flutter/lib/src/widgets/async.dart"
   ];
-  var source$ = dart.privateName(stack_frame, "StackFrame.source");
-  var number$ = dart.privateName(stack_frame, "StackFrame.number");
-  var packageScheme$ = dart.privateName(stack_frame, "StackFrame.packageScheme");
-  var $package$ = dart.privateName(stack_frame, "StackFrame.package");
-  var packagePath$ = dart.privateName(stack_frame, "StackFrame.packagePath");
-  var line$ = dart.privateName(stack_frame, "StackFrame.line");
-  var column$ = dart.privateName(stack_frame, "StackFrame.column");
-  var className$ = dart.privateName(stack_frame, "StackFrame.className");
-  var method$ = dart.privateName(stack_frame, "StackFrame.method");
-  var isConstructor$ = dart.privateName(stack_frame, "StackFrame.isConstructor");
-  stack_frame.StackFrame = class StackFrame extends core.Object {
-    get source() {
-      return this[source$];
-    }
-    set source(value) {
-      super.source = value;
-    }
-    get number() {
-      return this[number$];
-    }
-    set number(value) {
-      super.number = value;
-    }
-    get packageScheme() {
-      return this[packageScheme$];
-    }
-    set packageScheme(value) {
-      super.packageScheme = value;
-    }
-    get package() {
-      return this[$package$];
-    }
-    set package(value) {
-      super.package = value;
-    }
-    get packagePath() {
-      return this[packagePath$];
-    }
-    set packagePath(value) {
-      super.packagePath = value;
-    }
-    get line() {
-      return this[line$];
-    }
-    set line(value) {
-      super.line = value;
-    }
-    get column() {
-      return this[column$];
-    }
-    set column(value) {
-      super.column = value;
-    }
-    get className() {
-      return this[className$];
-    }
-    set className(value) {
-      super.className = value;
-    }
-    get method() {
-      return this[method$];
-    }
-    set method(value) {
-      super.method = value;
-    }
-    get isConstructor() {
-      return this[isConstructor$];
-    }
-    set isConstructor(value) {
-      super.isConstructor = value;
-    }
-    static fromStackTrace(stack) {
-      if (!(stack !== null)) dart.assertFailed(null, I[0], 79, 12, "stack != null");
-      return stack_frame.StackFrame.fromStackString(stack.toString());
-    }
-    static fromStackString(stack) {
-      if (!(stack !== null)) dart.assertFailed(null, I[0], 85, 12, "stack != null");
-      return stack[$trim]()[$split]("\n")[$where](dart.fn(line => line[$isNotEmpty], T.StringTobool()))[$map](T.StackFrameN(), C[0] || CT.C0)[$whereType](stack_frame.StackFrame)[$toList]();
-    }
-    static _parseWebFrame(line) {
-      if (true) {
-        return stack_frame.StackFrame._parseWebDebugFrame(line);
-      } else {
-        return stack_frame.StackFrame._parseWebNonDebugFrame(line);
+  var stream$ = dart.privateName(async$, "StreamBuilderBase.stream");
+  const _is_StreamBuilderBase_default = Symbol('_is_StreamBuilderBase_default');
+  async$.StreamBuilderBase$ = dart.generic((T, S) => {
+    var _StreamBuilderBaseStateOfT$S = () => (_StreamBuilderBaseStateOfT$S = dart.constFn(async$._StreamBuilderBaseState$(T, S)))();
+    class StreamBuilderBase extends framework.StatefulWidget {
+      get stream() {
+        return this[stream$];
+      }
+      set stream(value) {
+        super.stream = value;
+      }
+      afterConnected(current) {
+        S.as(current);
+        return current;
+      }
+      afterError(current, error, stackTrace) {
+        S.as(current);
+        return current;
+      }
+      afterDone(current) {
+        S.as(current);
+        return current;
+      }
+      afterDisconnected(current) {
+        S.as(current);
+        return current;
+      }
+      createState() {
+        return new (_StreamBuilderBaseStateOfT$S()).new();
       }
     }
-    static _parseWebDebugFrame(line) {
-      let hasPackage = line[$startsWith]("package");
-      let parser = hasPackage ? core.RegExp.new("^(package.+) (\\d+):(\\d+)\\s+(.+)$") : core.RegExp.new("^(.+) (\\d+):(\\d+)\\s+(.+)$");
-      let match = parser.firstMatch(line);
-      if (!(match != null)) dart.assertFailed("Expected " + line + " to match " + dart.str(parser) + ".", I[0], 114, 12, "match != null");
-      match = dart.nullCheck(match);
-      let $package = "<unknown>";
-      let packageScheme = "<unknown>";
-      let packagePath = "<unknown>";
-      if (hasPackage) {
-        packageScheme = "package";
-        let packageUri = core.Uri.parse(dart.nullCheck(match.group(1)));
-        $package = packageUri.pathSegments[$_get](0);
-        packagePath = packageUri.path[$replaceFirst](packageUri.pathSegments[$_get](0) + "/", "");
+    (StreamBuilderBase.new = function(opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let stream = opts && 'stream' in opts ? opts.stream : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[stream$] = stream;
+      StreamBuilderBase.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = StreamBuilderBase.prototype;
+    dart.addTypeTests(StreamBuilderBase);
+    StreamBuilderBase.prototype[_is_StreamBuilderBase_default] = true;
+    dart.addTypeCaches(StreamBuilderBase);
+    dart.setMethodSignature(StreamBuilderBase, () => ({
+      __proto__: dart.getMethods(StreamBuilderBase.__proto__),
+      afterConnected: dart.fnType(S, [dart.nullable(core.Object)]),
+      afterError: dart.fnType(S, [dart.nullable(core.Object), core.Object, core.StackTrace]),
+      afterDone: dart.fnType(S, [dart.nullable(core.Object)]),
+      afterDisconnected: dart.fnType(S, [dart.nullable(core.Object)]),
+      createState: dart.fnType(framework.State$(async$.StreamBuilderBase$(T, S)), [])
+    }));
+    dart.setLibraryUri(StreamBuilderBase, I[0]);
+    dart.setFieldSignature(StreamBuilderBase, () => ({
+      __proto__: dart.getFields(StreamBuilderBase.__proto__),
+      stream: dart.finalFieldType(dart.nullable(async.Stream$(T)))
+    }));
+    return StreamBuilderBase;
+  });
+  async$.StreamBuilderBase = async$.StreamBuilderBase$();
+  dart.addTypeTests(async$.StreamBuilderBase, _is_StreamBuilderBase_default);
+  var _subscription = dart.privateName(async$, "_subscription");
+  var ___StreamBuilderBaseState__summary = dart.privateName(async$, "_#_StreamBuilderBaseState#_summary");
+  var ___StreamBuilderBaseState__summary_isSet = dart.privateName(async$, "_#_StreamBuilderBaseState#_summary#isSet");
+  var _summary = dart.privateName(async$, "_summary");
+  var _subscribe = dart.privateName(async$, "_subscribe");
+  var _unsubscribe = dart.privateName(async$, "_unsubscribe");
+  const _is__StreamBuilderBaseState_default = Symbol('_is__StreamBuilderBaseState_default');
+  async$._StreamBuilderBaseState$ = dart.generic((T, S) => {
+    var StreamBuilderBaseOfT$S = () => (StreamBuilderBaseOfT$S = dart.constFn(async$.StreamBuilderBase$(T, S)))();
+    var TTovoid = () => (TTovoid = dart.constFn(dart.fnType(dart.void, [T])))();
+    class _StreamBuilderBaseState extends framework.State$(async$.StreamBuilderBase$(T, S)) {
+      get [_summary]() {
+        let t0;
+        return this[___StreamBuilderBaseState__summary_isSet] ? (t0 = this[___StreamBuilderBaseState__summary], t0) : dart.throw(new _internal.LateError.fieldNI("_summary"));
       }
-      return new stack_frame.StackFrame.new({number: -1, packageScheme: packageScheme, package: $package, packagePath: packagePath, line: core.int.parse(dart.nullCheck(match.group(2))), column: core.int.parse(dart.nullCheck(match.group(3))), className: "<unknown>", method: dart.nullCheck(match.group(4)), source: line});
-    }
-    static _parseWebNonDebugFrame(line) {
-      let match = stack_frame.StackFrame._webNonDebugFramePattern.firstMatch(line);
-      if (match == null) {
-        return null;
+      set [_summary](t0) {
+        this[___StreamBuilderBaseState__summary_isSet] = true;
+        this[___StreamBuilderBaseState__summary] = t0;
       }
-      let classAndMethod = dart.nullCheck(match.group(1))[$split](".");
-      let className = classAndMethod[$length] > 1 ? classAndMethod[$first] : "<unknown>";
-      let method = classAndMethod[$length] > 1 ? classAndMethod[$skip](1)[$join](".") : classAndMethod[$single];
-      return new stack_frame.StackFrame.new({number: -1, packageScheme: "<unknown>", package: "<unknown>", packagePath: "<unknown>", line: -1, column: -1, className: className, method: method, source: line});
-    }
-    static fromStackTraceLine(line) {
-      if (!(line !== null)) dart.assertFailed(null, I[0], 186, 12, "line != null");
-      if (line === "<asynchronous suspension>") {
-        return stack_frame.StackFrame.asynchronousSuspension;
-      } else if (line === "...") {
-        return stack_frame.StackFrame.stackOverFlowElision;
+      initState() {
+        super.initState();
+        this[_summary] = this.widget.initial();
+        this[_subscribe]();
       }
-      if (!(line !== "===== asynchronous gap ===========================")) dart.assertFailed("Got a stack frame from package:stack_trace, where a vm or web frame was expected. " + "This can happen if FlutterError.demangleStackTrace was not set in an environment " + "that propagates non-standard stack traces to the framework, such as during tests.", I[0], 194, 7, "line != '===== asynchronous gap ==========================='");
-      if (!line[$startsWith]("#")) {
-        return stack_frame.StackFrame._parseWebFrame(line);
-      }
-      let parser = core.RegExp.new("^#(\\d+) +(.+) \\((.+?):?(\\d+){0,1}:?(\\d+){0,1}\\)$");
-      let match = parser.firstMatch(line);
-      if (!(match != null)) dart.assertFailed("Expected " + line + " to match " + dart.str(parser) + ".", I[0], 207, 12, "match != null");
-      match = dart.nullCheck(match);
-      let isConstructor = false;
-      let className = "";
-      let method = dart.nullCheck(match.group(2))[$replaceAll](".<anonymous closure>", "");
-      if (method[$startsWith]("new")) {
-        let methodParts = method[$split](" ");
-        className = methodParts[$length] > 1 ? method[$split](" ")[$_get](1) : "<unknown>";
-        method = "";
-        if (className[$contains](".")) {
-          let parts = className[$split](".");
-          className = parts[$_get](0);
-          method = parts[$_get](1);
+      didUpdateWidget(oldWidget) {
+        StreamBuilderBaseOfT$S().as(oldWidget);
+        super.didUpdateWidget(oldWidget);
+        if (!dart.equals(oldWidget.stream, this.widget.stream)) {
+          if (this[_subscription] != null) {
+            this[_unsubscribe]();
+            this[_summary] = this.widget.afterDisconnected(this[_summary]);
+          }
+          this[_subscribe]();
         }
-        isConstructor = true;
-      } else if (method[$contains](".")) {
-        let parts = method[$split](".");
-        className = parts[$_get](0);
-        method = parts[$_get](1);
       }
-      let packageUri = core.Uri.parse(dart.nullCheck(match.group(3)));
-      let $package = "<unknown>";
-      let packagePath = packageUri.path;
-      if (packageUri.scheme === "dart" || packageUri.scheme === "package") {
-        $package = packageUri.pathSegments[$_get](0);
-        packagePath = packageUri.path[$replaceFirst](packageUri.pathSegments[$_get](0) + "/", "");
+      build(context) {
+        return this.widget.build(context, this[_summary]);
       }
-      return new stack_frame.StackFrame.new({number: core.int.parse(dart.nullCheck(match.group(1))), className: className, method: method, packageScheme: packageUri.scheme, package: $package, packagePath: packagePath, line: match.group(4) == null ? -1 : core.int.parse(dart.nullCheck(match.group(4))), column: match.group(5) == null ? -1 : core.int.parse(dart.nullCheck(match.group(5))), isConstructor: isConstructor, source: line});
+      dispose() {
+        this[_unsubscribe]();
+        super.dispose();
+      }
+      [_subscribe]() {
+        if (this.widget.stream != null) {
+          this[_subscription] = dart.nullCheck(this.widget.stream).listen(dart.fn(data => {
+            this.setState(dart.fn(() => {
+              this[_summary] = this.widget.afterData(this[_summary], data);
+            }, T$.VoidTovoid()));
+          }, TTovoid()), {onError: dart.fn((error, stackTrace) => {
+              this.setState(dart.fn(() => {
+                this[_summary] = this.widget.afterError(this[_summary], error, stackTrace);
+              }, T$.VoidTovoid()));
+            }, T$.ObjectAndStackTraceToNull()), onDone: dart.fn(() => {
+              this.setState(dart.fn(() => {
+                this[_summary] = this.widget.afterDone(this[_summary]);
+              }, T$.VoidTovoid()));
+            }, T$.VoidTovoid())});
+          this[_summary] = this.widget.afterConnected(this[_summary]);
+        }
+      }
+      [_unsubscribe]() {
+        if (this[_subscription] != null) {
+          dart.nullCheck(this[_subscription]).cancel();
+          this[_subscription] = null;
+        }
+      }
     }
-    get hashCode() {
-      return ui.hashValues(this.number, this.package, this.line, this.column, this.className, this.method, this.source);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!other[$runtimeType]._equals(this[$runtimeType])) return false;
-      return stack_frame.StackFrame.is(other) && other.number === this.number && other.package === this.package && other.line === this.line && other.column === this.column && other.className === this.className && other.method === this.method && other.source === this.source;
-    }
+    (_StreamBuilderBaseState.new = function() {
+      this[_subscription] = null;
+      this[___StreamBuilderBaseState__summary] = null;
+      this[___StreamBuilderBaseState__summary_isSet] = false;
+      _StreamBuilderBaseState.__proto__.new.call(this);
+      ;
+    }).prototype = _StreamBuilderBaseState.prototype;
+    dart.addTypeTests(_StreamBuilderBaseState);
+    _StreamBuilderBaseState.prototype[_is__StreamBuilderBaseState_default] = true;
+    dart.addTypeCaches(_StreamBuilderBaseState);
+    dart.setMethodSignature(_StreamBuilderBaseState, () => ({
+      __proto__: dart.getMethods(_StreamBuilderBaseState.__proto__),
+      build: dart.fnType(framework.Widget, [framework.BuildContext]),
+      [_subscribe]: dart.fnType(dart.void, []),
+      [_unsubscribe]: dart.fnType(dart.void, [])
+    }));
+    dart.setGetterSignature(_StreamBuilderBaseState, () => ({
+      __proto__: dart.getGetters(_StreamBuilderBaseState.__proto__),
+      [_summary]: S
+    }));
+    dart.setSetterSignature(_StreamBuilderBaseState, () => ({
+      __proto__: dart.getSetters(_StreamBuilderBaseState.__proto__),
+      [_summary]: S
+    }));
+    dart.setLibraryUri(_StreamBuilderBaseState, I[0]);
+    dart.setFieldSignature(_StreamBuilderBaseState, () => ({
+      __proto__: dart.getFields(_StreamBuilderBaseState.__proto__),
+      [_subscription]: dart.fieldType(dart.nullable(async.StreamSubscription$(T))),
+      [___StreamBuilderBaseState__summary]: dart.fieldType(dart.nullable(S)),
+      [___StreamBuilderBaseState__summary_isSet]: dart.fieldType(core.bool)
+    }));
+    return _StreamBuilderBaseState;
+  });
+  async$._StreamBuilderBaseState = async$._StreamBuilderBaseState$();
+  dart.addTypeTests(async$._StreamBuilderBaseState, _is__StreamBuilderBaseState_default);
+  var _name$ = dart.privateName(async$, "_name");
+  async$.ConnectionState = class ConnectionState extends core.Object {
     toString() {
-      return object.objectRuntimeType(this, "StackFrame") + "(#" + dart.str(this.number) + ", " + this.packageScheme + ":" + this.package + "/" + this.packagePath + ":" + dart.str(this.line) + ":" + dart.str(this.column) + ", className: " + this.className + ", method: " + this.method + ")";
+      return this[_name$];
     }
   };
-  (stack_frame.StackFrame.new = function(opts) {
-    let number = opts && 'number' in opts ? opts.number : null;
-    let column = opts && 'column' in opts ? opts.column : null;
-    let line = opts && 'line' in opts ? opts.line : null;
-    let packageScheme = opts && 'packageScheme' in opts ? opts.packageScheme : null;
-    let $package = opts && 'package' in opts ? opts.package : null;
-    let packagePath = opts && 'packagePath' in opts ? opts.packagePath : null;
-    let className = opts && 'className' in opts ? opts.className : "";
-    let method = opts && 'method' in opts ? opts.method : null;
-    let isConstructor = opts && 'isConstructor' in opts ? opts.isConstructor : false;
-    let source = opts && 'source' in opts ? opts.source : null;
-    this[number$] = number;
-    this[column$] = column;
-    this[line$] = line;
-    this[packageScheme$] = packageScheme;
-    this[$package$] = $package;
-    this[packagePath$] = packagePath;
-    this[className$] = className;
-    this[method$] = method;
-    this[isConstructor$] = isConstructor;
-    this[source$] = source;
-    if (!(number !== null)) dart.assertFailed(null, I[0], 40, 16, "number != null");
-    if (!(column !== null)) dart.assertFailed(null, I[0], 41, 16, "column != null");
-    if (!(line !== null)) dart.assertFailed(null, I[0], 42, 16, "line != null");
-    if (!(method !== null)) dart.assertFailed(null, I[0], 43, 16, "method != null");
-    if (!(packageScheme !== null)) dart.assertFailed(null, I[0], 44, 16, "packageScheme != null");
-    if (!($package !== null)) dart.assertFailed(null, I[0], 45, 16, "package != null");
-    if (!(packagePath !== null)) dart.assertFailed(null, I[0], 46, 16, "packagePath != null");
-    if (!(className !== null)) dart.assertFailed(null, I[0], 47, 16, "className != null");
-    if (!(isConstructor !== null)) dart.assertFailed(null, I[0], 48, 16, "isConstructor != null");
-    if (!(source !== null)) dart.assertFailed(null, I[0], 49, 16, "source != null");
+  (async$.ConnectionState.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = stack_frame.StackFrame.prototype;
-  dart.addTypeTests(stack_frame.StackFrame);
-  dart.addTypeCaches(stack_frame.StackFrame);
-  dart.setLibraryUri(stack_frame.StackFrame, I[1]);
-  dart.setFieldSignature(stack_frame.StackFrame, () => ({
-    __proto__: dart.getFields(stack_frame.StackFrame.__proto__),
-    source: dart.finalFieldType(core.String),
-    number: dart.finalFieldType(core.int),
-    packageScheme: dart.finalFieldType(core.String),
-    package: dart.finalFieldType(core.String),
-    packagePath: dart.finalFieldType(core.String),
-    line: dart.finalFieldType(core.int),
-    column: dart.finalFieldType(core.int),
-    className: dart.finalFieldType(core.String),
-    method: dart.finalFieldType(core.String),
-    isConstructor: dart.finalFieldType(core.bool)
+  }).prototype = async$.ConnectionState.prototype;
+  dart.addTypeTests(async$.ConnectionState);
+  dart.addTypeCaches(async$.ConnectionState);
+  dart.setLibraryUri(async$.ConnectionState, I[0]);
+  dart.setFieldSignature(async$.ConnectionState, () => ({
+    __proto__: dart.getFields(async$.ConnectionState.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(stack_frame.StackFrame, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(stack_frame.StackFrame, ['hashCode']);
-  dart.defineLazy(stack_frame.StackFrame, {
-    /*stack_frame.StackFrame.asynchronousSuspension*/get asynchronousSuspension() {
-      return C[1] || CT.C1;
-    },
-    /*stack_frame.StackFrame.stackOverFlowElision*/get stackOverFlowElision() {
-      return C[2] || CT.C2;
-    },
-    /*stack_frame.StackFrame._webNonDebugFramePattern*/get _webNonDebugFramePattern() {
-      return core.RegExp.new("^\\s*at ([^\\s]+).*$");
+  dart.defineExtensionMethods(async$.ConnectionState, ['toString']);
+  async$.ConnectionState.none = C[0] || CT.C0;
+  async$.ConnectionState.waiting = C[1] || CT.C1;
+  async$.ConnectionState.active = C[2] || CT.C2;
+  async$.ConnectionState.done = C[3] || CT.C3;
+  async$.ConnectionState.values = C[4] || CT.C4;
+  var connectionState$ = dart.privateName(async$, "AsyncSnapshot.connectionState");
+  var data$ = dart.privateName(async$, "AsyncSnapshot.data");
+  var error$ = dart.privateName(async$, "AsyncSnapshot.error");
+  var stackTrace$ = dart.privateName(async$, "AsyncSnapshot.stackTrace");
+  var _StringStackTrace__stackTrace = dart.privateName(core, "_StringStackTrace._stackTrace");
+  const _is_AsyncSnapshot_default = Symbol('_is_AsyncSnapshot_default');
+  async$.AsyncSnapshot$ = dart.generic(T => {
+    var AsyncSnapshotOfT = () => (AsyncSnapshotOfT = dart.constFn(async$.AsyncSnapshot$(T)))();
+    class AsyncSnapshot extends core.Object {
+      get connectionState() {
+        return this[connectionState$];
+      }
+      set connectionState(value) {
+        super.connectionState = value;
+      }
+      get data() {
+        return this[data$];
+      }
+      set data(value) {
+        super.data = value;
+      }
+      get error() {
+        return this[error$];
+      }
+      set error(value) {
+        super.error = value;
+      }
+      get stackTrace() {
+        return this[stackTrace$];
+      }
+      set stackTrace(value) {
+        super.stackTrace = value;
+      }
+      get requireData() {
+        if (this.hasData) return dart.nullCheck(this.data);
+        if (this.hasError) dart.throw(dart.nullCheck(this.error));
+        dart.throw(new core.StateError.new("Snapshot has neither data nor error"));
+      }
+      inState(state) {
+        return new (AsyncSnapshotOfT()).__(state, this.data, this.error, this.stackTrace);
+      }
+      get hasData() {
+        return this.data != null;
+      }
+      get hasError() {
+        return this.error != null;
+      }
+      toString() {
+        return object.objectRuntimeType(this, "AsyncSnapshot") + "(" + dart.str(this.connectionState) + ", " + dart.str(this.data) + ", " + dart.str(this.error) + ", " + dart.str(this.stackTrace) + ")";
+      }
+      _equals(other) {
+        if (other == null) return false;
+        if (this === other) return true;
+        return AsyncSnapshotOfT().is(other) && other.connectionState === this.connectionState && dart.equals(other.data, this.data) && dart.equals(other.error, this.error) && dart.equals(other.stackTrace, this.stackTrace);
+      }
+      get hashCode() {
+        return ui.hashValues(this.connectionState, this.data, this.error);
+      }
     }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/foundation/stack_frame.dart", {
-    "package:flutter/src/foundation/stack_frame.dart": stack_frame
+    (AsyncSnapshot.__ = function(connectionState, data, error, stackTrace) {
+      this[connectionState$] = connectionState;
+      this[data$] = data;
+      this[error$] = error;
+      this[stackTrace$] = stackTrace;
+      if (!(connectionState !== null)) dart.assertFailed(null, I[1], 207, 14, "connectionState != null");
+      if (!!(data != null && error != null)) dart.assertFailed(null, I[1], 208, 14, "!(data != null && error != null)");
+      if (!(stackTrace == null || error != null)) dart.assertFailed(null, I[1], 209, 14, "stackTrace == null || error != null");
+      ;
+    }).prototype = AsyncSnapshot.prototype;
+    (AsyncSnapshot.nothing = function() {
+      AsyncSnapshot.__.call(this, async$.ConnectionState.none, null, null, null);
+    }).prototype = AsyncSnapshot.prototype;
+    (AsyncSnapshot.waiting = function() {
+      AsyncSnapshot.__.call(this, async$.ConnectionState.waiting, null, null, null);
+    }).prototype = AsyncSnapshot.prototype;
+    (AsyncSnapshot.withData = function(state, data) {
+      AsyncSnapshot.__.call(this, state, data, null, null);
+    }).prototype = AsyncSnapshot.prototype;
+    (AsyncSnapshot.withError = function(state, error, stackTrace = C[5] || CT.C5) {
+      AsyncSnapshot.__.call(this, state, null, error, stackTrace);
+    }).prototype = AsyncSnapshot.prototype;
+    dart.addTypeTests(AsyncSnapshot);
+    AsyncSnapshot.prototype[_is_AsyncSnapshot_default] = true;
+    dart.addTypeCaches(AsyncSnapshot);
+    dart.setMethodSignature(AsyncSnapshot, () => ({
+      __proto__: dart.getMethods(AsyncSnapshot.__proto__),
+      inState: dart.fnType(async$.AsyncSnapshot$(T), [async$.ConnectionState])
+    }));
+    dart.setGetterSignature(AsyncSnapshot, () => ({
+      __proto__: dart.getGetters(AsyncSnapshot.__proto__),
+      requireData: T,
+      hasData: core.bool,
+      hasError: core.bool
+    }));
+    dart.setLibraryUri(AsyncSnapshot, I[0]);
+    dart.setFieldSignature(AsyncSnapshot, () => ({
+      __proto__: dart.getFields(AsyncSnapshot.__proto__),
+      connectionState: dart.finalFieldType(async$.ConnectionState),
+      data: dart.finalFieldType(dart.nullable(T)),
+      error: dart.finalFieldType(dart.nullable(core.Object)),
+      stackTrace: dart.finalFieldType(dart.nullable(core.StackTrace))
+    }));
+    dart.defineExtensionMethods(AsyncSnapshot, ['toString', '_equals']);
+    dart.defineExtensionAccessors(AsyncSnapshot, ['hashCode']);
+    return AsyncSnapshot;
+  });
+  async$.AsyncSnapshot = async$.AsyncSnapshot$();
+  dart.addTypeTests(async$.AsyncSnapshot, _is_AsyncSnapshot_default);
+  var builder$ = dart.privateName(async$, "StreamBuilder.builder");
+  var initialData$ = dart.privateName(async$, "StreamBuilder.initialData");
+  const _is_StreamBuilder_default = Symbol('_is_StreamBuilder_default');
+  async$.StreamBuilder$ = dart.generic(T => {
+    var AsyncSnapshotOfT = () => (AsyncSnapshotOfT = dart.constFn(async$.AsyncSnapshot$(T)))();
+    class StreamBuilder extends async$.StreamBuilderBase$(T, async$.AsyncSnapshot$(T)) {
+      get builder() {
+        return this[builder$];
+      }
+      set builder(value) {
+        super.builder = value;
+      }
+      get initialData() {
+        return this[initialData$];
+      }
+      set initialData(value) {
+        super.initialData = value;
+      }
+      initial() {
+        return this.initialData == null ? new (AsyncSnapshotOfT()).nothing() : new (AsyncSnapshotOfT()).withData(async$.ConnectionState.none, T.as(this.initialData));
+      }
+      afterConnected(current) {
+        AsyncSnapshotOfT().as(current);
+        return current.inState(async$.ConnectionState.waiting);
+      }
+      afterData(current, data) {
+        AsyncSnapshotOfT().as(current);
+        T.as(data);
+        return new (AsyncSnapshotOfT()).withData(async$.ConnectionState.active, data);
+      }
+      afterError(current, error, stackTrace) {
+        AsyncSnapshotOfT().as(current);
+        return new (AsyncSnapshotOfT()).withError(async$.ConnectionState.active, error, stackTrace);
+      }
+      afterDone(current) {
+        AsyncSnapshotOfT().as(current);
+        return current.inState(async$.ConnectionState.done);
+      }
+      afterDisconnected(current) {
+        AsyncSnapshotOfT().as(current);
+        return current.inState(async$.ConnectionState.none);
+      }
+      build(context, currentSummary) {
+        let t2, t1;
+        AsyncSnapshotOfT().as(currentSummary);
+        t1 = context;
+        t2 = currentSummary;
+        return this.builder(t1, t2);
+      }
+    }
+    (StreamBuilder.new = function(opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let initialData = opts && 'initialData' in opts ? opts.initialData : null;
+      let stream = opts && 'stream' in opts ? opts.stream : null;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[initialData$] = initialData;
+      this[builder$] = builder;
+      if (!(builder !== null)) dart.assertFailed(null, I[1], 502, 15, "builder != null");
+      StreamBuilder.__proto__.new.call(this, {key: key, stream: stream, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = StreamBuilder.prototype;
+    dart.addTypeTests(StreamBuilder);
+    StreamBuilder.prototype[_is_StreamBuilder_default] = true;
+    dart.addTypeCaches(StreamBuilder);
+    dart.setMethodSignature(StreamBuilder, () => ({
+      __proto__: dart.getMethods(StreamBuilder.__proto__),
+      initial: dart.fnType(async$.AsyncSnapshot$(T), []),
+      afterData: dart.fnType(async$.AsyncSnapshot$(T), [dart.nullable(core.Object), dart.nullable(core.Object)]),
+      build: dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(core.Object)])
+    }));
+    dart.setLibraryUri(StreamBuilder, I[0]);
+    dart.setFieldSignature(StreamBuilder, () => ({
+      __proto__: dart.getFields(StreamBuilder.__proto__),
+      builder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, async$.AsyncSnapshot$(T)])),
+      initialData: dart.finalFieldType(dart.nullable(T))
+    }));
+    return StreamBuilder;
+  });
+  async$.StreamBuilder = async$.StreamBuilder$();
+  dart.addTypeTests(async$.StreamBuilder, _is_StreamBuilder_default);
+  var future$ = dart.privateName(async$, "FutureBuilder.future");
+  var builder$0 = dart.privateName(async$, "FutureBuilder.builder");
+  var initialData$0 = dart.privateName(async$, "FutureBuilder.initialData");
+  const _is_FutureBuilder_default = Symbol('_is_FutureBuilder_default');
+  async$.FutureBuilder$ = dart.generic(T => {
+    var _FutureBuilderStateOfT = () => (_FutureBuilderStateOfT = dart.constFn(async$._FutureBuilderState$(T)))();
+    class FutureBuilder extends framework.StatefulWidget {
+      get future() {
+        return this[future$];
+      }
+      set future(value) {
+        super.future = value;
+      }
+      get builder() {
+        return this[builder$0];
+      }
+      set builder(value) {
+        super.builder = value;
+      }
+      get initialData() {
+        return this[initialData$0];
+      }
+      set initialData(value) {
+        super.initialData = value;
+      }
+      createState() {
+        return new (_FutureBuilderStateOfT()).new();
+      }
+    }
+    (FutureBuilder.new = function(opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let future = opts && 'future' in opts ? opts.future : null;
+      let initialData = opts && 'initialData' in opts ? opts.initialData : null;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[future$] = future;
+      this[initialData$0] = initialData;
+      this[builder$0] = builder;
+      if (!(builder !== null)) dart.assertFailed(null, I[1], 697, 15, "builder != null");
+      FutureBuilder.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = FutureBuilder.prototype;
+    dart.addTypeTests(FutureBuilder);
+    FutureBuilder.prototype[_is_FutureBuilder_default] = true;
+    dart.addTypeCaches(FutureBuilder);
+    dart.setMethodSignature(FutureBuilder, () => ({
+      __proto__: dart.getMethods(FutureBuilder.__proto__),
+      createState: dart.fnType(framework.State$(async$.FutureBuilder$(T)), [])
+    }));
+    dart.setLibraryUri(FutureBuilder, I[0]);
+    dart.setFieldSignature(FutureBuilder, () => ({
+      __proto__: dart.getFields(FutureBuilder.__proto__),
+      future: dart.finalFieldType(dart.nullable(async.Future$(T))),
+      builder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, async$.AsyncSnapshot$(T)])),
+      initialData: dart.finalFieldType(dart.nullable(T))
+    }));
+    return FutureBuilder;
+  });
+  async$.FutureBuilder = async$.FutureBuilder$();
+  dart.addTypeTests(async$.FutureBuilder, _is_FutureBuilder_default);
+  var _activeCallbackIdentity = dart.privateName(async$, "_activeCallbackIdentity");
+  var ___FutureBuilderState__snapshot = dart.privateName(async$, "_#_FutureBuilderState#_snapshot");
+  var _snapshot = dart.privateName(async$, "_snapshot");
+  const _is__FutureBuilderState_default = Symbol('_is__FutureBuilderState_default');
+  async$._FutureBuilderState$ = dart.generic(T => {
+    var AsyncSnapshotOfT = () => (AsyncSnapshotOfT = dart.constFn(async$.AsyncSnapshot$(T)))();
+    var FutureBuilderOfT = () => (FutureBuilderOfT = dart.constFn(async$.FutureBuilder$(T)))();
+    var BuildContextAndAsyncSnapshotOfTToWidget = () => (BuildContextAndAsyncSnapshotOfTToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, AsyncSnapshotOfT()])))();
+    var TToNull = () => (TToNull = dart.constFn(dart.fnType(core.Null, [T])))();
+    class _FutureBuilderState extends framework.State$(async$.FutureBuilder$(T)) {
+      get [_snapshot]() {
+        let t1;
+        t1 = this[___FutureBuilderState__snapshot];
+        return t1 == null ? dart.throw(new _internal.LateError.fieldNI("_snapshot")) : t1;
+      }
+      set [_snapshot](t1) {
+        this[___FutureBuilderState__snapshot] = t1;
+      }
+      initState() {
+        super.initState();
+        this[_snapshot] = this.widget.initialData == null ? new (AsyncSnapshotOfT()).nothing() : new (AsyncSnapshotOfT()).withData(async$.ConnectionState.none, T.as(this.widget.initialData));
+        this[_subscribe]();
+      }
+      didUpdateWidget(oldWidget) {
+        FutureBuilderOfT().as(oldWidget);
+        super.didUpdateWidget(oldWidget);
+        if (!dart.equals(oldWidget.future, this.widget.future)) {
+          if (this[_activeCallbackIdentity] != null) {
+            this[_unsubscribe]();
+            this[_snapshot] = this[_snapshot].inState(async$.ConnectionState.none);
+          }
+          this[_subscribe]();
+        }
+      }
+      build(context) {
+        let t4, t3, t2;
+        t2 = this.widget;
+        t3 = context;
+        t4 = this[_snapshot];
+        return BuildContextAndAsyncSnapshotOfTToWidget().as(t2.builder)(t3, t4);
+      }
+      dispose() {
+        this[_unsubscribe]();
+        super.dispose();
+      }
+      [_subscribe]() {
+        if (this.widget.future != null) {
+          let callbackIdentity = new core.Object.new();
+          this[_activeCallbackIdentity] = callbackIdentity;
+          dart.nullCheck(this.widget.future).then(dart.void, dart.fn(data => {
+            if (dart.equals(this[_activeCallbackIdentity], callbackIdentity)) {
+              this.setState(dart.fn(() => {
+                this[_snapshot] = new (AsyncSnapshotOfT()).withData(async$.ConnectionState.done, data);
+              }, T$.VoidTovoid()));
+            }
+          }, TToNull()), {onError: dart.fn((error, stackTrace) => {
+              if (dart.equals(this[_activeCallbackIdentity], callbackIdentity)) {
+                this.setState(dart.fn(() => {
+                  this[_snapshot] = new (AsyncSnapshotOfT()).withError(async$.ConnectionState.done, error, stackTrace);
+                }, T$.VoidTovoid()));
+              }
+            }, T$.ObjectAndStackTraceToNull())});
+          this[_snapshot] = this[_snapshot].inState(async$.ConnectionState.waiting);
+        }
+      }
+      [_unsubscribe]() {
+        this[_activeCallbackIdentity] = null;
+      }
+    }
+    (_FutureBuilderState.new = function() {
+      this[_activeCallbackIdentity] = null;
+      this[___FutureBuilderState__snapshot] = null;
+      _FutureBuilderState.__proto__.new.call(this);
+      ;
+    }).prototype = _FutureBuilderState.prototype;
+    dart.addTypeTests(_FutureBuilderState);
+    _FutureBuilderState.prototype[_is__FutureBuilderState_default] = true;
+    dart.addTypeCaches(_FutureBuilderState);
+    dart.setMethodSignature(_FutureBuilderState, () => ({
+      __proto__: dart.getMethods(_FutureBuilderState.__proto__),
+      build: dart.fnType(framework.Widget, [framework.BuildContext]),
+      [_subscribe]: dart.fnType(dart.void, []),
+      [_unsubscribe]: dart.fnType(dart.void, [])
+    }));
+    dart.setGetterSignature(_FutureBuilderState, () => ({
+      __proto__: dart.getGetters(_FutureBuilderState.__proto__),
+      [_snapshot]: async$.AsyncSnapshot$(T)
+    }));
+    dart.setSetterSignature(_FutureBuilderState, () => ({
+      __proto__: dart.getSetters(_FutureBuilderState.__proto__),
+      [_snapshot]: async$.AsyncSnapshot$(T)
+    }));
+    dart.setLibraryUri(_FutureBuilderState, I[0]);
+    dart.setFieldSignature(_FutureBuilderState, () => ({
+      __proto__: dart.getFields(_FutureBuilderState.__proto__),
+      [_activeCallbackIdentity]: dart.fieldType(dart.nullable(core.Object)),
+      [___FutureBuilderState__snapshot]: dart.fieldType(dart.nullable(async$.AsyncSnapshot$(T)))
+    }));
+    return _FutureBuilderState;
+  });
+  async$._FutureBuilderState = async$._FutureBuilderState$();
+  dart.addTypeTests(async$._FutureBuilderState, _is__FutureBuilderState_default);
+  dart.trackLibraries("packages/flutter/src/widgets/async.dart", {
+    "package:flutter/src/widgets/async.dart": async$
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["stack_frame.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/foundation/stack_frame.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["async.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/widgets/async.dart.lib.js"}');
   // Exports:
   return {
-    src__foundation__stack_frame: stack_frame
+    src__widgets__async: async$
   };
 }));
 
-//# sourceMappingURL=stack_frame.dart.lib.js.map
+//# sourceMappingURL=async.dart.lib.js.map

@@ -1,473 +1,367 @@
-define(['dart_sdk', 'packages/flutter/src/services/text_input.dart', 'packages/flutter/src/foundation/_platform_web.dart', 'packages/characters/src/characters_impl.dart', 'packages/characters/src/extensions.dart', 'packages/flutter/src/services/text_editing.dart'], (function load__packages__flutter__src__services__text_formatter_dart(dart_sdk, packages__flutter__src__services__text_input$46dart, packages__flutter__src__foundation___platform_web$46dart, packages__characters__src__characters_impl$46dart, packages__characters__src__extensions$46dart, packages__flutter__src__services__text_editing$46dart) {
+define(['dart_sdk', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/physics/tolerance.dart', 'packages/flutter/src/physics/utils.dart', 'packages/flutter/src/physics/simulation.dart'], (function load__packages__flutter__src__physics__spring_simulation_dart(dart_sdk, packages__flutter__src__foundation__object$46dart, packages__flutter__src__physics__tolerance$46dart, packages__flutter__src__physics__utils$46dart, packages__flutter__src__physics__simulation$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _internal = dart_sdk._internal;
   const math = dart_sdk.math;
-  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
-  const platform$ = packages__flutter__src__foundation___platform_web$46dart.src__foundation__platform;
-  const characters_impl = packages__characters__src__characters_impl$46dart.src__characters_impl;
-  const extensions = packages__characters__src__extensions$46dart.src__extensions;
-  const text_editing = packages__flutter__src__services__text_editing$46dart.src__services__text_editing;
-  var text_formatter = Object.create(dart.library);
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $splitMapJoin = dartx.splitMapJoin;
-  var $length = dartx.length;
-  var $substring = dartx.substring;
-  dart._checkModuleNullSafetyMode(false);
-  var T = {
-    MaxLengthEnforcementL: () => (T.MaxLengthEnforcementL = dart.constFn(dart.legacy(text_formatter.MaxLengthEnforcement)))(),
-    MatchToString: () => (T.MatchToString = dart.constFn(dart.fnType(core.String, [core.Match])))(),
-    StringToString: () => (T.StringToString = dart.constFn(dart.fnType(core.String, [core.String])))()
-  };
+  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
+  const tolerance = packages__flutter__src__physics__tolerance$46dart.src__physics__tolerance;
+  const utils = packages__flutter__src__physics__utils$46dart.src__physics__utils;
+  const simulation = packages__flutter__src__physics__simulation$46dart.src__physics__simulation;
+  var spring_simulation = Object.create(dart.library);
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  dart._checkModuleNullSafetyMode(true);
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: text_formatter.MaxLengthEnforcement.prototype,
-        [_name$]: "MaxLengthEnforcement.none",
+        __proto__: spring_simulation.SpringType.prototype,
+        [_name$]: "SpringType.criticallyDamped",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: text_formatter.MaxLengthEnforcement.prototype,
-        [_name$]: "MaxLengthEnforcement.enforced",
+        __proto__: spring_simulation.SpringType.prototype,
+        [_name$]: "SpringType.underDamped",
         index: 1
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: text_formatter.MaxLengthEnforcement.prototype,
-        [_name$]: "MaxLengthEnforcement.truncateAfterCompositionEnds",
+        __proto__: spring_simulation.SpringType.prototype,
+        [_name$]: "SpringType.overDamped",
         index: 2
       });
     },
     get C3() {
-      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], T.MaxLengthEnforcementL());
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], spring_simulation.SpringType);
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: platform$.TargetPlatform.prototype,
-        [_name]: "TargetPlatform.android",
-        index: 0
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: platform$.TargetPlatform.prototype,
-        [_name]: "TargetPlatform.windows",
-        index: 5
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: platform$.TargetPlatform.prototype,
-        [_name]: "TargetPlatform.iOS",
-        index: 2
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: platform$.TargetPlatform.prototype,
-        [_name]: "TargetPlatform.macOS",
-        index: 4
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: platform$.TargetPlatform.prototype,
-        [_name]: "TargetPlatform.linux",
-        index: 3
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: platform$.TargetPlatform.prototype,
-        [_name]: "TargetPlatform.fuchsia",
-        index: 1
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: ui.TextAffinity.prototype,
-        [_name$0]: "TextAffinity.downstream",
-        index: 1
-      });
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: text_editing.TextSelection.prototype,
-        [TextRange_end]: -1,
-        [TextRange_start]: -1,
-        [TextSelection_isDirectional]: false,
-        [TextSelection_affinity]: C[11] || CT.C11,
-        [TextSelection_extentOffset]: -1,
-        [TextSelection_baseOffset]: -1
+        __proto__: tolerance.Tolerance.prototype,
+        [Tolerance_velocity]: 0.001,
+        [Tolerance_time]: 0.001,
+        [Tolerance_distance]: 0.001
       });
     }
   }, false);
-  var C = Array(12).fill(void 0);
+  var C = Array(5).fill(void 0);
   var I = [
-    "file:///C:/flutter/packages/flutter/lib/src/services/text_formatter.dart",
-    "package:flutter/src/services/text_formatter.dart"
+    "package:flutter/src/physics/spring_simulation.dart",
+    "file:///C:/flutter/packages/flutter/lib/src/physics/spring_simulation.dart"
   ];
-  var _name$ = dart.privateName(text_formatter, "_name");
-  text_formatter.MaxLengthEnforcement = class MaxLengthEnforcement extends core.Object {
+  var mass$ = dart.privateName(spring_simulation, "SpringDescription.mass");
+  var stiffness$ = dart.privateName(spring_simulation, "SpringDescription.stiffness");
+  var damping$ = dart.privateName(spring_simulation, "SpringDescription.damping");
+  spring_simulation.SpringDescription = class SpringDescription extends core.Object {
+    get mass() {
+      return this[mass$];
+    }
+    set mass(value) {
+      super.mass = value;
+    }
+    get stiffness() {
+      return this[stiffness$];
+    }
+    set stiffness(value) {
+      super.stiffness = value;
+    }
+    get damping() {
+      return this[damping$];
+    }
+    set damping(value) {
+      super.damping = value;
+    }
+    toString() {
+      return object.objectRuntimeType(this, "SpringDescription") + "(mass: " + this.mass[$toStringAsFixed](1) + ", stiffness: " + this.stiffness[$toStringAsFixed](1) + ", damping: " + this.damping[$toStringAsFixed](1) + ")";
+    }
+  };
+  (spring_simulation.SpringDescription.new = function(opts) {
+    let mass = opts && 'mass' in opts ? opts.mass : null;
+    let stiffness = opts && 'stiffness' in opts ? opts.stiffness : null;
+    let damping = opts && 'damping' in opts ? opts.damping : null;
+    this[mass$] = mass;
+    this[stiffness$] = stiffness;
+    this[damping$] = damping;
+    ;
+  }).prototype = spring_simulation.SpringDescription.prototype;
+  (spring_simulation.SpringDescription.withDampingRatio = function(opts) {
+    let mass = opts && 'mass' in opts ? opts.mass : null;
+    let stiffness = opts && 'stiffness' in opts ? opts.stiffness : null;
+    let ratio = opts && 'ratio' in opts ? opts.ratio : 1;
+    this[mass$] = mass;
+    this[stiffness$] = stiffness;
+    this[damping$] = ratio * 2.0 * math.sqrt(mass * stiffness);
+    ;
+  }).prototype = spring_simulation.SpringDescription.prototype;
+  dart.addTypeTests(spring_simulation.SpringDescription);
+  dart.addTypeCaches(spring_simulation.SpringDescription);
+  dart.setLibraryUri(spring_simulation.SpringDescription, I[0]);
+  dart.setFieldSignature(spring_simulation.SpringDescription, () => ({
+    __proto__: dart.getFields(spring_simulation.SpringDescription.__proto__),
+    mass: dart.finalFieldType(core.double),
+    stiffness: dart.finalFieldType(core.double),
+    damping: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(spring_simulation.SpringDescription, ['toString']);
+  var _name$ = dart.privateName(spring_simulation, "_name");
+  spring_simulation.SpringType = class SpringType extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (text_formatter.MaxLengthEnforcement.new = function(index, _name) {
-    if (index == null) dart.nullFailed(I[0], 42, 6, "index");
-    if (_name == null) dart.nullFailed(I[0], 42, 6, "_name");
+  (spring_simulation.SpringType.new = function(index, _name) {
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = text_formatter.MaxLengthEnforcement.prototype;
-  dart.addTypeTests(text_formatter.MaxLengthEnforcement);
-  dart.addTypeCaches(text_formatter.MaxLengthEnforcement);
-  dart.setLibraryUri(text_formatter.MaxLengthEnforcement, I[1]);
-  dart.setFieldSignature(text_formatter.MaxLengthEnforcement, () => ({
-    __proto__: dart.getFields(text_formatter.MaxLengthEnforcement.__proto__),
+  }).prototype = spring_simulation.SpringType.prototype;
+  dart.addTypeTests(spring_simulation.SpringType);
+  dart.addTypeCaches(spring_simulation.SpringType);
+  dart.setLibraryUri(spring_simulation.SpringType, I[0]);
+  dart.setFieldSignature(spring_simulation.SpringType, () => ({
+    __proto__: dart.getFields(spring_simulation.SpringType.__proto__),
     index: dart.finalFieldType(core.int),
     [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(text_formatter.MaxLengthEnforcement, ['toString']);
-  text_formatter.MaxLengthEnforcement.none = C[0] || CT.C0;
-  text_formatter.MaxLengthEnforcement.enforced = C[1] || CT.C1;
-  text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds = C[2] || CT.C2;
-  text_formatter.MaxLengthEnforcement.values = C[3] || CT.C3;
-  text_formatter.TextInputFormatter = class TextInputFormatter extends core.Object {
-    static withFunction(formatFunction) {
-      if (formatFunction == null) dart.nullFailed(I[0], 95, 29, "formatFunction");
-      return new text_formatter._SimpleTextInputFormatter.new(formatFunction);
+  dart.defineExtensionMethods(spring_simulation.SpringType, ['toString']);
+  spring_simulation.SpringType.criticallyDamped = C[0] || CT.C0;
+  spring_simulation.SpringType.underDamped = C[1] || CT.C1;
+  spring_simulation.SpringType.overDamped = C[2] || CT.C2;
+  spring_simulation.SpringType.values = C[3] || CT.C3;
+  var Tolerance_velocity = dart.privateName(tolerance, "Tolerance.velocity");
+  var Tolerance_time = dart.privateName(tolerance, "Tolerance.time");
+  var Tolerance_distance = dart.privateName(tolerance, "Tolerance.distance");
+  var _endPosition = dart.privateName(spring_simulation, "_endPosition");
+  var _solution = dart.privateName(spring_simulation, "_solution");
+  spring_simulation.SpringSimulation = class SpringSimulation extends simulation.Simulation {
+    get type() {
+      return this[_solution].type;
+    }
+    x(time) {
+      return this[_endPosition] + this[_solution].x(time);
+    }
+    dx(time) {
+      return this[_solution].dx(time);
+    }
+    isDone(time) {
+      return utils.nearZero(this[_solution].x(time), this.tolerance.distance) && utils.nearZero(this[_solution].dx(time), this.tolerance.velocity);
+    }
+    toString() {
+      return object.objectRuntimeType(this, "SpringSimulation") + "(end: " + dart.str(this[_endPosition]) + ", " + dart.str(this.type) + ")";
     }
   };
-  (text_formatter.TextInputFormatter.new = function() {
+  (spring_simulation.SpringSimulation.new = function(spring, start, end, velocity, opts) {
+    let tolerance = opts && 'tolerance' in opts ? opts.tolerance : C[4] || CT.C4;
+    this[_endPosition] = end;
+    this[_solution] = spring_simulation._SpringSolution.new(spring, start - end, velocity);
+    spring_simulation.SpringSimulation.__proto__.new.call(this, {tolerance: tolerance});
     ;
-  }).prototype = text_formatter.TextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.TextInputFormatter);
-  dart.addTypeCaches(text_formatter.TextInputFormatter);
-  dart.setLibraryUri(text_formatter.TextInputFormatter, I[1]);
-  text_formatter._SimpleTextInputFormatter = class _SimpleTextInputFormatter extends text_formatter.TextInputFormatter {
-    formatEditUpdate(oldValue, newValue) {
-      let t1, t0;
-      if (oldValue == null) dart.nullFailed(I[0], 117, 22, "oldValue");
-      if (newValue == null) dart.nullFailed(I[0], 118, 22, "newValue");
-      t0 = oldValue;
-      t1 = newValue;
-      return this.formatFunction(t0, t1);
+  }).prototype = spring_simulation.SpringSimulation.prototype;
+  dart.addTypeTests(spring_simulation.SpringSimulation);
+  dart.addTypeCaches(spring_simulation.SpringSimulation);
+  dart.setMethodSignature(spring_simulation.SpringSimulation, () => ({
+    __proto__: dart.getMethods(spring_simulation.SpringSimulation.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double]),
+    isDone: dart.fnType(core.bool, [core.double])
+  }));
+  dart.setGetterSignature(spring_simulation.SpringSimulation, () => ({
+    __proto__: dart.getGetters(spring_simulation.SpringSimulation.__proto__),
+    type: spring_simulation.SpringType
+  }));
+  dart.setLibraryUri(spring_simulation.SpringSimulation, I[0]);
+  dart.setFieldSignature(spring_simulation.SpringSimulation, () => ({
+    __proto__: dart.getFields(spring_simulation.SpringSimulation.__proto__),
+    [_endPosition]: dart.finalFieldType(core.double),
+    [_solution]: dart.finalFieldType(spring_simulation._SpringSolution)
+  }));
+  dart.defineExtensionMethods(spring_simulation.SpringSimulation, ['toString']);
+  spring_simulation.ScrollSpringSimulation = class ScrollSpringSimulation extends spring_simulation.SpringSimulation {
+    x(time) {
+      return this.isDone(time) ? this[_endPosition] : super.x(time);
     }
   };
-  (text_formatter._SimpleTextInputFormatter.new = function(formatFunction) {
-    if (formatFunction == null) dart.nullFailed(I[0], 110, 34, "formatFunction");
-    this.formatFunction = formatFunction;
-    if (!(formatFunction != null)) dart.assertFailed(null, I[0], 111, 14, "formatFunction != null");
+  (spring_simulation.ScrollSpringSimulation.new = function(spring, start, end, velocity, opts) {
+    let tolerance = opts && 'tolerance' in opts ? opts.tolerance : C[4] || CT.C4;
+    spring_simulation.ScrollSpringSimulation.__proto__.new.call(this, spring, start, end, velocity, {tolerance: tolerance});
     ;
-  }).prototype = text_formatter._SimpleTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter._SimpleTextInputFormatter);
-  dart.addTypeCaches(text_formatter._SimpleTextInputFormatter);
-  dart.setMethodSignature(text_formatter._SimpleTextInputFormatter, () => ({
-    __proto__: dart.getMethods(text_formatter._SimpleTextInputFormatter.__proto__),
-    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
-  }));
-  dart.setLibraryUri(text_formatter._SimpleTextInputFormatter, I[1]);
-  dart.setFieldSignature(text_formatter._SimpleTextInputFormatter, () => ({
-    __proto__: dart.getFields(text_formatter._SimpleTextInputFormatter.__proto__),
-    formatFunction: dart.finalFieldType(dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]))
-  }));
-  var filterPattern$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.filterPattern");
-  var allow$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.allow");
-  var replacementString$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.replacementString");
-  text_formatter.FilteringTextInputFormatter = class FilteringTextInputFormatter extends text_formatter.TextInputFormatter {
-    get filterPattern() {
-      return this[filterPattern$];
-    }
-    set filterPattern(value) {
-      super.filterPattern = value;
-    }
-    get allow() {
-      return this[allow$];
-    }
-    set allow(value) {
-      super.allow = value;
-    }
-    get replacementString() {
-      return this[replacementString$];
-    }
-    set replacementString(value) {
-      super.replacementString = value;
-    }
-    formatEditUpdate(oldValue, newValue) {
-      if (oldValue == null) dart.nullFailed(I[0], 263, 22, "oldValue");
-      if (newValue == null) dart.nullFailed(I[0], 264, 22, "newValue");
-      return text_formatter._selectionAwareTextManipulation(newValue, dart.fn(substring => {
-        if (substring == null) dart.nullFailed(I[0], 268, 15, "substring");
-        return substring[$splitMapJoin](this.filterPattern, {onMatch: !dart.test(this.allow) ? dart.fn(match => {
-            if (match == null) dart.nullFailed(I[0], 271, 36, "match");
-            return this.replacementString;
-          }, T.MatchToString()) : null, onNonMatch: dart.test(this.allow) ? dart.fn(nonMatch => {
-            if (nonMatch == null) dart.nullFailed(I[0], 272, 39, "nonMatch");
-            return nonMatch[$isNotEmpty] ? this.replacementString : "";
-          }, T.StringToString()) : null});
-      }, T.StringToString()));
+  }).prototype = spring_simulation.ScrollSpringSimulation.prototype;
+  dart.addTypeTests(spring_simulation.ScrollSpringSimulation);
+  dart.addTypeCaches(spring_simulation.ScrollSpringSimulation);
+  dart.setLibraryUri(spring_simulation.ScrollSpringSimulation, I[0]);
+  spring_simulation._SpringSolution = class _SpringSolution extends core.Object {
+    static new(spring, initialPosition, initialVelocity) {
+      if (!(spring !== null)) dart.assertFailed(null, I[1], 156, 12, "spring != null");
+      if (!(spring.mass !== null)) dart.assertFailed(null, I[1], 157, 12, "spring.mass != null");
+      if (!(spring.stiffness !== null)) dart.assertFailed(null, I[1], 158, 12, "spring.stiffness != null");
+      if (!(spring.damping !== null)) dart.assertFailed(null, I[1], 159, 12, "spring.damping != null");
+      if (!(initialPosition !== null)) dart.assertFailed(null, I[1], 160, 12, "initialPosition != null");
+      if (!(initialVelocity !== null)) dart.assertFailed(null, I[1], 161, 12, "initialVelocity != null");
+      let cmk = spring.damping * spring.damping - 4 * spring.mass * spring.stiffness;
+      if (cmk === 0.0) return spring_simulation._CriticalSolution.new(spring, initialPosition, initialVelocity);
+      if (cmk > 0.0) return spring_simulation._OverdampedSolution.new(spring, initialPosition, initialVelocity);
+      return spring_simulation._UnderdampedSolution.new(spring, initialPosition, initialVelocity);
     }
   };
-  (text_formatter.FilteringTextInputFormatter.new = function(filterPattern, opts) {
-    if (filterPattern == null) dart.nullFailed(I[0], 150, 10, "filterPattern");
-    let allow = opts && 'allow' in opts ? opts.allow : null;
-    if (allow == null) dart.nullFailed(I[0], 151, 19, "allow");
-    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
-    if (replacementString == null) dart.nullFailed(I[0], 152, 10, "replacementString");
-    this[filterPattern$] = filterPattern;
-    this[allow$] = allow;
-    this[replacementString$] = replacementString;
-    if (!(filterPattern != null)) dart.assertFailed(null, I[0], 153, 15, "filterPattern != null");
-    if (!(allow != null)) dart.assertFailed(null, I[0], 154, 15, "allow != null");
-    if (!(replacementString != null)) dart.assertFailed(null, I[0], 155, 15, "replacementString != null");
-    ;
-  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
-  (text_formatter.FilteringTextInputFormatter.allow = function(filterPattern, opts) {
-    if (filterPattern == null) dart.nullFailed(I[0], 162, 10, "filterPattern");
-    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
-    if (replacementString == null) dart.nullFailed(I[0], 163, 10, "replacementString");
-    this[filterPattern$] = filterPattern;
-    this[replacementString$] = replacementString;
-    if (!(filterPattern != null)) dart.assertFailed(null, I[0], 164, 15, "filterPattern != null");
-    if (!(replacementString != null)) dart.assertFailed(null, I[0], 165, 15, "replacementString != null");
-    this[allow$] = true;
-    ;
-  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
-  (text_formatter.FilteringTextInputFormatter.deny = function(filterPattern, opts) {
-    if (filterPattern == null) dart.nullFailed(I[0], 173, 10, "filterPattern");
-    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
-    if (replacementString == null) dart.nullFailed(I[0], 174, 10, "replacementString");
-    this[filterPattern$] = filterPattern;
-    this[replacementString$] = replacementString;
-    if (!(filterPattern != null)) dart.assertFailed(null, I[0], 175, 15, "filterPattern != null");
-    if (!(replacementString != null)) dart.assertFailed(null, I[0], 176, 15, "replacementString != null");
-    this[allow$] = false;
-    ;
-  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.FilteringTextInputFormatter);
-  dart.addTypeCaches(text_formatter.FilteringTextInputFormatter);
-  dart.setMethodSignature(text_formatter.FilteringTextInputFormatter, () => ({
-    __proto__: dart.getMethods(text_formatter.FilteringTextInputFormatter.__proto__),
-    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
-  }));
-  dart.setLibraryUri(text_formatter.FilteringTextInputFormatter, I[1]);
-  dart.setFieldSignature(text_formatter.FilteringTextInputFormatter, () => ({
-    __proto__: dart.getFields(text_formatter.FilteringTextInputFormatter.__proto__),
-    filterPattern: dart.finalFieldType(core.Pattern),
-    allow: dart.finalFieldType(core.bool),
-    replacementString: dart.finalFieldType(core.String)
-  }));
-  dart.defineLazy(text_formatter.FilteringTextInputFormatter, {
-    /*text_formatter.FilteringTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
-      return new text_formatter.FilteringTextInputFormatter.deny("\n");
-    },
-    /*text_formatter.FilteringTextInputFormatter.digitsOnly*/get digitsOnly() {
-      return new text_formatter.FilteringTextInputFormatter.allow(core.RegExp.new("[0-9]"));
+  (spring_simulation._SpringSolution[dart.mixinNew] = function() {
+  }).prototype = spring_simulation._SpringSolution.prototype;
+  dart.addTypeTests(spring_simulation._SpringSolution);
+  dart.addTypeCaches(spring_simulation._SpringSolution);
+  dart.setLibraryUri(spring_simulation._SpringSolution, I[0]);
+  var _r = dart.privateName(spring_simulation, "_r");
+  var _c1 = dart.privateName(spring_simulation, "_c1");
+  var _c2 = dart.privateName(spring_simulation, "_c2");
+  spring_simulation._CriticalSolution = class _CriticalSolution extends core.Object {
+    static new(spring, distance, velocity) {
+      let r = -spring.damping / (2.0 * spring.mass);
+      let c1 = distance;
+      let c2 = velocity / (r * distance);
+      return new spring_simulation._CriticalSolution.withArgs(r, c1, c2);
     }
-  }, false);
-  text_formatter.BlacklistingTextInputFormatter = class BlacklistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
-    get blacklistedPattern() {
-      return this.filterPattern;
+    x(time) {
+      return (this[_c1] + this[_c2] * time) * math.pow(2.718281828459045, this[_r] * time);
+    }
+    dx(time) {
+      let power = math.pow(2.718281828459045, this[_r] * time);
+      return this[_r] * (this[_c1] + this[_c2] * time) * power + this[_c2] * power;
+    }
+    get type() {
+      return spring_simulation.SpringType.criticallyDamped;
     }
   };
-  (text_formatter.BlacklistingTextInputFormatter.new = function(blacklistedPattern, opts) {
-    if (blacklistedPattern == null) dart.nullFailed(I[0], 297, 13, "blacklistedPattern");
-    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
-    if (replacementString == null) dart.nullFailed(I[0], 298, 12, "replacementString");
-    text_formatter.BlacklistingTextInputFormatter.__proto__.deny.call(this, blacklistedPattern, {replacementString: replacementString});
+  (spring_simulation._CriticalSolution.withArgs = function(r, c1, c2) {
+    this[_r] = r;
+    this[_c1] = c1;
+    this[_c2] = c2;
     ;
-  }).prototype = text_formatter.BlacklistingTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.BlacklistingTextInputFormatter);
-  dart.addTypeCaches(text_formatter.BlacklistingTextInputFormatter);
-  dart.setGetterSignature(text_formatter.BlacklistingTextInputFormatter, () => ({
-    __proto__: dart.getGetters(text_formatter.BlacklistingTextInputFormatter.__proto__),
-    blacklistedPattern: core.Pattern
+  }).prototype = spring_simulation._CriticalSolution.prototype;
+  dart.addTypeTests(spring_simulation._CriticalSolution);
+  dart.addTypeCaches(spring_simulation._CriticalSolution);
+  spring_simulation._CriticalSolution[dart.implements] = () => [spring_simulation._SpringSolution];
+  dart.setMethodSignature(spring_simulation._CriticalSolution, () => ({
+    __proto__: dart.getMethods(spring_simulation._CriticalSolution.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double])
   }));
-  dart.setLibraryUri(text_formatter.BlacklistingTextInputFormatter, I[1]);
-  dart.defineLazy(text_formatter.BlacklistingTextInputFormatter, {
-    /*text_formatter.BlacklistingTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
-      return new text_formatter.BlacklistingTextInputFormatter.new(core.RegExp.new("\\n"));
+  dart.setGetterSignature(spring_simulation._CriticalSolution, () => ({
+    __proto__: dart.getGetters(spring_simulation._CriticalSolution.__proto__),
+    type: spring_simulation.SpringType
+  }));
+  dart.setLibraryUri(spring_simulation._CriticalSolution, I[0]);
+  dart.setFieldSignature(spring_simulation._CriticalSolution, () => ({
+    __proto__: dart.getFields(spring_simulation._CriticalSolution.__proto__),
+    [_r]: dart.finalFieldType(core.double),
+    [_c1]: dart.finalFieldType(core.double),
+    [_c2]: dart.finalFieldType(core.double)
+  }));
+  var _r1 = dart.privateName(spring_simulation, "_r1");
+  var _r2 = dart.privateName(spring_simulation, "_r2");
+  spring_simulation._OverdampedSolution = class _OverdampedSolution extends core.Object {
+    static new(spring, distance, velocity) {
+      let cmk = spring.damping * spring.damping - 4 * spring.mass * spring.stiffness;
+      let r1 = (-spring.damping - math.sqrt(cmk)) / (2.0 * spring.mass);
+      let r2 = (-spring.damping + math.sqrt(cmk)) / (2.0 * spring.mass);
+      let c2 = (velocity - r1 * distance) / (r2 - r1);
+      let c1 = distance - c2;
+      return new spring_simulation._OverdampedSolution.withArgs(r1, r2, c1, c2);
     }
-  }, false);
-  text_formatter.WhitelistingTextInputFormatter = class WhitelistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
-    get whitelistedPattern() {
-      return this.filterPattern;
+    x(time) {
+      return this[_c1] * math.pow(2.718281828459045, this[_r1] * time) + this[_c2] * math.pow(2.718281828459045, this[_r2] * time);
+    }
+    dx(time) {
+      return this[_c1] * this[_r1] * math.pow(2.718281828459045, this[_r1] * time) + this[_c2] * this[_r2] * math.pow(2.718281828459045, this[_r2] * time);
+    }
+    get type() {
+      return spring_simulation.SpringType.overDamped;
     }
   };
-  (text_formatter.WhitelistingTextInputFormatter.new = function(whitelistedPattern) {
-    if (whitelistedPattern == null) dart.nullFailed(I[0], 328, 42, "whitelistedPattern");
-    if (!(whitelistedPattern != null)) dart.assertFailed(null, I[0], 329, 14, "whitelistedPattern != null");
-    text_formatter.WhitelistingTextInputFormatter.__proto__.allow.call(this, whitelistedPattern);
+  (spring_simulation._OverdampedSolution.withArgs = function(r1, r2, c1, c2) {
+    this[_r1] = r1;
+    this[_r2] = r2;
+    this[_c1] = c1;
+    this[_c2] = c2;
     ;
-  }).prototype = text_formatter.WhitelistingTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.WhitelistingTextInputFormatter);
-  dart.addTypeCaches(text_formatter.WhitelistingTextInputFormatter);
-  dart.setGetterSignature(text_formatter.WhitelistingTextInputFormatter, () => ({
-    __proto__: dart.getGetters(text_formatter.WhitelistingTextInputFormatter.__proto__),
-    whitelistedPattern: core.Pattern
+  }).prototype = spring_simulation._OverdampedSolution.prototype;
+  dart.addTypeTests(spring_simulation._OverdampedSolution);
+  dart.addTypeCaches(spring_simulation._OverdampedSolution);
+  spring_simulation._OverdampedSolution[dart.implements] = () => [spring_simulation._SpringSolution];
+  dart.setMethodSignature(spring_simulation._OverdampedSolution, () => ({
+    __proto__: dart.getMethods(spring_simulation._OverdampedSolution.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double])
   }));
-  dart.setLibraryUri(text_formatter.WhitelistingTextInputFormatter, I[1]);
-  dart.defineLazy(text_formatter.WhitelistingTextInputFormatter, {
-    /*text_formatter.WhitelistingTextInputFormatter.digitsOnly*/get digitsOnly() {
-      return new text_formatter.WhitelistingTextInputFormatter.new(core.RegExp.new("\\d+"));
+  dart.setGetterSignature(spring_simulation._OverdampedSolution, () => ({
+    __proto__: dart.getGetters(spring_simulation._OverdampedSolution.__proto__),
+    type: spring_simulation.SpringType
+  }));
+  dart.setLibraryUri(spring_simulation._OverdampedSolution, I[0]);
+  dart.setFieldSignature(spring_simulation._OverdampedSolution, () => ({
+    __proto__: dart.getFields(spring_simulation._OverdampedSolution.__proto__),
+    [_r1]: dart.finalFieldType(core.double),
+    [_r2]: dart.finalFieldType(core.double),
+    [_c1]: dart.finalFieldType(core.double),
+    [_c2]: dart.finalFieldType(core.double)
+  }));
+  var _w = dart.privateName(spring_simulation, "_w");
+  spring_simulation._UnderdampedSolution = class _UnderdampedSolution extends core.Object {
+    static new(spring, distance, velocity) {
+      let w = math.sqrt(4.0 * spring.mass * spring.stiffness - spring.damping * spring.damping) / (2.0 * spring.mass);
+      let r = -(spring.damping / 2.0 * spring.mass);
+      let c1 = distance;
+      let c2 = (velocity - r * distance) / w;
+      return new spring_simulation._UnderdampedSolution.withArgs(w, r, c1, c2);
     }
-  }, false);
-  var maxLength$ = dart.privateName(text_formatter, "LengthLimitingTextInputFormatter.maxLength");
-  var maxLengthEnforcement$ = dart.privateName(text_formatter, "LengthLimitingTextInputFormatter.maxLengthEnforcement");
-  var _name = dart.privateName(platform$, "_name");
-  text_formatter.LengthLimitingTextInputFormatter = class LengthLimitingTextInputFormatter extends text_formatter.TextInputFormatter {
-    get maxLength() {
-      return this[maxLength$];
+    x(time) {
+      return math.pow(2.718281828459045, this[_r] * time) * (this[_c1] * math.cos(this[_w] * time) + this[_c2] * math.sin(this[_w] * time));
     }
-    set maxLength(value) {
-      super.maxLength = value;
+    dx(time) {
+      let power = math.pow(2.718281828459045, this[_r] * time);
+      let cosine = math.cos(this[_w] * time);
+      let sine = math.sin(this[_w] * time);
+      return power * (this[_c2] * this[_w] * cosine - this[_c1] * this[_w] * sine) + this[_r] * power * (this[_c2] * sine + this[_c1] * cosine);
     }
-    get maxLengthEnforcement() {
-      return this[maxLengthEnforcement$];
-    }
-    set maxLengthEnforcement(value) {
-      super.maxLengthEnforcement = value;
-    }
-    static getDefaultMaxLengthEnforcement(platform = null) {
-      let t0;
-      if (true) {
-        return text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds;
-      } else {
-        switch (t0 = platform, t0 == null ? platform$.defaultTargetPlatform : t0) {
-          case C[4] || CT.C4:
-          case C[5] || CT.C5:
-          {
-            return text_formatter.MaxLengthEnforcement.enforced;
-          }
-          case C[6] || CT.C6:
-          case C[7] || CT.C7:
-          case C[8] || CT.C8:
-          case C[9] || CT.C9:
-          {
-            return text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds;
-          }
-          default:
-          {
-            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-          }
-        }
-      }
-    }
-    static truncate(value, maxLength) {
-      if (value == null) dart.nullFailed(I[0], 462, 53, "value");
-      if (maxLength == null) dart.nullFailed(I[0], 462, 64, "maxLength");
-      let iterator = new characters_impl.StringCharacterRange.new(value.text);
-      if (dart.notNull(extensions['StringCharacters|get#characters'](value.text)[$length]) > dart.notNull(maxLength)) {
-        iterator.expandNext(maxLength);
-      }
-      let truncated = iterator.current;
-      return new text_input.TextEditingValue.new({text: truncated, selection: value.selection.copyWith({baseOffset: math.min(core.int, value.selection.start, truncated.length), extentOffset: math.min(core.int, value.selection.end, truncated.length)}), composing: !dart.test(value.composing.isCollapsed) && truncated.length > dart.notNull(value.composing.start) ? new ui.TextRange.new({start: value.composing.start, end: math.min(core.int, value.composing.end, truncated.length)}) : ui.TextRange.empty});
-    }
-    formatEditUpdate(oldValue, newValue) {
-      let t0;
-      if (oldValue == null) dart.nullFailed(I[0], 486, 22, "oldValue");
-      if (newValue == null) dart.nullFailed(I[0], 487, 22, "newValue");
-      let maxLength = this.maxLength;
-      if (maxLength == null || maxLength === -1 || dart.notNull(extensions['StringCharacters|get#characters'](newValue.text)[$length]) <= dart.notNull(maxLength)) {
-        return newValue;
-      }
-      if (!(dart.notNull(maxLength) > 0)) dart.assertFailed(null, I[0], 497, 12, "maxLength > 0");
-      switch (t0 = this.maxLengthEnforcement, t0 == null ? text_formatter.LengthLimitingTextInputFormatter.getDefaultMaxLengthEnforcement() : t0) {
-        case C[0] || CT.C0:
-        {
-          return newValue;
-        }
-        case C[1] || CT.C1:
-        {
-          if (extensions['StringCharacters|get#characters'](oldValue.text)[$length] == maxLength && dart.test(oldValue.selection.isCollapsed)) {
-            return oldValue;
-          }
-          return text_formatter.LengthLimitingTextInputFormatter.truncate(newValue, maxLength);
-        }
-        case C[2] || CT.C2:
-        {
-          if (extensions['StringCharacters|get#characters'](oldValue.text)[$length] == maxLength && !dart.test(oldValue.composing.isValid)) {
-            return oldValue;
-          }
-          if (dart.test(newValue.composing.isValid)) {
-            return newValue;
-          }
-          return text_formatter.LengthLimitingTextInputFormatter.truncate(newValue, maxLength);
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
+    get type() {
+      return spring_simulation.SpringType.underDamped;
     }
   };
-  (text_formatter.LengthLimitingTextInputFormatter.new = function(maxLength, opts) {
-    let maxLengthEnforcement = opts && 'maxLengthEnforcement' in opts ? opts.maxLengthEnforcement : null;
-    this[maxLength$] = maxLength;
-    this[maxLengthEnforcement$] = maxLengthEnforcement;
-    if (!(maxLength == null || maxLength === -1 || dart.notNull(maxLength) > 0)) dart.assertFailed(null, I[0], 371, 15, "maxLength == null || maxLength == -1 || maxLength > 0");
+  (spring_simulation._UnderdampedSolution.withArgs = function(w, r, c1, c2) {
+    this[_w] = w;
+    this[_r] = r;
+    this[_c1] = c1;
+    this[_c2] = c2;
     ;
-  }).prototype = text_formatter.LengthLimitingTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.LengthLimitingTextInputFormatter);
-  dart.addTypeCaches(text_formatter.LengthLimitingTextInputFormatter);
-  dart.setMethodSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
-    __proto__: dart.getMethods(text_formatter.LengthLimitingTextInputFormatter.__proto__),
-    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
+  }).prototype = spring_simulation._UnderdampedSolution.prototype;
+  dart.addTypeTests(spring_simulation._UnderdampedSolution);
+  dart.addTypeCaches(spring_simulation._UnderdampedSolution);
+  spring_simulation._UnderdampedSolution[dart.implements] = () => [spring_simulation._SpringSolution];
+  dart.setMethodSignature(spring_simulation._UnderdampedSolution, () => ({
+    __proto__: dart.getMethods(spring_simulation._UnderdampedSolution.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double])
   }));
-  dart.setLibraryUri(text_formatter.LengthLimitingTextInputFormatter, I[1]);
-  dart.setFieldSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
-    __proto__: dart.getFields(text_formatter.LengthLimitingTextInputFormatter.__proto__),
-    maxLength: dart.finalFieldType(dart.nullable(core.int)),
-    maxLengthEnforcement: dart.finalFieldType(dart.nullable(text_formatter.MaxLengthEnforcement))
+  dart.setGetterSignature(spring_simulation._UnderdampedSolution, () => ({
+    __proto__: dart.getGetters(spring_simulation._UnderdampedSolution.__proto__),
+    type: spring_simulation.SpringType
   }));
-  var TextRange_end = dart.privateName(ui, "TextRange.end");
-  var TextRange_start = dart.privateName(ui, "TextRange.start");
-  var TextSelection_isDirectional = dart.privateName(text_editing, "TextSelection.isDirectional");
-  var _name$0 = dart.privateName(ui, "_name");
-  var TextSelection_affinity = dart.privateName(text_editing, "TextSelection.affinity");
-  var TextSelection_extentOffset = dart.privateName(text_editing, "TextSelection.extentOffset");
-  var TextSelection_baseOffset = dart.privateName(text_editing, "TextSelection.baseOffset");
-  text_formatter._selectionAwareTextManipulation = function _selectionAwareTextManipulation(value, substringManipulation) {
-    let t0;
-    if (value == null) dart.nullFailed(I[0], 532, 20, "value");
-    if (substringManipulation == null) dart.nullFailed(I[0], 533, 37, "substringManipulation");
-    let selectionStartIndex = value.selection.start;
-    let selectionEndIndex = value.selection.end;
-    let manipulatedText = null;
-    let manipulatedSelection = null;
-    if (dart.notNull(selectionStartIndex) < 0 || dart.notNull(selectionEndIndex) < 0) {
-      manipulatedText = substringManipulation(value.text);
-    } else {
-      let beforeSelection = substringManipulation(value.text[$substring](0, selectionStartIndex));
-      let inSelection = substringManipulation(value.text[$substring](selectionStartIndex, selectionEndIndex));
-      let afterSelection = substringManipulation(value.text[$substring](selectionEndIndex));
-      manipulatedText = dart.notNull(beforeSelection) + dart.notNull(inSelection) + dart.notNull(afterSelection);
-      if (dart.notNull(value.selection.baseOffset) > dart.notNull(value.selection.extentOffset)) {
-        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length + inSelection.length, extentOffset: beforeSelection.length});
-      } else {
-        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length, extentOffset: beforeSelection.length + inSelection.length});
-      }
-    }
-    return new text_input.TextEditingValue.new({text: manipulatedText, selection: (t0 = manipulatedSelection, t0 == null ? C[10] || CT.C10 : t0), composing: manipulatedText == value.text ? value.composing : ui.TextRange.empty});
-  };
-  dart.trackLibraries("packages/flutter/src/services/text_formatter.dart", {
-    "package:flutter/src/services/text_formatter.dart": text_formatter
+  dart.setLibraryUri(spring_simulation._UnderdampedSolution, I[0]);
+  dart.setFieldSignature(spring_simulation._UnderdampedSolution, () => ({
+    __proto__: dart.getFields(spring_simulation._UnderdampedSolution.__proto__),
+    [_w]: dart.finalFieldType(core.double),
+    [_r]: dart.finalFieldType(core.double),
+    [_c1]: dart.finalFieldType(core.double),
+    [_c2]: dart.finalFieldType(core.double)
+  }));
+  dart.trackLibraries("packages/flutter/src/physics/spring_simulation.dart", {
+    "package:flutter/src/physics/spring_simulation.dart": spring_simulation
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["text_formatter.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/services/text_formatter.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["spring_simulation.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/physics/spring_simulation.dart.lib.js"}');
   // Exports:
   return {
-    src__services__text_formatter: text_formatter
+    src__physics__spring_simulation: spring_simulation
   };
 }));
 
-//# sourceMappingURL=text_formatter.dart.lib.js.map
+//# sourceMappingURL=spring_simulation.dart.lib.js.map

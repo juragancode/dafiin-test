@@ -33,7 +33,7 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
   var $_set = dartx._set;
   var $remove = dartx.remove;
   var $_get = dartx._get;
-  dart._checkModuleNullSafetyMode(false);
+  dart._checkModuleNullSafetyMode(true);
   var T = {
     IdentityMapOfint$PointerEventResampler: () => (T.IdentityMapOfint$PointerEventResampler = dart.constFn(_js_helper.IdentityMap$(core.int, resampler$.PointerEventResampler)))(),
     VoidToPointerEventResampler: () => (T.VoidToPointerEventResampler = dart.constFn(dart.fnType(resampler$.PointerEventResampler, [])))(),
@@ -104,10 +104,9 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
   binding$0._Resampler = class _Resampler extends core.Object {
     addOrDispatch(event) {
       let t0;
-      if (event == null) dart.nullFailed(I[1], 75, 35, "event");
       let scheduler = binding.SchedulerBinding.instance;
       if (!(scheduler != null)) dart.assertFailed(null, I[1], 77, 12, "scheduler != null");
-      if (event.kind == ui.PointerDeviceKind.touch) {
+      if (event.kind === ui.PointerDeviceKind.touch) {
         this[_lastEventTime] = event.timeStamp;
         let resampler = this[_resamplers][$putIfAbsent](event.device, dart.fn(() => new resampler$.PointerEventResampler.new(), T.VoidToPointerEventResampler()));
         resampler.addEvent(event);
@@ -118,11 +117,9 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
     }
     sample(samplingOffset, clock) {
       let t0, t0$, t0$0;
-      if (samplingOffset == null) dart.nullFailed(I[1], 98, 24, "samplingOffset");
-      if (clock == null) dart.nullFailed(I[1], 98, 54, "clock");
       let scheduler = binding.SchedulerBinding.instance;
       if (!(scheduler != null)) dart.assertFailed(null, I[1], 100, 12, "scheduler != null");
-      if (dart.equals(this[_frameTime], core.Duration.zero)) {
+      if (this[_frameTime]._equals(core.Duration.zero)) {
         this[_frameTime] = new core.Duration.new({milliseconds: clock.now().millisecondsSinceEpoch});
         this[_frameTimeAge] = (t0 = clock.stopwatch(), (() => {
           t0.start();
@@ -130,45 +127,34 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
         })());
       }
       if ((t0$ = this[_timer], t0$ == null ? null : t0$.isActive) !== true) {
-        this[_timer] = async.Timer.periodic(this[_samplingInterval$], dart.fn(_ => {
-          if (_ == null) dart.nullFailed(I[1], 111, 52, "_");
-          return this[_onSampleTimeChanged]();
-        }, T.TimerTovoid()));
+        this[_timer] = async.Timer.periodic(this[_samplingInterval$], dart.fn(_ => this[_onSampleTimeChanged](), T.TimerTovoid()));
       }
       let samplingIntervalUs = this[_samplingInterval$].inMicroseconds;
-      let elapsedIntervals = (dart.notNull(this[_frameTimeAge].elapsedMicroseconds) / dart.notNull(samplingIntervalUs))[$truncate]();
-      let elapsedUs = elapsedIntervals * dart.notNull(samplingIntervalUs);
+      let elapsedIntervals = (this[_frameTimeAge].elapsedMicroseconds / samplingIntervalUs)[$truncate]();
+      let elapsedUs = elapsedIntervals * samplingIntervalUs;
       let frameTime = this[_frameTime]['+'](new core.Duration.new({microseconds: elapsedUs}));
       let sampleTime = frameTime['+'](samplingOffset);
       let nextSampleTime = sampleTime['+'](this[_samplingInterval$]);
       for (let resampler of this[_resamplers][$values]) {
         resampler.sample(sampleTime, nextSampleTime, this[_handlePointerEvent$]);
       }
-      this[_resamplers][$removeWhere](dart.fn((key, resampler) => {
-        if (key == null) dart.nullFailed(I[1], 140, 34, "key");
-        if (resampler == null) dart.nullFailed(I[1], 140, 61, "resampler");
-        return !dart.test(resampler.hasPendingEvents) && !dart.test(resampler.isDown);
-      }, T.intAndPointerEventResamplerTobool()));
+      this[_resamplers][$removeWhere](dart.fn((key, resampler) => !resampler.hasPendingEvents && !resampler.isDown, T.intAndPointerEventResamplerTobool()));
       this[_lastSampleTime] = sampleTime;
-      if (dart.test(this[_resamplers][$isEmpty])) {
+      if (this[_resamplers][$isEmpty]) {
         dart.nullCheck(this[_timer]).cancel();
         return;
       }
-      if (!dart.test(this[_frameCallbackScheduled])) {
+      if (!this[_frameCallbackScheduled]) {
         this[_frameCallbackScheduled] = true;
         t0$0 = scheduler;
         t0$0 == null ? null : t0$0.addPostFrameCallback(dart.fn(_ => {
           let t1;
-          if (_ == null) dart.nullFailed(I[1], 159, 40, "_");
           this[_frameCallbackScheduled] = false;
           this[_frameTime] = scheduler.currentSystemFrameTimeStamp;
           this[_frameTimeAge].reset();
           t1 = this[_timer];
           t1 == null ? null : t1.cancel();
-          this[_timer] = async.Timer.periodic(this[_samplingInterval$], dart.fn(_ => {
-            if (_ == null) dart.nullFailed(I[1], 168, 53, "_");
-            return this[_onSampleTimeChanged]();
-          }, T.TimerTovoid()));
+          this[_timer] = async.Timer.periodic(this[_samplingInterval$], dart.fn(_ => this[_onSampleTimeChanged](), T.TimerTovoid()));
           this[_onSampleTimeChanged]();
         }, T.DurationTovoid()));
       }
@@ -181,20 +167,17 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
       this[_frameTime] = core.Duration.zero;
     }
     [_onSampleTimeChanged]() {
-      if (!dart.test(dart.fn(() => {
-        if (dart.test(debug.debugPrintResamplingMargin)) {
+      if (!dart.fn(() => {
+        if (debug.debugPrintResamplingMargin) {
           let resamplingMargin = this[_lastEventTime]['-'](this[_lastSampleTime]);
           print.debugPrint(dart.str(resamplingMargin));
         }
         return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 185, 12, "() {\r\n      if (debugPrintResamplingMargin) {\r\n        final Duration resamplingMargin = _lastEventTime - _lastSampleTime;\r\n          debugPrint('$resamplingMargin');\r\n      }\r\n      return true;\r\n    }()");
+      }, T.VoidTobool())()) dart.assertFailed(null, I[1], 185, 12, "() {\r\n      if (debugPrintResamplingMargin) {\r\n        final Duration resamplingMargin = _lastEventTime - _lastSampleTime;\r\n          debugPrint('$resamplingMargin');\r\n      }\r\n      return true;\r\n    }()");
       this[_handleSampleTimeChanged$]();
     }
   };
   (binding$0._Resampler.new = function(_handlePointerEvent, _handleSampleTimeChanged, _samplingInterval) {
-    if (_handlePointerEvent == null) dart.nullFailed(I[1], 41, 19, "_handlePointerEvent");
-    if (_handleSampleTimeChanged == null) dart.nullFailed(I[1], 41, 45, "_handleSampleTimeChanged");
-    if (_samplingInterval == null) dart.nullFailed(I[1], 41, 76, "_samplingInterval");
     this[_resamplers] = new (T.IdentityMapOfint$PointerEventResampler()).new();
     this[_frameCallbackScheduled] = false;
     this[_frameTime] = core.Duration.zero;
@@ -238,7 +221,6 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
   var _pendingPointerEvents = dart.privateName(binding$0, "_pendingPointerEvents");
   var _hitTests = dart.privateName(binding$0, "_hitTests");
   var __GestureBinding__resampler = dart.privateName(binding$0, "_#GestureBinding#_resampler");
-  var __GestureBinding__resampler_isSet = dart.privateName(binding$0, "_#GestureBinding#_resampler#isSet");
   var _handlePointerDataPacket = dart.privateName(binding$0, "_handlePointerDataPacket");
   var _flushPointerEventQueue = dart.privateName(binding$0, "_flushPointerEventQueue");
   var _resampler = dart.privateName(binding$0, "_resampler");
@@ -290,24 +272,21 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
       this[_flushPointerEventQueue]();
     }
     [_handlePointerDataPacket](packet) {
-      if (packet == null) dart.nullFailed(I[1], 274, 54, "packet");
       this[_pendingPointerEvents].addAll(converter.PointerEventConverter.expand(packet.data, this.window.devicePixelRatio));
-      if (!dart.test(this.locked)) this[_flushPointerEventQueue]();
+      if (!this.locked) this[_flushPointerEventQueue]();
     }
     cancelPointer(pointer) {
-      if (pointer == null) dart.nullFailed(I[1], 286, 26, "pointer");
-      if (dart.test(this[_pendingPointerEvents][$isEmpty]) && !dart.test(this.locked)) async.scheduleMicrotask(dart.bind(this, _flushPointerEventQueue));
+      if (this[_pendingPointerEvents][$isEmpty] && !this.locked) async.scheduleMicrotask(dart.bind(this, _flushPointerEventQueue));
       this[_pendingPointerEvents].addFirst(new events.PointerCancelEvent.new({pointer: pointer}));
     }
     [_flushPointerEventQueue]() {
-      if (!!dart.test(this.locked)) dart.assertFailed(null, I[1], 293, 12, "!locked");
-      while (dart.test(this[_pendingPointerEvents][$isNotEmpty]))
+      if (!!this.locked) dart.assertFailed(null, I[1], 293, 12, "!locked");
+      while (this[_pendingPointerEvents][$isNotEmpty])
         this.handlePointerEvent(this[_pendingPointerEvents].removeFirst());
     }
     handlePointerEvent(event) {
-      if (event == null) dart.nullFailed(I[1], 326, 40, "event");
-      if (!!dart.test(this.locked)) dart.assertFailed(null, I[1], 327, 12, "!locked");
-      if (dart.test(this.resamplingEnabled)) {
+      if (!!this.locked) dart.assertFailed(null, I[1], 327, 12, "!locked");
+      if (this.resamplingEnabled) {
         this[_resampler].addOrDispatch(event);
         this[_resampler].sample(this.samplingOffset, this[_samplingClock]);
         return;
@@ -316,41 +295,37 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
       this[_handlePointerEventImmediately](event);
     }
     [_handlePointerEventImmediately](event) {
-      if (event == null) dart.nullFailed(I[1], 341, 52, "event");
       let hitTestResult = null;
       if (events.PointerDownEvent.is(event) || events.PointerSignalEvent.is(event) || events.PointerHoverEvent.is(event)) {
-        if (!!dart.test(this[_hitTests][$containsKey](event.pointer))) dart.assertFailed(null, I[1], 344, 14, "!_hitTests.containsKey(event.pointer)");
+        if (!!this[_hitTests][$containsKey](event.pointer)) dart.assertFailed(null, I[1], 344, 14, "!_hitTests.containsKey(event.pointer)");
         hitTestResult = new hit_test.HitTestResult.new();
         this.hitTest(hitTestResult, event.position);
         if (events.PointerDownEvent.is(event)) {
           this[_hitTests][$_set](event.pointer, hitTestResult);
         }
-        if (!dart.test(dart.fn(() => {
-          if (dart.test(debug.debugPrintHitTestResults)) print.debugPrint(dart.str(event) + ": " + dart.str(hitTestResult));
+        if (!dart.fn(() => {
+          if (debug.debugPrintHitTestResults) print.debugPrint(dart.str(event) + ": " + dart.str(hitTestResult));
           return true;
-        }, T.VoidTobool())())) dart.assertFailed(null, I[1], 350, 14, "() {\r\n        if (debugPrintHitTestResults)\r\n          debugPrint('$event: $hitTestResult');\r\n        return true;\r\n      }()");
+        }, T.VoidTobool())()) dart.assertFailed(null, I[1], 350, 14, "() {\r\n        if (debugPrintHitTestResults)\r\n          debugPrint('$event: $hitTestResult');\r\n        return true;\r\n      }()");
       } else if (events.PointerUpEvent.is(event) || events.PointerCancelEvent.is(event)) {
         hitTestResult = this[_hitTests][$remove](event.pointer);
-      } else if (dart.test(event.down)) {
+      } else if (event.down) {
         hitTestResult = this[_hitTests][$_get](event.pointer);
       }
-      if (!dart.test(dart.fn(() => {
-        if (dart.test(debug.debugPrintMouseHoverEvents) && events.PointerHoverEvent.is(event)) print.debugPrint(dart.str(event));
+      if (!dart.fn(() => {
+        if (debug.debugPrintMouseHoverEvents && events.PointerHoverEvent.is(event)) print.debugPrint(dart.str(event));
         return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 365, 12, "() {\r\n      if (debugPrintMouseHoverEvents && event is PointerHoverEvent)\r\n        debugPrint('$event');\r\n      return true;\r\n    }()");
+      }, T.VoidTobool())()) dart.assertFailed(null, I[1], 365, 12, "() {\r\n      if (debugPrintMouseHoverEvents && event is PointerHoverEvent)\r\n        debugPrint('$event');\r\n      return true;\r\n    }()");
       if (hitTestResult != null || events.PointerAddedEvent.is(event) || events.PointerRemovedEvent.is(event)) {
-        if (!(event.position != null)) dart.assertFailed(null, I[1], 373, 14, "event.position != null");
+        if (!(event.position !== null)) dart.assertFailed(null, I[1], 373, 14, "event.position != null");
         this.dispatchEvent(event, hitTestResult);
       }
     }
     hitTest(result, position) {
-      if (result == null) dart.nullFailed(I[1], 380, 30, "result");
-      if (position == null) dart.nullFailed(I[1], 380, 45, "position");
       result.add(new hit_test.HitTestEntry.new(this));
     }
     dispatchEvent(event, hitTestResult) {
-      if (event == null) dart.nullFailed(I[1], 393, 35, "event");
-      if (!!dart.test(this.locked)) dart.assertFailed(null, I[1], 394, 12, "!locked");
+      if (!!this.locked) dart.assertFailed(null, I[1], 394, 12, "!locked");
       if (hitTestResult == null) {
         if (!(events.PointerAddedEvent.is(event) || events.PointerRemovedEvent.is(event))) dart.assertFailed(null, I[1], 399, 14, "event is PointerAddedEvent || event is PointerRemovedEvent");
         try {
@@ -384,8 +359,6 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
       }
     }
     handleEvent(event, entry) {
-      if (event == null) dart.nullFailed(I[1], 438, 33, "event");
-      if (entry == null) dart.nullFailed(I[1], 438, 53, "entry");
       this.pointerRouter.route(event);
       if (events.PointerDownEvent.is(event)) {
         this.gestureArena.close(event.pointer);
@@ -402,8 +375,8 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
       return null;
     }
     [_handleSampleTimeChanged$]() {
-      if (!dart.test(this.locked)) {
-        if (dart.test(this.resamplingEnabled)) {
+      if (!this.locked) {
+        if (this.resamplingEnabled) {
           this[_resampler].sample(this.samplingOffset, this[_samplingClock]);
         } else {
           this[_resampler].stop();
@@ -412,23 +385,17 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
     }
     get [_samplingClock]() {
       let value = new binding$0.SamplingClock.new();
-      if (!dart.test(dart.fn(() => {
+      if (!dart.fn(() => {
         let debugValue = this.debugSamplingClock;
         if (debugValue != null) value = debugValue;
         return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 478, 12, "() {\r\n      final SamplingClock? debugValue = debugSamplingClock;\r\n      if (debugValue != null)\r\n        value = debugValue;\r\n      return true;\r\n    }()");
+      }, T.VoidTobool())()) dart.assertFailed(null, I[1], 478, 12, "() {\r\n      final SamplingClock? debugValue = debugSamplingClock;\r\n      if (debugValue != null)\r\n        value = debugValue;\r\n      return true;\r\n    }()");
       return value;
     }
     get [_resampler]() {
-      let t3;
-      if (!dart.test(this[__GestureBinding__resampler_isSet])) {
-        let t2 = new binding$0._Resampler.new(dart.bind(this, _handlePointerEventImmediately), dart.bind(this, _handleSampleTimeChanged$), binding$0._samplingInterval);
-        if (dart.test(this[__GestureBinding__resampler_isSet])) dart.throw(new _internal.LateError.fieldADI("_resampler"));
-        this[__GestureBinding__resampler] = t2;
-        this[__GestureBinding__resampler_isSet] = true;
-      }
-      t3 = this[__GestureBinding__resampler];
-      return t3;
+      let t3, t2;
+      t2 = this[__GestureBinding__resampler];
+      return t2 == null ? (t3 = new binding$0._Resampler.new(dart.bind(this, _handlePointerEventImmediately), dart.bind(this, _handleSampleTimeChanged$), binding$0._samplingInterval), this[__GestureBinding__resampler] == null ? this[__GestureBinding__resampler] = t3 : dart.throw(new _internal.LateError.fieldADI("_resampler"))) : t2;
     }
   };
   (binding$0.GestureBinding[dart.mixinNew] = function() {
@@ -438,7 +405,6 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
     this[pointerSignalResolver] = new pointer_signal_resolver.PointerSignalResolver.new();
     this[_hitTests] = new (T.IdentityMapOfint$HitTestResult()).new();
     this[__GestureBinding__resampler] = null;
-    this[__GestureBinding__resampler_isSet] = false;
     this[resamplingEnabled] = false;
     this[samplingOffset] = binding$0._defaultSamplingOffset;
   }).prototype = binding$0.GestureBinding.prototype;
@@ -473,7 +439,6 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
     pointerSignalResolver: dart.finalFieldType(pointer_signal_resolver.PointerSignalResolver),
     [_hitTests]: dart.finalFieldType(core.Map$(core.int, hit_test.HitTestResult)),
     [__GestureBinding__resampler]: dart.fieldType(dart.nullable(binding$0._Resampler)),
-    [__GestureBinding__resampler_isSet]: dart.fieldType(core.bool),
     resamplingEnabled: dart.fieldType(core.bool),
     samplingOffset: dart.fieldType(core.Duration)
   }));
@@ -501,7 +466,6 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
   };
   (binding$0.FlutterErrorDetailsForPointerEventDispatcher.new = function(opts) {
     let exception = opts && 'exception' in opts ? opts.exception : null;
-    if (exception == null) dart.nullFailed(I[1], 524, 21, "exception");
     let stack = opts && 'stack' in opts ? opts.stack : null;
     let library = opts && 'library' in opts ? opts.library : null;
     let context = opts && 'context' in opts ? opts.context : null;
@@ -509,7 +473,6 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
     let hitTestEntry = opts && 'hitTestEntry' in opts ? opts.hitTestEntry : null;
     let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
     let silent = opts && 'silent' in opts ? opts.silent : false;
-    if (silent == null) dart.nullFailed(I[1], 531, 10, "silent");
     this[event$] = event;
     this[hitTestEntry$] = hitTestEntry;
     binding$0.FlutterErrorDetailsForPointerEventDispatcher.__proto__.new.call(this, {exception: exception, stack: stack, library: library, context: context, informationCollector: informationCollector, silent: silent});
@@ -535,7 +498,7 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
   dart.trackLibraries("packages/flutter/src/gestures/binding.dart", {
     "package:flutter/src/gestures/binding.dart": binding$0
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["binding.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/gestures/binding.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["binding.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/gestures/binding.dart.lib.js"}');
   // Exports:
   return {
     src__gestures__binding: binding$0

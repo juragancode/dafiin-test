@@ -1,335 +1,435 @@
-define(['dart_sdk', 'packages/intl/src/intl/date_computation.dart', 'packages/clock/src/stopwatch.dart'], (function load__packages__intl__src__intl__date_builder_dart(dart_sdk, packages__intl__src__intl__date_computation$46dart, packages__clock__src__stopwatch$46dart) {
+define(['dart_sdk', 'packages/flutter/src/physics/tolerance.dart', 'packages/flutter/src/physics/friction_simulation.dart', 'packages/flutter/src/physics/spring_simulation.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/physics/simulation.dart'], (function load__packages__flutter__src__widgets__scroll_simulation_dart(dart_sdk, packages__flutter__src__physics__tolerance$46dart, packages__flutter__src__physics__friction_simulation$46dart, packages__flutter__src__physics__spring_simulation$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__physics__simulation$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const math = dart_sdk.math;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const date_computation = packages__intl__src__intl__date_computation$46dart.src__intl__date_computation;
-  const $default = packages__clock__src__stopwatch$46dart.src__default;
-  var date_builder = Object.create(dart.library);
-  var $truncate = dartx.truncate;
-  dart._checkModuleNullSafetyMode(false);
+  const tolerance = packages__flutter__src__physics__tolerance$46dart.src__physics__tolerance;
+  const friction_simulation = packages__flutter__src__physics__friction_simulation$46dart.src__physics__friction_simulation;
+  const spring_simulation = packages__flutter__src__physics__spring_simulation$46dart.src__physics__spring_simulation;
+  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
+  const simulation = packages__flutter__src__physics__simulation$46dart.src__physics__simulation;
+  var scroll_simulation = Object.create(dart.library);
+  var $isFinite = dartx.isFinite;
+  var $abs = dartx.abs;
+  var $round = dartx.round;
+  var $sign = dartx.sign;
+  var $clamp = dartx.clamp;
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(true);
+  var T = {
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))()
+  };
   const CT = Object.create({
     _: () => (C, CT)
   });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: tolerance.Tolerance.prototype,
+        [Tolerance_velocity]: 0.001,
+        [Tolerance_time]: 0.001,
+        [Tolerance_distance]: 0.001
+      });
+    }
+  }, false);
+  var C = [void 0];
   var I = [
-    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib/src/intl/date_builder.dart",
-    "package:intl/src/intl/date_builder.dart"
+    "file:///C:/flutter/packages/flutter/lib/src/widgets/scroll_simulation.dart",
+    "package:flutter/src/widgets/scroll_simulation.dart"
   ];
-  var year = dart.privateName(date_builder, "DateBuilder.year");
-  var month = dart.privateName(date_builder, "DateBuilder.month");
-  var day = dart.privateName(date_builder, "DateBuilder.day");
-  var dayOfYear = dart.privateName(date_builder, "DateBuilder.dayOfYear");
-  var hour = dart.privateName(date_builder, "DateBuilder.hour");
-  var minute = dart.privateName(date_builder, "DateBuilder.minute");
-  var second = dart.privateName(date_builder, "DateBuilder.second");
-  var fractionalSecond = dart.privateName(date_builder, "DateBuilder.fractionalSecond");
-  var pm = dart.privateName(date_builder, "DateBuilder.pm");
-  var utc = dart.privateName(date_builder, "DateBuilder.utc");
-  var dateOnly = dart.privateName(date_builder, "DateBuilder.dateOnly");
-  var _hasAmbiguousCentury = dart.privateName(date_builder, "_hasAmbiguousCentury");
-  var _date = dart.privateName(date_builder, "_date");
-  var _retried = dart.privateName(date_builder, "_retried");
-  var _locale$ = dart.privateName(date_builder, "_locale");
-  var _dateTimeConstructor$ = dart.privateName(date_builder, "_dateTimeConstructor");
-  var _verify = dart.privateName(date_builder, "_verify");
-  var _offsetYear = dart.privateName(date_builder, "_offsetYear");
-  var _correctForErrors = dart.privateName(date_builder, "_correctForErrors");
-  date_builder.DateBuilder = class DateBuilder extends core.Object {
-    get year() {
-      return this[year];
+  var leadingExtent$ = dart.privateName(scroll_simulation, "BouncingScrollSimulation.leadingExtent");
+  var trailingExtent$ = dart.privateName(scroll_simulation, "BouncingScrollSimulation.trailingExtent");
+  var spring$ = dart.privateName(scroll_simulation, "BouncingScrollSimulation.spring");
+  var Tolerance_velocity = dart.privateName(tolerance, "Tolerance.velocity");
+  var Tolerance_time = dart.privateName(tolerance, "Tolerance.time");
+  var Tolerance_distance = dart.privateName(tolerance, "Tolerance.distance");
+  var __BouncingScrollSimulation__frictionSimulation = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_frictionSimulation");
+  var __BouncingScrollSimulation__springSimulation = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_springSimulation");
+  var __BouncingScrollSimulation__springTime = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_springTime");
+  var _timeOffset = dart.privateName(scroll_simulation, "_timeOffset");
+  var _springSimulation = dart.privateName(scroll_simulation, "_springSimulation");
+  var _underscrollSimulation = dart.privateName(scroll_simulation, "_underscrollSimulation");
+  var _springTime = dart.privateName(scroll_simulation, "_springTime");
+  var _overscrollSimulation = dart.privateName(scroll_simulation, "_overscrollSimulation");
+  var _frictionSimulation = dart.privateName(scroll_simulation, "_frictionSimulation");
+  var _simulation = dart.privateName(scroll_simulation, "_simulation");
+  scroll_simulation.BouncingScrollSimulation = class BouncingScrollSimulation extends simulation.Simulation {
+    get leadingExtent() {
+      return this[leadingExtent$];
     }
-    set year(value) {
-      this[year] = value;
+    set leadingExtent(value) {
+      super.leadingExtent = value;
     }
-    get month() {
-      return this[month];
+    get trailingExtent() {
+      return this[trailingExtent$];
     }
-    set month(value) {
-      this[month] = value;
+    set trailingExtent(value) {
+      super.trailingExtent = value;
     }
-    get day() {
-      return this[day];
+    get spring() {
+      return this[spring$];
     }
-    set day(value) {
-      this[day] = value;
+    set spring(value) {
+      super.spring = value;
     }
-    get dayOfYear() {
-      return this[dayOfYear];
+    get [_frictionSimulation]() {
+      let t0;
+      t0 = this[__BouncingScrollSimulation__frictionSimulation];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_frictionSimulation")) : t0;
     }
-    set dayOfYear(value) {
-      this[dayOfYear] = value;
+    set [_frictionSimulation](t0) {
+      this[__BouncingScrollSimulation__frictionSimulation] = t0;
     }
-    get hour() {
-      return this[hour];
+    get [_springSimulation]() {
+      let t1;
+      t1 = this[__BouncingScrollSimulation__springSimulation];
+      return t1 == null ? dart.throw(new _internal.LateError.fieldNI("_springSimulation")) : t1;
     }
-    set hour(value) {
-      this[hour] = value;
+    set [_springSimulation](t1) {
+      this[__BouncingScrollSimulation__springSimulation] = t1;
     }
-    get minute() {
-      return this[minute];
+    get [_springTime]() {
+      let t2;
+      t2 = this[__BouncingScrollSimulation__springTime];
+      return t2 == null ? dart.throw(new _internal.LateError.fieldNI("_springTime")) : t2;
     }
-    set minute(value) {
-      this[minute] = value;
+    set [_springTime](t2) {
+      this[__BouncingScrollSimulation__springTime] = t2;
     }
-    get second() {
-      return this[second];
+    [_underscrollSimulation](x, dx) {
+      return new spring_simulation.ScrollSpringSimulation.new(this.spring, x, this.leadingExtent, dx);
     }
-    set second(value) {
-      this[second] = value;
+    [_overscrollSimulation](x, dx) {
+      return new spring_simulation.ScrollSpringSimulation.new(this.spring, x, this.trailingExtent, dx);
     }
-    get fractionalSecond() {
-      return this[fractionalSecond];
-    }
-    set fractionalSecond(value) {
-      this[fractionalSecond] = value;
-    }
-    get pm() {
-      return this[pm];
-    }
-    set pm(value) {
-      this[pm] = value;
-    }
-    get utc() {
-      return this[utc];
-    }
-    set utc(value) {
-      this[utc] = value;
-    }
-    get dateOnly() {
-      return this[dateOnly];
-    }
-    set dateOnly(value) {
-      this[dateOnly] = value;
-    }
-    setYear(x) {
-      if (x == null) dart.nullFailed(I[0], 66, 20, "x");
-      this.year = x;
-    }
-    setHasAmbiguousCentury(isAmbiguous) {
-      if (isAmbiguous == null) dart.nullFailed(I[0], 72, 36, "isAmbiguous");
-      this[_hasAmbiguousCentury] = isAmbiguous;
-    }
-    setMonth(x) {
-      if (x == null) dart.nullFailed(I[0], 76, 21, "x");
-      this.month = x;
-    }
-    setDay(x) {
-      if (x == null) dart.nullFailed(I[0], 80, 19, "x");
-      this.day = x;
-    }
-    setDayOfYear(x) {
-      if (x == null) dart.nullFailed(I[0], 84, 25, "x");
-      this.dayOfYear = x;
-    }
-    get dayOrDayOfYear() {
-      return this.dayOfYear === 0 ? this.day : this.dayOfYear;
-    }
-    setHour(x) {
-      if (x == null) dart.nullFailed(I[0], 92, 20, "x");
-      this.hour = x;
-    }
-    setMinute(x) {
-      if (x == null) dart.nullFailed(I[0], 96, 22, "x");
-      this.minute = x;
-    }
-    setSecond(x) {
-      if (x == null) dart.nullFailed(I[0], 100, 22, "x");
-      this.second = x;
-    }
-    setFractionalSecond(x) {
-      if (x == null) dart.nullFailed(I[0], 104, 32, "x");
-      this.fractionalSecond = x;
-    }
-    get hour24() {
-      return dart.test(this.pm) ? dart.notNull(this.hour) + 12 : this.hour;
-    }
-    verify(s) {
-      if (s == null) dart.nullFailed(I[0], 113, 22, "s");
-      this[_verify](this.month, 1, 12, "month", s);
-      this[_verify](this.hour24, 0, 23, "hour", s);
-      this[_verify](this.minute, 0, 59, "minute", s);
-      this[_verify](this.second, 0, 59, "second", s);
-      this[_verify](this.fractionalSecond, 0, 999, "fractional second", s);
-      let date = this.asDate();
-      let minimumDate = dart.test(this.dateOnly) && date.hour === 1 ? 0 : date.hour;
-      this[_verify](this.hour24, minimumDate, date.hour, "hour", s, date);
-      if (dart.notNull(this.dayOfYear) > 0) {
-        let leapYear = date_computation.isLeapYear(date);
-        let correspondingDay = date_computation.dayOfYear(date.month, date.day, leapYear);
-        this[_verify](this.dayOfYear, correspondingDay, correspondingDay, "dayOfYear", s, date);
+    [_simulation](time) {
+      let t3;
+      let simulation = null;
+      if (time > this[_springTime]) {
+        this[_timeOffset] = this[_springTime][$isFinite] ? this[_springTime] : 0.0;
+        simulation = this[_springSimulation];
       } else {
-        this[_verify](this.day, date.day, date.day, "day", s, date);
+        this[_timeOffset] = 0.0;
+        simulation = this[_frictionSimulation];
       }
-      this[_verify](this.year, date.year, date.year, "year", s, date);
+      t3 = simulation;
+      return (() => {
+        t3.tolerance = this.tolerance;
+        return t3;
+      })();
     }
-    [_verify](value, min, max, desc, originalInput, parsed = null) {
-      let t0, t0$;
-      if (value == null) dart.nullFailed(I[0], 147, 20, "value");
-      if (min == null) dart.nullFailed(I[0], 147, 31, "min");
-      if (max == null) dart.nullFailed(I[0], 147, 40, "max");
-      if (desc == null) dart.nullFailed(I[0], 147, 52, "desc");
-      if (originalInput == null) dart.nullFailed(I[0], 147, 65, "originalInput");
-      if (dart.notNull(value) < dart.notNull(min) || dart.notNull(value) > dart.notNull(max)) {
-        let parsedDescription = parsed == null ? "" : " Date parsed as " + dart.str(parsed) + ".";
-        let errorDescription = "Error parsing " + dart.str(originalInput) + ", invalid " + dart.str(desc) + " value: " + dart.str(value) + " in " + dart.str(this[_locale$]) + " with time zone offset " + dart.str((t0$ = (t0 = parsed, t0 == null ? null : t0.timeZoneOffset), t0$ == null ? "unknown" : t0$)) + "." + " Expected value between " + dart.str(min) + " and " + dart.str(max) + "." + parsedDescription + ".";
-        if (dart.notNull(this[_retried]) > 0) {
-          errorDescription = errorDescription + (" Failed after " + dart.str(this[_retried]) + " retries.");
-        }
-        dart.throw(new core.FormatException.new(errorDescription));
-      }
+    x(time) {
+      return this[_simulation](time).x(time - this[_timeOffset]);
     }
-    [_offsetYear](dateTime, offsetYears) {
-      let t7, t6, t5, t4, t3, t2, t1, t0;
-      if (dateTime == null) dart.nullFailed(I[0], 168, 33, "dateTime");
-      if (offsetYears == null) dart.nullFailed(I[0], 168, 47, "offsetYears");
-      t0 = dart.notNull(dateTime.year) + dart.notNull(offsetYears);
-      t1 = dateTime.month;
-      t2 = dateTime.day;
-      t3 = dateTime.hour;
-      t4 = dateTime.minute;
-      t5 = dateTime.second;
-      t6 = dateTime.millisecond;
-      t7 = dateTime.isUtc;
-      return this[_dateTimeConstructor$](t0, t1, t2, t3, t4, t5, t6, t7);
+    dx(time) {
+      return this[_simulation](time).dx(time - this[_timeOffset]);
     }
-    asDate(opts) {
-      let t7, t6, t5, t4, t3, t2, t1, t0, t7$, t6$, t5$, t4$, t3$, t2$, t1$, t0$, t7$0, t6$0, t5$0, t4$0, t3$0, t2$0, t1$0, t0$0;
-      let retries = opts && 'retries' in opts ? opts.retries : 3;
-      if (retries == null) dart.nullFailed(I[0], 181, 24, "retries");
-      if (this[_date] != null) return dart.nullCheck(this[_date]);
-      let preliminaryResult = null;
-      let hasCentury = !dart.test(this[_hasAmbiguousCentury]) || dart.notNull(this.year) < 0 || dart.notNull(this.year) >= 100;
-      if (hasCentury) {
-        preliminaryResult = (t0 = this.year, t1 = this.month, t2 = this.dayOrDayOfYear, t3 = this.hour24, t4 = this.minute, t5 = this.second, t6 = this.fractionalSecond, t7 = this.utc, this[_dateTimeConstructor$](t0, t1, t2, t3, t4, t5, t6, t7));
-      } else {
-        let now = $default.clock.now();
-        if (dart.test(this.utc)) {
-          now = now.toUtc();
-        }
-        let lowerDate = this[_offsetYear](now, -80);
-        let upperDate = this[_offsetYear](now, 100 - 80);
-        let lowerCentury = (dart.notNull(lowerDate.year) / 100)[$truncate]() * 100;
-        let upperCentury = (dart.notNull(upperDate.year) / 100)[$truncate]() * 100;
-        preliminaryResult = (t0$ = upperCentury + dart.notNull(this.year), t1$ = this.month, t2$ = this.dayOrDayOfYear, t3$ = this.hour24, t4$ = this.minute, t5$ = this.second, t6$ = this.fractionalSecond, t7$ = this.utc, this[_dateTimeConstructor$](t0$, t1$, t2$, t3$, t4$, t5$, t6$, t7$));
-        if (dart.notNull(preliminaryResult.compareTo(upperDate)) <= 0) {
-          if (!(dart.notNull(preliminaryResult.compareTo(lowerDate)) > 0)) dart.assertFailed(null, I[0], 217, 16, "preliminaryResult.compareTo(lowerDate) > 0");
-        } else {
-          preliminaryResult = (t0$0 = lowerCentury + dart.notNull(this.year), t1$0 = this.month, t2$0 = this.dayOrDayOfYear, t3$0 = this.hour24, t4$0 = this.minute, t5$0 = this.second, t6$0 = this.fractionalSecond, t7$0 = this.utc, this[_dateTimeConstructor$](t0$0, t1$0, t2$0, t3$0, t4$0, t5$0, t6$0, t7$0));
-        }
-      }
-      if (dart.test(this.utc) && hasCentury) {
-        this[_date] = preliminaryResult;
-      } else {
-        this[_date] = this[_correctForErrors](preliminaryResult, retries);
-      }
-      return dart.nullCheck(this[_date]);
+    isDone(time) {
+      return this[_simulation](time).isDone(time - this[_timeOffset]);
     }
-    [_correctForErrors](result, retries) {
-      if (result == null) dart.nullFailed(I[0], 234, 39, "result");
-      if (retries == null) dart.nullFailed(I[0], 234, 51, "retries");
-      if (dart.notNull(retries) <= 0) {
-        return result;
-      }
-      let leapYear = date_computation.isLeapYear(result);
-      let resultDayOfYear = date_computation.dayOfYear(result.month, result.day, leapYear);
-      if (!dart.test(this.utc) && dart.test(result.isUtc) && (result.hour != this.hour24 || result.day != resultDayOfYear || !dart.test(new core.DateTime.now().isUtc))) {
-        this[_retried] = dart.notNull(this[_retried]) + 1;
-        return this.asDate({retries: dart.notNull(retries) - 1});
-      }
-      if (dart.test(this.dateOnly) && result.hour !== 0) {
-        let tryAgain = this.asDate({retries: dart.notNull(retries) - 1});
-        if (!dart.equals(tryAgain, result)) {
-          return tryAgain;
-        }
-        let expectedDayOfYear = this.dayOfYear === 0 ? date_computation.dayOfYear(this.month, this.day, leapYear) : this.dayOfYear;
-        let daysPrevious = dart.notNull(expectedDayOfYear) - dart.notNull(resultDayOfYear);
-        let offset = daysPrevious * 24 - dart.notNull(result.hour);
-        let adjusted = result.add(new core.Duration.new({hours: offset}));
-        if (adjusted.hour === 0) {
-          return adjusted;
-        }
-        let adjustedDayOfYear = date_computation.dayOfYear(adjusted.month, adjusted.day, leapYear);
-        if (adjustedDayOfYear != expectedDayOfYear) {
-          return result;
-        }
-        return adjusted;
-      }
-      return result;
+    toString() {
+      return object.objectRuntimeType(this, "BouncingScrollSimulation") + "(leadingExtent: " + dart.str(this.leadingExtent) + ", trailingExtent: " + dart.str(this.trailingExtent) + ")";
     }
   };
-  (date_builder.DateBuilder.new = function(_locale, _dateTimeConstructor) {
-    if (_locale == null) dart.nullFailed(I[0], 62, 20, "_locale");
-    if (_dateTimeConstructor == null) dart.nullFailed(I[0], 62, 34, "_dateTimeConstructor");
-    this[year] = 1970;
-    this[month] = 1;
-    this[day] = 1;
-    this[dayOfYear] = 0;
-    this[hour] = 0;
-    this[minute] = 0;
-    this[second] = 0;
-    this[fractionalSecond] = 0;
-    this[pm] = false;
-    this[utc] = false;
-    this[_hasAmbiguousCentury] = false;
-    this[_date] = null;
-    this[_retried] = 0;
-    this[dateOnly] = false;
-    this[_locale$] = _locale;
-    this[_dateTimeConstructor$] = _dateTimeConstructor;
-    ;
-  }).prototype = date_builder.DateBuilder.prototype;
-  dart.addTypeTests(date_builder.DateBuilder);
-  dart.addTypeCaches(date_builder.DateBuilder);
-  dart.setMethodSignature(date_builder.DateBuilder, () => ({
-    __proto__: dart.getMethods(date_builder.DateBuilder.__proto__),
-    setYear: dart.fnType(dart.void, [core.int]),
-    setHasAmbiguousCentury: dart.fnType(dart.void, [core.bool]),
-    setMonth: dart.fnType(dart.void, [core.int]),
-    setDay: dart.fnType(dart.void, [core.int]),
-    setDayOfYear: dart.fnType(dart.void, [core.int]),
-    setHour: dart.fnType(dart.void, [core.int]),
-    setMinute: dart.fnType(dart.void, [core.int]),
-    setSecond: dart.fnType(dart.void, [core.int]),
-    setFractionalSecond: dart.fnType(dart.void, [core.int]),
-    verify: dart.fnType(dart.void, [core.String]),
-    [_verify]: dart.fnType(dart.void, [core.int, core.int, core.int, core.String, core.String], [dart.nullable(core.DateTime)]),
-    [_offsetYear]: dart.fnType(core.DateTime, [core.DateTime, core.int]),
-    asDate: dart.fnType(core.DateTime, [], {retries: core.int}, {}),
-    [_correctForErrors]: dart.fnType(core.DateTime, [core.DateTime, core.int])
+  (scroll_simulation.BouncingScrollSimulation.new = function(opts) {
+    let position = opts && 'position' in opts ? opts.position : null;
+    let velocity = opts && 'velocity' in opts ? opts.velocity : null;
+    let leadingExtent = opts && 'leadingExtent' in opts ? opts.leadingExtent : null;
+    let trailingExtent = opts && 'trailingExtent' in opts ? opts.trailingExtent : null;
+    let spring = opts && 'spring' in opts ? opts.spring : null;
+    let tolerance = opts && 'tolerance' in opts ? opts.tolerance : C[0] || CT.C0;
+    this[__BouncingScrollSimulation__frictionSimulation] = null;
+    this[__BouncingScrollSimulation__springSimulation] = null;
+    this[__BouncingScrollSimulation__springTime] = null;
+    this[_timeOffset] = 0.0;
+    this[leadingExtent$] = leadingExtent;
+    this[trailingExtent$] = trailingExtent;
+    this[spring$] = spring;
+    if (!(position !== null)) dart.assertFailed(null, I[0], 38, 15, "position != null");
+    if (!(velocity !== null)) dart.assertFailed(null, I[0], 39, 15, "velocity != null");
+    if (!(leadingExtent !== null)) dart.assertFailed(null, I[0], 40, 15, "leadingExtent != null");
+    if (!(trailingExtent !== null)) dart.assertFailed(null, I[0], 41, 15, "trailingExtent != null");
+    if (!(leadingExtent <= trailingExtent)) dart.assertFailed(null, I[0], 42, 15, "leadingExtent <= trailingExtent");
+    if (!(spring !== null)) dart.assertFailed(null, I[0], 43, 15, "spring != null");
+    scroll_simulation.BouncingScrollSimulation.__proto__.new.call(this, {tolerance: tolerance});
+    if (position < this.leadingExtent) {
+      this[_springSimulation] = this[_underscrollSimulation](position, velocity);
+      this[_springTime] = -1 / 0;
+    } else if (position > this.trailingExtent) {
+      this[_springSimulation] = this[_overscrollSimulation](position, velocity);
+      this[_springTime] = -1 / 0;
+    } else {
+      this[_frictionSimulation] = new friction_simulation.FrictionSimulation.new(0.135, position, velocity);
+      let finalX = this[_frictionSimulation].finalX;
+      if (velocity > 0.0 && finalX > this.trailingExtent) {
+        this[_springTime] = this[_frictionSimulation].timeAtX(this.trailingExtent);
+        this[_springSimulation] = this[_overscrollSimulation](this.trailingExtent, math.min(core.double, this[_frictionSimulation].dx(this[_springTime]), 5000));
+        if (!this[_springTime][$isFinite]) dart.assertFailed(null, I[0], 62, 16, "_springTime.isFinite");
+      } else if (velocity < 0.0 && finalX < this.leadingExtent) {
+        this[_springTime] = this[_frictionSimulation].timeAtX(this.leadingExtent);
+        this[_springSimulation] = this[_underscrollSimulation](this.leadingExtent, math.min(core.double, this[_frictionSimulation].dx(this[_springTime]), 5000));
+        if (!this[_springTime][$isFinite]) dart.assertFailed(null, I[0], 69, 16, "_springTime.isFinite");
+      } else {
+        this[_springTime] = 1 / 0;
+      }
+    }
+    if (!(this[_springTime] !== null)) dart.assertFailed(null, I[0], 74, 12, "_springTime != null");
+  }).prototype = scroll_simulation.BouncingScrollSimulation.prototype;
+  dart.addTypeTests(scroll_simulation.BouncingScrollSimulation);
+  dart.addTypeCaches(scroll_simulation.BouncingScrollSimulation);
+  dart.setMethodSignature(scroll_simulation.BouncingScrollSimulation, () => ({
+    __proto__: dart.getMethods(scroll_simulation.BouncingScrollSimulation.__proto__),
+    [_underscrollSimulation]: dart.fnType(simulation.Simulation, [core.double, core.double]),
+    [_overscrollSimulation]: dart.fnType(simulation.Simulation, [core.double, core.double]),
+    [_simulation]: dart.fnType(simulation.Simulation, [core.double]),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double]),
+    isDone: dart.fnType(core.bool, [core.double])
   }));
-  dart.setGetterSignature(date_builder.DateBuilder, () => ({
-    __proto__: dart.getGetters(date_builder.DateBuilder.__proto__),
-    dayOrDayOfYear: core.int,
-    hour24: core.int
+  dart.setGetterSignature(scroll_simulation.BouncingScrollSimulation, () => ({
+    __proto__: dart.getGetters(scroll_simulation.BouncingScrollSimulation.__proto__),
+    [_frictionSimulation]: friction_simulation.FrictionSimulation,
+    [_springSimulation]: simulation.Simulation,
+    [_springTime]: core.double
   }));
-  dart.setLibraryUri(date_builder.DateBuilder, I[1]);
-  dart.setFieldSignature(date_builder.DateBuilder, () => ({
-    __proto__: dart.getFields(date_builder.DateBuilder.__proto__),
-    year: dart.fieldType(core.int),
-    month: dart.fieldType(core.int),
-    day: dart.fieldType(core.int),
-    dayOfYear: dart.fieldType(core.int),
-    hour: dart.fieldType(core.int),
-    minute: dart.fieldType(core.int),
-    second: dart.fieldType(core.int),
-    fractionalSecond: dart.fieldType(core.int),
-    pm: dart.fieldType(core.bool),
-    utc: dart.fieldType(core.bool),
-    [_hasAmbiguousCentury]: dart.fieldType(core.bool),
-    [_locale$]: dart.finalFieldType(core.String),
-    [_date]: dart.fieldType(dart.nullable(core.DateTime)),
-    [_retried]: dart.fieldType(core.int),
-    dateOnly: dart.fieldType(core.bool),
-    [_dateTimeConstructor$]: dart.finalFieldType(dart.fnType(core.DateTime, [core.int, core.int, core.int, core.int, core.int, core.int, core.int, core.bool]))
+  dart.setSetterSignature(scroll_simulation.BouncingScrollSimulation, () => ({
+    __proto__: dart.getSetters(scroll_simulation.BouncingScrollSimulation.__proto__),
+    [_frictionSimulation]: friction_simulation.FrictionSimulation,
+    [_springSimulation]: simulation.Simulation,
+    [_springTime]: core.double
   }));
-  dart.trackLibraries("packages/intl/src/intl/date_builder.dart", {
-    "package:intl/src/intl/date_builder.dart": date_builder
+  dart.setLibraryUri(scroll_simulation.BouncingScrollSimulation, I[1]);
+  dart.setFieldSignature(scroll_simulation.BouncingScrollSimulation, () => ({
+    __proto__: dart.getFields(scroll_simulation.BouncingScrollSimulation.__proto__),
+    leadingExtent: dart.finalFieldType(core.double),
+    trailingExtent: dart.finalFieldType(core.double),
+    spring: dart.finalFieldType(spring_simulation.SpringDescription),
+    [__BouncingScrollSimulation__frictionSimulation]: dart.fieldType(dart.nullable(friction_simulation.FrictionSimulation)),
+    [__BouncingScrollSimulation__springSimulation]: dart.fieldType(dart.nullable(simulation.Simulation)),
+    [__BouncingScrollSimulation__springTime]: dart.fieldType(dart.nullable(core.double)),
+    [_timeOffset]: dart.fieldType(core.double)
+  }));
+  dart.defineExtensionMethods(scroll_simulation.BouncingScrollSimulation, ['toString']);
+  dart.defineLazy(scroll_simulation.BouncingScrollSimulation, {
+    /*scroll_simulation.BouncingScrollSimulation.maxSpringTransferVelocity*/get maxSpringTransferVelocity() {
+      return 5000;
+    }
+  }, false);
+  var position$ = dart.privateName(scroll_simulation, "ClampingScrollSimulation.position");
+  var velocity$ = dart.privateName(scroll_simulation, "ClampingScrollSimulation.velocity");
+  var friction$ = dart.privateName(scroll_simulation, "ClampingScrollSimulation.friction");
+  var __ClampingScrollSimulation__duration = dart.privateName(scroll_simulation, "_#ClampingScrollSimulation#_duration");
+  var __ClampingScrollSimulation__distance = dart.privateName(scroll_simulation, "_#ClampingScrollSimulation#_distance");
+  var _duration = dart.privateName(scroll_simulation, "_duration");
+  var _splineFlingDuration = dart.privateName(scroll_simulation, "_splineFlingDuration");
+  var _distance = dart.privateName(scroll_simulation, "_distance");
+  var _splineFlingDistance = dart.privateName(scroll_simulation, "_splineFlingDistance");
+  var _splineDeceleration = dart.privateName(scroll_simulation, "_splineDeceleration");
+  scroll_simulation.ClampingScrollSimulation = class ClampingScrollSimulation extends simulation.Simulation {
+    get position() {
+      return this[position$];
+    }
+    set position(value) {
+      super.position = value;
+    }
+    get velocity() {
+      return this[velocity$];
+    }
+    set velocity(value) {
+      super.velocity = value;
+    }
+    get friction() {
+      return this[friction$];
+    }
+    set friction(value) {
+      super.friction = value;
+    }
+    get [_duration]() {
+      let t3;
+      t3 = this[__ClampingScrollSimulation__duration];
+      return t3 == null ? dart.throw(new _internal.LateError.fieldNI("_duration")) : t3;
+    }
+    set [_duration](t3) {
+      this[__ClampingScrollSimulation__duration] = t3;
+    }
+    get [_distance]() {
+      let t4;
+      t4 = this[__ClampingScrollSimulation__distance];
+      return t4 == null ? dart.throw(new _internal.LateError.fieldNI("_distance")) : t4;
+    }
+    set [_distance](t4) {
+      this[__ClampingScrollSimulation__distance] = t4;
+    }
+    static _decelerationForFriction(friction) {
+      return 9.80665 * 39.37 * friction * 1.0 * 160.0;
+    }
+    [_splineDeceleration](velocity) {
+      return math.log(0.35 * velocity[$abs]() / (this.friction * scroll_simulation.ClampingScrollSimulation._decelerationForFriction(0.84)));
+    }
+    [_splineFlingDuration](velocity) {
+      let deceleration = this[_splineDeceleration](velocity);
+      return (1000 * math.exp(deceleration / (scroll_simulation.ClampingScrollSimulation._kDecelerationRate - 1.0)))[$round]();
+    }
+    [_splineFlingDistance](velocity) {
+      let l = this[_splineDeceleration](velocity);
+      let decelMinusOne = scroll_simulation.ClampingScrollSimulation._kDecelerationRate - 1.0;
+      return this.friction * scroll_simulation.ClampingScrollSimulation._decelerationForFriction(0.84) * math.exp(scroll_simulation.ClampingScrollSimulation._kDecelerationRate / decelMinusOne * l);
+    }
+    x(time) {
+      if (time === 0) {
+        return this.position;
+      }
+      let sample = new scroll_simulation._NBSample.new(time, this[_duration]);
+      return this.position + sample.distanceCoef * this[_distance] * this.velocity[$sign];
+    }
+    dx(time) {
+      if (time === 0) {
+        return this.velocity;
+      }
+      let sample = new scroll_simulation._NBSample.new(time, this[_duration]);
+      return sample.velocityCoef * this[_distance] / this[_duration] * this.velocity[$sign] * 1000.0;
+    }
+    isDone(time) {
+      return time * 1000.0 >= this[_duration];
+    }
+  };
+  (scroll_simulation.ClampingScrollSimulation.new = function(opts) {
+    let position = opts && 'position' in opts ? opts.position : null;
+    let velocity = opts && 'velocity' in opts ? opts.velocity : null;
+    let friction = opts && 'friction' in opts ? opts.friction : 0.015;
+    let tolerance = opts && 'tolerance' in opts ? opts.tolerance : C[0] || CT.C0;
+    this[__ClampingScrollSimulation__duration] = null;
+    this[__ClampingScrollSimulation__distance] = null;
+    this[position$] = position;
+    this[velocity$] = velocity;
+    this[friction$] = friction;
+    scroll_simulation.ClampingScrollSimulation.__proto__.new.call(this, {tolerance: tolerance});
+    this[_duration] = this[_splineFlingDuration](this.velocity);
+    this[_distance] = this[_splineFlingDistance](this.velocity);
+  }).prototype = scroll_simulation.ClampingScrollSimulation.prototype;
+  dart.addTypeTests(scroll_simulation.ClampingScrollSimulation);
+  dart.addTypeCaches(scroll_simulation.ClampingScrollSimulation);
+  dart.setMethodSignature(scroll_simulation.ClampingScrollSimulation, () => ({
+    __proto__: dart.getMethods(scroll_simulation.ClampingScrollSimulation.__proto__),
+    [_splineDeceleration]: dart.fnType(core.double, [core.double]),
+    [_splineFlingDuration]: dart.fnType(core.int, [core.double]),
+    [_splineFlingDistance]: dart.fnType(core.double, [core.double]),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double]),
+    isDone: dart.fnType(core.bool, [core.double])
+  }));
+  dart.setGetterSignature(scroll_simulation.ClampingScrollSimulation, () => ({
+    __proto__: dart.getGetters(scroll_simulation.ClampingScrollSimulation.__proto__),
+    [_duration]: core.int,
+    [_distance]: core.double
+  }));
+  dart.setSetterSignature(scroll_simulation.ClampingScrollSimulation, () => ({
+    __proto__: dart.getSetters(scroll_simulation.ClampingScrollSimulation.__proto__),
+    [_duration]: core.int,
+    [_distance]: core.double
+  }));
+  dart.setLibraryUri(scroll_simulation.ClampingScrollSimulation, I[1]);
+  dart.setFieldSignature(scroll_simulation.ClampingScrollSimulation, () => ({
+    __proto__: dart.getFields(scroll_simulation.ClampingScrollSimulation.__proto__),
+    position: dart.finalFieldType(core.double),
+    velocity: dart.finalFieldType(core.double),
+    friction: dart.finalFieldType(core.double),
+    [__ClampingScrollSimulation__duration]: dart.fieldType(dart.nullable(core.int)),
+    [__ClampingScrollSimulation__distance]: dart.fieldType(dart.nullable(core.double))
+  }));
+  dart.defineLazy(scroll_simulation.ClampingScrollSimulation, {
+    /*scroll_simulation.ClampingScrollSimulation._kDecelerationRate*/get _kDecelerationRate() {
+      return math.log(0.78) / math.log(0.9);
+    }
+  }, false);
+  var ___NBSample__velocityCoef = dart.privateName(scroll_simulation, "_#_NBSample#_velocityCoef");
+  var ___NBSample__distanceCoef = dart.privateName(scroll_simulation, "_#_NBSample#_distanceCoef");
+  var _distanceCoef = dart.privateName(scroll_simulation, "_distanceCoef");
+  var _velocityCoef = dart.privateName(scroll_simulation, "_velocityCoef");
+  scroll_simulation._NBSample = class _NBSample extends core.Object {
+    get [_velocityCoef]() {
+      let t5;
+      t5 = this[___NBSample__velocityCoef];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_velocityCoef")) : t5;
+    }
+    set [_velocityCoef](t5) {
+      this[___NBSample__velocityCoef] = t5;
+    }
+    get velocityCoef() {
+      return this[_velocityCoef];
+    }
+    get [_distanceCoef]() {
+      let t6;
+      t6 = this[___NBSample__distanceCoef];
+      return t6 == null ? dart.throw(new _internal.LateError.fieldNI("_distanceCoef")) : t6;
+    }
+    set [_distanceCoef](t6) {
+      this[___NBSample__distanceCoef] = t6;
+    }
+    get distanceCoef() {
+      return this[_distanceCoef];
+    }
+  };
+  (scroll_simulation._NBSample.new = function(time, duration) {
+    this[___NBSample__velocityCoef] = null;
+    this[___NBSample__distanceCoef] = null;
+    let t = time * 1000.0 / duration;
+    let index = (100 * t)[$clamp](0, 100)[$round]();
+    this[_distanceCoef] = 1.0;
+    this[_velocityCoef] = 0.0;
+    if (index < 100) {
+      let tInf = index / 100;
+      let tSup = (index + 1) / 100;
+      let dInf = scroll_simulation._NBSample._splinePosition[$_get](index);
+      let dSup = scroll_simulation._NBSample._splinePosition[$_get](index + 1);
+      this[_velocityCoef] = (dSup - dInf) / (tSup - tInf);
+      this[_distanceCoef] = dInf + (t - tInf) * this[_velocityCoef];
+    }
+  }).prototype = scroll_simulation._NBSample.prototype;
+  dart.addTypeTests(scroll_simulation._NBSample);
+  dart.addTypeCaches(scroll_simulation._NBSample);
+  dart.setGetterSignature(scroll_simulation._NBSample, () => ({
+    __proto__: dart.getGetters(scroll_simulation._NBSample.__proto__),
+    [_velocityCoef]: core.double,
+    velocityCoef: core.double,
+    [_distanceCoef]: core.double,
+    distanceCoef: core.double
+  }));
+  dart.setSetterSignature(scroll_simulation._NBSample, () => ({
+    __proto__: dart.getSetters(scroll_simulation._NBSample.__proto__),
+    [_velocityCoef]: core.double,
+    [_distanceCoef]: core.double
+  }));
+  dart.setLibraryUri(scroll_simulation._NBSample, I[1]);
+  dart.setFieldSignature(scroll_simulation._NBSample, () => ({
+    __proto__: dart.getFields(scroll_simulation._NBSample.__proto__),
+    [___NBSample__velocityCoef]: dart.fieldType(dart.nullable(core.double)),
+    [___NBSample__distanceCoef]: dart.fieldType(dart.nullable(core.double))
+  }));
+  dart.defineLazy(scroll_simulation._NBSample, {
+    /*scroll_simulation._NBSample._nbSamples*/get _nbSamples() {
+      return 100;
+    },
+    /*scroll_simulation._NBSample._splinePosition*/get _splinePosition() {
+      return T.JSArrayOfdouble().of([0.000022888183591973643, 0.028561000304762274, 0.05705195792956655, 0.08538917797618413, 0.11349556286812107, 0.14129881694635613, 0.16877157254923383, 0.19581093511175632, 0.22239649722992452, 0.24843841866631658, 0.2740024733220569, 0.298967680744136, 0.32333234658228116, 0.34709556909569184, 0.3702249257894571, 0.39272483400399893, 0.41456988647721615, 0.43582889025419114, 0.4564192786416, 0.476410299013587, 0.4957560715637827, 0.5145493169954743, 0.5327205670880077, 0.5502846891191615, 0.5673274324802855, 0.583810881323224, 0.5997478744397482, 0.615194045299478, 0.6301165005270208, 0.6445484042257972, 0.6585198219185201, 0.6720397744233084, 0.6850997688076114, 0.6977281404741683, 0.7099506591298411, 0.7217749311525871, 0.7331784038850426, 0.7442308394229518, 0.7549087205105974, 0.7652471277371271, 0.7752251637549381, 0.7848768260203478, 0.7942056937103814, 0.8032299679689082, 0.8119428702388629, 0.8203713516576219, 0.8285187880808974, 0.8363794492831295, 0.8439768562813565, 0.851322799855549, 0.8584111051351724, 0.8652534074722162, 0.8718525580962131, 0.8782333271742155, 0.8843892099362031, 0.8903155590440985, 0.8960465359221951, 0.9015574505919048, 0.9068736766459904, 0.9119951682409297, 0.9169321898723632, 0.9216747065581234, 0.9262420604674766, 0.9306331858366086, 0.9348476990715433, 0.9389007110754832, 0.9427903495057521, 0.9465220679845756, 0.9500943036519721, 0.9535176728088761, 0.9567898524767604, 0.959924306623116, 0.9629127700159108, 0.9657622101750765, 0.9684818726275105, 0.9710676079044347, 0.9735231939498, 0.9758514437576309, 0.9780599066560445, 0.9801485715370128, 0.9821149805689633, 0.9839677526782791, 0.9857085499421516, 0.9873347811966005, 0.9888547171706613, 0.9902689443512227, 0.9915771042095881, 0.9927840651641069, 0.9938913963715834, 0.9948987305580712, 0.9958114963810524, 0.9966274782266875, 0.997352148697352, 0.9979848677523623, 0.9985285021374979, 0.9989844084453229, 0.9993537595844986, 0.999638729860106, 0.9998403888004533, 0.9999602810470701, 1.0]);
+    }
+  }, false);
+  dart.defineLazy(scroll_simulation, {
+    /*scroll_simulation._inflexion*/get _inflexion() {
+      return 0.35;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/widgets/scroll_simulation.dart", {
+    "package:flutter/src/widgets/scroll_simulation.dart": scroll_simulation
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["date_builder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../E:/packages/intl/src/intl/date_builder.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["scroll_simulation.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/widgets/scroll_simulation.dart.lib.js"}');
   // Exports:
   return {
-    src__intl__date_builder: date_builder
+    src__widgets__scroll_simulation: scroll_simulation
   };
 }));
 
-//# sourceMappingURL=date_builder.dart.lib.js.map
+//# sourceMappingURL=scroll_simulation.dart.lib.js.map

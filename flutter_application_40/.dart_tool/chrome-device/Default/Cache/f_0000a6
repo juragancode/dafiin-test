@@ -1,426 +1,367 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/_platform_web.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/foundation/print.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__foundation__binding_dart(dart_sdk, packages__flutter__src__foundation___platform_web$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__foundation__print$46dart, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/physics/tolerance.dart', 'packages/flutter/src/physics/utils.dart', 'packages/flutter/src/physics/simulation.dart'], (function load__packages__flutter__src__physics__spring_simulation_dart(dart_sdk, packages__flutter__src__foundation__object$46dart, packages__flutter__src__physics__tolerance$46dart, packages__flutter__src__physics__utils$46dart, packages__flutter__src__physics__simulation$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const developer = dart_sdk.developer;
-  const _js_helper = dart_sdk._js_helper;
-  const ui = dart_sdk.ui;
-  const async = dart_sdk.async;
-  const _internal = dart_sdk._internal;
-  const convert = dart_sdk.convert;
-  const io = dart_sdk.io;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const platform = packages__flutter__src__foundation___platform_web$46dart.src__foundation__platform;
-  const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
   const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var binding = Object.create(dart.library);
-  var $containsKey = dartx.containsKey;
-  var $_get = dartx._get;
-  var $substring = dartx.substring;
-  var $toString = dartx.toString;
-  var $_set = dartx._set;
-  dart._checkModuleNullSafetyMode(false);
-  var T = {
-    IdentityMapOfString$String: () => (T.IdentityMapOfString$String = dart.constFn(_js_helper.IdentityMap$(core.String, core.String)))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
-    VoidToFutureOfvoid: () => (T.VoidToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [])))(),
-    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
-    MapOfString$dynamic: () => (T.MapOfString$dynamic = dart.constFn(core.Map$(core.String, dart.dynamic)))(),
-    FutureOfMapOfString$dynamic: () => (T.FutureOfMapOfString$dynamic = dart.constFn(async.Future$(T.MapOfString$dynamic())))(),
-    MapOfString$String: () => (T.MapOfString$String = dart.constFn(core.Map$(core.String, core.String)))(),
-    MapOfString$StringToFutureOfMapOfString$dynamic: () => (T.MapOfString$StringToFutureOfMapOfString$dynamic = dart.constFn(dart.fnType(T.FutureOfMapOfString$dynamic(), [T.MapOfString$String()])))(),
-    FutureOfString: () => (T.FutureOfString = dart.constFn(async.Future$(core.String)))(),
-    VoidToFutureOfString: () => (T.VoidToFutureOfString = dart.constFn(dart.fnType(T.FutureOfString(), [])))(),
-    StringToFutureOfvoid: () => (T.StringToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [core.String])))(),
-    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
-    VoidToMapOfString$dynamic: () => (T.VoidToMapOfString$dynamic = dart.constFn(dart.fnType(T.MapOfString$dynamic(), [])))(),
-    MapOfString$dynamicTodynamic: () => (T.MapOfString$dynamicTodynamic = dart.constFn(dart.fnType(dart.dynamic, [T.MapOfString$dynamic()])))(),
-    FutureOfServiceExtensionResponse: () => (T.FutureOfServiceExtensionResponse = dart.constFn(async.Future$(developer.ServiceExtensionResponse)))(),
-    StringAndMapOfString$StringToFutureOfServiceExtensionResponse: () => (T.StringAndMapOfString$StringToFutureOfServiceExtensionResponse = dart.constFn(dart.fnType(T.FutureOfServiceExtensionResponse(), [core.String, T.MapOfString$String()])))()
-  };
+  const tolerance = packages__flutter__src__physics__tolerance$46dart.src__physics__tolerance;
+  const utils = packages__flutter__src__physics__utils$46dart.src__physics__utils;
+  const simulation = packages__flutter__src__physics__simulation$46dart.src__physics__simulation;
+  var spring_simulation = Object.create(dart.library);
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  dart._checkModuleNullSafetyMode(true);
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
-      return C[0] = dart.fn(binding._exitApplication, T.VoidToFutureOfvoid());
+      return C[0] = dart.const({
+        __proto__: spring_simulation.SpringType.prototype,
+        [_name$]: "SpringType.criticallyDamped",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: spring_simulation.SpringType.prototype,
+        [_name$]: "SpringType.underDamped",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: spring_simulation.SpringType.prototype,
+        [_name$]: "SpringType.overDamped",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], spring_simulation.SpringType);
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: tolerance.Tolerance.prototype,
+        [Tolerance_velocity]: 0.001,
+        [Tolerance_time]: 0.001,
+        [Tolerance_distance]: 0.001
+      });
     }
   }, false);
-  var C = [void 0];
+  var C = Array(5).fill(void 0);
   var I = [
-    "file:///C:/flutter/packages/flutter/lib/src/foundation/binding.dart",
-    "package:flutter/src/foundation/binding.dart"
+    "package:flutter/src/physics/spring_simulation.dart",
+    "file:///C:/flutter/packages/flutter/lib/src/physics/spring_simulation.dart"
   ];
-  var _lockCount = dart.privateName(binding, "_lockCount");
-  var _postExtensionStateChangedEvent = dart.privateName(binding, "_postExtensionStateChangedEvent");
-  binding.BindingBase = class BindingBase extends core.Object {
-    get window() {
-      return ui.window;
+  var mass$ = dart.privateName(spring_simulation, "SpringDescription.mass");
+  var stiffness$ = dart.privateName(spring_simulation, "SpringDescription.stiffness");
+  var damping$ = dart.privateName(spring_simulation, "SpringDescription.damping");
+  spring_simulation.SpringDescription = class SpringDescription extends core.Object {
+    get mass() {
+      return this[mass$];
     }
-    get platformDispatcher() {
-      return ui.PlatformDispatcher.instance;
+    set mass(value) {
+      super.mass = value;
     }
-    initInstances() {
-      if (!!dart.test(binding.BindingBase._debugInitialized)) dart.assertFailed(null, I[0], 134, 12, "!_debugInitialized");
-      if (!dart.test(dart.fn(() => {
-        binding.BindingBase._debugInitialized = true;
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 135, 12, "() {\r\n      _debugInitialized = true;\r\n      return true;\r\n    }()");
+    get stiffness() {
+      return this[stiffness$];
     }
-    initServiceExtensions() {
-      if (!!dart.test(binding.BindingBase._debugServiceExtensionsRegistered)) dart.assertFailed(null, I[0], 162, 12, "!_debugServiceExtensionsRegistered");
-      if (!dart.test(dart.fn(() => {
-        this.registerSignalServiceExtension({name: "reassemble", callback: dart.bind(this, 'reassembleApplication')});
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 164, 12, "() {\r\n      registerSignalServiceExtension(\r\n        name: 'reassemble',\r\n        callback: reassembleApplication,\r\n      );\r\n      return true;\r\n    }()");
-      if (!false && !true) {
-        this.registerSignalServiceExtension({name: "exit", callback: C[0] || CT.C0});
-      }
-      if (!dart.test(dart.fn(() => {
-        this.registerServiceExtension({name: "platformOverride", callback: dart.fn(parameters => {
-            if (parameters == null) dart.nullFailed(I[0], 183, 40, "parameters");
-            return async.async(T.MapOfString$dynamic(), (function*() {
-              if (dart.test(parameters[$containsKey]("value"))) {
-                switch (parameters[$_get]("value")) {
-                  case "android":
-                  {
-                    platform.debugDefaultTargetPlatformOverride = platform.TargetPlatform.android;
-                    break;
-                  }
-                  case "fuchsia":
-                  {
-                    platform.debugDefaultTargetPlatformOverride = platform.TargetPlatform.fuchsia;
-                    break;
-                  }
-                  case "iOS":
-                  {
-                    platform.debugDefaultTargetPlatformOverride = platform.TargetPlatform.iOS;
-                    break;
-                  }
-                  case "linux":
-                  {
-                    platform.debugDefaultTargetPlatformOverride = platform.TargetPlatform.linux;
-                    break;
-                  }
-                  case "macOS":
-                  {
-                    platform.debugDefaultTargetPlatformOverride = platform.TargetPlatform.macOS;
-                    break;
-                  }
-                  case "windows":
-                  {
-                    platform.debugDefaultTargetPlatformOverride = platform.TargetPlatform.windows;
-                    break;
-                  }
-                  case "default":
-                  default:
-                  {
-                    platform.debugDefaultTargetPlatformOverride = null;
-                  }
-                }
-                this[_postExtensionStateChangedEvent]("platformOverride", dart.toString(platform.defaultTargetPlatform)[$substring]((dart.str(dart.wrapType(platform.TargetPlatform)) + ".").length));
-                yield this.reassembleApplication();
-              }
-              return new (T.IdentityMapOfString$dynamic()).from(["value", dart.toString(platform.defaultTargetPlatform)[$substring]((dart.str(dart.wrapType(platform.TargetPlatform)) + ".").length)]);
-            }).bind(this));
-          }, T.MapOfString$StringToFutureOfMapOfString$dynamic())});
-        this.registerServiceExtension({name: "brightnessOverride", callback: dart.fn(parameters => {
-            if (parameters == null) dart.nullFailed(I[0], 225, 40, "parameters");
-            return async.async(T.MapOfString$dynamic(), (function*() {
-              let t0, t0$;
-              if (dart.test(parameters[$containsKey]("value"))) {
-                switch (parameters[$_get]("value")) {
-                  case "Brightness.light":
-                  {
-                    debug.debugBrightnessOverride = ui.Brightness.light;
-                    break;
-                  }
-                  case "Brightness.dark":
-                  {
-                    debug.debugBrightnessOverride = ui.Brightness.dark;
-                    break;
-                  }
-                  default:
-                  {
-                    debug.debugBrightnessOverride = null;
-                  }
-                }
-                this[_postExtensionStateChangedEvent]("brightnessOverride", dart.toString((t0 = debug.debugBrightnessOverride, t0 == null ? this.window.platformBrightness : t0)));
-                yield this.reassembleApplication();
-              }
-              return new (T.IdentityMapOfString$dynamic()).from(["value", dart.toString((t0$ = debug.debugBrightnessOverride, t0$ == null ? this.window.platformBrightness : t0$))]);
-            }).bind(this));
-          }, T.MapOfString$StringToFutureOfMapOfString$dynamic())});
-        this.registerStringServiceExtension({name: "connectedVmServiceUri", getter: dart.fn(() => async.async(core.String, function*() {
-            let t0;
-            t0 = debug.connectedVmServiceUri;
-            return t0 == null ? "" : t0;
-          }), T.VoidToFutureOfString()), setter: dart.fn(uri => {
-            if (uri == null) dart.nullFailed(I[0], 252, 25, "uri");
-            return async.async(dart.void, function*() {
-              debug.connectedVmServiceUri = uri;
-            });
-          }, T.StringToFutureOfvoid())});
-        this.registerStringServiceExtension({name: "activeDevToolsServerAddress", getter: dart.fn(() => async.async(core.String, function*() {
-            let t0;
-            t0 = debug.activeDevToolsServerAddress;
-            return t0 == null ? "" : t0;
-          }), T.VoidToFutureOfString()), setter: dart.fn(serverAddress => {
-            if (serverAddress == null) dart.nullFailed(I[0], 260, 25, "serverAddress");
-            return async.async(dart.void, function*() {
-              debug.activeDevToolsServerAddress = serverAddress;
-            });
-          }, T.StringToFutureOfvoid())});
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 179, 12, "() {\r\n      const String platformOverrideExtensionName = 'platformOverride';\r\n      registerServiceExtension(\r\n        name: platformOverrideExtensionName,\r\n        callback: (Map<String, String> parameters) async {\r\n          if (parameters.containsKey('value')) {\r\n            switch (parameters['value']) {\r\n              case 'android':\r\n                debugDefaultTargetPlatformOverride = TargetPlatform.android;\r\n                break;\r\n              case 'fuchsia':\r\n                debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;\r\n                break;\r\n              case 'iOS':\r\n                debugDefaultTargetPlatformOverride = TargetPlatform.iOS;\r\n                break;\r\n              case 'linux':\r\n                debugDefaultTargetPlatformOverride = TargetPlatform.linux;\r\n                break;\r\n              case 'macOS':\r\n                debugDefaultTargetPlatformOverride = TargetPlatform.macOS;\r\n                break;\r\n              case 'windows':\r\n                debugDefaultTargetPlatformOverride = TargetPlatform.windows;\r\n                break;\r\n              case 'default':\r\n              default:\r\n                debugDefaultTargetPlatformOverride = null;\r\n            }\r\n            _postExtensionStateChangedEvent(\r\n              platformOverrideExtensionName,\r\n              defaultTargetPlatform.toString().substring('$TargetPlatform.'.length),\r\n            );\r\n            await reassembleApplication();\r\n          }\r\n          return <String, dynamic>{\r\n            'value': defaultTargetPlatform\r\n                     .toString()\r\n                     .substring('$TargetPlatform.'.length),\r\n          };\r\n        },\r\n      );\r\n\r\n      const String brightnessOverrideExtensionName = 'brightnessOverride';\r\n      registerServiceExtension(\r\n        name: brightnessOverrideExtensionName,\r\n        callback: (Map<String, String> parameters) async {\r\n          if (parameters.containsKey('value')) {\r\n            switch (parameters['value']) {\r\n              case 'Brightness.light':\r\n                debugBrightnessOverride = ui.Brightness.light;\r\n                break;\r\n              case 'Brightness.dark':\r\n                debugBrightnessOverride = ui.Brightness.dark;\r\n                break;\r\n              default:\r\n                debugBrightnessOverride = null;\r\n            }\r\n            _postExtensionStateChangedEvent(\r\n              brightnessOverrideExtensionName,\r\n              (debugBrightnessOverride ?? window.platformBrightness).toString(),\r\n            );\r\n            await reassembleApplication();\r\n          }\r\n          return <String, dynamic>{\r\n            'value': (debugBrightnessOverride ?? window.platformBrightness).toString(),\r\n          };\r\n        },\r\n      );\r\n\r\n      registerStringServiceExtension(\r\n        name: 'connectedVmServiceUri',\r\n        getter: () async => connectedVmServiceUri ?? '',\r\n        setter: (String uri) async {\r\n          connectedVmServiceUri = uri;\r\n        },\r\n      );\r\n\r\n      registerStringServiceExtension(\r\n        name: 'activeDevToolsServerAddress',\r\n        getter: () async => activeDevToolsServerAddress ?? '',\r\n        setter: (String serverAddress) async {\r\n          activeDevToolsServerAddress = serverAddress;\r\n        },\r\n      );\r\n\r\n      return true;\r\n    }()");
-      if (!dart.test(dart.fn(() => {
-        binding.BindingBase._debugServiceExtensionsRegistered = true;
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 267, 12, "() {\r\n      _debugServiceExtensionsRegistered = true;\r\n      return true;\r\n    }()");
+    set stiffness(value) {
+      super.stiffness = value;
     }
-    get locked() {
-      return dart.notNull(this[_lockCount]) > 0;
+    get damping() {
+      return this[damping$];
     }
-    lockEvents(callback) {
-      if (callback == null) dart.nullFailed(I[0], 293, 51, "callback");
-      developer.Timeline.startSync("Lock events");
-      if (!(callback != null)) dart.assertFailed(null, I[0], 296, 12, "callback != null");
-      this[_lockCount] = dart.notNull(this[_lockCount]) + 1;
-      let future = callback();
-      if (!(future != null)) dart.assertFailed("The lockEvents() callback returned null; it should return a Future<void> that completes when the lock is to expire.", I[0], 299, 12, "future != null");
-      future.whenComplete(dart.fn(() => {
-        this[_lockCount] = dart.notNull(this[_lockCount]) - 1;
-        if (!dart.test(this.locked)) {
-          developer.Timeline.finishSync();
-          this.unlocked();
-        }
-      }, T.VoidToNull()));
-      return future;
-    }
-    unlocked() {
-      if (!!dart.test(this.locked)) dart.assertFailed(null, I[0], 316, 12, "!locked");
-    }
-    reassembleApplication() {
-      return this.lockEvents(dart.bind(this, 'performReassemble'));
-    }
-    performReassemble() {
-      assertions.FlutterError.resetErrorCount();
-      return T.FutureOfvoid().value();
-    }
-    registerSignalServiceExtension(opts) {
-      let name = opts && 'name' in opts ? opts.name : null;
-      if (name == null) dart.nullFailed(I[0], 367, 21, "name");
-      let callback = opts && 'callback' in opts ? opts.callback : null;
-      if (callback == null) dart.nullFailed(I[0], 368, 28, "callback");
-      if (!(name != null)) dart.assertFailed(null, I[0], 370, 12, "name != null");
-      if (!(callback != null)) dart.assertFailed(null, I[0], 371, 12, "callback != null");
-      this.registerServiceExtension({name: name, callback: dart.fn(parameters => {
-          if (parameters == null) dart.nullFailed(I[0], 374, 38, "parameters");
-          return async.async(T.MapOfString$dynamic(), function*() {
-            yield callback();
-            return new (T.IdentityMapOfString$dynamic()).new();
-          });
-        }, T.MapOfString$StringToFutureOfMapOfString$dynamic())});
-    }
-    registerBoolServiceExtension(opts) {
-      let name = opts && 'name' in opts ? opts.name : null;
-      if (name == null) dart.nullFailed(I[0], 397, 21, "name");
-      let getter = opts && 'getter' in opts ? opts.getter : null;
-      if (getter == null) dart.nullFailed(I[0], 398, 37, "getter");
-      let setter = opts && 'setter' in opts ? opts.setter : null;
-      if (setter == null) dart.nullFailed(I[0], 399, 37, "setter");
-      if (!(name != null)) dart.assertFailed(null, I[0], 401, 12, "name != null");
-      if (!(getter != null)) dart.assertFailed(null, I[0], 402, 12, "getter != null");
-      if (!(setter != null)) dart.assertFailed(null, I[0], 403, 12, "setter != null");
-      this.registerServiceExtension({name: name, callback: dart.fn(parameters => {
-          if (parameters == null) dart.nullFailed(I[0], 406, 38, "parameters");
-          return async.async(T.MapOfString$dynamic(), (function*() {
-            if (dart.test(parameters[$containsKey]("enabled"))) {
-              yield setter(parameters[$_get]("enabled") === "true");
-              this[_postExtensionStateChangedEvent](name, dart.test(yield getter()) ? "true" : "false");
-            }
-            return new (T.IdentityMapOfString$dynamic()).from(["enabled", dart.test(yield getter()) ? "true" : "false"]);
-          }).bind(this));
-        }, T.MapOfString$StringToFutureOfMapOfString$dynamic())});
-    }
-    registerNumericServiceExtension(opts) {
-      let name = opts && 'name' in opts ? opts.name : null;
-      if (name == null) dart.nullFailed(I[0], 431, 21, "name");
-      let getter = opts && 'getter' in opts ? opts.getter : null;
-      if (getter == null) dart.nullFailed(I[0], 432, 39, "getter");
-      let setter = opts && 'setter' in opts ? opts.setter : null;
-      if (setter == null) dart.nullFailed(I[0], 433, 39, "setter");
-      if (!(name != null)) dart.assertFailed(null, I[0], 435, 12, "name != null");
-      if (!(getter != null)) dart.assertFailed(null, I[0], 436, 12, "getter != null");
-      if (!(setter != null)) dart.assertFailed(null, I[0], 437, 12, "setter != null");
-      this.registerServiceExtension({name: name, callback: dart.fn(parameters => {
-          if (parameters == null) dart.nullFailed(I[0], 440, 38, "parameters");
-          return async.async(T.MapOfString$dynamic(), (function*() {
-            if (dart.test(parameters[$containsKey](name))) {
-              yield setter(core.double.parse(dart.nullCheck(parameters[$_get](name))));
-              this[_postExtensionStateChangedEvent](name, dart.toString(yield getter()));
-            }
-            return new (T.IdentityMapOfString$dynamic()).from([name, dart.toString(yield getter())]);
-          }).bind(this));
-        }, T.MapOfString$StringToFutureOfMapOfString$dynamic())});
-    }
-    [_postExtensionStateChangedEvent](name, value) {
-      if (name == null) dart.nullFailed(I[0], 461, 47, "name");
-      this.postEvent("Flutter.ServiceExtensionStateChanged", new (T.IdentityMapOfString$dynamic()).from(["extension", "ext.flutter." + dart.str(name), "value", value]));
-    }
-    postEvent(eventKind, eventData) {
-      if (eventKind == null) dart.nullFailed(I[0], 475, 25, "eventKind");
-      if (eventData == null) dart.nullFailed(I[0], 475, 57, "eventData");
-      developer.postEvent(eventKind, eventData);
-    }
-    registerStringServiceExtension(opts) {
-      let name = opts && 'name' in opts ? opts.name : null;
-      if (name == null) dart.nullFailed(I[0], 493, 21, "name");
-      let getter = opts && 'getter' in opts ? opts.getter : null;
-      if (getter == null) dart.nullFailed(I[0], 494, 39, "getter");
-      let setter = opts && 'setter' in opts ? opts.setter : null;
-      if (setter == null) dart.nullFailed(I[0], 495, 39, "setter");
-      if (!(name != null)) dart.assertFailed(null, I[0], 497, 12, "name != null");
-      if (!(getter != null)) dart.assertFailed(null, I[0], 498, 12, "getter != null");
-      if (!(setter != null)) dart.assertFailed(null, I[0], 499, 12, "setter != null");
-      this.registerServiceExtension({name: name, callback: dart.fn(parameters => {
-          if (parameters == null) dart.nullFailed(I[0], 502, 38, "parameters");
-          return async.async(T.MapOfString$dynamic(), (function*() {
-            if (dart.test(parameters[$containsKey]("value"))) {
-              yield setter(dart.nullCheck(parameters[$_get]("value")));
-              this[_postExtensionStateChangedEvent](name, yield getter());
-            }
-            return new (T.IdentityMapOfString$dynamic()).from(["value", (yield getter())]);
-          }).bind(this));
-        }, T.MapOfString$StringToFutureOfMapOfString$dynamic())});
-    }
-    registerServiceExtension(opts) {
-      let name = opts && 'name' in opts ? opts.name : null;
-      if (name == null) dart.nullFailed(I[0], 565, 21, "name");
-      let callback = opts && 'callback' in opts ? opts.callback : null;
-      if (callback == null) dart.nullFailed(I[0], 566, 39, "callback");
-      if (!(name != null)) dart.assertFailed(null, I[0], 568, 12, "name != null");
-      if (!(callback != null)) dart.assertFailed(null, I[0], 569, 12, "callback != null");
-      let methodName = "ext.flutter." + dart.str(name);
-      developer.registerExtension(methodName, dart.fn((method, parameters) => {
-        if (method == null) dart.nullFailed(I[0], 571, 53, "method");
-        if (parameters == null) dart.nullFailed(I[0], 571, 81, "parameters");
-        return async.async(developer.ServiceExtensionResponse, function*() {
-          if (!(method === methodName)) dart.assertFailed(null, I[0], 572, 14, "method == methodName");
-          if (!dart.test(dart.fn(() => {
-            if (dart.test(debug.debugInstrumentationEnabled)) print.debugPrint("service extension method received: " + dart.str(method) + "(" + dart.str(parameters) + ")");
-            return true;
-          }, T.VoidTobool())())) dart.assertFailed(null, I[0], 573, 14, "() {\r\n        if (debugInstrumentationEnabled)\r\n          debugPrint('service extension method received: $method($parameters)');\r\n        return true;\r\n      }()");
-          yield debug.debugInstrumentAction(dart.void, "Wait for outer event loop", dart.fn(() => T.FutureOfvoid().delayed(core.Duration.zero), T.VoidToFutureOfvoid()));
-          let caughtException = null;
-          let caughtStack = null;
-          let result = null;
-          let result$35isSet = false;
-          function result$35get() {
-            return result$35isSet ? result : dart.throw(new _internal.LateError.localNI("result"));
-          }
-          dart.fn(result$35get, T.VoidToMapOfString$dynamic());
-          function result$35set(t3) {
-            if (t3 == null) dart.nullFailed(I[0], 595, 33, "null");
-            result$35isSet = true;
-            return result = t3;
-          }
-          dart.fn(result$35set, T.MapOfString$dynamicTodynamic());
-          try {
-            result$35set(yield callback(parameters));
-          } catch (e) {
-            let exception = dart.getThrown(e);
-            let stack = dart.stackTrace(e);
-            if (core.Object.is(exception)) {
-              caughtException = exception;
-              caughtStack = stack;
-            } else
-              throw e;
-          }
-          if (caughtException == null) {
-            result$35get()[$_set]("type", "_extensionType");
-            result$35get()[$_set]("method", method);
-            return new developer.ServiceExtensionResponse.result(convert.json.encode(result$35get()));
-          } else {
-            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: caughtException, stack: caughtStack, context: new assertions.ErrorDescription.new("during a service extension callback for \"" + dart.str(method) + "\"")}));
-            return new developer.ServiceExtensionResponse.error(-32000, convert.json.encode(new (T.IdentityMapOfString$String()).from(["exception", dart.toString(caughtException), "stack", dart.toString(caughtStack), "method", method])));
-          }
-        });
-      }, T.StringAndMapOfString$StringToFutureOfServiceExtensionResponse()));
+    set damping(value) {
+      super.damping = value;
     }
     toString() {
-      return "<" + dart.str(object.objectRuntimeType(this, "BindingBase")) + ">";
+      return object.objectRuntimeType(this, "SpringDescription") + "(mass: " + this.mass[$toStringAsFixed](1) + ", stiffness: " + this.stiffness[$toStringAsFixed](1) + ", damping: " + this.damping[$toStringAsFixed](1) + ")";
     }
   };
-  (binding.BindingBase.new = function() {
-    this[_lockCount] = 0;
-    developer.Timeline.startSync("Framework initialization");
-    if (!!dart.test(binding.BindingBase._debugInitialized)) dart.assertFailed(null, I[0], 55, 12, "!_debugInitialized");
-    this.initInstances();
-    if (!dart.test(binding.BindingBase._debugInitialized)) dart.assertFailed(null, I[0], 57, 12, "_debugInitialized");
-    if (!!dart.test(binding.BindingBase._debugServiceExtensionsRegistered)) dart.assertFailed(null, I[0], 59, 12, "!_debugServiceExtensionsRegistered");
-    this.initServiceExtensions();
-    if (!dart.test(binding.BindingBase._debugServiceExtensionsRegistered)) dart.assertFailed(null, I[0], 61, 12, "_debugServiceExtensionsRegistered");
-    developer.postEvent("Flutter.FrameworkInitialization", new (T.IdentityMapOfString$String()).new());
-    developer.Timeline.finishSync();
-  }).prototype = binding.BindingBase.prototype;
-  dart.addTypeTests(binding.BindingBase);
-  dart.addTypeCaches(binding.BindingBase);
-  dart.setMethodSignature(binding.BindingBase, () => ({
-    __proto__: dart.getMethods(binding.BindingBase.__proto__),
-    initInstances: dart.fnType(dart.void, []),
-    initServiceExtensions: dart.fnType(dart.void, []),
-    lockEvents: dart.fnType(async.Future$(dart.void), [dart.fnType(async.Future$(dart.void), [])]),
-    unlocked: dart.fnType(dart.void, []),
-    reassembleApplication: dart.fnType(async.Future$(dart.void), []),
-    performReassemble: dart.fnType(async.Future$(dart.void), []),
-    registerSignalServiceExtension: dart.fnType(dart.void, [], {}, {callback: dart.fnType(async.Future$(dart.void), []), name: core.String}),
-    registerBoolServiceExtension: dart.fnType(dart.void, [], {}, {getter: dart.fnType(async.Future$(core.bool), []), name: core.String, setter: dart.fnType(async.Future$(dart.void), [core.bool])}),
-    registerNumericServiceExtension: dart.fnType(dart.void, [], {}, {getter: dart.fnType(async.Future$(core.double), []), name: core.String, setter: dart.fnType(async.Future$(dart.void), [core.double])}),
-    [_postExtensionStateChangedEvent]: dart.fnType(dart.void, [core.String, dart.dynamic]),
-    postEvent: dart.fnType(dart.void, [core.String, core.Map$(core.String, dart.dynamic)]),
-    registerStringServiceExtension: dart.fnType(dart.void, [], {}, {getter: dart.fnType(async.Future$(core.String), []), name: core.String, setter: dart.fnType(async.Future$(dart.void), [core.String])}),
-    registerServiceExtension: dart.fnType(dart.void, [], {}, {callback: dart.fnType(async.Future$(core.Map$(core.String, dart.dynamic)), [core.Map$(core.String, core.String)]), name: core.String})
+  (spring_simulation.SpringDescription.new = function(opts) {
+    let mass = opts && 'mass' in opts ? opts.mass : null;
+    let stiffness = opts && 'stiffness' in opts ? opts.stiffness : null;
+    let damping = opts && 'damping' in opts ? opts.damping : null;
+    this[mass$] = mass;
+    this[stiffness$] = stiffness;
+    this[damping$] = damping;
+    ;
+  }).prototype = spring_simulation.SpringDescription.prototype;
+  (spring_simulation.SpringDescription.withDampingRatio = function(opts) {
+    let mass = opts && 'mass' in opts ? opts.mass : null;
+    let stiffness = opts && 'stiffness' in opts ? opts.stiffness : null;
+    let ratio = opts && 'ratio' in opts ? opts.ratio : 1;
+    this[mass$] = mass;
+    this[stiffness$] = stiffness;
+    this[damping$] = ratio * 2.0 * math.sqrt(mass * stiffness);
+    ;
+  }).prototype = spring_simulation.SpringDescription.prototype;
+  dart.addTypeTests(spring_simulation.SpringDescription);
+  dart.addTypeCaches(spring_simulation.SpringDescription);
+  dart.setLibraryUri(spring_simulation.SpringDescription, I[0]);
+  dart.setFieldSignature(spring_simulation.SpringDescription, () => ({
+    __proto__: dart.getFields(spring_simulation.SpringDescription.__proto__),
+    mass: dart.finalFieldType(core.double),
+    stiffness: dart.finalFieldType(core.double),
+    damping: dart.finalFieldType(core.double)
   }));
-  dart.setGetterSignature(binding.BindingBase, () => ({
-    __proto__: dart.getGetters(binding.BindingBase.__proto__),
-    window: ui.SingletonFlutterWindow,
-    platformDispatcher: ui.PlatformDispatcher,
-    locked: core.bool
-  }));
-  dart.setLibraryUri(binding.BindingBase, I[1]);
-  dart.setFieldSignature(binding.BindingBase, () => ({
-    __proto__: dart.getFields(binding.BindingBase.__proto__),
-    [_lockCount]: dart.fieldType(core.int)
-  }));
-  dart.defineExtensionMethods(binding.BindingBase, ['toString']);
-  dart.defineLazy(binding.BindingBase, {
-    /*binding.BindingBase._debugInitialized*/get _debugInitialized() {
-      return false;
-    },
-    set _debugInitialized(_) {},
-    /*binding.BindingBase._debugServiceExtensionsRegistered*/get _debugServiceExtensionsRegistered() {
-      return false;
-    },
-    set _debugServiceExtensionsRegistered(_) {}
-  }, false);
-  binding._exitApplication = function _exitApplication() {
-    return async.async(dart.void, function* _exitApplication() {
-      io.exit(0);
-      dart.throw(new _internal.ReachabilityError.new("`null` encountered as the result from expression with type `Never`."));
-    });
+  dart.defineExtensionMethods(spring_simulation.SpringDescription, ['toString']);
+  var _name$ = dart.privateName(spring_simulation, "_name");
+  spring_simulation.SpringType = class SpringType extends core.Object {
+    toString() {
+      return this[_name$];
+    }
   };
-  dart.trackLibraries("packages/flutter/src/foundation/binding.dart", {
-    "package:flutter/src/foundation/binding.dart": binding
+  (spring_simulation.SpringType.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = spring_simulation.SpringType.prototype;
+  dart.addTypeTests(spring_simulation.SpringType);
+  dart.addTypeCaches(spring_simulation.SpringType);
+  dart.setLibraryUri(spring_simulation.SpringType, I[0]);
+  dart.setFieldSignature(spring_simulation.SpringType, () => ({
+    __proto__: dart.getFields(spring_simulation.SpringType.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(spring_simulation.SpringType, ['toString']);
+  spring_simulation.SpringType.criticallyDamped = C[0] || CT.C0;
+  spring_simulation.SpringType.underDamped = C[1] || CT.C1;
+  spring_simulation.SpringType.overDamped = C[2] || CT.C2;
+  spring_simulation.SpringType.values = C[3] || CT.C3;
+  var Tolerance_velocity = dart.privateName(tolerance, "Tolerance.velocity");
+  var Tolerance_time = dart.privateName(tolerance, "Tolerance.time");
+  var Tolerance_distance = dart.privateName(tolerance, "Tolerance.distance");
+  var _endPosition = dart.privateName(spring_simulation, "_endPosition");
+  var _solution = dart.privateName(spring_simulation, "_solution");
+  spring_simulation.SpringSimulation = class SpringSimulation extends simulation.Simulation {
+    get type() {
+      return this[_solution].type;
+    }
+    x(time) {
+      return this[_endPosition] + this[_solution].x(time);
+    }
+    dx(time) {
+      return this[_solution].dx(time);
+    }
+    isDone(time) {
+      return utils.nearZero(this[_solution].x(time), this.tolerance.distance) && utils.nearZero(this[_solution].dx(time), this.tolerance.velocity);
+    }
+    toString() {
+      return object.objectRuntimeType(this, "SpringSimulation") + "(end: " + dart.str(this[_endPosition]) + ", " + dart.str(this.type) + ")";
+    }
+  };
+  (spring_simulation.SpringSimulation.new = function(spring, start, end, velocity, opts) {
+    let tolerance = opts && 'tolerance' in opts ? opts.tolerance : C[4] || CT.C4;
+    this[_endPosition] = end;
+    this[_solution] = spring_simulation._SpringSolution.new(spring, start - end, velocity);
+    spring_simulation.SpringSimulation.__proto__.new.call(this, {tolerance: tolerance});
+    ;
+  }).prototype = spring_simulation.SpringSimulation.prototype;
+  dart.addTypeTests(spring_simulation.SpringSimulation);
+  dart.addTypeCaches(spring_simulation.SpringSimulation);
+  dart.setMethodSignature(spring_simulation.SpringSimulation, () => ({
+    __proto__: dart.getMethods(spring_simulation.SpringSimulation.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double]),
+    isDone: dart.fnType(core.bool, [core.double])
+  }));
+  dart.setGetterSignature(spring_simulation.SpringSimulation, () => ({
+    __proto__: dart.getGetters(spring_simulation.SpringSimulation.__proto__),
+    type: spring_simulation.SpringType
+  }));
+  dart.setLibraryUri(spring_simulation.SpringSimulation, I[0]);
+  dart.setFieldSignature(spring_simulation.SpringSimulation, () => ({
+    __proto__: dart.getFields(spring_simulation.SpringSimulation.__proto__),
+    [_endPosition]: dart.finalFieldType(core.double),
+    [_solution]: dart.finalFieldType(spring_simulation._SpringSolution)
+  }));
+  dart.defineExtensionMethods(spring_simulation.SpringSimulation, ['toString']);
+  spring_simulation.ScrollSpringSimulation = class ScrollSpringSimulation extends spring_simulation.SpringSimulation {
+    x(time) {
+      return this.isDone(time) ? this[_endPosition] : super.x(time);
+    }
+  };
+  (spring_simulation.ScrollSpringSimulation.new = function(spring, start, end, velocity, opts) {
+    let tolerance = opts && 'tolerance' in opts ? opts.tolerance : C[4] || CT.C4;
+    spring_simulation.ScrollSpringSimulation.__proto__.new.call(this, spring, start, end, velocity, {tolerance: tolerance});
+    ;
+  }).prototype = spring_simulation.ScrollSpringSimulation.prototype;
+  dart.addTypeTests(spring_simulation.ScrollSpringSimulation);
+  dart.addTypeCaches(spring_simulation.ScrollSpringSimulation);
+  dart.setLibraryUri(spring_simulation.ScrollSpringSimulation, I[0]);
+  spring_simulation._SpringSolution = class _SpringSolution extends core.Object {
+    static new(spring, initialPosition, initialVelocity) {
+      if (!(spring !== null)) dart.assertFailed(null, I[1], 156, 12, "spring != null");
+      if (!(spring.mass !== null)) dart.assertFailed(null, I[1], 157, 12, "spring.mass != null");
+      if (!(spring.stiffness !== null)) dart.assertFailed(null, I[1], 158, 12, "spring.stiffness != null");
+      if (!(spring.damping !== null)) dart.assertFailed(null, I[1], 159, 12, "spring.damping != null");
+      if (!(initialPosition !== null)) dart.assertFailed(null, I[1], 160, 12, "initialPosition != null");
+      if (!(initialVelocity !== null)) dart.assertFailed(null, I[1], 161, 12, "initialVelocity != null");
+      let cmk = spring.damping * spring.damping - 4 * spring.mass * spring.stiffness;
+      if (cmk === 0.0) return spring_simulation._CriticalSolution.new(spring, initialPosition, initialVelocity);
+      if (cmk > 0.0) return spring_simulation._OverdampedSolution.new(spring, initialPosition, initialVelocity);
+      return spring_simulation._UnderdampedSolution.new(spring, initialPosition, initialVelocity);
+    }
+  };
+  (spring_simulation._SpringSolution[dart.mixinNew] = function() {
+  }).prototype = spring_simulation._SpringSolution.prototype;
+  dart.addTypeTests(spring_simulation._SpringSolution);
+  dart.addTypeCaches(spring_simulation._SpringSolution);
+  dart.setLibraryUri(spring_simulation._SpringSolution, I[0]);
+  var _r = dart.privateName(spring_simulation, "_r");
+  var _c1 = dart.privateName(spring_simulation, "_c1");
+  var _c2 = dart.privateName(spring_simulation, "_c2");
+  spring_simulation._CriticalSolution = class _CriticalSolution extends core.Object {
+    static new(spring, distance, velocity) {
+      let r = -spring.damping / (2.0 * spring.mass);
+      let c1 = distance;
+      let c2 = velocity / (r * distance);
+      return new spring_simulation._CriticalSolution.withArgs(r, c1, c2);
+    }
+    x(time) {
+      return (this[_c1] + this[_c2] * time) * math.pow(2.718281828459045, this[_r] * time);
+    }
+    dx(time) {
+      let power = math.pow(2.718281828459045, this[_r] * time);
+      return this[_r] * (this[_c1] + this[_c2] * time) * power + this[_c2] * power;
+    }
+    get type() {
+      return spring_simulation.SpringType.criticallyDamped;
+    }
+  };
+  (spring_simulation._CriticalSolution.withArgs = function(r, c1, c2) {
+    this[_r] = r;
+    this[_c1] = c1;
+    this[_c2] = c2;
+    ;
+  }).prototype = spring_simulation._CriticalSolution.prototype;
+  dart.addTypeTests(spring_simulation._CriticalSolution);
+  dart.addTypeCaches(spring_simulation._CriticalSolution);
+  spring_simulation._CriticalSolution[dart.implements] = () => [spring_simulation._SpringSolution];
+  dart.setMethodSignature(spring_simulation._CriticalSolution, () => ({
+    __proto__: dart.getMethods(spring_simulation._CriticalSolution.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double])
+  }));
+  dart.setGetterSignature(spring_simulation._CriticalSolution, () => ({
+    __proto__: dart.getGetters(spring_simulation._CriticalSolution.__proto__),
+    type: spring_simulation.SpringType
+  }));
+  dart.setLibraryUri(spring_simulation._CriticalSolution, I[0]);
+  dart.setFieldSignature(spring_simulation._CriticalSolution, () => ({
+    __proto__: dart.getFields(spring_simulation._CriticalSolution.__proto__),
+    [_r]: dart.finalFieldType(core.double),
+    [_c1]: dart.finalFieldType(core.double),
+    [_c2]: dart.finalFieldType(core.double)
+  }));
+  var _r1 = dart.privateName(spring_simulation, "_r1");
+  var _r2 = dart.privateName(spring_simulation, "_r2");
+  spring_simulation._OverdampedSolution = class _OverdampedSolution extends core.Object {
+    static new(spring, distance, velocity) {
+      let cmk = spring.damping * spring.damping - 4 * spring.mass * spring.stiffness;
+      let r1 = (-spring.damping - math.sqrt(cmk)) / (2.0 * spring.mass);
+      let r2 = (-spring.damping + math.sqrt(cmk)) / (2.0 * spring.mass);
+      let c2 = (velocity - r1 * distance) / (r2 - r1);
+      let c1 = distance - c2;
+      return new spring_simulation._OverdampedSolution.withArgs(r1, r2, c1, c2);
+    }
+    x(time) {
+      return this[_c1] * math.pow(2.718281828459045, this[_r1] * time) + this[_c2] * math.pow(2.718281828459045, this[_r2] * time);
+    }
+    dx(time) {
+      return this[_c1] * this[_r1] * math.pow(2.718281828459045, this[_r1] * time) + this[_c2] * this[_r2] * math.pow(2.718281828459045, this[_r2] * time);
+    }
+    get type() {
+      return spring_simulation.SpringType.overDamped;
+    }
+  };
+  (spring_simulation._OverdampedSolution.withArgs = function(r1, r2, c1, c2) {
+    this[_r1] = r1;
+    this[_r2] = r2;
+    this[_c1] = c1;
+    this[_c2] = c2;
+    ;
+  }).prototype = spring_simulation._OverdampedSolution.prototype;
+  dart.addTypeTests(spring_simulation._OverdampedSolution);
+  dart.addTypeCaches(spring_simulation._OverdampedSolution);
+  spring_simulation._OverdampedSolution[dart.implements] = () => [spring_simulation._SpringSolution];
+  dart.setMethodSignature(spring_simulation._OverdampedSolution, () => ({
+    __proto__: dart.getMethods(spring_simulation._OverdampedSolution.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double])
+  }));
+  dart.setGetterSignature(spring_simulation._OverdampedSolution, () => ({
+    __proto__: dart.getGetters(spring_simulation._OverdampedSolution.__proto__),
+    type: spring_simulation.SpringType
+  }));
+  dart.setLibraryUri(spring_simulation._OverdampedSolution, I[0]);
+  dart.setFieldSignature(spring_simulation._OverdampedSolution, () => ({
+    __proto__: dart.getFields(spring_simulation._OverdampedSolution.__proto__),
+    [_r1]: dart.finalFieldType(core.double),
+    [_r2]: dart.finalFieldType(core.double),
+    [_c1]: dart.finalFieldType(core.double),
+    [_c2]: dart.finalFieldType(core.double)
+  }));
+  var _w = dart.privateName(spring_simulation, "_w");
+  spring_simulation._UnderdampedSolution = class _UnderdampedSolution extends core.Object {
+    static new(spring, distance, velocity) {
+      let w = math.sqrt(4.0 * spring.mass * spring.stiffness - spring.damping * spring.damping) / (2.0 * spring.mass);
+      let r = -(spring.damping / 2.0 * spring.mass);
+      let c1 = distance;
+      let c2 = (velocity - r * distance) / w;
+      return new spring_simulation._UnderdampedSolution.withArgs(w, r, c1, c2);
+    }
+    x(time) {
+      return math.pow(2.718281828459045, this[_r] * time) * (this[_c1] * math.cos(this[_w] * time) + this[_c2] * math.sin(this[_w] * time));
+    }
+    dx(time) {
+      let power = math.pow(2.718281828459045, this[_r] * time);
+      let cosine = math.cos(this[_w] * time);
+      let sine = math.sin(this[_w] * time);
+      return power * (this[_c2] * this[_w] * cosine - this[_c1] * this[_w] * sine) + this[_r] * power * (this[_c2] * sine + this[_c1] * cosine);
+    }
+    get type() {
+      return spring_simulation.SpringType.underDamped;
+    }
+  };
+  (spring_simulation._UnderdampedSolution.withArgs = function(w, r, c1, c2) {
+    this[_w] = w;
+    this[_r] = r;
+    this[_c1] = c1;
+    this[_c2] = c2;
+    ;
+  }).prototype = spring_simulation._UnderdampedSolution.prototype;
+  dart.addTypeTests(spring_simulation._UnderdampedSolution);
+  dart.addTypeCaches(spring_simulation._UnderdampedSolution);
+  spring_simulation._UnderdampedSolution[dart.implements] = () => [spring_simulation._SpringSolution];
+  dart.setMethodSignature(spring_simulation._UnderdampedSolution, () => ({
+    __proto__: dart.getMethods(spring_simulation._UnderdampedSolution.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double])
+  }));
+  dart.setGetterSignature(spring_simulation._UnderdampedSolution, () => ({
+    __proto__: dart.getGetters(spring_simulation._UnderdampedSolution.__proto__),
+    type: spring_simulation.SpringType
+  }));
+  dart.setLibraryUri(spring_simulation._UnderdampedSolution, I[0]);
+  dart.setFieldSignature(spring_simulation._UnderdampedSolution, () => ({
+    __proto__: dart.getFields(spring_simulation._UnderdampedSolution.__proto__),
+    [_w]: dart.finalFieldType(core.double),
+    [_r]: dart.finalFieldType(core.double),
+    [_c1]: dart.finalFieldType(core.double),
+    [_c2]: dart.finalFieldType(core.double)
+  }));
+  dart.trackLibraries("packages/flutter/src/physics/spring_simulation.dart", {
+    "package:flutter/src/physics/spring_simulation.dart": spring_simulation
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["binding.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/foundation/binding.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["spring_simulation.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAwCe;;;;;;IAKA;;;;;;IAWA;;;;;;;AAGQ,YAAG,AAAoK,0BAAlJ,MAAM,uBAAqB,YAAS,AAAK,4BAAgB,KAAG,kBAAe,AAAU,iCAAgB,KAAG,gBAAa,AAAQ,+BAAgB,KAAG;IAAE;;;QAvC5K;QACA;QACA;IAFA;IACA;IACA;;EACd;;QAUc;QACA;QACP;IAFO;IACA;IAEH,iBAAE,AAAM,AAAM,KAAP,GAAG,MAAM,UAAU,AAAK,IAAD,GAAG,SAAS;;EAAC;;;;;;;;;;;;;;;IAwC1D;;sDAXK;;;;EAWL;;;;;;;;;;;;;;;;;;;;;AAgCyB,YAAA,AAAU;IAAI;MAGrB;AAAS,YAAA,AAAa,sBAAE,AAAU,kBAAE,IAAI;IAAC;OAGxC;AAAS,YAAA,AAAU,oBAAG,IAAI;IAAC;WAGzB;AACjB,YAAO,AAAgD,gBAAvC,AAAU,kBAAE,IAAI,GAAG,AAAU,4BACtC,eAAS,AAAU,mBAAG,IAAI,GAAG,AAAU;IAChD;;AAGqB,YAAG,AAAwE,0BAAtD,MAAM,sBAAoB,oBAAO,sBAAY,gBAAG,aAAI;IAAE;;qDA/B5E,QACX,OACA,KACA;QACG;IACM,qBAAE,GAAG;IACR,kBAAE,sCAAgB,MAAM,EAAE,AAAM,KAAD,GAAG,GAAG,EAAE,QAAQ;AACzD,4EAAiB,SAAS;;EAAC;;;;;;;;;;;;;;;;;;;;;MA4ChB;AAAS,yBAAO,IAAI,IAAI,qBAAqB,QAAE,IAAI;IAAC;;2DARhD,QACX,OACA,KACA;QACG;AACP,sEAAM,MAAM,EAAE,KAAK,EAAE,GAAG,EAAE,QAAQ,cAAa,SAAS;;EAAC;;;;;eAW1C,QACX,iBACA;AAEP,YAAO,AAAO,MAAD;AACb,YAAO,AAAO,AAAK,MAAN;AACb,YAAO,AAAO,AAAU,MAAX;AACb,YAAO,AAAO,AAAQ,MAAT;AACb,YAAO,AAAgB,eAAD;AACtB,YAAO,AAAgB,eAAD;AACT,gBAAM,AAAO,AAAQ,AAAiB,MAA1B,WAAW,AAAO,MAAD,WAAW,AAAE,AAAc,IAAZ,AAAO,MAAD,QAAQ,AAAO,MAAD;AAC7E,UAAI,AAAI,GAAD,KAAI,KACT,MAAO,yCAAkB,MAAM,EAAE,eAAe,EAAE,eAAe;AACnE,UAAI,AAAI,GAAD,GAAG,KACR,MAAO,2CAAoB,MAAM,EAAE,eAAe,EAAE,eAAe;AACrE,YAAO,4CAAqB,MAAM,EAAE,eAAe,EAAE,eAAe;IACtE;;;;;;;;;;;eASoB,QACX,UACA;AAEM,cAAI,AAAgB,CAAf,AAAO,MAAD,YAAY,AAAI,MAAE,AAAO,MAAD;AACnC,eAAK,QAAQ;AACb,eAAK,AAAS,QAAD,IAAI,AAAE,CAAD,GAAG,QAAQ;AAC1C,YAAyB,kDAAS,CAAC,EAAE,EAAE,EAAE,EAAE;IAC7C;MAUgB;AACd,YAA0B,EAAlB,AAAI,YAAE,AAAI,YAAE,IAAI,IAAI,4BAAiB,AAAG,WAAE,IAAI;IACxD;OAGiB;AACF,kBAAQ,4BAAiB,AAAG,WAAE,IAAI;AAC/C,YAAO,AAAG,AAAqB,AAAQ,aAA1B,AAAI,YAAE,AAAI,YAAE,IAAI,IAAI,KAAK,GAAG,AAAI,YAAE,KAAK;IACtD;;AAGuB,YAAW;IAAgB;;2DAnBhB,GAAU,IAAW;IAChD,WAAE,CAAC;IACF,YAAE,EAAE;IACJ,YAAE,EAAE;;;;;;;;;;;;;;;;;;;;;;;;;eAqBQ,QACX,UACA;AAEM,gBAAM,AAAO,AAAQ,AAAiB,MAA1B,WAAW,AAAO,MAAD,WAAW,AAAE,AAAc,IAAZ,AAAO,MAAD,QAAQ,AAAO,MAAD;AAChE,eAAwC,CAAlC,AAAgB,CAAf,AAAO,MAAD,WAAW,UAAU,GAAG,MAAM,AAAI,MAAE,AAAO,MAAD;AACvD,eAAwC,CAAlC,AAAgB,CAAf,AAAO,MAAD,WAAW,UAAU,GAAG,MAAM,AAAI,MAAE,AAAO,MAAD;AACvD,eAAgC,CAA1B,AAAS,QAAD,GAAG,AAAG,EAAD,GAAG,QAAQ,KAAK,AAAG,EAAD,GAAG,EAAE;AAC1C,eAAK,AAAS,QAAD,GAAG,EAAE;AAC/B,YAA2B,oDAAS,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE;IACpD;MAWgB;AACd,YAAO,AAAI,AAA+B,aAA7B,4BAAiB,AAAI,YAAE,IAAI,IACjC,AAAI,YAAE,4BAAiB,AAAI,YAAE,IAAI;IAC1C;OAGiB;AACf,YAAO,AAAI,AAAM,AAA+B,aAAnC,YAAM,4BAAiB,AAAI,YAAE,IAAI,IACvC,AAAI,AAAM,YAAJ,YAAM,4BAAiB,AAAI,YAAE,IAAI;IAChD;;AAGuB,YAAW;IAAU;;6DArBR,IAAW,IAAW,IAAW;IAC7D,YAAE,EAAE;IACJ,YAAE,EAAE;IACJ,YAAE,EAAE;IACJ,YAAE,EAAE;;;;;;;;;;;;;;;;;;;;;;;;;eAsBQ,QACX,UACA;AAEM,cAAI,AAAkF,UAAxE,AAAI,AAAc,AAAmB,MAA/B,AAAO,MAAD,QAAQ,AAAO,MAAD,aAAa,AAAO,AAAQ,MAAT,WAAW,AAAO,MAAD,aACpF,AAAI,MAAE,AAAO,MAAD;AACJ,cAAI,EAAE,AAAO,AAAQ,AAAM,MAAf,WAAW,MAAM,AAAO,MAAD;AACnC,eAAK,QAAQ;AACb,eAA+B,CAAzB,AAAS,QAAD,GAAG,AAAE,CAAD,GAAG,QAAQ,IAAI,CAAC;AAC/C,YAA4B,qDAAS,CAAC,EAAE,CAAC,EAAE,EAAE,EAAE,EAAE;IACnD;MAWgB;AACd,YAAQ,AAAuC,6BAAtB,AAAG,WAAE,IAAI,KAC1B,AAAI,AAAsB,YAApB,SAAS,AAAG,WAAE,IAAI,IAAI,AAAI,YAAE,SAAS,AAAG,WAAE,IAAI;IAC9D;OAGiB;AACF,kBAAQ,4BAAiB,AAAG,WAAE,IAAI;AAClC,mBAAS,SAAS,AAAG,WAAE,IAAI;AAC3B,iBAAO,SAAS,AAAG,WAAE,IAAI;AACtC,YAAO,AAAM,AAAwC,MAAzC,IAAI,AAAI,AAAK,AAAS,YAAZ,WAAK,MAAM,GAAG,AAAI,AAAK,YAAH,WAAK,IAAI,IAC5C,AAAG,AAAQ,WAAN,KAAK,IAAI,AAAI,AAAc,YAAP,IAAI,GAAK,AAAI,YAAO,MAAM;IAC5D;;AAGuB,YAAW;IAAW;;8DAxBR,GAAU,GAAU,IAAW;IAC7D,WAAE,CAAC;IACH,WAAE,CAAC;IACF,YAAE,EAAE;IACJ,YAAE,EAAE","file":"../../../../../../../E:/packages/flutter/src/physics/spring_simulation.dart.lib.js"}');
   // Exports:
   return {
-    src__foundation__binding: binding
+    src__physics__spring_simulation: spring_simulation
   };
 }));
 
-//# sourceMappingURL=binding.dart.lib.js.map
+//# sourceMappingURL=spring_simulation.dart.lib.js.map

@@ -1,30 +1,24 @@
-define(['dart_sdk'], (function load__packages__flutter__src__foundation__licenses_dart(dart_sdk) {
+define(['dart_sdk', 'packages/flutter/src/services/text_input.dart', 'packages/flutter/src/foundation/_platform_web.dart', 'packages/characters/src/characters_impl.dart', 'packages/characters/src/extensions.dart', 'packages/flutter/src/services/text_editing.dart'], (function load__packages__flutter__src__services__text_formatter_dart(dart_sdk, packages__flutter__src__services__text_input$46dart, packages__flutter__src__foundation___platform_web$46dart, packages__characters__src__characters_impl$46dart, packages__characters__src__extensions$46dart, packages__flutter__src__services__text_editing$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
-  const _js_helper = dart_sdk._js_helper;
-  const async = dart_sdk.async;
+  const math = dart_sdk.math;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var licenses = Object.create(dart.library);
-  var $substring = dartx.substring;
-  var $add = dartx.add;
+  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
+  const platform$ = packages__flutter__src__foundation___platform_web$46dart.src__foundation__platform;
+  const characters_impl = packages__characters__src__characters_impl$46dart.src__characters_impl;
+  const extensions = packages__characters__src__extensions$46dart.src__extensions;
+  const text_editing = packages__flutter__src__services__text_editing$46dart.src__services__text_editing;
+  var text_formatter = Object.create(dart.library);
   var $isNotEmpty = dartx.isNotEmpty;
-  var $join = dartx.join;
-  var $trimLeft = dartx.trimLeft;
-  var $clear = dartx.clear;
-  var $_get = dartx._get;
-  var $truncate = dartx.truncate;
+  var $splitMapJoin = dartx.splitMapJoin;
+  var $length = dartx.length;
+  var $substring = dartx.substring;
   dart._checkModuleNullSafetyMode(true);
   var T = {
-    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    VoidToLicenseParagraph: () => (T.VoidToLicenseParagraph = dart.constFn(dart.fnType(licenses.LicenseParagraph, [])))(),
-    SyncIterableOfLicenseParagraph: () => (T.SyncIterableOfLicenseParagraph = dart.constFn(_js_helper.SyncIterable$(licenses.LicenseParagraph)))(),
-    StreamOfLicenseEntry: () => (T.StreamOfLicenseEntry = dart.constFn(async.Stream$(licenses.LicenseEntry)))(),
-    VoidToStreamOfLicenseEntry: () => (T.VoidToStreamOfLicenseEntry = dart.constFn(dart.fnType(T.StreamOfLicenseEntry(), [])))(),
-    JSArrayOfVoidToStreamOfLicenseEntry: () => (T.JSArrayOfVoidToStreamOfLicenseEntry = dart.constFn(_interceptors.JSArray$(T.VoidToStreamOfLicenseEntry())))(),
-    _AsyncStarImplOfLicenseEntry: () => (T._AsyncStarImplOfLicenseEntry = dart.constFn(async._AsyncStarImpl$(licenses.LicenseEntry)))()
+    MatchToString: () => (T.MatchToString = dart.constFn(dart.fnType(core.String, [core.Match])))(),
+    StringToString: () => (T.StringToString = dart.constFn(dart.fnType(core.String, [core.String])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -32,303 +26,405 @@ define(['dart_sdk'], (function load__packages__flutter__src__foundation__license
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: licenses._LicenseEntryWithLineBreaksParserState.prototype,
-        [_name$]: "_LicenseEntryWithLineBreaksParserState.beforeParagraph",
+        __proto__: text_formatter.MaxLengthEnforcement.prototype,
+        [_name$]: "MaxLengthEnforcement.none",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: licenses._LicenseEntryWithLineBreaksParserState.prototype,
-        [_name$]: "_LicenseEntryWithLineBreaksParserState.inParagraph",
+        __proto__: text_formatter.MaxLengthEnforcement.prototype,
+        [_name$]: "MaxLengthEnforcement.enforced",
         index: 1
       });
     },
     get C2() {
-      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], licenses._LicenseEntryWithLineBreaksParserState);
+      return C[2] = dart.const({
+        __proto__: text_formatter.MaxLengthEnforcement.prototype,
+        [_name$]: "MaxLengthEnforcement.truncateAfterCompositionEnds",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], text_formatter.MaxLengthEnforcement);
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.android",
+        index: 0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.windows",
+        index: 5
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.iOS",
+        index: 2
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.macOS",
+        index: 4
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.linux",
+        index: 3
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.fuchsia",
+        index: 1
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.TextAffinity.prototype,
+        [_name$0]: "TextAffinity.downstream",
+        index: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: text_editing.TextSelection.prototype,
+        [TextRange_end]: -1,
+        [TextRange_start]: -1,
+        [TextSelection_isDirectional]: false,
+        [TextSelection_affinity]: C[11] || CT.C11,
+        [TextSelection_extentOffset]: -1,
+        [TextSelection_baseOffset]: -1
+      });
     }
   }, false);
-  var C = Array(3).fill(void 0);
+  var C = Array(12).fill(void 0);
   var I = [
-    "package:flutter/src/foundation/licenses.dart",
-    "file:///C:/flutter/packages/flutter/lib/src/foundation/licenses.dart"
+    "package:flutter/src/services/text_formatter.dart",
+    "file:///C:/flutter/packages/flutter/lib/src/services/text_formatter.dart"
   ];
-  var text$ = dart.privateName(licenses, "LicenseParagraph.text");
-  var indent$ = dart.privateName(licenses, "LicenseParagraph.indent");
-  licenses.LicenseParagraph = class LicenseParagraph extends core.Object {
-    get text() {
-      return this[text$];
-    }
-    set text(value) {
-      super.text = value;
-    }
-    get indent() {
-      return this[indent$];
-    }
-    set indent(value) {
-      super.indent = value;
-    }
-  };
-  (licenses.LicenseParagraph.new = function(text, indent) {
-    this[text$] = text;
-    this[indent$] = indent;
-    ;
-  }).prototype = licenses.LicenseParagraph.prototype;
-  dart.addTypeTests(licenses.LicenseParagraph);
-  dart.addTypeCaches(licenses.LicenseParagraph);
-  dart.setLibraryUri(licenses.LicenseParagraph, I[0]);
-  dart.setFieldSignature(licenses.LicenseParagraph, () => ({
-    __proto__: dart.getFields(licenses.LicenseParagraph.__proto__),
-    text: dart.finalFieldType(core.String),
-    indent: dart.finalFieldType(core.int)
-  }));
-  dart.defineLazy(licenses.LicenseParagraph, {
-    /*licenses.LicenseParagraph.centeredIndent*/get centeredIndent() {
-      return -1;
-    }
-  }, false);
-  licenses.LicenseEntry = class LicenseEntry extends core.Object {};
-  (licenses.LicenseEntry.new = function() {
-    ;
-  }).prototype = licenses.LicenseEntry.prototype;
-  dart.addTypeTests(licenses.LicenseEntry);
-  dart.addTypeCaches(licenses.LicenseEntry);
-  dart.setLibraryUri(licenses.LicenseEntry, I[0]);
-  var _name$ = dart.privateName(licenses, "_name");
-  licenses._LicenseEntryWithLineBreaksParserState = class _LicenseEntryWithLineBreaksParserState extends core.Object {
+  var _name$ = dart.privateName(text_formatter, "_name");
+  text_formatter.MaxLengthEnforcement = class MaxLengthEnforcement extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (licenses._LicenseEntryWithLineBreaksParserState.new = function(index, _name) {
+  (text_formatter.MaxLengthEnforcement.new = function(index, _name) {
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = licenses._LicenseEntryWithLineBreaksParserState.prototype;
-  dart.addTypeTests(licenses._LicenseEntryWithLineBreaksParserState);
-  dart.addTypeCaches(licenses._LicenseEntryWithLineBreaksParserState);
-  dart.setLibraryUri(licenses._LicenseEntryWithLineBreaksParserState, I[0]);
-  dart.setFieldSignature(licenses._LicenseEntryWithLineBreaksParserState, () => ({
-    __proto__: dart.getFields(licenses._LicenseEntryWithLineBreaksParserState.__proto__),
+  }).prototype = text_formatter.MaxLengthEnforcement.prototype;
+  dart.addTypeTests(text_formatter.MaxLengthEnforcement);
+  dart.addTypeCaches(text_formatter.MaxLengthEnforcement);
+  dart.setLibraryUri(text_formatter.MaxLengthEnforcement, I[0]);
+  dart.setFieldSignature(text_formatter.MaxLengthEnforcement, () => ({
+    __proto__: dart.getFields(text_formatter.MaxLengthEnforcement.__proto__),
     index: dart.finalFieldType(core.int),
     [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(licenses._LicenseEntryWithLineBreaksParserState, ['toString']);
-  licenses._LicenseEntryWithLineBreaksParserState.beforeParagraph = C[0] || CT.C0;
-  licenses._LicenseEntryWithLineBreaksParserState.inParagraph = C[1] || CT.C1;
-  licenses._LicenseEntryWithLineBreaksParserState.values = C[2] || CT.C2;
-  var packages$ = dart.privateName(licenses, "LicenseEntryWithLineBreaks.packages");
-  var text$0 = dart.privateName(licenses, "LicenseEntryWithLineBreaks.text");
-  licenses.LicenseEntryWithLineBreaks = class LicenseEntryWithLineBreaks extends licenses.LicenseEntry {
-    get packages() {
-      return this[packages$];
-    }
-    set packages(value) {
-      super.packages = value;
-    }
-    get text() {
-      return this[text$0];
-    }
-    set text(value) {
-      super.text = value;
-    }
-    get paragraphs() {
-      return new (T.SyncIterableOfLicenseParagraph()).new((function* paragraphs() {
-        let lineStart = 0;
-        let currentPosition = 0;
-        let lastLineIndent = 0;
-        let currentLineIndent = 0;
-        let currentParagraphIndentation = null;
-        let state = licenses._LicenseEntryWithLineBreaksParserState.beforeParagraph;
-        let lines = T.JSArrayOfString().of([]);
-        const addLine = () => {
-          if (!(lineStart < currentPosition)) dart.assertFailed(null, I[1], 152, 14, "lineStart < currentPosition");
-          lines[$add](this.text[$substring](lineStart, currentPosition));
-        };
-        dart.fn(addLine, T.VoidTovoid());
-        function getParagraph() {
-          if (!lines[$isNotEmpty]) dart.assertFailed(null, I[1], 157, 14, "lines.isNotEmpty");
-          if (!(currentParagraphIndentation != null)) dart.assertFailed(null, I[1], 158, 14, "currentParagraphIndentation != null");
-          let result = new licenses.LicenseParagraph.new(lines[$join](" "), dart.nullCheck(currentParagraphIndentation));
-          if (!(result.text[$trimLeft]() === result.text)) dart.assertFailed(null, I[1], 160, 14, "result.text.trimLeft() == result.text");
-          if (!result.text[$isNotEmpty]) dart.assertFailed(null, I[1], 161, 14, "result.text.isNotEmpty");
-          lines[$clear]();
-          return result;
-        }
-        dart.fn(getParagraph, T.VoidToLicenseParagraph());
-        while (currentPosition < this.text.length) {
-          switch (state) {
-            case C[0] || CT.C0:
-            {
-              if (!(lineStart === currentPosition)) dart.assertFailed(null, I[1], 169, 18, "lineStart == currentPosition");
-              let labelState = this.text[$_get](currentPosition);
-              SL0:
-                while (true) {
-                  switch (labelState) {
-                    case " ":
-                    {
-                      lineStart = currentPosition + 1;
-                      currentLineIndent = currentLineIndent + 1;
-                      state = licenses._LicenseEntryWithLineBreaksParserState.beforeParagraph;
-                      break SL0;
-                    }
-                    case "\t":
-                    {
-                      lineStart = currentPosition + 1;
-                      currentLineIndent = currentLineIndent + 8;
-                      state = licenses._LicenseEntryWithLineBreaksParserState.beforeParagraph;
-                      break SL0;
-                    }
-                    case "\r":
-                    case "\n":
-                    case "\f":
-                    {
-                      if (lines[$isNotEmpty]) {
-                        yield getParagraph();
-                      }
-                      if (this.text[$_get](currentPosition) === "\r" && currentPosition < this.text.length - 1 && this.text[$_get](currentPosition + 1) === "\n") {
-                        currentPosition = currentPosition + 1;
-                      }
-                      lastLineIndent = 0;
-                      currentLineIndent = 0;
-                      currentParagraphIndentation = null;
-                      lineStart = currentPosition + 1;
-                      state = licenses._LicenseEntryWithLineBreaksParserState.beforeParagraph;
-                      break SL0;
-                    }
-                    case "[":
-                    {
-                      currentLineIndent = currentLineIndent + 1;
-                      labelState = Symbol('_default');
-                      continue SL0;
-                    }
-                    default:
-                    {
-                      if (lines[$isNotEmpty] && currentLineIndent > lastLineIndent) {
-                        yield getParagraph();
-                        currentParagraphIndentation = null;
-                      }
-                      if (currentParagraphIndentation == null) {
-                        if (currentLineIndent > 10)
-                          currentParagraphIndentation = -1;
-                        else
-                          currentParagraphIndentation = (currentLineIndent / 3)[$truncate]();
-                      }
-                      state = licenses._LicenseEntryWithLineBreaksParserState.inParagraph;
-                      break SL0;
-                    }
-                  }
-                  break;
-                }
-              break;
-            }
-            case C[1] || CT.C1:
-            {
-              switch (this.text[$_get](currentPosition)) {
-                case "\n":
-                {
-                  addLine();
-                  lastLineIndent = currentLineIndent;
-                  currentLineIndent = 0;
-                  lineStart = currentPosition + 1;
-                  state = licenses._LicenseEntryWithLineBreaksParserState.beforeParagraph;
-                  break;
-                }
-                case "\f":
-                {
-                  addLine();
-                  yield getParagraph();
-                  lastLineIndent = 0;
-                  currentLineIndent = 0;
-                  currentParagraphIndentation = null;
-                  lineStart = currentPosition + 1;
-                  state = licenses._LicenseEntryWithLineBreaksParserState.beforeParagraph;
-                  break;
-                }
-                default:
-                {
-                  state = licenses._LicenseEntryWithLineBreaksParserState.inParagraph;
-                }
-              }
-              break;
-            }
-          }
-          currentPosition = currentPosition + 1;
-        }
-        switch (state) {
-          case C[0] || CT.C0:
-          {
-            if (lines[$isNotEmpty]) {
-              yield getParagraph();
-            }
-            break;
-          }
-          case C[1] || CT.C1:
-          {
-            addLine();
-            yield getParagraph();
-            break;
-          }
-        }
-      }).bind(this));
+  dart.defineExtensionMethods(text_formatter.MaxLengthEnforcement, ['toString']);
+  text_formatter.MaxLengthEnforcement.none = C[0] || CT.C0;
+  text_formatter.MaxLengthEnforcement.enforced = C[1] || CT.C1;
+  text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds = C[2] || CT.C2;
+  text_formatter.MaxLengthEnforcement.values = C[3] || CT.C3;
+  text_formatter.TextInputFormatter = class TextInputFormatter extends core.Object {
+    static withFunction(formatFunction) {
+      return new text_formatter._SimpleTextInputFormatter.new(formatFunction);
     }
   };
-  (licenses.LicenseEntryWithLineBreaks.new = function(packages, text) {
-    this[packages$] = packages;
-    this[text$0] = text;
-    licenses.LicenseEntryWithLineBreaks.__proto__.new.call(this);
+  (text_formatter.TextInputFormatter.new = function() {
     ;
-  }).prototype = licenses.LicenseEntryWithLineBreaks.prototype;
-  dart.addTypeTests(licenses.LicenseEntryWithLineBreaks);
-  dart.addTypeCaches(licenses.LicenseEntryWithLineBreaks);
-  dart.setGetterSignature(licenses.LicenseEntryWithLineBreaks, () => ({
-    __proto__: dart.getGetters(licenses.LicenseEntryWithLineBreaks.__proto__),
-    paragraphs: core.Iterable$(licenses.LicenseParagraph)
-  }));
-  dart.setLibraryUri(licenses.LicenseEntryWithLineBreaks, I[0]);
-  dart.setFieldSignature(licenses.LicenseEntryWithLineBreaks, () => ({
-    __proto__: dart.getFields(licenses.LicenseEntryWithLineBreaks.__proto__),
-    packages: dart.finalFieldType(core.List$(core.String)),
-    text: dart.finalFieldType(core.String)
-  }));
-  licenses.LicenseRegistry = class LicenseRegistry extends core.Object {
-    static addLicense(collector) {
-      licenses.LicenseRegistry._collectors == null ? licenses.LicenseRegistry._collectors = T.JSArrayOfVoidToStreamOfLicenseEntry().of([]) : null;
-      dart.nullCheck(licenses.LicenseRegistry._collectors)[$add](collector);
-    }
-    static get licenses() {
-      return new (T._AsyncStarImplOfLicenseEntry()).new(function* licenses$(stream) {
-        if (licenses.LicenseRegistry._collectors == null) return;
-        for (let collector of dart.nullCheck(licenses.LicenseRegistry._collectors)) {
-          if (stream.addStream(collector())) return;
-          yield;
-        }
-      }).stream;
-    }
-    static reset() {
-      licenses.LicenseRegistry._collectors = null;
+  }).prototype = text_formatter.TextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.TextInputFormatter);
+  dart.addTypeCaches(text_formatter.TextInputFormatter);
+  dart.setLibraryUri(text_formatter.TextInputFormatter, I[0]);
+  text_formatter._SimpleTextInputFormatter = class _SimpleTextInputFormatter extends text_formatter.TextInputFormatter {
+    formatEditUpdate(oldValue, newValue) {
+      let t1, t0;
+      t0 = oldValue;
+      t1 = newValue;
+      return this.formatFunction(t0, t1);
     }
   };
-  (licenses.LicenseRegistry.__ = function() {
+  (text_formatter._SimpleTextInputFormatter.new = function(formatFunction) {
+    this.formatFunction = formatFunction;
+    if (!(formatFunction !== null)) dart.assertFailed(null, I[1], 111, 14, "formatFunction != null");
     ;
-  }).prototype = licenses.LicenseRegistry.prototype;
-  dart.addTypeTests(licenses.LicenseRegistry);
-  dart.addTypeCaches(licenses.LicenseRegistry);
-  dart.setLibraryUri(licenses.LicenseRegistry, I[0]);
-  dart.defineLazy(licenses.LicenseRegistry, {
-    /*licenses.LicenseRegistry._collectors*/get _collectors() {
-      return null;
+  }).prototype = text_formatter._SimpleTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter._SimpleTextInputFormatter);
+  dart.addTypeCaches(text_formatter._SimpleTextInputFormatter);
+  dart.setMethodSignature(text_formatter._SimpleTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter._SimpleTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
+  }));
+  dart.setLibraryUri(text_formatter._SimpleTextInputFormatter, I[0]);
+  dart.setFieldSignature(text_formatter._SimpleTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter._SimpleTextInputFormatter.__proto__),
+    formatFunction: dart.finalFieldType(dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]))
+  }));
+  var filterPattern$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.filterPattern");
+  var allow$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.allow");
+  var replacementString$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.replacementString");
+  text_formatter.FilteringTextInputFormatter = class FilteringTextInputFormatter extends text_formatter.TextInputFormatter {
+    get filterPattern() {
+      return this[filterPattern$];
+    }
+    set filterPattern(value) {
+      super.filterPattern = value;
+    }
+    get allow() {
+      return this[allow$];
+    }
+    set allow(value) {
+      super.allow = value;
+    }
+    get replacementString() {
+      return this[replacementString$];
+    }
+    set replacementString(value) {
+      super.replacementString = value;
+    }
+    formatEditUpdate(oldValue, newValue) {
+      return text_formatter._selectionAwareTextManipulation(newValue, dart.fn(substring => substring[$splitMapJoin](this.filterPattern, {onMatch: !this.allow ? dart.fn(match => this.replacementString, T.MatchToString()) : null, onNonMatch: this.allow ? dart.fn(nonMatch => nonMatch[$isNotEmpty] ? this.replacementString : "", T.StringToString()) : null}), T.StringToString()));
+    }
+  };
+  (text_formatter.FilteringTextInputFormatter.new = function(filterPattern, opts) {
+    let allow = opts && 'allow' in opts ? opts.allow : null;
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    this[filterPattern$] = filterPattern;
+    this[allow$] = allow;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern !== null)) dart.assertFailed(null, I[1], 153, 15, "filterPattern != null");
+    if (!(allow !== null)) dart.assertFailed(null, I[1], 154, 15, "allow != null");
+    if (!(replacementString !== null)) dart.assertFailed(null, I[1], 155, 15, "replacementString != null");
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  (text_formatter.FilteringTextInputFormatter.allow = function(filterPattern, opts) {
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    this[filterPattern$] = filterPattern;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern !== null)) dart.assertFailed(null, I[1], 164, 15, "filterPattern != null");
+    if (!(replacementString !== null)) dart.assertFailed(null, I[1], 165, 15, "replacementString != null");
+    this[allow$] = true;
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  (text_formatter.FilteringTextInputFormatter.deny = function(filterPattern, opts) {
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    this[filterPattern$] = filterPattern;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern !== null)) dart.assertFailed(null, I[1], 175, 15, "filterPattern != null");
+    if (!(replacementString !== null)) dart.assertFailed(null, I[1], 176, 15, "replacementString != null");
+    this[allow$] = false;
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.FilteringTextInputFormatter);
+  dart.addTypeCaches(text_formatter.FilteringTextInputFormatter);
+  dart.setMethodSignature(text_formatter.FilteringTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter.FilteringTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
+  }));
+  dart.setLibraryUri(text_formatter.FilteringTextInputFormatter, I[0]);
+  dart.setFieldSignature(text_formatter.FilteringTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter.FilteringTextInputFormatter.__proto__),
+    filterPattern: dart.finalFieldType(core.Pattern),
+    allow: dart.finalFieldType(core.bool),
+    replacementString: dart.finalFieldType(core.String)
+  }));
+  dart.defineLazy(text_formatter.FilteringTextInputFormatter, {
+    /*text_formatter.FilteringTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
+      return new text_formatter.FilteringTextInputFormatter.deny("\n");
     },
-    set _collectors(_) {}
+    /*text_formatter.FilteringTextInputFormatter.digitsOnly*/get digitsOnly() {
+      return new text_formatter.FilteringTextInputFormatter.allow(core.RegExp.new("[0-9]"));
+    }
   }, false);
-  dart.trackLibraries("packages/flutter/src/foundation/licenses.dart", {
-    "package:flutter/src/foundation/licenses.dart": licenses
+  text_formatter.BlacklistingTextInputFormatter = class BlacklistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
+    get blacklistedPattern() {
+      return this.filterPattern;
+    }
+  };
+  (text_formatter.BlacklistingTextInputFormatter.new = function(blacklistedPattern, opts) {
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    text_formatter.BlacklistingTextInputFormatter.__proto__.deny.call(this, blacklistedPattern, {replacementString: replacementString});
+    ;
+  }).prototype = text_formatter.BlacklistingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.BlacklistingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.BlacklistingTextInputFormatter);
+  dart.setGetterSignature(text_formatter.BlacklistingTextInputFormatter, () => ({
+    __proto__: dart.getGetters(text_formatter.BlacklistingTextInputFormatter.__proto__),
+    blacklistedPattern: core.Pattern
+  }));
+  dart.setLibraryUri(text_formatter.BlacklistingTextInputFormatter, I[0]);
+  dart.defineLazy(text_formatter.BlacklistingTextInputFormatter, {
+    /*text_formatter.BlacklistingTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
+      return new text_formatter.BlacklistingTextInputFormatter.new(core.RegExp.new("\\n"));
+    }
+  }, false);
+  text_formatter.WhitelistingTextInputFormatter = class WhitelistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
+    get whitelistedPattern() {
+      return this.filterPattern;
+    }
+  };
+  (text_formatter.WhitelistingTextInputFormatter.new = function(whitelistedPattern) {
+    if (!(whitelistedPattern !== null)) dart.assertFailed(null, I[1], 329, 14, "whitelistedPattern != null");
+    text_formatter.WhitelistingTextInputFormatter.__proto__.allow.call(this, whitelistedPattern);
+    ;
+  }).prototype = text_formatter.WhitelistingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.WhitelistingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.WhitelistingTextInputFormatter);
+  dart.setGetterSignature(text_formatter.WhitelistingTextInputFormatter, () => ({
+    __proto__: dart.getGetters(text_formatter.WhitelistingTextInputFormatter.__proto__),
+    whitelistedPattern: core.Pattern
+  }));
+  dart.setLibraryUri(text_formatter.WhitelistingTextInputFormatter, I[0]);
+  dart.defineLazy(text_formatter.WhitelistingTextInputFormatter, {
+    /*text_formatter.WhitelistingTextInputFormatter.digitsOnly*/get digitsOnly() {
+      return new text_formatter.WhitelistingTextInputFormatter.new(core.RegExp.new("\\d+"));
+    }
+  }, false);
+  var maxLength$ = dart.privateName(text_formatter, "LengthLimitingTextInputFormatter.maxLength");
+  var maxLengthEnforcement$ = dart.privateName(text_formatter, "LengthLimitingTextInputFormatter.maxLengthEnforcement");
+  var _name = dart.privateName(platform$, "_name");
+  text_formatter.LengthLimitingTextInputFormatter = class LengthLimitingTextInputFormatter extends text_formatter.TextInputFormatter {
+    get maxLength() {
+      return this[maxLength$];
+    }
+    set maxLength(value) {
+      super.maxLength = value;
+    }
+    get maxLengthEnforcement() {
+      return this[maxLengthEnforcement$];
+    }
+    set maxLengthEnforcement(value) {
+      super.maxLengthEnforcement = value;
+    }
+    static getDefaultMaxLengthEnforcement(platform = null) {
+      let t0;
+      if (true) {
+        return text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds;
+      } else {
+        switch (t0 = platform, t0 == null ? platform$.defaultTargetPlatform : t0) {
+          case C[4] || CT.C4:
+          case C[5] || CT.C5:
+          {
+            return text_formatter.MaxLengthEnforcement.enforced;
+          }
+          case C[6] || CT.C6:
+          case C[7] || CT.C7:
+          case C[8] || CT.C8:
+          case C[9] || CT.C9:
+          {
+            return text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds;
+          }
+        }
+      }
+    }
+    static truncate(value, maxLength) {
+      let iterator = new characters_impl.StringCharacterRange.new(value.text);
+      if (extensions['StringCharacters|get#characters'](value.text)[$length] > maxLength) {
+        iterator.expandNext(maxLength);
+      }
+      let truncated = iterator.current;
+      return new text_input.TextEditingValue.new({text: truncated, selection: value.selection.copyWith({baseOffset: math.min(core.int, value.selection.start, truncated.length), extentOffset: math.min(core.int, value.selection.end, truncated.length)}), composing: !value.composing.isCollapsed && truncated.length > value.composing.start ? new ui.TextRange.new({start: value.composing.start, end: math.min(core.int, value.composing.end, truncated.length)}) : ui.TextRange.empty});
+    }
+    formatEditUpdate(oldValue, newValue) {
+      let t0;
+      let maxLength = this.maxLength;
+      if (maxLength == null || maxLength === -1 || extensions['StringCharacters|get#characters'](newValue.text)[$length] <= dart.notNull(maxLength)) {
+        return newValue;
+      }
+      if (!(dart.notNull(maxLength) > 0)) dart.assertFailed(null, I[1], 497, 12, "maxLength > 0");
+      switch (t0 = this.maxLengthEnforcement, t0 == null ? text_formatter.LengthLimitingTextInputFormatter.getDefaultMaxLengthEnforcement() : t0) {
+        case C[0] || CT.C0:
+        {
+          return newValue;
+        }
+        case C[1] || CT.C1:
+        {
+          if (extensions['StringCharacters|get#characters'](oldValue.text)[$length] === maxLength && oldValue.selection.isCollapsed) {
+            return oldValue;
+          }
+          return text_formatter.LengthLimitingTextInputFormatter.truncate(newValue, maxLength);
+        }
+        case C[2] || CT.C2:
+        {
+          if (extensions['StringCharacters|get#characters'](oldValue.text)[$length] === maxLength && !oldValue.composing.isValid) {
+            return oldValue;
+          }
+          if (newValue.composing.isValid) {
+            return newValue;
+          }
+          return text_formatter.LengthLimitingTextInputFormatter.truncate(newValue, maxLength);
+        }
+      }
+    }
+  };
+  (text_formatter.LengthLimitingTextInputFormatter.new = function(maxLength, opts) {
+    let maxLengthEnforcement = opts && 'maxLengthEnforcement' in opts ? opts.maxLengthEnforcement : null;
+    this[maxLength$] = maxLength;
+    this[maxLengthEnforcement$] = maxLengthEnforcement;
+    if (!(maxLength == null || maxLength === -1 || dart.notNull(maxLength) > 0)) dart.assertFailed(null, I[1], 371, 15, "maxLength == null || maxLength == -1 || maxLength > 0");
+    ;
+  }).prototype = text_formatter.LengthLimitingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.LengthLimitingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.LengthLimitingTextInputFormatter);
+  dart.setMethodSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter.LengthLimitingTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
+  }));
+  dart.setLibraryUri(text_formatter.LengthLimitingTextInputFormatter, I[0]);
+  dart.setFieldSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter.LengthLimitingTextInputFormatter.__proto__),
+    maxLength: dart.finalFieldType(dart.nullable(core.int)),
+    maxLengthEnforcement: dart.finalFieldType(dart.nullable(text_formatter.MaxLengthEnforcement))
+  }));
+  var TextRange_end = dart.privateName(ui, "TextRange.end");
+  var TextRange_start = dart.privateName(ui, "TextRange.start");
+  var TextSelection_isDirectional = dart.privateName(text_editing, "TextSelection.isDirectional");
+  var _name$0 = dart.privateName(ui, "_name");
+  var TextSelection_affinity = dart.privateName(text_editing, "TextSelection.affinity");
+  var TextSelection_extentOffset = dart.privateName(text_editing, "TextSelection.extentOffset");
+  var TextSelection_baseOffset = dart.privateName(text_editing, "TextSelection.baseOffset");
+  text_formatter._selectionAwareTextManipulation = function _selectionAwareTextManipulation(value, substringManipulation) {
+    let t0;
+    let selectionStartIndex = value.selection.start;
+    let selectionEndIndex = value.selection.end;
+    let manipulatedText = null;
+    let manipulatedSelection = null;
+    if (selectionStartIndex < 0 || selectionEndIndex < 0) {
+      manipulatedText = substringManipulation(value.text);
+    } else {
+      let beforeSelection = substringManipulation(value.text[$substring](0, selectionStartIndex));
+      let inSelection = substringManipulation(value.text[$substring](selectionStartIndex, selectionEndIndex));
+      let afterSelection = substringManipulation(value.text[$substring](selectionEndIndex));
+      manipulatedText = beforeSelection + inSelection + afterSelection;
+      if (value.selection.baseOffset > value.selection.extentOffset) {
+        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length + inSelection.length, extentOffset: beforeSelection.length});
+      } else {
+        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length, extentOffset: beforeSelection.length + inSelection.length});
+      }
+    }
+    return new text_input.TextEditingValue.new({text: manipulatedText, selection: (t0 = manipulatedSelection, t0 == null ? C[10] || CT.C10 : t0), composing: manipulatedText === value.text ? value.composing : ui.TextRange.empty});
+  };
+  dart.trackLibraries("packages/flutter/src/services/text_formatter.dart", {
+    "package:flutter/src/services/text_formatter.dart": text_formatter
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["licenses.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAiBe;;;;;;IAYH;;;;;;;4CAfkB,MAAW;IAAX;IAAW;;EAAO;;;;;;;;;;MAkB7B,wCAAc;;;;;;;EAYX;;;;;;;;IActB;;yEAHK;;;;EAGL;;;;;;;;;;;;;;;;IAiEqB;;;;;;IAeN;;;;;;;AAG6B;AACpC,wBAAY;AACZ,8BAAkB;AAClB,6BAAiB;AACjB,gCAAoB;AACnB;AACkC,oBAA+C;AACnE,oBAAgB;AAEnC,cAAK;AACH,gBAAO,AAAU,SAAD,GAAG,eAAe;AACmB,UAArD,AAAM,KAAD,OAAK,AAAK,sBAAU,SAAS,EAAE,eAAe;;;AAGrD,iBAAiB;AACf,eAAO,AAAM,KAAD;AACZ,gBAAO,AAA4B,2BAAD;AACX,uBAAS,kCAAiB,AAAM,KAAD,QAAM,MAAiC,eAA3B,2BAA2B;AAC7F,gBAAO,AAAO,AAAK,AAAW,MAAjB,uBAAoB,AAAO,MAAD;AACvC,eAAO,AAAO,AAAK,MAAN;AACA,UAAb,AAAM,KAAD;AACL,gBAAO,OAAM;;;AAGf,eAAO,AAAgB,eAAD,GAAG,AAAK;AAC5B,kBAAQ,KAAK;;;AAET,oBAAO,AAAU,SAAD,KAAI,eAAe;AACnC,+BAAQ,AAAI,iBAAC,eAAe;;;;;;AAEO,sBAA/B,YAAY,AAAgB,eAAD,GAAG;AACR,sBAAtB,oBAAA,AAAkB,iBAAD,GAAI;AACyC,sBAA9D,QAA+C;AAC/C;;;;AAE+B,sBAA/B,YAAY,AAAgB,eAAD,GAAG;AACR,sBAAtB,oBAAA,AAAkB,iBAAD,GAAI;AACyC,sBAA9D,QAA+C;AAC/C;;;;;;AAIA,0BAAI,AAAM,KAAD;AACP,8BAAM,YAAY;;AAEpB,0BAAI,AAAI,AAAkB,iBAAjB,eAAe,MAAK,QAAQ,AAAgB,eAAD,GAAG,AAAK,AAAO,mBAAE,KAC9D,AAAI,AAAsB,iBAArB,AAAgB,eAAD,GAAG,OAAM;AACd,wBAApB,kBAAA,AAAgB,eAAD,GAAI;;AAEH,sBAAlB,iBAAiB;AACI,sBAArB,oBAAoB;AACc,sBAAlC,8BAA8B;AACC,sBAA/B,YAAY,AAAgB,eAAD,GAAG;AACgC,sBAA9D,QAA+C;AAC/C;;;;AAQsB,sBAAtB,oBAAA,AAAkB,iBAAD,GAAI;AACrB;;;;;AAGA,0BAAI,AAAM,KAAD,iBAAe,AAAkB,iBAAD,GAAG,cAAc;AACxD,8BAAM,YAAY;AACgB,wBAAlC,8BAA8B;;AAIhC,0BAAI,AAA4B,2BAAD;AAC7B,4BAAI,AAAkB,iBAAD,GAAG;AACuC,0BAA7D;;AAEoD,0BAApD,8BAAgD,CAAlB,iBAAiB,GAAI;;AAEG,sBAA1D,QAA+C;;;;;;AAEnD;;;;AAEA,sBAAQ,AAAI,iBAAC,eAAe;;;AAEf,kBAAT,OAAO;AAC2B,kBAAlC,iBAAiB,iBAAiB;AACb,kBAArB,oBAAoB;AACW,kBAA/B,YAAY,AAAgB,eAAD,GAAG;AACgC,kBAA9D,QAA+C;AAC/C;;;;AAES,kBAAT,OAAO;AACP,wBAAM,YAAY;AACA,kBAAlB,iBAAiB;AACI,kBAArB,oBAAoB;AACc,kBAAlC,8BAA8B;AACC,kBAA/B,YAAY,AAAgB,eAAD,GAAG;AACgC,kBAA9D,QAA+C;AAC/C;;;;AAE0D,kBAA1D,QAA+C;;;AAEnD;;;AAEgB,UAApB,kBAAA,AAAgB,eAAD,GAAI;;AAErB,gBAAQ,KAAK;;;AAET,gBAAI,AAAM,KAAD;AACP,oBAAM,YAAY;;AAEpB;;;;AAES,YAAT,OAAO;AACP,kBAAM,YAAY;AAClB;;;MAEN;;;sDA1IsC,UAAe;IAAf;IAAe;AAA/C;;EAAoD;;;;;;;;;;;;;;sBAqLb;AACF,MAAzC,AAAY,+CAAA,uCAA2B,iDAA3B;AACe,MAAhB,AAAE,eAAb,4CAAiB,SAAS;IAC5B;;AAKyC;AACvC,YAAI,AAAY,8CACd;AACF,iBAAiC,YAAwB,gBAAX,uCAC5C;+BAAO,AAAS,SAAA;UAAhB;;MACJ;;;AAMoB,MAAlB,uCAAc;IAChB;;;;EA/BmB;;;;;MAEiB,oCAAW","file":"../../../../../../../E:/packages/flutter/src/foundation/licenses.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["text_formatter.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/services/text_formatter.dart.lib.js"}');
   // Exports:
   return {
-    src__foundation__licenses: licenses
+    src__services__text_formatter: text_formatter
   };
 }));
 
-//# sourceMappingURL=licenses.dart.lib.js.map
+//# sourceMappingURL=text_formatter.dart.lib.js.map

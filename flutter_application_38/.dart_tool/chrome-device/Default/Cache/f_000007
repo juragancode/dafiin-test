@@ -1,901 +1,800 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/foundation/_platform_web.dart', 'packages/flutter/src/cupertino/scrollbar.dart', 'packages/flutter/src/material/material_state.dart', 'packages/flutter/src/animation/animation_controller.dart'], (function load__packages__flutter__src__material__scrollbar_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__foundation___platform_web$46dart, packages__flutter__src__cupertino__scrollbar$46dart, packages__flutter__src__material__material_state$46dart, packages__flutter__src__animation__animation_controller$46dart) {
+define(['dart_sdk'], (function load__packages__get__get_rx__src__rx_stream__rx_stream_dart(dart_sdk) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const async = dart_sdk.async;
   const _internal = dart_sdk._internal;
-  const collection = dart_sdk.collection;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const scroll_controller = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_controller;
-  const scroll_notification = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_notification;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const scrollbar = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scrollbar;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
-  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
-  const color_scheme = packages__flutter__src__material__icon_button$46dart.src__material__color_scheme;
-  const scrollbar_theme = packages__flutter__src__material__icon_button$46dart.src__material__scrollbar_theme;
-  const platform = packages__flutter__src__foundation___platform_web$46dart.src__foundation__platform;
-  const scrollbar$ = packages__flutter__src__cupertino__scrollbar$46dart.src__cupertino__scrollbar;
-  const material_state = packages__flutter__src__material__material_state$46dart.src__material__material_state;
-  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
-  var scrollbar$0 = Object.create(dart.library);
-  dart._checkModuleNullSafetyMode(false);
-  var T = {
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    ScrollNotificationTobool: () => (T.ScrollNotificationTobool = dart.constFn(dart.fnType(core.bool, [scroll_notification.ScrollNotification])))(),
-    LinkedHashSetOfMaterialState: () => (T.LinkedHashSetOfMaterialState = dart.constFn(collection.LinkedHashSet$(material_state.MaterialState)))(),
-    VoidToColor: () => (T.VoidToColor = dart.constFn(dart.fnType(ui.Color, [])))(),
-    ColorTodynamic: () => (T.ColorTodynamic = dart.constFn(dart.fnType(dart.dynamic, [ui.Color])))(),
-    SetOfMaterialState: () => (T.SetOfMaterialState = dart.constFn(core.Set$(material_state.MaterialState)))(),
-    SetOfMaterialStateToColor: () => (T.SetOfMaterialStateToColor = dart.constFn(dart.fnType(ui.Color, [T.SetOfMaterialState()])))(),
-    SetOfMaterialStateTodouble: () => (T.SetOfMaterialStateTodouble = dart.constFn(dart.fnType(core.double, [T.SetOfMaterialState()])))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
+  var rx_stream = Object.create(dart.library);
+  var $remove = dartx.remove;
+  var $add = dartx.add;
+  var $length = dartx.length;
+  var $isNotEmpty = dartx.isNotEmpty;
+  dart._checkModuleNullSafetyMode(true);
+  var T$ = {
+    boolN: () => (T$.boolN = dart.constFn(dart.nullable(core.bool)))(),
+    FutureOfvoid: () => (T$.FutureOfvoid = dart.constFn(async.Future$(dart.void)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  dart.defineLazy(CT, {
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 179,
-        [_Location_file]: null
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "isAlwaysShown",
-        [_Location_column]: 9,
-        [_Location_line]: 180,
-        [_Location_file]: null
-      });
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "thickness",
-        [_Location_column]: 9,
-        [_Location_line]: 181,
-        [_Location_file]: null
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "thicknessWhileDragging",
-        [_Location_column]: 9,
-        [_Location_line]: 182,
-        [_Location_file]: null
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "radius",
-        [_Location_column]: 9,
-        [_Location_line]: 183,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "radiusWhileDragging",
-        [_Location_column]: 9,
-        [_Location_line]: 184,
-        [_Location_file]: null
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 9,
-        [_Location_line]: 185,
-        [_Location_file]: null
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "notificationPredicate",
-        [_Location_column]: 9,
-        [_Location_line]: 186,
-        [_Location_file]: null
-      });
-    },
-    get C1() {
-      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9], T._LocationL());
-    },
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 178,
-        [_Location_file]: "file:///C:/flutter/packages/flutter/lib/src/material/scrollbar.dart"
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 190,
-        [_Location_file]: null
-      });
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 7,
-        [_Location_line]: 191,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C[14] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "isAlwaysShown",
-        [_Location_column]: 7,
-        [_Location_line]: 192,
-        [_Location_file]: null
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "showTrackOnHover",
-        [_Location_column]: 7,
-        [_Location_line]: 193,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "hoverThickness",
-        [_Location_column]: 7,
-        [_Location_line]: 194,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "thickness",
-        [_Location_column]: 7,
-        [_Location_line]: 195,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "radius",
-        [_Location_column]: 7,
-        [_Location_line]: 196,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "notificationPredicate",
-        [_Location_column]: 7,
-        [_Location_line]: 197,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "interactive",
-        [_Location_column]: 7,
-        [_Location_line]: 198,
-        [_Location_file]: null
-      });
-    },
-    get C11() {
-      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], T._LocationL());
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[11] || CT.C11,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 189,
-        [_Location_file]: "file:///C:/flutter/packages/flutter/lib/src/material/scrollbar.dart"
-      });
-    },
-    get C21() {
-      return C[21] = dart.fn(scroll_notification.defaultScrollNotificationPredicate, T.ScrollNotificationTobool());
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: ui.Brightness.prototype,
-        [_name]: "Brightness.light",
-        index: 1
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: ui.Brightness.prototype,
-        [_name]: "Brightness.dark",
-        index: 0
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 0
-      });
-    },
-    get C25() {
-      return C[25] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 200000
-      });
-    },
-    get C26() {
-      return C[26] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$]: "TargetPlatform.android",
-        index: 0
-      });
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$]: "TargetPlatform.iOS",
-        index: 2
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$]: "TargetPlatform.linux",
-        index: 3
-      });
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$]: "TargetPlatform.fuchsia",
-        index: 1
-      });
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$]: "TargetPlatform.macOS",
-        index: 4
-      });
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$]: "TargetPlatform.windows",
-        index: 5
-      });
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: ui.Radius.prototype,
-        [Radius_y]: 8,
-        [Radius_x]: 8
-      });
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 300000
-      });
-    },
-    get C34() {
-      return C[34] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 600000
-      });
-    }
-  }, false);
-  var C = Array(35).fill(void 0);
   var I = [
-    "file:///C:/flutter/packages/flutter/lib/src/material/scrollbar.dart",
-    "package:flutter/src/material/scrollbar.dart"
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/get-4.3.0/lib/get_rx/src/rx_stream/get_stream.dart",
+    "package:get/get_rx/src/rx_stream/rx_stream.dart"
   ];
-  var child$ = dart.privateName(scrollbar$0, "Scrollbar.child");
-  var controller$ = dart.privateName(scrollbar$0, "Scrollbar.controller");
-  var isAlwaysShown$ = dart.privateName(scrollbar$0, "Scrollbar.isAlwaysShown");
-  var showTrackOnHover$ = dart.privateName(scrollbar$0, "Scrollbar.showTrackOnHover");
-  var hoverThickness$ = dart.privateName(scrollbar$0, "Scrollbar.hoverThickness");
-  var thickness$ = dart.privateName(scrollbar$0, "Scrollbar.thickness");
-  var radius$ = dart.privateName(scrollbar$0, "Scrollbar.radius");
-  var interactive$ = dart.privateName(scrollbar$0, "Scrollbar.interactive");
-  var notificationPredicate$ = dart.privateName(scrollbar$0, "Scrollbar.notificationPredicate");
-  scrollbar$0.Scrollbar = class Scrollbar extends framework.StatefulWidget {
-    get child() {
-      return this[child$];
-    }
-    set child(value) {
-      super.child = value;
-    }
-    get controller() {
-      return this[controller$];
-    }
-    set controller(value) {
-      super.controller = value;
-    }
-    get isAlwaysShown() {
-      return this[isAlwaysShown$];
-    }
-    set isAlwaysShown(value) {
-      super.isAlwaysShown = value;
-    }
-    get showTrackOnHover() {
-      return this[showTrackOnHover$];
-    }
-    set showTrackOnHover(value) {
-      super.showTrackOnHover = value;
-    }
-    get hoverThickness() {
-      return this[hoverThickness$];
-    }
-    set hoverThickness(value) {
-      super.hoverThickness = value;
-    }
-    get thickness() {
-      return this[thickness$];
-    }
-    set thickness(value) {
-      super.thickness = value;
-    }
-    get radius() {
-      return this[radius$];
-    }
-    set radius(value) {
-      super.radius = value;
-    }
-    get interactive() {
-      return this[interactive$];
-    }
-    set interactive(value) {
-      super.interactive = value;
-    }
-    get notificationPredicate() {
-      return this[notificationPredicate$];
-    }
-    set notificationPredicate(value) {
-      super.notificationPredicate = value;
-    }
-    createState() {
-      return new scrollbar$0._ScrollbarState.new();
-    }
-  };
-  (scrollbar$0.Scrollbar.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let child = opts && 'child' in opts ? opts.child : null;
-    if (child == null) dart.nullFailed(I[0], 111, 19, "child");
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let isAlwaysShown = opts && 'isAlwaysShown' in opts ? opts.isAlwaysShown : null;
-    let showTrackOnHover = opts && 'showTrackOnHover' in opts ? opts.showTrackOnHover : null;
-    let hoverThickness = opts && 'hoverThickness' in opts ? opts.hoverThickness : null;
-    let thickness = opts && 'thickness' in opts ? opts.thickness : null;
-    let radius = opts && 'radius' in opts ? opts.radius : null;
-    let notificationPredicate = opts && 'notificationPredicate' in opts ? opts.notificationPredicate : null;
-    let interactive = opts && 'interactive' in opts ? opts.interactive : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[child$] = child;
-    this[controller$] = controller;
-    this[isAlwaysShown$] = isAlwaysShown;
-    this[showTrackOnHover$] = showTrackOnHover;
-    this[hoverThickness$] = hoverThickness;
-    this[thickness$] = thickness;
-    this[radius$] = radius;
-    this[notificationPredicate$] = notificationPredicate;
-    this[interactive$] = interactive;
-    scrollbar$0.Scrollbar.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = scrollbar$0.Scrollbar.prototype;
-  dart.addTypeTests(scrollbar$0.Scrollbar);
-  dart.addTypeCaches(scrollbar$0.Scrollbar);
-  dart.setMethodSignature(scrollbar$0.Scrollbar, () => ({
-    __proto__: dart.getMethods(scrollbar$0.Scrollbar.__proto__),
-    createState: dart.fnType(scrollbar$0._ScrollbarState, [])
-  }));
-  dart.setLibraryUri(scrollbar$0.Scrollbar, I[1]);
-  dart.setFieldSignature(scrollbar$0.Scrollbar, () => ({
-    __proto__: dart.getFields(scrollbar$0.Scrollbar.__proto__),
-    child: dart.finalFieldType(framework.Widget),
-    controller: dart.finalFieldType(dart.nullable(scroll_controller.ScrollController)),
-    isAlwaysShown: dart.finalFieldType(dart.nullable(core.bool)),
-    showTrackOnHover: dart.finalFieldType(dart.nullable(core.bool)),
-    hoverThickness: dart.finalFieldType(dart.nullable(core.double)),
-    thickness: dart.finalFieldType(dart.nullable(core.double)),
-    radius: dart.finalFieldType(dart.nullable(ui.Radius)),
-    interactive: dart.finalFieldType(dart.nullable(core.bool)),
-    notificationPredicate: dart.finalFieldType(dart.nullable(dart.fnType(core.bool, [scroll_notification.ScrollNotification])))
-  }));
-  var _useCupertinoScrollbar = dart.privateName(scrollbar$0, "_useCupertinoScrollbar");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  scrollbar$0._ScrollbarState = class _ScrollbarState extends framework.State$(scrollbar$0.Scrollbar) {
-    get [_useCupertinoScrollbar]() {
-      return theme$.Theme.of(this.context).platform == platform.TargetPlatform.iOS;
-    }
-    build(context) {
-      let t0, t0$, t0$0, t0$1, t0$2;
-      if (context == null) dart.nullFailed(I[0], 176, 29, "context");
-      if (dart.test(this[_useCupertinoScrollbar])) {
-        return new scrollbar$.CupertinoScrollbar.new({child: this.widget.child, isAlwaysShown: (t0 = this.widget.isAlwaysShown, t0 == null ? false : t0), thickness: (t0$ = this.widget.thickness, t0$ == null ? 3 : t0$), thicknessWhileDragging: (t0$0 = this.widget.thickness, t0$0 == null ? 8 : t0$0), radius: (t0$1 = this.widget.radius, t0$1 == null ? scrollbar$.CupertinoScrollbar.defaultRadius : t0$1), radiusWhileDragging: (t0$2 = this.widget.radius, t0$2 == null ? scrollbar$.CupertinoScrollbar.defaultRadiusWhileDragging : t0$2), controller: this.widget.controller, notificationPredicate: this.widget.notificationPredicate, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+  var onListen$ = dart.privateName(rx_stream, "GetStream.onListen");
+  var onPause$ = dart.privateName(rx_stream, "GetStream.onPause");
+  var onResume$ = dart.privateName(rx_stream, "GetStream.onResume");
+  var onCancel$ = dart.privateName(rx_stream, "GetStream.onCancel");
+  var _onData = dart.privateName(rx_stream, "_onData");
+  var _isBusy = dart.privateName(rx_stream, "_isBusy");
+  var _value = dart.privateName(rx_stream, "_value");
+  var _data = dart.privateName(rx_stream, "_data");
+  var _notifyData = dart.privateName(rx_stream, "_notifyData");
+  var _onError = dart.privateName(rx_stream, "_onError");
+  var _onDone = dart.privateName(rx_stream, "_onDone");
+  var _notifyError = dart.privateName(rx_stream, "_notifyError");
+  var _notifyDone = dart.privateName(rx_stream, "_notifyDone");
+  const _is_GetStream_default = Symbol('_is_GetStream_default');
+  rx_stream.GetStream$ = dart.generic(T => {
+    var LightSubscriptionOfT = () => (LightSubscriptionOfT = dart.constFn(rx_stream.LightSubscription$(T)))();
+    var JSArrayOfLightSubscriptionOfT = () => (JSArrayOfLightSubscriptionOfT = dart.constFn(_interceptors.JSArray$(LightSubscriptionOfT())))();
+    var TTovoid = () => (TTovoid = dart.constFn(dart.fnType(dart.void, [T])))();
+    var TToNvoid = () => (TToNvoid = dart.constFn(dart.nullable(TTovoid())))();
+    var GetStreamTransformationOfT = () => (GetStreamTransformationOfT = dart.constFn(rx_stream.GetStreamTransformation$(T)))();
+    class GetStream extends core.Object {
+      get onListen() {
+        return this[onListen$];
       }
-      return new scrollbar$0._MaterialScrollbar.new({child: this.widget.child, controller: this.widget.controller, isAlwaysShown: this.widget.isAlwaysShown, showTrackOnHover: this.widget.showTrackOnHover, hoverThickness: this.widget.hoverThickness, thickness: this.widget.thickness, radius: this.widget.radius, notificationPredicate: this.widget.notificationPredicate, interactive: this.widget.interactive, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
-    }
-  };
-  (scrollbar$0._ScrollbarState.new = function() {
-    scrollbar$0._ScrollbarState.__proto__.new.call(this);
-    ;
-  }).prototype = scrollbar$0._ScrollbarState.prototype;
-  dart.addTypeTests(scrollbar$0._ScrollbarState);
-  dart.addTypeCaches(scrollbar$0._ScrollbarState);
-  dart.setMethodSignature(scrollbar$0._ScrollbarState, () => ({
-    __proto__: dart.getMethods(scrollbar$0._ScrollbarState.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
-  }));
-  dart.setGetterSignature(scrollbar$0._ScrollbarState, () => ({
-    __proto__: dart.getGetters(scrollbar$0._ScrollbarState.__proto__),
-    [_useCupertinoScrollbar]: core.bool
-  }));
-  dart.setLibraryUri(scrollbar$0._ScrollbarState, I[1]);
-  var showTrackOnHover$0 = dart.privateName(scrollbar$0, "_MaterialScrollbar.showTrackOnHover");
-  var hoverThickness$0 = dart.privateName(scrollbar$0, "_MaterialScrollbar.hoverThickness");
-  scrollbar$0._MaterialScrollbar = class _MaterialScrollbar extends scrollbar.RawScrollbar {
-    get showTrackOnHover() {
-      return this[showTrackOnHover$0];
-    }
-    set showTrackOnHover(value) {
-      super.showTrackOnHover = value;
-    }
-    get hoverThickness() {
-      return this[hoverThickness$0];
-    }
-    set hoverThickness(value) {
-      super.hoverThickness = value;
-    }
-    createState() {
-      return new scrollbar$0._MaterialScrollbarState.new();
-    }
-  };
-  (scrollbar$0._MaterialScrollbar.new = function(opts) {
-    let t0;
-    let key = opts && 'key' in opts ? opts.key : null;
-    let child = opts && 'child' in opts ? opts.child : null;
-    if (child == null) dart.nullFailed(I[0], 206, 21, "child");
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let isAlwaysShown = opts && 'isAlwaysShown' in opts ? opts.isAlwaysShown : null;
-    let showTrackOnHover = opts && 'showTrackOnHover' in opts ? opts.showTrackOnHover : null;
-    let hoverThickness = opts && 'hoverThickness' in opts ? opts.hoverThickness : null;
-    let thickness = opts && 'thickness' in opts ? opts.thickness : null;
-    let radius = opts && 'radius' in opts ? opts.radius : null;
-    let notificationPredicate = opts && 'notificationPredicate' in opts ? opts.notificationPredicate : null;
-    let interactive = opts && 'interactive' in opts ? opts.interactive : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[showTrackOnHover$0] = showTrackOnHover;
-    this[hoverThickness$0] = hoverThickness;
-    scrollbar$0._MaterialScrollbar.__proto__.new.call(this, {key: key, child: child, controller: controller, isAlwaysShown: isAlwaysShown, thickness: thickness, radius: radius, fadeDuration: scrollbar$0._kScrollbarFadeDuration, timeToFade: scrollbar$0._kScrollbarTimeToFade, pressDuration: core.Duration.zero, notificationPredicate: (t0 = notificationPredicate, t0 == null ? C[21] || CT.C21 : t0), interactive: interactive, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = scrollbar$0._MaterialScrollbar.prototype;
-  dart.addTypeTests(scrollbar$0._MaterialScrollbar);
-  dart.addTypeCaches(scrollbar$0._MaterialScrollbar);
-  dart.setMethodSignature(scrollbar$0._MaterialScrollbar, () => ({
-    __proto__: dart.getMethods(scrollbar$0._MaterialScrollbar.__proto__),
-    createState: dart.fnType(scrollbar$0._MaterialScrollbarState, [])
-  }));
-  dart.setLibraryUri(scrollbar$0._MaterialScrollbar, I[1]);
-  dart.setFieldSignature(scrollbar$0._MaterialScrollbar, () => ({
-    __proto__: dart.getFields(scrollbar$0._MaterialScrollbar.__proto__),
-    showTrackOnHover: dart.finalFieldType(dart.nullable(core.bool)),
-    hoverThickness: dart.finalFieldType(dart.nullable(core.double))
-  }));
-  var ___MaterialScrollbarState__hoverAnimationController = dart.privateName(scrollbar$0, "_#_MaterialScrollbarState#_hoverAnimationController");
-  var ___MaterialScrollbarState__hoverAnimationController_isSet = dart.privateName(scrollbar$0, "_#_MaterialScrollbarState#_hoverAnimationController#isSet");
-  var _dragIsActive = dart.privateName(scrollbar$0, "_dragIsActive");
-  var _hoverIsActive = dart.privateName(scrollbar$0, "_hoverIsActive");
-  var ___MaterialScrollbarState__colorScheme = dart.privateName(scrollbar$0, "_#_MaterialScrollbarState#_colorScheme");
-  var ___MaterialScrollbarState__colorScheme_isSet = dart.privateName(scrollbar$0, "_#_MaterialScrollbarState#_colorScheme#isSet");
-  var ___MaterialScrollbarState__scrollbarTheme = dart.privateName(scrollbar$0, "_#_MaterialScrollbarState#_scrollbarTheme");
-  var ___MaterialScrollbarState__scrollbarTheme_isSet = dart.privateName(scrollbar$0, "_#_MaterialScrollbarState#_scrollbarTheme#isSet");
-  var ___MaterialScrollbarState__useAndroidScrollbar = dart.privateName(scrollbar$0, "_#_MaterialScrollbarState#_useAndroidScrollbar");
-  var ___MaterialScrollbarState__useAndroidScrollbar_isSet = dart.privateName(scrollbar$0, "_#_MaterialScrollbarState#_useAndroidScrollbar#isSet");
-  var _hoverAnimationController = dart.privateName(scrollbar$0, "_hoverAnimationController");
-  var _colorScheme = dart.privateName(scrollbar$0, "_colorScheme");
-  var _scrollbarTheme = dart.privateName(scrollbar$0, "_scrollbarTheme");
-  var _useAndroidScrollbar = dart.privateName(scrollbar$0, "_useAndroidScrollbar");
-  var _showTrackOnHover = dart.privateName(scrollbar$0, "_showTrackOnHover");
-  var _states = dart.privateName(scrollbar$0, "_states");
-  var _name = dart.privateName(ui, "_name");
-  var _thumbColor = dart.privateName(scrollbar$0, "_thumbColor");
-  var Color_value = dart.privateName(ui, "Color.value");
-  var _trackColor = dart.privateName(scrollbar$0, "_trackColor");
-  var _trackBorderColor = dart.privateName(scrollbar$0, "_trackBorderColor");
-  var _thickness = dart.privateName(scrollbar$0, "_thickness");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  var _name$ = dart.privateName(platform, "_name");
-  scrollbar$0._MaterialScrollbarState = class _MaterialScrollbarState extends scrollbar.RawScrollbarState$(scrollbar$0._MaterialScrollbar) {
-    get [_hoverAnimationController]() {
-      let t0;
-      return dart.test(this[___MaterialScrollbarState__hoverAnimationController_isSet]) ? (t0 = this[___MaterialScrollbarState__hoverAnimationController], t0) : dart.throw(new _internal.LateError.fieldNI("_hoverAnimationController"));
-    }
-    set [_hoverAnimationController](t0) {
-      if (t0 == null) dart.nullFailed(I[0], 237, 28, "null");
-      this[___MaterialScrollbarState__hoverAnimationController_isSet] = true;
-      this[___MaterialScrollbarState__hoverAnimationController] = t0;
-    }
-    get [_colorScheme]() {
-      let t1;
-      return dart.test(this[___MaterialScrollbarState__colorScheme_isSet]) ? (t1 = this[___MaterialScrollbarState__colorScheme], t1) : dart.throw(new _internal.LateError.fieldNI("_colorScheme"));
-    }
-    set [_colorScheme](t1) {
-      if (t1 == null) dart.nullFailed(I[0], 240, 20, "null");
-      this[___MaterialScrollbarState__colorScheme_isSet] = true;
-      this[___MaterialScrollbarState__colorScheme] = t1;
-    }
-    get [_scrollbarTheme]() {
-      let t2;
-      return dart.test(this[___MaterialScrollbarState__scrollbarTheme_isSet]) ? (t2 = this[___MaterialScrollbarState__scrollbarTheme], t2) : dart.throw(new _internal.LateError.fieldNI("_scrollbarTheme"));
-    }
-    set [_scrollbarTheme](t2) {
-      if (t2 == null) dart.nullFailed(I[0], 241, 27, "null");
-      this[___MaterialScrollbarState__scrollbarTheme_isSet] = true;
-      this[___MaterialScrollbarState__scrollbarTheme] = t2;
-    }
-    get [_useAndroidScrollbar]() {
-      let t3;
-      return dart.test(this[___MaterialScrollbarState__useAndroidScrollbar_isSet]) ? (t3 = this[___MaterialScrollbarState__useAndroidScrollbar], t3) : dart.throw(new _internal.LateError.fieldNI("_useAndroidScrollbar"));
-    }
-    set [_useAndroidScrollbar](t3) {
-      if (t3 == null) dart.nullFailed(I[0], 243, 13, "null");
-      this[___MaterialScrollbarState__useAndroidScrollbar_isSet] = true;
-      this[___MaterialScrollbarState__useAndroidScrollbar] = t3;
-    }
-    get showScrollbar() {
-      let t4, t4$;
-      t4$ = (t4 = this.widget.isAlwaysShown, t4 == null ? this[_scrollbarTheme].isAlwaysShown : t4);
-      return t4$ == null ? false : t4$;
-    }
-    get enableGestures() {
-      let t4, t4$;
-      t4$ = (t4 = this.widget.interactive, t4 == null ? this[_scrollbarTheme].interactive : t4);
-      return t4$ == null ? !dart.test(this[_useAndroidScrollbar]) : t4$;
-    }
-    get [_showTrackOnHover]() {
-      let t4, t4$;
-      t4$ = (t4 = this.widget.showTrackOnHover, t4 == null ? this[_scrollbarTheme].showTrackOnHover : t4);
-      return t4$ == null ? false : t4$;
-    }
-    get [_states]() {
-      return (() => {
-        let t4 = T.LinkedHashSetOfMaterialState().new();
-        if (dart.test(this[_dragIsActive])) t4.add(material_state.MaterialState.dragged);
-        if (dart.test(this[_hoverIsActive])) t4.add(material_state.MaterialState.hovered);
-        return t4;
-      })();
-    }
-    get [_thumbColor]() {
-      let onSurface = this[_colorScheme].onSurface;
-      let brightness = this[_colorScheme].brightness;
-      let dragColor = null;
-      let dragColor$35isSet = false;
-      function dragColor$35get() {
-        return dragColor$35isSet ? dragColor : dart.throw(new _internal.LateError.localNI("dragColor"));
+      set onListen(value) {
+        this[onListen$] = value;
       }
-      dart.fn(dragColor$35get, T.VoidToColor());
-      function dragColor$35set(t8) {
-        if (t8 == null) dart.nullFailed(I[0], 261, 16, "null");
-        dragColor$35isSet = true;
-        return dragColor = t8;
+      get onPause() {
+        return this[onPause$];
       }
-      dart.fn(dragColor$35set, T.ColorTodynamic());
-      let hoverColor = null;
-      let hoverColor$35isSet = false;
-      function hoverColor$35get() {
-        return hoverColor$35isSet ? hoverColor : dart.throw(new _internal.LateError.localNI("hoverColor"));
+      set onPause(value) {
+        this[onPause$] = value;
       }
-      dart.fn(hoverColor$35get, T.VoidToColor());
-      function hoverColor$35set(t13) {
-        if (t13 == null) dart.nullFailed(I[0], 262, 16, "null");
-        hoverColor$35isSet = true;
-        return hoverColor = t13;
+      get onResume() {
+        return this[onResume$];
       }
-      dart.fn(hoverColor$35set, T.ColorTodynamic());
-      let idleColor = null;
-      let idleColor$35isSet = false;
-      function idleColor$35get() {
-        return idleColor$35isSet ? idleColor : dart.throw(new _internal.LateError.localNI("idleColor"));
+      set onResume(value) {
+        this[onResume$] = value;
       }
-      dart.fn(idleColor$35get, T.VoidToColor());
-      function idleColor$35set(t18) {
-        if (t18 == null) dart.nullFailed(I[0], 263, 16, "null");
-        idleColor$35isSet = true;
-        return idleColor = t18;
+      get onCancel() {
+        return this[onCancel$];
       }
-      dart.fn(idleColor$35set, T.ColorTodynamic());
-      switch (brightness) {
-        case C[22] || CT.C22:
-        {
-          dragColor$35set(onSurface.withOpacity(0.6));
-          hoverColor$35set(onSurface.withOpacity(0.5));
-          idleColor$35set(dart.test(this[_useAndroidScrollbar]) ? theme$.Theme.of(this.context).highlightColor.withOpacity(1.0) : onSurface.withOpacity(0.1));
-          break;
-        }
-        case C[23] || CT.C23:
-        {
-          dragColor$35set(onSurface.withOpacity(0.75));
-          hoverColor$35set(onSurface.withOpacity(0.65));
-          idleColor$35set(dart.test(this[_useAndroidScrollbar]) ? theme$.Theme.of(this.context).highlightColor.withOpacity(1.0) : onSurface.withOpacity(0.3));
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
+      set onCancel(value) {
+        this[onCancel$] = value;
       }
-      return material_state.MaterialStateProperty.resolveWith(ui.Color, dart.fn(states => {
-        let t20, t20$, t20$0, t20$1, t20$2, t20$3, t20$4, t20$5;
-        if (states == null) dart.nullFailed(I[0], 281, 66, "states");
-        if (dart.test(states.contains(material_state.MaterialState.dragged))) {
-          t20$ = (t20 = this[_scrollbarTheme].thumbColor, t20 == null ? null : t20.resolve(states));
-          return t20$ == null ? dragColor$35get() : t20$;
-        }
-        if (dart.test(states.contains(material_state.MaterialState.hovered)) && dart.test(this[_showTrackOnHover])) {
-          t20$1 = (t20$0 = this[_scrollbarTheme].thumbColor, t20$0 == null ? null : t20$0.resolve(states));
-          return t20$1 == null ? hoverColor$35get() : t20$1;
-        }
-        return dart.nullCheck(ui.Color.lerp((t20$3 = (t20$2 = this[_scrollbarTheme].thumbColor, t20$2 == null ? null : t20$2.resolve(states)), t20$3 == null ? idleColor$35get() : t20$3), (t20$5 = (t20$4 = this[_scrollbarTheme].thumbColor, t20$4 == null ? null : t20$4.resolve(states)), t20$5 == null ? hoverColor$35get() : t20$5), this[_hoverAnimationController].value));
-      }, T.SetOfMaterialStateToColor()));
-    }
-    get [_trackColor]() {
-      let onSurface = this[_colorScheme].onSurface;
-      let brightness = this[_colorScheme].brightness;
-      return material_state.MaterialStateProperty.resolveWith(ui.Color, dart.fn(states => {
-        let t20, t20$;
-        if (states == null) dart.nullFailed(I[0], 301, 66, "states");
-        if (dart.test(states.contains(material_state.MaterialState.hovered)) && dart.test(this[_showTrackOnHover])) {
-          t20$ = (t20 = this[_scrollbarTheme].trackColor, t20 == null ? null : t20.resolve(states));
-          return t20$ == null ? brightness == ui.Brightness.light ? onSurface.withOpacity(0.03) : onSurface.withOpacity(0.05) : t20$;
-        }
-        return C[24] || CT.C24;
-      }, T.SetOfMaterialStateToColor()));
-    }
-    get [_trackBorderColor]() {
-      let onSurface = this[_colorScheme].onSurface;
-      let brightness = this[_colorScheme].brightness;
-      return material_state.MaterialStateProperty.resolveWith(ui.Color, dart.fn(states => {
-        let t20, t20$;
-        if (states == null) dart.nullFailed(I[0], 315, 66, "states");
-        if (dart.test(states.contains(material_state.MaterialState.hovered)) && dart.test(this[_showTrackOnHover])) {
-          t20$ = (t20 = this[_scrollbarTheme].trackBorderColor, t20 == null ? null : t20.resolve(states));
-          return t20$ == null ? brightness == ui.Brightness.light ? onSurface.withOpacity(0.1) : onSurface.withOpacity(0.25) : t20$;
-        }
-        return C[24] || CT.C24;
-      }, T.SetOfMaterialStateToColor()));
-    }
-    get [_thickness]() {
-      return material_state.MaterialStateProperty.resolveWith(core.double, dart.fn(states => {
-        let t21, t20, t20$, t21$, t20$0, t20$1;
-        if (states == null) dart.nullFailed(I[0], 327, 66, "states");
-        if (dart.test(states.contains(material_state.MaterialState.hovered)) && dart.test(this[_showTrackOnHover])) {
-          t20$ = (t20 = this.widget.hoverThickness, t20 == null ? (t21 = this[_scrollbarTheme].thickness, t21 == null ? null : t21.resolve(states)) : t20);
-          return t20$ == null ? 12 : t20$;
-        }
-        t20$1 = (t20$0 = this.widget.thickness, t20$0 == null ? (t21$ = this[_scrollbarTheme].thickness, t21$ == null ? null : t21$.resolve(states)) : t20$0);
-        return t20$1 == null ? 8 / (dart.test(this[_useAndroidScrollbar]) ? 2 : 1) : t20$1;
-      }, T.SetOfMaterialStateTodouble()));
-    }
-    initState() {
-      super.initState();
-      this[_hoverAnimationController] = new animation_controller.AnimationController.new({vsync: this, duration: C[25] || CT.C25});
-      this[_hoverAnimationController].addListener(dart.fn(() => {
-        this.updateScrollbarPainter();
-      }, T.VoidTovoid()));
-    }
-    didChangeDependencies() {
-      let theme = theme$.Theme.of(this.context);
-      this[_colorScheme] = theme.colorScheme;
-      this[_scrollbarTheme] = theme.scrollbarTheme;
-      switch (theme.platform) {
-        case C[26] || CT.C26:
-        {
-          this[_useAndroidScrollbar] = true;
-          break;
-        }
-        case C[27] || CT.C27:
-        case C[28] || CT.C28:
-        case C[29] || CT.C29:
-        case C[30] || CT.C30:
-        case C[31] || CT.C31:
-        {
-          this[_useAndroidScrollbar] = false;
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
+      removeSubscription(subs) {
+        LightSubscriptionOfT().as(subs);
+        return async.async(T$.boolN(), (function* removeSubscription() {
+          let t0;
+          if (!dart.nullCheck(this[_isBusy])) {
+            return dart.nullCheck(this[_onData])[$remove](subs);
+          } else {
+            yield async.Future.delayed(core.Duration.zero);
+            t0 = this[_onData];
+            return t0 == null ? null : t0[$remove](subs);
+          }
+        }).bind(this));
       }
-      super.didChangeDependencies();
-    }
-    updateScrollbarPainter() {
-      let t21, t21$, t21$0, t21$1, t21$2, t20;
-      t20 = this.scrollbarPainter;
-      (() => {
-        t20.color = this[_thumbColor].resolve(this[_states]);
-        t20.trackColor = this[_trackColor].resolve(this[_states]);
-        t20.trackBorderColor = this[_trackBorderColor].resolve(this[_states]);
-        t20.textDirection = basic.Directionality.of(this.context);
-        t20.thickness = this[_thickness].resolve(this[_states]);
-        t20.radius = (t21$ = (t21 = this.widget.radius, t21 == null ? this[_scrollbarTheme].radius : t21), t21$ == null ? dart.test(this[_useAndroidScrollbar]) ? null : scrollbar$0._kScrollbarRadius : t21$);
-        t20.crossAxisMargin = (t21$0 = this[_scrollbarTheme].crossAxisMargin, t21$0 == null ? dart.test(this[_useAndroidScrollbar]) ? 0.0 : 2 : t21$0);
-        t20.mainAxisMargin = (t21$1 = this[_scrollbarTheme].mainAxisMargin, t21$1 == null ? 0.0 : t21$1);
-        t20.minLength = (t21$2 = this[_scrollbarTheme].minThumbLength, t21$2 == null ? 48 : t21$2);
-        t20.padding = media_query.MediaQuery.of(this.context).padding;
-        return t20;
-      })();
-    }
-    handleThumbPressStart(localPosition) {
-      if (localPosition == null) dart.nullFailed(I[0], 387, 37, "localPosition");
-      super.handleThumbPressStart(localPosition);
-      this.setState(dart.fn(() => {
-        this[_dragIsActive] = true;
-      }, T.VoidTovoid()));
-    }
-    handleThumbPressEnd(localPosition, velocity) {
-      if (localPosition == null) dart.nullFailed(I[0], 393, 35, "localPosition");
-      if (velocity == null) dart.nullFailed(I[0], 393, 59, "velocity");
-      super.handleThumbPressEnd(localPosition, velocity);
-      this.setState(dart.fn(() => {
-        this[_dragIsActive] = false;
-      }, T.VoidTovoid()));
-    }
-    handleHover(event) {
-      if (event == null) dart.nullFailed(I[0], 399, 38, "event");
-      super.handleHover(event);
-      if (dart.test(this.isPointerOverScrollbar(event.position, event.kind))) {
-        this.setState(dart.fn(() => {
-          this[_hoverIsActive] = true;
-        }, T.VoidTovoid()));
-        this[_hoverAnimationController].forward();
-      } else if (dart.test(this[_hoverIsActive])) {
-        this.setState(dart.fn(() => {
-          this[_hoverIsActive] = false;
-        }, T.VoidTovoid()));
-        this[_hoverAnimationController].reverse();
+      addSubscription(subs) {
+        LightSubscriptionOfT().as(subs);
+        return async.async(dart.void, (function* addSubscription() {
+          if (!dart.nullCheck(this[_isBusy])) {
+            return dart.nullCheck(this[_onData])[$add](subs);
+          } else {
+            yield async.Future.delayed(core.Duration.zero);
+            return dart.nullCheck(this[_onData])[$add](subs);
+          }
+        }).bind(this));
+      }
+      get length() {
+        let t0;
+        t0 = this[_onData];
+        return t0 == null ? null : t0[$length];
+      }
+      get hasListeners() {
+        return dart.nullCheck(this[_onData])[$isNotEmpty];
+      }
+      [_notifyData](data) {
+        let t0;
+        this[_isBusy] = true;
+        for (let item of dart.nullCheck(this[_onData])) {
+          if (!item.isPaused) {
+            t0 = TToNvoid().as(item[_data]);
+            t0 == null ? null : t0(data);
+          }
+        }
+        this[_isBusy] = false;
+      }
+      [_notifyError](error, stackTrace = null) {
+        let t0, t0$, t0$0, t0$1;
+        if (!!this.isClosed) dart.assertFailed("You cannot add errors to a closed stream.", I[0], 54, 12, "!isClosed");
+        this[_isBusy] = true;
+        let itemsToRemove = JSArrayOfLightSubscriptionOfT().of([]);
+        for (let item of dart.nullCheck(this[_onData])) {
+          if (!item.isPaused) {
+            if (stackTrace != null) {
+              t0 = item[_onError];
+              t0 == null ? null : dart.dcall(t0, [error, stackTrace]);
+            } else {
+              t0$ = item[_onError];
+              t0$ == null ? null : dart.dcall(t0$, [error]);
+            }
+            if (dart.test((t0$0 = item.cancelOnError, t0$0 == null ? false : t0$0))) {
+              itemsToRemove[$add](item);
+              item.pause();
+              t0$1 = item[_onDone];
+              t0$1 == null ? null : t0$1();
+            }
+          }
+        }
+        for (let item of itemsToRemove) {
+          dart.nullCheck(this[_onData])[$remove](item);
+        }
+        this[_isBusy] = false;
+      }
+      [_notifyDone]() {
+        let t0;
+        if (!!this.isClosed) dart.assertFailed("You cannot close a closed stream.", I[0], 80, 12, "!isClosed");
+        this[_isBusy] = true;
+        for (let item of dart.nullCheck(this[_onData])) {
+          if (!item.isPaused) {
+            t0 = item[_onDone];
+            t0 == null ? null : t0();
+          }
+        }
+        this[_isBusy] = false;
+      }
+      get value() {
+        return this[_value];
+      }
+      add(event) {
+        T.as(event);
+        if (!!this.isClosed) dart.assertFailed("You cannot add event to closed Stream", I[0], 95, 12, "!isClosed");
+        this[_value] = event;
+        this[_notifyData](event);
+      }
+      get isClosed() {
+        return this[_onData] == null;
+      }
+      addError(error, stackTrace = null) {
+        if (!!this.isClosed) dart.assertFailed("You cannot add error to closed Stream", I[0], 103, 12, "!isClosed");
+        this[_notifyError](error, stackTrace);
+      }
+      close() {
+        if (!!this.isClosed) dart.assertFailed("You cannot close a closed Stream", I[0], 108, 12, "!isClosed");
+        this[_notifyDone]();
+        this[_onData] = null;
+        this[_isBusy] = null;
+        this[_value] = null;
+      }
+      listen(onData, opts) {
+        let t0, t0$;
+        let onError = opts && 'onError' in opts ? opts.onError : null;
+        let onDone = opts && 'onDone' in opts ? opts.onDone : null;
+        let cancelOnError = opts && 'cancelOnError' in opts ? opts.cancelOnError : null;
+        let subs = (t0 = new (LightSubscriptionOfT()).new(dart.bind(this, 'removeSubscription'), {onPause: this.onPause, onResume: this.onResume, onCancel: this.onCancel}), (() => {
+          t0.onData(onData);
+          t0.onError(onError);
+          t0.onDone(onDone);
+          t0.cancelOnError = cancelOnError;
+          return t0;
+        })());
+        this.addSubscription(subs);
+        t0$ = this.onListen;
+        t0$ == null ? null : t0$();
+        return subs;
+      }
+      get stream() {
+        return new (GetStreamTransformationOfT()).new(dart.bind(this, 'addSubscription'), dart.bind(this, 'removeSubscription'));
       }
     }
-    handleHoverExit(event) {
-      if (event == null) dart.nullFailed(I[0], 414, 41, "event");
-      super.handleHoverExit(event);
-      this.setState(dart.fn(() => {
-        this[_hoverIsActive] = false;
-      }, T.VoidTovoid()));
-      this[_hoverAnimationController].reverse();
+    (GetStream.new = function(opts) {
+      let onListen = opts && 'onListen' in opts ? opts.onListen : null;
+      let onPause = opts && 'onPause' in opts ? opts.onPause : null;
+      let onResume = opts && 'onResume' in opts ? opts.onResume : null;
+      let onCancel = opts && 'onCancel' in opts ? opts.onCancel : null;
+      this[_onData] = JSArrayOfLightSubscriptionOfT().of([]);
+      this[_isBusy] = false;
+      this[_value] = null;
+      this[onListen$] = onListen;
+      this[onPause$] = onPause;
+      this[onResume$] = onResume;
+      this[onCancel$] = onCancel;
+      ;
+    }).prototype = GetStream.prototype;
+    dart.addTypeTests(GetStream);
+    GetStream.prototype[_is_GetStream_default] = true;
+    dart.addTypeCaches(GetStream);
+    dart.setMethodSignature(GetStream, () => ({
+      __proto__: dart.getMethods(GetStream.__proto__),
+      removeSubscription: dart.fnType(async.FutureOr$(dart.nullable(core.bool)), [dart.nullable(core.Object)]),
+      addSubscription: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      [_notifyData]: dart.fnType(dart.void, [T]),
+      [_notifyError]: dart.fnType(dart.void, [core.Object], [dart.nullable(core.StackTrace)]),
+      [_notifyDone]: dart.fnType(dart.void, []),
+      add: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      addError: dart.fnType(dart.void, [core.Object], [dart.nullable(core.StackTrace)]),
+      close: dart.fnType(dart.void, []),
+      listen: dart.fnType(rx_stream.LightSubscription$(T), [dart.fnType(dart.void, [T])], {cancelOnError: dart.nullable(core.bool), onDone: dart.nullable(dart.fnType(dart.void, [])), onError: dart.nullable(core.Function)}, {})
+    }));
+    dart.setGetterSignature(GetStream, () => ({
+      __proto__: dart.getGetters(GetStream.__proto__),
+      length: dart.nullable(core.int),
+      hasListeners: core.bool,
+      value: dart.nullable(T),
+      isClosed: core.bool,
+      stream: async.Stream$(T)
+    }));
+    dart.setLibraryUri(GetStream, I[1]);
+    dart.setFieldSignature(GetStream, () => ({
+      __proto__: dart.getFields(GetStream.__proto__),
+      onListen: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+      onPause: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+      onResume: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+      onCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+      [_onData]: dart.fieldType(dart.nullable(core.List$(rx_stream.LightSubscription$(T)))),
+      [_isBusy]: dart.fieldType(dart.nullable(core.bool)),
+      [_value]: dart.fieldType(dart.nullable(T))
+    }));
+    return GetStream;
+  });
+  rx_stream.GetStream = rx_stream.GetStream$();
+  dart.addTypeTests(rx_stream.GetStream, _is_GetStream_default);
+  var onPause$0 = dart.privateName(rx_stream, "LightSubscription.onPause");
+  var onResume$0 = dart.privateName(rx_stream, "LightSubscription.onResume");
+  var onCancel$0 = dart.privateName(rx_stream, "LightSubscription.onCancel");
+  var cancelOnError = dart.privateName(rx_stream, "LightSubscription.cancelOnError");
+  var _isPaused = dart.privateName(rx_stream, "_isPaused");
+  var _removeSubscription$ = dart.privateName(rx_stream, "_removeSubscription");
+  const _is_LightSubscription_default = Symbol('_is_LightSubscription_default');
+  rx_stream.LightSubscription$ = dart.generic(T => {
+    class LightSubscription extends async.StreamSubscription$(T) {
+      get onPause() {
+        return this[onPause$0];
+      }
+      set onPause(value) {
+        super.onPause = value;
+      }
+      get onResume() {
+        return this[onResume$0];
+      }
+      set onResume(value) {
+        super.onResume = value;
+      }
+      get onCancel() {
+        return this[onCancel$0];
+      }
+      set onCancel(value) {
+        super.onCancel = value;
+      }
+      get cancelOnError() {
+        return this[cancelOnError];
+      }
+      set cancelOnError(value) {
+        this[cancelOnError] = value;
+      }
+      cancel() {
+        let t0;
+        this[_removeSubscription$](this);
+        t0 = this.onCancel;
+        t0 == null ? null : t0();
+        return T$.FutureOfvoid().value();
+      }
+      onData(handleData) {
+        return this[_data] = handleData;
+      }
+      onError(handleError) {
+        return this[_onError] = handleError;
+      }
+      onDone(handleDone) {
+        return this[_onDone] = handleDone;
+      }
+      pause(resumeSignal = null) {
+        let t0;
+        this[_isPaused] = true;
+        t0 = this.onPause;
+        t0 == null ? null : t0();
+      }
+      resume() {
+        let t0;
+        this[_isPaused] = false;
+        t0 = this.onResume;
+        t0 == null ? null : t0();
+      }
+      get isPaused() {
+        return this[_isPaused];
+      }
+      asFuture(E, futureValue = null) {
+        return async.Future$(E).value(futureValue);
+      }
     }
-    dispose() {
-      this[_hoverAnimationController].dispose();
-      super.dispose();
+    (LightSubscription.new = function(_removeSubscription, opts) {
+      let onPause = opts && 'onPause' in opts ? opts.onPause : null;
+      let onResume = opts && 'onResume' in opts ? opts.onResume : null;
+      let onCancel = opts && 'onCancel' in opts ? opts.onCancel : null;
+      this[cancelOnError] = false;
+      this[_data] = null;
+      this[_onError] = null;
+      this[_onDone] = null;
+      this[_isPaused] = false;
+      this[_removeSubscription$] = _removeSubscription;
+      this[onPause$0] = onPause;
+      this[onResume$0] = onResume;
+      this[onCancel$0] = onCancel;
+      ;
+    }).prototype = LightSubscription.prototype;
+    dart.addTypeTests(LightSubscription);
+    LightSubscription.prototype[_is_LightSubscription_default] = true;
+    dart.addTypeCaches(LightSubscription);
+    dart.setMethodSignature(LightSubscription, () => ({
+      __proto__: dart.getMethods(LightSubscription.__proto__),
+      cancel: dart.fnType(async.Future$(dart.void), []),
+      onData: dart.fnType(dart.void, [dart.nullable(dart.fnType(dart.void, [T]))]),
+      onError: dart.fnType(dart.void, [dart.nullable(core.Function)]),
+      onDone: dart.fnType(dart.void, [dart.nullable(dart.fnType(dart.void, []))]),
+      pause: dart.fnType(dart.void, [], [dart.nullable(async.Future$(dart.void))]),
+      resume: dart.fnType(dart.void, []),
+      asFuture: dart.gFnType(E => [async.Future$(E), [], [dart.nullable(E)]], E => [dart.nullable(core.Object)])
+    }));
+    dart.setGetterSignature(LightSubscription, () => ({
+      __proto__: dart.getGetters(LightSubscription.__proto__),
+      isPaused: core.bool
+    }));
+    dart.setLibraryUri(LightSubscription, I[1]);
+    dart.setFieldSignature(LightSubscription, () => ({
+      __proto__: dart.getFields(LightSubscription.__proto__),
+      [_removeSubscription$]: dart.finalFieldType(dart.fnType(async.FutureOr$(dart.nullable(core.bool)), [rx_stream.LightSubscription$(T)])),
+      onPause: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+      onResume: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+      onCancel: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+      cancelOnError: dart.fieldType(dart.nullable(core.bool)),
+      [_data]: dart.fieldType(dart.nullable(dart.fnType(dart.void, [T]))),
+      [_onError]: dart.fieldType(dart.nullable(core.Function)),
+      [_onDone]: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+      [_isPaused]: dart.fieldType(core.bool)
+    }));
+    return LightSubscription;
+  });
+  rx_stream.LightSubscription = rx_stream.LightSubscription$();
+  dart.addTypeTests(rx_stream.LightSubscription, _is_LightSubscription_default);
+  var _addSubscription$ = dart.privateName(rx_stream, "_addSubscription");
+  const _is_GetStreamTransformation_default = Symbol('_is_GetStreamTransformation_default');
+  rx_stream.GetStreamTransformation$ = dart.generic(T => {
+    var LightSubscriptionOfT = () => (LightSubscriptionOfT = dart.constFn(rx_stream.LightSubscription$(T)))();
+    class GetStreamTransformation extends async.Stream$(T) {
+      listen(onData, opts) {
+        let t0, t0$;
+        let onError = opts && 'onError' in opts ? opts.onError : null;
+        let onDone = opts && 'onDone' in opts ? opts.onDone : null;
+        let cancelOnError = opts && 'cancelOnError' in opts ? opts.cancelOnError : null;
+        let subs = (t0 = new (LightSubscriptionOfT()).new(this[_removeSubscription$]), (() => {
+          t0.onData(onData);
+          t0.onError(onError);
+          t0.onDone(onDone);
+          return t0;
+        })());
+        t0$ = subs;
+        this[_addSubscription$](t0$);
+        return subs;
+      }
     }
-  };
-  (scrollbar$0._MaterialScrollbarState.new = function() {
-    this[___MaterialScrollbarState__hoverAnimationController] = null;
-    this[___MaterialScrollbarState__hoverAnimationController_isSet] = false;
-    this[_dragIsActive] = false;
-    this[_hoverIsActive] = false;
-    this[___MaterialScrollbarState__colorScheme] = null;
-    this[___MaterialScrollbarState__colorScheme_isSet] = false;
-    this[___MaterialScrollbarState__scrollbarTheme] = null;
-    this[___MaterialScrollbarState__scrollbarTheme_isSet] = false;
-    this[___MaterialScrollbarState__useAndroidScrollbar] = null;
-    this[___MaterialScrollbarState__useAndroidScrollbar_isSet] = false;
-    scrollbar$0._MaterialScrollbarState.__proto__.new.call(this);
-    ;
-  }).prototype = scrollbar$0._MaterialScrollbarState.prototype;
-  dart.addTypeTests(scrollbar$0._MaterialScrollbarState);
-  dart.addTypeCaches(scrollbar$0._MaterialScrollbarState);
-  dart.setGetterSignature(scrollbar$0._MaterialScrollbarState, () => ({
-    __proto__: dart.getGetters(scrollbar$0._MaterialScrollbarState.__proto__),
-    [_hoverAnimationController]: animation_controller.AnimationController,
-    [_colorScheme]: color_scheme.ColorScheme,
-    [_scrollbarTheme]: scrollbar_theme.ScrollbarThemeData,
-    [_useAndroidScrollbar]: core.bool,
-    [_showTrackOnHover]: core.bool,
-    [_states]: core.Set$(material_state.MaterialState),
-    [_thumbColor]: material_state.MaterialStateProperty$(ui.Color),
-    [_trackColor]: material_state.MaterialStateProperty$(ui.Color),
-    [_trackBorderColor]: material_state.MaterialStateProperty$(ui.Color),
-    [_thickness]: material_state.MaterialStateProperty$(core.double)
-  }));
-  dart.setSetterSignature(scrollbar$0._MaterialScrollbarState, () => ({
-    __proto__: dart.getSetters(scrollbar$0._MaterialScrollbarState.__proto__),
-    [_hoverAnimationController]: animation_controller.AnimationController,
-    [_colorScheme]: color_scheme.ColorScheme,
-    [_scrollbarTheme]: scrollbar_theme.ScrollbarThemeData,
-    [_useAndroidScrollbar]: core.bool
-  }));
-  dart.setLibraryUri(scrollbar$0._MaterialScrollbarState, I[1]);
-  dart.setFieldSignature(scrollbar$0._MaterialScrollbarState, () => ({
-    __proto__: dart.getFields(scrollbar$0._MaterialScrollbarState.__proto__),
-    [___MaterialScrollbarState__hoverAnimationController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
-    [___MaterialScrollbarState__hoverAnimationController_isSet]: dart.fieldType(core.bool),
-    [_dragIsActive]: dart.fieldType(core.bool),
-    [_hoverIsActive]: dart.fieldType(core.bool),
-    [___MaterialScrollbarState__colorScheme]: dart.fieldType(dart.nullable(color_scheme.ColorScheme)),
-    [___MaterialScrollbarState__colorScheme_isSet]: dart.fieldType(core.bool),
-    [___MaterialScrollbarState__scrollbarTheme]: dart.fieldType(dart.nullable(scrollbar_theme.ScrollbarThemeData)),
-    [___MaterialScrollbarState__scrollbarTheme_isSet]: dart.fieldType(core.bool),
-    [___MaterialScrollbarState__useAndroidScrollbar]: dart.fieldType(dart.nullable(core.bool)),
-    [___MaterialScrollbarState__useAndroidScrollbar_isSet]: dart.fieldType(core.bool)
-  }));
-  var Radius_y = dart.privateName(ui, "Radius.y");
-  var Radius_x = dart.privateName(ui, "Radius.x");
-  dart.defineLazy(scrollbar$0, {
-    /*scrollbar$0._kScrollbarThickness*/get _kScrollbarThickness() {
-      return 8;
-    },
-    /*scrollbar$0._kScrollbarThicknessWithTrack*/get _kScrollbarThicknessWithTrack() {
-      return 12;
-    },
-    /*scrollbar$0._kScrollbarMargin*/get _kScrollbarMargin() {
-      return 2;
-    },
-    /*scrollbar$0._kScrollbarMinLength*/get _kScrollbarMinLength() {
-      return 48;
-    },
-    /*scrollbar$0._kScrollbarRadius*/get _kScrollbarRadius() {
-      return C[32] || CT.C32;
-    },
-    /*scrollbar$0._kScrollbarFadeDuration*/get _kScrollbarFadeDuration() {
-      return C[33] || CT.C33;
-    },
-    /*scrollbar$0._kScrollbarTimeToFade*/get _kScrollbarTimeToFade() {
-      return C[34] || CT.C34;
+    (GetStreamTransformation.new = function(_addSubscription, _removeSubscription) {
+      this[_addSubscription$] = _addSubscription;
+      this[_removeSubscription$] = _removeSubscription;
+      GetStreamTransformation.__proto__.new.call(this);
+      ;
+    }).prototype = GetStreamTransformation.prototype;
+    dart.addTypeTests(GetStreamTransformation);
+    GetStreamTransformation.prototype[_is_GetStreamTransformation_default] = true;
+    dart.addTypeCaches(GetStreamTransformation);
+    dart.setMethodSignature(GetStreamTransformation, () => ({
+      __proto__: dart.getMethods(GetStreamTransformation.__proto__),
+      listen: dart.fnType(rx_stream.LightSubscription$(T), [dart.nullable(dart.fnType(dart.void, [T]))], {cancelOnError: dart.nullable(core.bool), onDone: dart.nullable(dart.fnType(dart.void, [])), onError: dart.nullable(core.Function)}, {})
+    }));
+    dart.setLibraryUri(GetStreamTransformation, I[1]);
+    dart.setFieldSignature(GetStreamTransformation, () => ({
+      __proto__: dart.getFields(GetStreamTransformation.__proto__),
+      [_addSubscription$]: dart.finalFieldType(dart.fnType(dart.void, [rx_stream.LightSubscription$(T)])),
+      [_removeSubscription$]: dart.finalFieldType(dart.fnType(async.FutureOr$(dart.nullable(core.bool)), [rx_stream.LightSubscription$(T)]))
+    }));
+    return GetStreamTransformation;
+  });
+  rx_stream.GetStreamTransformation = rx_stream.GetStreamTransformation$();
+  dart.addTypeTests(rx_stream.GetStreamTransformation, _is_GetStreamTransformation_default);
+  var data$ = dart.privateName(rx_stream, "Node.data");
+  var next$ = dart.privateName(rx_stream, "Node.next");
+  const _is_Node_default = Symbol('_is_Node_default');
+  rx_stream.Node$ = dart.generic(T => {
+    var TN = () => (TN = dart.constFn(dart.nullable(T)))();
+    var NodeOfT = () => (NodeOfT = dart.constFn(rx_stream.Node$(T)))();
+    var NodeNOfT = () => (NodeNOfT = dart.constFn(dart.nullable(NodeOfT())))();
+    class Node extends core.Object {
+      get data() {
+        return this[data$];
+      }
+      set data(value) {
+        this[data$] = TN().as(value);
+      }
+      get next() {
+        return this[next$];
+      }
+      set next(value) {
+        this[next$] = NodeNOfT().as(value);
+      }
     }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/material/scrollbar.dart", {
-    "package:flutter/src/material/scrollbar.dart": scrollbar$0
+    (Node.new = function(opts) {
+      let data = opts && 'data' in opts ? opts.data : null;
+      let next = opts && 'next' in opts ? opts.next : null;
+      this[data$] = data;
+      this[next$] = next;
+      ;
+    }).prototype = Node.prototype;
+    dart.addTypeTests(Node);
+    Node.prototype[_is_Node_default] = true;
+    dart.addTypeCaches(Node);
+    dart.setLibraryUri(Node, I[1]);
+    dart.setFieldSignature(Node, () => ({
+      __proto__: dart.getFields(Node.__proto__),
+      data: dart.fieldType(dart.nullable(T)),
+      next: dart.fieldType(dart.nullable(rx_stream.Node$(T)))
+    }));
+    return Node;
+  });
+  rx_stream.Node = rx_stream.Node$();
+  dart.addTypeTests(rx_stream.Node, _is_Node_default);
+  var data$0 = dart.privateName(rx_stream, "MiniSubscription.data");
+  var onError$ = dart.privateName(rx_stream, "MiniSubscription.onError");
+  var onDone$ = dart.privateName(rx_stream, "MiniSubscription.onDone");
+  var cancelOnError$ = dart.privateName(rx_stream, "MiniSubscription.cancelOnError");
+  var listener$ = dart.privateName(rx_stream, "MiniSubscription.listener");
+  const _is_MiniSubscription_default = Symbol('_is_MiniSubscription_default');
+  rx_stream.MiniSubscription$ = dart.generic(T => {
+    class MiniSubscription extends core.Object {
+      get data() {
+        return this[data$0];
+      }
+      set data(value) {
+        super.data = value;
+      }
+      get onError() {
+        return this[onError$];
+      }
+      set onError(value) {
+        super.onError = value;
+      }
+      get onDone() {
+        return this[onDone$];
+      }
+      set onDone(value) {
+        super.onDone = value;
+      }
+      get cancelOnError() {
+        return this[cancelOnError$];
+      }
+      set cancelOnError(value) {
+        super.cancelOnError = value;
+      }
+      get listener() {
+        return this[listener$];
+      }
+      set listener(value) {
+        super.listener = value;
+      }
+      cancel() {
+        return async.async(dart.void, (function* cancel() {
+          return this.listener.removeListener(this);
+        }).bind(this));
+      }
+    }
+    (MiniSubscription.new = function(data, onError, onDone, cancelOnError, listener) {
+      this[data$0] = data;
+      this[onError$] = onError;
+      this[onDone$] = onDone;
+      this[cancelOnError$] = cancelOnError;
+      this[listener$] = listener;
+      ;
+    }).prototype = MiniSubscription.prototype;
+    dart.addTypeTests(MiniSubscription);
+    MiniSubscription.prototype[_is_MiniSubscription_default] = true;
+    dart.addTypeCaches(MiniSubscription);
+    dart.setMethodSignature(MiniSubscription, () => ({
+      __proto__: dart.getMethods(MiniSubscription.__proto__),
+      cancel: dart.fnType(async.Future$(dart.void), [])
+    }));
+    dart.setLibraryUri(MiniSubscription, I[1]);
+    dart.setFieldSignature(MiniSubscription, () => ({
+      __proto__: dart.getFields(MiniSubscription.__proto__),
+      data: dart.finalFieldType(dart.fnType(dart.void, [T])),
+      onError: dart.finalFieldType(dart.nullable(core.Function)),
+      onDone: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+      cancelOnError: dart.finalFieldType(core.bool),
+      listener: dart.finalFieldType(rx_stream.FastList$(T))
+    }));
+    return MiniSubscription;
+  });
+  rx_stream.MiniSubscription = rx_stream.MiniSubscription$();
+  dart.addTypeTests(rx_stream.MiniSubscription, _is_MiniSubscription_default);
+  var listenable = dart.privateName(rx_stream, "MiniStream.listenable");
+  var __MiniStream__value = dart.privateName(rx_stream, "_#MiniStream#_value");
+  var __MiniStream__value_isSet = dart.privateName(rx_stream, "_#MiniStream#_value#isSet");
+  var _isClosed = dart.privateName(rx_stream, "_isClosed");
+  const _is_MiniStream_default = Symbol('_is_MiniStream_default');
+  rx_stream.MiniStream$ = dart.generic(T => {
+    var FastListOfT = () => (FastListOfT = dart.constFn(rx_stream.FastList$(T)))();
+    var MiniSubscriptionOfT = () => (MiniSubscriptionOfT = dart.constFn(rx_stream.MiniSubscription$(T)))();
+    class MiniStream extends core.Object {
+      get listenable() {
+        return this[listenable];
+      }
+      set listenable(value) {
+        this[listenable] = FastListOfT().as(value);
+      }
+      get [_value]() {
+        let t0;
+        return this[__MiniStream__value_isSet] ? (t0 = this[__MiniStream__value], t0) : dart.throw(new _internal.LateError.fieldNI("_value"));
+      }
+      set [_value](t0) {
+        this[__MiniStream__value_isSet] = true;
+        this[__MiniStream__value] = t0;
+      }
+      get value() {
+        return this[_value];
+      }
+      set value(val) {
+        T.as(val);
+        this.add(val);
+      }
+      add(event) {
+        T.as(event);
+        this[_value] = event;
+        this.listenable[_notifyData](event);
+      }
+      addError(error, stackTrace = null) {
+        this.listenable[_notifyError](error, stackTrace);
+      }
+      get length() {
+        return this.listenable.length;
+      }
+      get hasListeners() {
+        return this.listenable.isNotEmpty;
+      }
+      get isClosed() {
+        return this[_isClosed];
+      }
+      listen(onData, opts) {
+        let onError = opts && 'onError' in opts ? opts.onError : null;
+        let onDone = opts && 'onDone' in opts ? opts.onDone : null;
+        let cancelOnError = opts && 'cancelOnError' in opts ? opts.cancelOnError : false;
+        let subs = new (MiniSubscriptionOfT()).new(onData, onError, onDone, cancelOnError, this.listenable);
+        this.listenable.addListener(subs);
+        return subs;
+      }
+      close() {
+        if (this[_isClosed]) {
+          dart.throw("You can not close a closed Stream");
+        }
+        this.listenable[_notifyDone]();
+        this.listenable.clear();
+        this[_isClosed] = true;
+      }
+    }
+    (MiniStream.new = function() {
+      this[listenable] = new (FastListOfT()).new();
+      this[__MiniStream__value] = null;
+      this[__MiniStream__value_isSet] = false;
+      this[_isClosed] = false;
+      ;
+    }).prototype = MiniStream.prototype;
+    dart.addTypeTests(MiniStream);
+    MiniStream.prototype[_is_MiniStream_default] = true;
+    dart.addTypeCaches(MiniStream);
+    dart.setMethodSignature(MiniStream, () => ({
+      __proto__: dart.getMethods(MiniStream.__proto__),
+      add: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      addError: dart.fnType(dart.void, [core.Object], [dart.nullable(core.StackTrace)]),
+      listen: dart.fnType(rx_stream.MiniSubscription$(T), [dart.fnType(dart.void, [T])], {cancelOnError: core.bool, onDone: dart.nullable(dart.fnType(dart.void, [])), onError: dart.nullable(core.Function)}, {}),
+      close: dart.fnType(dart.void, [])
+    }));
+    dart.setGetterSignature(MiniStream, () => ({
+      __proto__: dart.getGetters(MiniStream.__proto__),
+      [_value]: T,
+      value: T,
+      length: core.int,
+      hasListeners: core.bool,
+      isClosed: core.bool
+    }));
+    dart.setSetterSignature(MiniStream, () => ({
+      __proto__: dart.getSetters(MiniStream.__proto__),
+      [_value]: T,
+      value: dart.nullable(core.Object)
+    }));
+    dart.setLibraryUri(MiniStream, I[1]);
+    dart.setFieldSignature(MiniStream, () => ({
+      __proto__: dart.getFields(MiniStream.__proto__),
+      listenable: dart.fieldType(rx_stream.FastList$(T)),
+      [__MiniStream__value]: dart.fieldType(dart.nullable(T)),
+      [__MiniStream__value_isSet]: dart.fieldType(core.bool),
+      [_isClosed]: dart.fieldType(core.bool)
+    }));
+    return MiniStream;
+  });
+  rx_stream.MiniStream = rx_stream.MiniStream$();
+  dart.addTypeTests(rx_stream.MiniStream, _is_MiniStream_default);
+  var _head = dart.privateName(rx_stream, "_head");
+  var _elementAt = dart.privateName(rx_stream, "_elementAt");
+  var _removeAt = dart.privateName(rx_stream, "_removeAt");
+  const _is_FastList_default = Symbol('_is_FastList_default');
+  rx_stream.FastList$ = dart.generic(T => {
+    var TTovoid = () => (TTovoid = dart.constFn(dart.fnType(dart.void, [T])))();
+    var MiniSubscriptionOfT = () => (MiniSubscriptionOfT = dart.constFn(rx_stream.MiniSubscription$(T)))();
+    var NodeOfMiniSubscriptionOfT = () => (NodeOfMiniSubscriptionOfT = dart.constFn(rx_stream.Node$(MiniSubscriptionOfT())))();
+    class FastList extends core.Object {
+      [_notifyData](data) {
+        let t4, t3, t2, t1, t1$;
+        T.as(data);
+        let currentNode = this[_head];
+        do {
+          t1 = currentNode;
+          t1 == null ? null : (t2 = t1.data, t2 == null ? null : (t3 = t2, t4 = data, TTovoid().as(t3.data)(t4)));
+          currentNode = (t1$ = currentNode, t1$ == null ? null : t1$.next);
+        } while (currentNode != null);
+      }
+      [_notifyDone]() {
+        let t3, t2, t1, t1$;
+        let currentNode = this[_head];
+        do {
+          t1 = currentNode;
+          t1 == null ? null : (t2 = t1.data, t2 == null ? null : (t3 = t2.onDone, t3 == null ? null : t3()));
+          currentNode = (t1$ = currentNode, t1$ == null ? null : t1$.next);
+        } while (currentNode != null);
+      }
+      [_notifyError](error, stackTrace = null) {
+        let t1;
+        let currentNode = this[_head];
+        while (currentNode != null) {
+          t1 = dart.nullCheck(currentNode.data).onError;
+          t1 == null ? null : dart.dcall(t1, [error, stackTrace]);
+          currentNode = currentNode.next;
+        }
+      }
+      get isEmpty() {
+        return this[_head] == null;
+      }
+      get isNotEmpty() {
+        return !this.isEmpty;
+      }
+      get length() {
+        let length = 0;
+        let currentNode = this[_head];
+        while (currentNode != null) {
+          currentNode = currentNode.next;
+          length = length + 1;
+        }
+        return length;
+      }
+      [_elementAt](position) {
+        if (this.isEmpty || this.length < position || position < 0) return null;
+        let node = this[_head];
+        let current = 0;
+        while (current !== position) {
+          node = dart.nullCheck(node).next;
+          current = current + 1;
+        }
+        return dart.nullCheck(node).data;
+      }
+      addListener(data) {
+        MiniSubscriptionOfT().as(data);
+        let newNode = new (NodeOfMiniSubscriptionOfT()).new({data: data});
+        if (this.isEmpty) {
+          this[_head] = newNode;
+        } else {
+          let currentNode = dart.nullCheck(this[_head]);
+          while (currentNode.next != null) {
+            currentNode = dart.nullCheck(currentNode.next);
+          }
+          currentNode.next = newNode;
+        }
+      }
+      contains(element) {
+        T.as(element);
+        let length = this.length;
+        for (let i = 0; i < length; i = i + 1) {
+          if (dart.equals(this[_elementAt](i), element)) return true;
+          if (length !== this.length) {
+            dart.throw(new core.ConcurrentModificationError.new(this));
+          }
+        }
+        return false;
+      }
+      removeListener(element) {
+        MiniSubscriptionOfT().as(element);
+        let length = this.length;
+        for (let i = 0; i < length; i = i + 1) {
+          if (dart.equals(this[_elementAt](i), element)) {
+            this[_removeAt](i);
+            break;
+          }
+        }
+      }
+      clear() {
+        let length = this.length;
+        for (let i = 0; i < length; i = i + 1) {
+          this[_removeAt](i);
+        }
+      }
+      [_removeAt](position) {
+        let index = 0;
+        let currentNode = this[_head];
+        let previousNode = null;
+        if (this.isEmpty || this.length < position || position < 0) {
+          dart.throw(core.Exception.new("Invalid position"));
+        } else if (position === 0) {
+          this[_head] = dart.nullCheck(this[_head]).next;
+        } else {
+          while (index !== position) {
+            previousNode = currentNode;
+            currentNode = dart.nullCheck(currentNode).next;
+            index = index + 1;
+          }
+          if (previousNode == null) {
+            this[_head] = null;
+          } else {
+            previousNode.next = dart.nullCheck(currentNode).next;
+          }
+          dart.nullCheck(currentNode).next = null;
+        }
+        return dart.nullCheck(currentNode).data;
+      }
+    }
+    (FastList.new = function() {
+      this[_head] = null;
+      ;
+    }).prototype = FastList.prototype;
+    dart.addTypeTests(FastList);
+    FastList.prototype[_is_FastList_default] = true;
+    dart.addTypeCaches(FastList);
+    dart.setMethodSignature(FastList, () => ({
+      __proto__: dart.getMethods(FastList.__proto__),
+      [_notifyData]: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      [_notifyDone]: dart.fnType(dart.void, []),
+      [_notifyError]: dart.fnType(dart.void, [core.Object], [dart.nullable(core.StackTrace)]),
+      [_elementAt]: dart.fnType(dart.nullable(rx_stream.MiniSubscription$(T)), [core.int]),
+      addListener: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      contains: dart.fnType(core.bool, [dart.nullable(core.Object)]),
+      removeListener: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      clear: dart.fnType(dart.void, []),
+      [_removeAt]: dart.fnType(dart.nullable(rx_stream.MiniSubscription$(T)), [core.int])
+    }));
+    dart.setGetterSignature(FastList, () => ({
+      __proto__: dart.getGetters(FastList.__proto__),
+      isEmpty: core.bool,
+      isNotEmpty: core.bool,
+      length: core.int
+    }));
+    dart.setLibraryUri(FastList, I[1]);
+    dart.setFieldSignature(FastList, () => ({
+      __proto__: dart.getFields(FastList.__proto__),
+      [_head]: dart.fieldType(dart.nullable(rx_stream.Node$(rx_stream.MiniSubscription$(T))))
+    }));
+    return FastList;
+  });
+  rx_stream.FastList = rx_stream.FastList$();
+  dart.addTypeTests(rx_stream.FastList, _is_FastList_default);
+  dart.trackLibraries("packages/get/get_rx/src/rx_stream/rx_stream.dart", {
+    "package:get/get_rx/src/rx_stream/rx_stream.dart": rx_stream
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["scrollbar.dart"],"names":[],"mappings":"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","file":"../../../../../../../E:/packages/flutter/src/material/scrollbar.dart.lib.js"}');
+    "package:get/get_rx/src/rx_stream/rx_stream.dart": ["get_stream.dart", "mini_stream.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["get_stream.dart","mini_stream.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../E:/packages/get/get_rx/src/rx_stream/rx_stream.dart.lib.js"}');
   // Exports:
   return {
-    src__material__scrollbar: scrollbar$0
+    get_rx__src__rx_stream__rx_stream: rx_stream
   };
 }));
 
-//# sourceMappingURL=scrollbar.dart.lib.js.map
+//# sourceMappingURL=rx_stream.dart.lib.js.map

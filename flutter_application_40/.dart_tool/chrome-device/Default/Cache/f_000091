@@ -1,368 +1,572 @@
-define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/rendering/proxy_box.dart'], (function load__packages__flutter__src__rendering__proxy_sliver_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__rendering__proxy_box$46dart) {
+define(['dart_sdk', 'packages/get/get_core/src/get_main.dart', 'packages/get/get_core/src/smart_management.dart', 'packages/get/get_instance/src/lifecycle.dart'], (function load__packages__get__get_instance__src__get_instance_dart(dart_sdk, packages__get__get_core__src__get_main$46dart, packages__get__get_core__src__smart_management$46dart, packages__get__get_instance__src__lifecycle$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
   const _interceptors = dart_sdk._interceptors;
+  const collection = dart_sdk.collection;
+  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const layer = packages__flutter__src__rendering__layer$46dart.src__rendering__layer;
-  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
-  var proxy_sliver = Object.create(dart.library);
-  dart._checkModuleNullSafetyMode(false);
+  const get_main = packages__get__get_core__src__get_main$46dart.get_core__src__get_main;
+  const smart_management = packages__get__get_core__src__smart_management$46dart.get_core__src__smart_management;
+  const lifecycle = packages__get__get_instance__src__lifecycle$46dart.get_instance__src__lifecycle;
+  var get_instance = Object.create(dart.library);
+  var $toString = dartx.toString;
+  var $putIfAbsent = dartx.putIfAbsent;
+  var $add = dartx.add;
+  var $forEach = dartx.forEach;
+  var $containsKey = dartx.containsKey;
+  var $_get = dartx._get;
+  var $remove = dartx.remove;
+  var $clear = dartx.clear;
+  var $_set = dartx._set;
+  dart._checkModuleNullSafetyMode(true);
   var T = {
-    OpacityLayerN: () => (T.OpacityLayerN = dart.constFn(dart.nullable(layer.OpacityLayer)))(),
-    DiagnosticsPropertyOfbool: () => (T.DiagnosticsPropertyOfbool = dart.constFn(diagnostics.DiagnosticsProperty$(core.bool)))(),
-    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))()
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    StringAndStringNTovoid: () => (T.StringAndStringNTovoid = dart.constFn(dart.fnType(dart.void, [core.String, T.StringN()])))(),
+    VoidToStringN: () => (T.VoidToStringN = dart.constFn(dart.fnType(T.StringN(), [])))(),
+    _HashSetOfFunction: () => (T._HashSetOfFunction = dart.constFn(collection._HashSet$(core.Function)))(),
+    StringAnd_InstanceBuilderFactoryTovoid: () => (T.StringAnd_InstanceBuilderFactoryTovoid = dart.constFn(dart.fnType(dart.void, [core.String, get_instance._InstanceBuilderFactory])))(),
+    IdentityMapOfString$_InstanceBuilderFactory: () => (T.IdentityMapOfString$_InstanceBuilderFactory = dart.constFn(_js_helper.IdentityMap$(core.String, get_instance._InstanceBuilderFactory)))(),
+    IdentityMapOfString$StringN: () => (T.IdentityMapOfString$StringN = dart.constFn(_js_helper.IdentityMap$(core.String, T.StringN())))(),
+    HashSetOfFunction: () => (T.HashSetOfFunction = dart.constFn(collection.HashSet$(core.Function)))(),
+    IdentityMapOfStringN$HashSetOfFunction: () => (T.IdentityMapOfStringN$HashSetOfFunction = dart.constFn(_js_helper.IdentityMap$(T.StringN(), T.HashSetOfFunction())))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  var I = [
-    "file:///C:/flutter/packages/flutter/lib/src/rendering/proxy_sliver.dart",
-    "package:flutter/src/rendering/proxy_sliver.dart"
-  ];
-  const RenderSliver_RenderObjectWithChildMixin$36 = class RenderSliver_RenderObjectWithChildMixin extends sliver.RenderSliver {};
-  (RenderSliver_RenderObjectWithChildMixin$36.new = function() {
-    object.RenderObjectWithChildMixin$(sliver.RenderSliver)[dart.mixinNew].call(this);
-    RenderSliver_RenderObjectWithChildMixin$36.__proto__.new.call(this);
-  }).prototype = RenderSliver_RenderObjectWithChildMixin$36.prototype;
-  dart.applyMixin(RenderSliver_RenderObjectWithChildMixin$36, object.RenderObjectWithChildMixin$(sliver.RenderSliver));
-  proxy_sliver.RenderProxySliver = class RenderProxySliver extends RenderSliver_RenderObjectWithChildMixin$36 {
-    setupParentData(child) {
-      object.RenderObject.as(child);
-      if (child == null) dart.nullFailed(I[0], 44, 37, "child");
-      if (!sliver.SliverPhysicalParentData.is(child.parentData)) child.parentData = new sliver.SliverPhysicalParentData.new();
+  var I = ["package:get/get_instance/src/get_instance.dart"];
+  var isPermanent$ = dart.privateName(get_instance, "InstanceInfo.isPermanent");
+  var isSingleton$ = dart.privateName(get_instance, "InstanceInfo.isSingleton");
+  var isRegistered$ = dart.privateName(get_instance, "InstanceInfo.isRegistered");
+  var isPrepared$ = dart.privateName(get_instance, "InstanceInfo.isPrepared");
+  var isInit$ = dart.privateName(get_instance, "InstanceInfo.isInit");
+  get_instance.InstanceInfo = class InstanceInfo extends core.Object {
+    get isPermanent() {
+      return this[isPermanent$];
     }
-    performLayout() {
-      if (!(this.child != null)) dart.assertFailed(null, I[0], 51, 12, "child != null");
-      dart.nullCheck(this.child).layout(this.constraints, {parentUsesSize: true});
-      this.geometry = dart.nullCheck(this.child).geometry;
+    set isPermanent(value) {
+      super.isPermanent = value;
     }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 57, 30, "context");
-      if (offset == null) dart.nullFailed(I[0], 57, 46, "offset");
-      if (this.child != null) context.paintChild(dart.nullCheck(this.child), offset);
+    get isSingleton() {
+      return this[isSingleton$];
     }
-    hitTestChildren(result, opts) {
-      if (result == null) dart.nullFailed(I[0], 63, 44, "result");
-      let mainAxisPosition = opts && 'mainAxisPosition' in opts ? opts.mainAxisPosition : null;
-      if (mainAxisPosition == null) dart.nullFailed(I[0], 63, 69, "mainAxisPosition");
-      let crossAxisPosition = opts && 'crossAxisPosition' in opts ? opts.crossAxisPosition : null;
-      if (crossAxisPosition == null) dart.nullFailed(I[0], 63, 103, "crossAxisPosition");
-      return this.child != null && dart.notNull(dart.nullCheck(dart.nullCheck(this.child).geometry).hitTestExtent) > 0 && dart.test(dart.nullCheck(this.child).hitTest(result, {mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition}));
+    set isSingleton(value) {
+      super.isSingleton = value;
     }
-    childMainAxisPosition(child) {
-      sliver.RenderSliver.as(child);
-      if (child == null) dart.nullFailed(I[0], 74, 45, "child");
-      if (!(child != null)) dart.assertFailed(null, I[0], 75, 12, "child != null");
-      if (!dart.equals(child, this.child)) dart.assertFailed(null, I[0], 76, 12, "child == this.child");
-      return 0.0;
+    get isRegistered() {
+      return this[isRegistered$];
     }
-    applyPaintTransform(child, transform) {
-      object.RenderObject.as(child);
-      if (child == null) dart.nullFailed(I[0], 81, 41, "child");
-      if (transform == null) dart.nullFailed(I[0], 81, 56, "transform");
-      if (!(child != null)) dart.assertFailed(null, I[0], 82, 12, "child != null");
-      let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(child.parentData));
-      childParentData.applyPaintTransform(transform);
+    set isRegistered(value) {
+      super.isRegistered = value;
+    }
+    get isPrepared() {
+      return this[isPrepared$];
+    }
+    set isPrepared(value) {
+      super.isPrepared = value;
+    }
+    get isInit() {
+      return this[isInit$];
+    }
+    set isInit(value) {
+      super.isInit = value;
+    }
+    get isCreate() {
+      return !dart.nullCheck(this.isSingleton);
     }
   };
-  (proxy_sliver.RenderProxySliver.new = function(child = null) {
-    proxy_sliver.RenderProxySliver.__proto__.new.call(this);
-    this.child = child;
-  }).prototype = proxy_sliver.RenderProxySliver.prototype;
-  dart.addTypeTests(proxy_sliver.RenderProxySliver);
-  dart.addTypeCaches(proxy_sliver.RenderProxySliver);
-  dart.setMethodSignature(proxy_sliver.RenderProxySliver, () => ({
-    __proto__: dart.getMethods(proxy_sliver.RenderProxySliver.__proto__),
-    performLayout: dart.fnType(dart.void, [])
+  (get_instance.InstanceInfo.new = function(opts) {
+    let isPermanent = opts && 'isPermanent' in opts ? opts.isPermanent : null;
+    let isSingleton = opts && 'isSingleton' in opts ? opts.isSingleton : null;
+    let isRegistered = opts && 'isRegistered' in opts ? opts.isRegistered : null;
+    let isPrepared = opts && 'isPrepared' in opts ? opts.isPrepared : null;
+    let isInit = opts && 'isInit' in opts ? opts.isInit : null;
+    this[isPermanent$] = isPermanent;
+    this[isSingleton$] = isSingleton;
+    this[isRegistered$] = isRegistered;
+    this[isPrepared$] = isPrepared;
+    this[isInit$] = isInit;
+    ;
+  }).prototype = get_instance.InstanceInfo.prototype;
+  dart.addTypeTests(get_instance.InstanceInfo);
+  dart.addTypeCaches(get_instance.InstanceInfo);
+  dart.setGetterSignature(get_instance.InstanceInfo, () => ({
+    __proto__: dart.getGetters(get_instance.InstanceInfo.__proto__),
+    isCreate: core.bool
   }));
-  dart.setLibraryUri(proxy_sliver.RenderProxySliver, I[1]);
-  var _opacity = dart.privateName(proxy_sliver, "_opacity");
-  var _alwaysIncludeSemantics = dart.privateName(proxy_sliver, "_alwaysIncludeSemantics");
-  var _alpha = dart.privateName(proxy_sliver, "_alpha");
-  proxy_sliver.RenderSliverOpacity = class RenderSliverOpacity extends proxy_sliver.RenderProxySliver {
-    get alwaysNeedsCompositing() {
-      return this.child != null && this[_alpha] !== 0 && this[_alpha] !== 255;
+  dart.setLibraryUri(get_instance.InstanceInfo, I[0]);
+  dart.setFieldSignature(get_instance.InstanceInfo, () => ({
+    __proto__: dart.getFields(get_instance.InstanceInfo.__proto__),
+    isPermanent: dart.finalFieldType(dart.nullable(core.bool)),
+    isSingleton: dart.finalFieldType(dart.nullable(core.bool)),
+    isRegistered: dart.finalFieldType(core.bool),
+    isPrepared: dart.finalFieldType(core.bool),
+    isInit: dart.finalFieldType(dart.nullable(core.bool))
+  }));
+  var _insert = dart.privateName(get_instance, "_insert");
+  var _getKey = dart.privateName(get_instance, "_getKey");
+  var _startController = dart.privateName(get_instance, "_startController");
+  var _registerRouteInstance = dart.privateName(get_instance, "_registerRouteInstance");
+  var _initDependencies = dart.privateName(get_instance, "_initDependencies");
+  var _getDependency = dart.privateName(get_instance, "_getDependency");
+  get_instance.GetInstance = class GetInstance extends core.Object {
+    static new() {
+      let t0;
+      t0 = get_instance.GetInstance._getInstance;
+      return t0 == null ? get_instance.GetInstance._getInstance = new get_instance.GetInstance.__() : t0;
     }
-    get opacity() {
-      return this[_opacity];
+    call(T) {
+      return this.find(T);
     }
-    set opacity(value) {
-      if (value == null) dart.nullFailed(I[0], 131, 22, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 132, 12, "value != null");
-      if (!(dart.notNull(value) >= 0.0 && dart.notNull(value) <= 1.0)) dart.assertFailed(null, I[0], 133, 12, "value >= 0.0 && value <= 1.0");
-      if (this[_opacity] == value) return;
-      let didNeedCompositing = this.alwaysNeedsCompositing;
-      let wasVisible = this[_alpha] !== 0;
-      this[_opacity] = value;
-      this[_alpha] = ui.Color.getAlphaFromOpacity(this[_opacity]);
-      if (didNeedCompositing != this.alwaysNeedsCompositing) this.markNeedsCompositingBitsUpdate();
-      this.markNeedsPaint();
-      if (wasVisible !== (this[_alpha] !== 0) && !dart.test(this.alwaysIncludeSemantics)) this.markNeedsSemanticsUpdate();
+    printInstanceStack() {
+      let t1, t0;
+      t0 = get_main.Get;
+      t1 = get_instance.GetInstance._routesKey[$toString]();
+      t0.log(t1);
     }
-    get alwaysIncludeSemantics() {
-      return this[_alwaysIncludeSemantics];
+    injector(S, fn, opts) {
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let fenix = opts && 'fenix' in opts ? opts.fenix : false;
+      this.lazyPut(S, dart.fn(() => fn(this), dart.fnType(S, [])), {tag: tag, fenix: fenix});
     }
-    set alwaysIncludeSemantics(value) {
-      if (value == null) dart.nullFailed(I[0], 154, 35, "value");
-      if (value == this[_alwaysIncludeSemantics]) return;
-      this[_alwaysIncludeSemantics] = value;
-      this.markNeedsSemanticsUpdate();
+    putAsync(S, builder, opts) {
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let permanent = opts && 'permanent' in opts ? opts.permanent : false;
+      return async.async(S, (function* putAsync() {
+        return this.put(S, yield builder(), {tag: tag, permanent: permanent});
+      }).bind(this));
     }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 162, 30, "context");
-      if (offset == null) dart.nullFailed(I[0], 162, 46, "offset");
-      if (this.child != null && dart.test(dart.nullCheck(dart.nullCheck(this.child).geometry).visible)) {
-        if (this[_alpha] === 0) {
-          this.layer = null;
-          return;
+    put(S, dependency, opts) {
+      let t0;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let permanent = opts && 'permanent' in opts ? opts.permanent : false;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      this[_insert](S, {isSingleton: true, name: tag, permanent: permanent, builder: (t0 = builder, t0 == null ? dart.fn(() => dependency, dart.fnType(S, [])) : t0)});
+      return this.find(S, {tag: tag});
+    }
+    lazyPut(S, builder, opts) {
+      let t0;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let fenix = opts && 'fenix' in opts ? opts.fenix : null;
+      let permanent = opts && 'permanent' in opts ? opts.permanent : false;
+      this[_insert](S, {isSingleton: true, name: tag, permanent: permanent, builder: builder, fenix: (t0 = fenix, t0 == null ? get_main.Get.smartManagement === smart_management.SmartManagement.keepFactory : t0)});
+    }
+    create(S, builder, opts) {
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let permanent = opts && 'permanent' in opts ? opts.permanent : true;
+      this[_insert](S, {isSingleton: false, name: tag, builder: builder, permanent: permanent});
+    }
+    [_insert](S, opts) {
+      let isSingleton = opts && 'isSingleton' in opts ? opts.isSingleton : null;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let permanent = opts && 'permanent' in opts ? opts.permanent : false;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let fenix = opts && 'fenix' in opts ? opts.fenix : false;
+      let key = this[_getKey](dart.wrapType(S), name);
+      get_instance.GetInstance._singl[$putIfAbsent](key, dart.fn(() => new (get_instance._InstanceBuilderFactory$(S)).new(isSingleton, builder, permanent, false, fenix, name), dart.fnType(get_instance._InstanceBuilderFactory$(S), [])));
+    }
+    removeDependencyByRoute(routeName) {
+      let keysToRemove = T.JSArrayOfString().of([]);
+      get_instance.GetInstance._routesKey[$forEach](dart.fn((key, value) => {
+        if (value === routeName) {
+          keysToRemove[$add](key);
         }
-        if (this[_alpha] === 255) {
-          this.layer = null;
-          context.paintChild(dart.nullCheck(this.child), offset);
-          return;
+      }, T.StringAndStringNTovoid()));
+      if (get_instance.GetInstance._routesByCreate[$containsKey](routeName)) {
+        for (let onClose of dart.nullCheck(get_instance.GetInstance._routesByCreate[$_get](routeName))) {
+          dart.dcall(onClose, []);
         }
-        if (!dart.test(this.needsCompositing)) dart.assertFailed(null, I[0], 175, 14, "needsCompositing");
-        this.layer = context.pushOpacity(offset, this[_alpha], dart.bind(this, 'paint', super.paint), {oldLayer: T.OpacityLayerN().as(this.layer)});
+        dart.nullCheck(get_instance.GetInstance._routesByCreate[$_get](routeName)).clear();
+        get_instance.GetInstance._routesByCreate[$remove](routeName);
+      }
+      for (let element of keysToRemove) {
+        this.delete(dart.dynamic, {key: element});
+        get_instance.GetInstance._routesKey[$remove](element);
+      }
+      keysToRemove[$clear]();
+    }
+    reloadDependencyByRoute(routeName) {
+      let keysToRemove = T.JSArrayOfString().of([]);
+      get_instance.GetInstance._routesKey[$forEach](dart.fn((key, value) => {
+        if (value === routeName) {
+          keysToRemove[$add](key);
+        }
+      }, T.StringAndStringNTovoid()));
+      if (get_instance.GetInstance._routesByCreate[$containsKey](routeName)) {
+        for (let onClose of dart.nullCheck(get_instance.GetInstance._routesByCreate[$_get](routeName))) {
+          dart.dcall(onClose, []);
+        }
+        dart.nullCheck(get_instance.GetInstance._routesByCreate[$_get](routeName)).clear();
+        get_instance.GetInstance._routesByCreate[$remove](routeName);
+      }
+      for (let element of keysToRemove) {
+        this.reload(dart.dynamic, {key: element, closeInstance: false});
+      }
+      keysToRemove[$clear]();
+    }
+    [_initDependencies](S, opts) {
+      let name = opts && 'name' in opts ? opts.name : null;
+      let key = this[_getKey](dart.wrapType(S), name);
+      let isInit = dart.nullCheck(get_instance.GetInstance._singl[$_get](key)).isInit;
+      let i = null;
+      if (!isInit) {
+        i = this[_startController](S, {tag: name});
+        if (dart.nullCheck(dart.nullCheck(get_instance.GetInstance._singl[$_get](key)).isSingleton)) {
+          dart.nullCheck(get_instance.GetInstance._singl[$_get](key)).isInit = true;
+          if (get_main.Get.smartManagement !== smart_management.SmartManagement.onlyBuilder) {
+            this[_registerRouteInstance](S, {tag: name});
+          }
+        }
+      }
+      return i;
+    }
+    [_registerRouteInstance](S, opts) {
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      get_instance.GetInstance._routesKey[$putIfAbsent](this[_getKey](dart.wrapType(S), tag), dart.fn(() => get_main.Get.reference, T.VoidToStringN()));
+    }
+    getInstanceInfo(S, opts) {
+      let t0, t0$, t0$0, t0$1, t0$2;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let build = this[_getDependency](S, {tag: tag});
+      return new get_instance.InstanceInfo.new({isPermanent: (t0 = build, t0 == null ? null : t0.permanent), isSingleton: (t0$ = build, t0$ == null ? null : t0$.isSingleton), isRegistered: this.isRegistered(S, {tag: tag}), isPrepared: !dart.test((t0$1 = (t0$0 = build, t0$0 == null ? null : t0$0.isInit), t0$1 == null ? true : t0$1)), isInit: (t0$2 = build, t0$2 == null ? null : t0$2.isInit)});
+    }
+    [_getDependency](S, opts) {
+      let t0, t2, t1, t0$;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let newKey = (t0 = key, t0 == null ? this[_getKey](dart.wrapType(S), tag) : t0);
+      if (!get_instance.GetInstance._singl[$containsKey](newKey)) {
+        t0$ = get_main.Get;
+        t1 = "Instance \"" + newKey + "\" is not registered.";
+        t2 = true;
+        t0$.log(t1, {isError: t2});
+        return null;
+      } else {
+        return get_instance.GetInstance._singl[$_get](newKey);
       }
     }
-    visitChildrenForSemantics(visitor) {
-      if (visitor == null) dart.nullFailed(I[0], 186, 54, "visitor");
-      if (this.child != null && (this[_alpha] !== 0 || dart.test(this.alwaysIncludeSemantics))) visitor(dart.nullCheck(this.child));
+    [_startController](S, opts) {
+      let t1, t0, t1$, t0$, t1$0, t0$0, t0$1;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let key = this[_getKey](dart.wrapType(S), tag);
+      let i = S.as(dart.nullCheck(get_instance.GetInstance._singl[$_get](key)).getDependency());
+      if (lifecycle.GetLifeCycleBase.is(i)) {
+        i.onStart.call();
+        if (tag == null) {
+          t0 = get_main.Get;
+          t1 = "Instance \"" + dart.str(dart.wrapType(S)) + "\" has been initialized";
+          t0.log(t1);
+        } else {
+          t0$ = get_main.Get;
+          t1$ = "Instance \"" + dart.str(dart.wrapType(S)) + "\" with tag \"" + dart.str(tag) + "\" has been initialized";
+          t0$.log(t1$);
+        }
+        if (!dart.nullCheck(dart.nullCheck(get_instance.GetInstance._singl[$_get](key)).isSingleton)) {
+          t0$0 = get_instance.GetInstance._routesByCreate;
+          t1$0 = get_main.Get.reference;
+          t0$0[$_get](t1$0) == null ? t0$0[$_set](t1$0, new (T._HashSetOfFunction()).new()) : null;
+          dart.nullCheck(get_instance.GetInstance._routesByCreate[$_get](get_main.Get.reference)).add((t0$1 = i.onDelete, t0$1 === null ? null : dart.bind(t0$1, 'call')));
+        }
+      }
+      return i;
     }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 192, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.DoubleProperty.new("opacity", this.opacity));
-      properties.add(new diagnostics.FlagProperty.new("alwaysIncludeSemantics", {value: this.alwaysIncludeSemantics, ifTrue: "alwaysIncludeSemantics"}));
+    putOrFind(S, dep, opts) {
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let key = this[_getKey](dart.wrapType(S), tag);
+      if (get_instance.GetInstance._singl[$containsKey](key)) {
+        return S.as(dart.nullCheck(get_instance.GetInstance._singl[$_get](key)).getDependency());
+      } else {
+        return get_instance.GetInstance.new().put(S, dep(), {tag: tag});
+      }
     }
-  };
-  (proxy_sliver.RenderSliverOpacity.new = function(opts) {
-    let opacity = opts && 'opacity' in opts ? opts.opacity : 1;
-    if (opacity == null) dart.nullFailed(I[0], 103, 12, "opacity");
-    let alwaysIncludeSemantics = opts && 'alwaysIncludeSemantics' in opts ? opts.alwaysIncludeSemantics : false;
-    if (alwaysIncludeSemantics == null) dart.nullFailed(I[0], 104, 10, "alwaysIncludeSemantics");
-    let sliver = opts && 'sliver' in opts ? opts.sliver : null;
-    if (!(opacity != null && dart.notNull(opacity) >= 0.0 && dart.notNull(opacity) <= 1.0)) dart.assertFailed(null, I[0], 106, 15, "opacity != null && opacity >= 0.0 && opacity <= 1.0");
-    if (!(alwaysIncludeSemantics != null)) dart.assertFailed(null, I[0], 107, 15, "alwaysIncludeSemantics != null");
-    this[_opacity] = opacity;
-    this[_alwaysIncludeSemantics] = alwaysIncludeSemantics;
-    this[_alpha] = ui.Color.getAlphaFromOpacity(opacity);
-    proxy_sliver.RenderSliverOpacity.__proto__.new.call(this);
-    this.child = sliver;
-  }).prototype = proxy_sliver.RenderSliverOpacity.prototype;
-  dart.addTypeTests(proxy_sliver.RenderSliverOpacity);
-  dart.addTypeCaches(proxy_sliver.RenderSliverOpacity);
-  dart.setGetterSignature(proxy_sliver.RenderSliverOpacity, () => ({
-    __proto__: dart.getGetters(proxy_sliver.RenderSliverOpacity.__proto__),
-    opacity: core.double,
-    alwaysIncludeSemantics: core.bool
-  }));
-  dart.setSetterSignature(proxy_sliver.RenderSliverOpacity, () => ({
-    __proto__: dart.getSetters(proxy_sliver.RenderSliverOpacity.__proto__),
-    opacity: core.double,
-    alwaysIncludeSemantics: core.bool
-  }));
-  dart.setLibraryUri(proxy_sliver.RenderSliverOpacity, I[1]);
-  dart.setFieldSignature(proxy_sliver.RenderSliverOpacity, () => ({
-    __proto__: dart.getFields(proxy_sliver.RenderSliverOpacity.__proto__),
-    [_alpha]: dart.fieldType(core.int),
-    [_opacity]: dart.fieldType(core.double),
-    [_alwaysIncludeSemantics]: dart.fieldType(core.bool)
-  }));
-  var _ignoring = dart.privateName(proxy_sliver, "_ignoring");
-  var _ignoringSemantics = dart.privateName(proxy_sliver, "_ignoringSemantics");
-  var _effectiveIgnoringSemantics = dart.privateName(proxy_sliver, "_effectiveIgnoringSemantics");
-  proxy_sliver.RenderSliverIgnorePointer = class RenderSliverIgnorePointer extends proxy_sliver.RenderProxySliver {
-    get ignoring() {
-      return this[_ignoring];
-    }
-    set ignoring(value) {
-      if (value == null) dart.nullFailed(I[0], 230, 21, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 231, 12, "value != null");
-      if (value == this[_ignoring]) return;
-      this[_ignoring] = value;
-      if (this[_ignoringSemantics] == null || !dart.nullCheck(this[_ignoringSemantics])) this.markNeedsSemanticsUpdate();
-    }
-    get ignoringSemantics() {
-      return this[_ignoringSemantics];
-    }
-    set ignoringSemantics(value) {
-      if (value == this[_ignoringSemantics]) return;
-      let oldEffectiveValue = this[_effectiveIgnoringSemantics];
-      this[_ignoringSemantics] = value;
-      if (oldEffectiveValue != this[_effectiveIgnoringSemantics]) this.markNeedsSemanticsUpdate();
-    }
-    get [_effectiveIgnoringSemantics]() {
+    find(S, opts) {
       let t0;
-      t0 = this.ignoringSemantics;
-      return t0 == null ? this.ignoring : t0;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let key = this[_getKey](dart.wrapType(S), tag);
+      if (this.isRegistered(S, {tag: tag})) {
+        if (get_instance.GetInstance._singl[$_get](key) == null) {
+          if (tag == null) {
+            dart.throw("Class \"" + dart.str(dart.wrapType(S)) + "\" is not registered");
+          } else {
+            dart.throw("Class \"" + dart.str(dart.wrapType(S)) + "\" with tag \"" + dart.str(tag) + "\" is not registered");
+          }
+        }
+        let i = this[_initDependencies](S, {name: tag});
+        t0 = i;
+        return t0 == null ? S.as(dart.nullCheck(get_instance.GetInstance._singl[$_get](key)).getDependency()) : t0;
+      } else {
+        dart.throw("\"" + dart.str(dart.wrapType(S)) + "\" not found. You need to call \"Get.put(" + dart.str(dart.wrapType(S)) + "())\" or \"Get.lazyPut(()=>" + dart.str(dart.wrapType(S)) + "())\"");
+      }
     }
-    hitTest(result, opts) {
-      if (result == null) dart.nullFailed(I[0], 259, 36, "result");
-      let mainAxisPosition = opts && 'mainAxisPosition' in opts ? opts.mainAxisPosition : null;
-      if (mainAxisPosition == null) dart.nullFailed(I[0], 259, 61, "mainAxisPosition");
-      let crossAxisPosition = opts && 'crossAxisPosition' in opts ? opts.crossAxisPosition : null;
-      if (crossAxisPosition == null) dart.nullFailed(I[0], 259, 95, "crossAxisPosition");
-      return !dart.test(this.ignoring) && dart.test(super.hitTest(result, {mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition}));
+    [_getKey](type, name) {
+      return name == null ? type.toString() : type.toString() + dart.notNull(name);
     }
-    visitChildrenForSemantics(visitor) {
-      if (visitor == null) dart.nullFailed(I[0], 269, 54, "visitor");
-      if (this.child != null && !dart.test(this[_effectiveIgnoringSemantics])) visitor(dart.nullCheck(this.child));
+    reset(opts) {
+      let clearFactory = opts && 'clearFactory' in opts ? opts.clearFactory : true;
+      let clearRouteBindings = opts && 'clearRouteBindings' in opts ? opts.clearRouteBindings : true;
+      if (clearRouteBindings) get_instance.GetInstance._routesKey[$clear]();
+      get_instance.GetInstance._singl[$clear]();
+      return true;
     }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 275, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T.DiagnosticsPropertyOfbool()).new("ignoring", this.ignoring));
-      properties.add(new (T.DiagnosticsPropertyOfbool()).new("ignoringSemantics", this[_effectiveIgnoringSemantics], {description: this.ignoringSemantics == null ? "implicitly " + dart.str(this[_effectiveIgnoringSemantics]) : null}));
+    delete(S, opts) {
+      let t0, t2, t1, t0$, t2$, t1$, t0$0, t1$0, t0$1, t2$0, t1$1, t0$2, t1$2, t0$3;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let force = opts && 'force' in opts ? opts.force : false;
+      let newKey = (t0 = key, t0 == null ? this[_getKey](dart.wrapType(S), tag) : t0);
+      if (!get_instance.GetInstance._singl[$containsKey](newKey)) {
+        t0$ = get_main.Get;
+        t1 = "Instance \"" + newKey + "\" already removed.";
+        t2 = true;
+        t0$.log(t1, {isError: t2});
+        return false;
+      }
+      let builder = dart.nullCheck(get_instance.GetInstance._singl[$_get](newKey));
+      if (builder.permanent && !force) {
+        t0$0 = get_main.Get;
+        t1$ = "\"" + newKey + "\" has been marked as permanent, SmartManagement is not authorized to delete it.";
+        t2$ = true;
+        t0$0.log(t1$, {isError: t2$});
+        return false;
+      }
+      let i = builder.dependency;
+      if (lifecycle.GetxServiceMixin.is(i) && !force) {
+        return false;
+      }
+      if (lifecycle.GetLifeCycleBase.is(i)) {
+        i.onDelete.call();
+        t0$1 = get_main.Get;
+        t1$0 = "\"" + newKey + "\" onDelete() called";
+        t0$1.log(t1$0);
+      }
+      if (builder.fenix) {
+        builder.dependency = null;
+        builder.isInit = false;
+      } else {
+        get_instance.GetInstance._singl[$remove](newKey);
+        if (get_instance.GetInstance._singl[$containsKey](newKey)) {
+          t0$2 = get_main.Get;
+          t1$1 = "Error removing object \"" + newKey + "\"";
+          t2$0 = true;
+          t0$2.log(t1$1, {isError: t2$0});
+        } else {
+          t0$3 = get_main.Get;
+          t1$2 = "\"" + newKey + "\" deleted from memory";
+          t0$3.log(t1$2);
+        }
+      }
+      return true;
+    }
+    deleteAll(opts) {
+      let force = opts && 'force' in opts ? opts.force : false;
+      get_instance.GetInstance._singl[$forEach](dart.fn((key, value) => {
+        this.delete(dart.dynamic, {key: key, force: force});
+      }, T.StringAnd_InstanceBuilderFactoryTovoid()));
+    }
+    reloadAll(opts) {
+      let force = opts && 'force' in opts ? opts.force : false;
+      get_instance.GetInstance._singl[$forEach](dart.fn((key, value) => {
+        let t1, t0, t1$, t0$;
+        if (value.permanent && !force) {
+          t0 = get_main.Get;
+          t1 = "Instance \"" + key + "\" is permanent. Skipping reload";
+          t0.log(t1);
+        } else {
+          value.dependency = null;
+          value.isInit = false;
+          t0$ = get_main.Get;
+          t1$ = "Instance \"" + key + "\" was reloaded.";
+          t0$.log(t1$);
+        }
+      }, T.StringAnd_InstanceBuilderFactoryTovoid()));
+    }
+    reload(S, opts) {
+      let t0, t2, t1, t0$, t1$, t0$0, t1$0, t0$1;
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let force = opts && 'force' in opts ? opts.force : false;
+      let closeInstance = opts && 'closeInstance' in opts ? opts.closeInstance : true;
+      let newKey = (t0 = key, t0 == null ? this[_getKey](dart.wrapType(S), tag) : t0);
+      let builder = this[_getDependency](S, {tag: tag, key: newKey});
+      if (builder == null) return;
+      if (builder.permanent && !force) {
+        t0$ = get_main.Get;
+        t1 = "Instance \"" + newKey + "\" is permanent. Use [force = true] to force the restart.";
+        t2 = true;
+        t0$.log(t1, {isError: t2});
+        return;
+      }
+      let i = builder.dependency;
+      if (lifecycle.GetxServiceMixin.is(i) && !force) {
+        return;
+      }
+      if (lifecycle.GetLifeCycleBase.is(i) && closeInstance) {
+        i.onDelete.call();
+        t0$0 = get_main.Get;
+        t1$ = "\"" + newKey + "\" onDelete() called";
+        t0$0.log(t1$);
+      }
+      builder.dependency = null;
+      builder.isInit = false;
+      t0$1 = get_main.Get;
+      t1$0 = "Instance \"" + newKey + "\" was restarted.";
+      t0$1.log(t1$0);
+    }
+    isRegistered(S, opts) {
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      return get_instance.GetInstance._singl[$containsKey](this[_getKey](dart.wrapType(S), tag));
+    }
+    isPrepared(S, opts) {
+      let tag = opts && 'tag' in opts ? opts.tag : null;
+      let newKey = this[_getKey](dart.wrapType(S), tag);
+      let builder = this[_getDependency](S, {tag: tag, key: newKey});
+      if (builder == null) {
+        return false;
+      }
+      if (!builder.isInit) {
+        return true;
+      }
+      return false;
     }
   };
-  (proxy_sliver.RenderSliverIgnorePointer.new = function(opts) {
-    let sliver = opts && 'sliver' in opts ? opts.sliver : null;
-    let ignoring = opts && 'ignoring' in opts ? opts.ignoring : true;
-    if (ignoring == null) dart.nullFailed(I[0], 216, 10, "ignoring");
-    let ignoringSemantics = opts && 'ignoringSemantics' in opts ? opts.ignoringSemantics : null;
-    if (!(ignoring != null)) dart.assertFailed(null, I[0], 218, 15, "ignoring != null");
-    this[_ignoring] = ignoring;
-    this[_ignoringSemantics] = ignoringSemantics;
-    proxy_sliver.RenderSliverIgnorePointer.__proto__.new.call(this);
-    this.child = sliver;
-  }).prototype = proxy_sliver.RenderSliverIgnorePointer.prototype;
-  dart.addTypeTests(proxy_sliver.RenderSliverIgnorePointer);
-  dart.addTypeCaches(proxy_sliver.RenderSliverIgnorePointer);
-  dart.setGetterSignature(proxy_sliver.RenderSliverIgnorePointer, () => ({
-    __proto__: dart.getGetters(proxy_sliver.RenderSliverIgnorePointer.__proto__),
-    ignoring: core.bool,
-    ignoringSemantics: dart.nullable(core.bool),
-    [_effectiveIgnoringSemantics]: core.bool
+  (get_instance.GetInstance.__ = function() {
+    ;
+  }).prototype = get_instance.GetInstance.prototype;
+  dart.addTypeTests(get_instance.GetInstance);
+  dart.addTypeCaches(get_instance.GetInstance);
+  dart.setMethodSignature(get_instance.GetInstance, () => ({
+    __proto__: dart.getMethods(get_instance.GetInstance.__proto__),
+    call: dart.gFnType(T => [T, []], T => [dart.nullable(core.Object)]),
+    printInstanceStack: dart.fnType(dart.void, []),
+    injector: dart.gFnType(S => [dart.void, [dart.fnType(S, [get_instance.GetInstance])], {fenix: core.bool, tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    putAsync: dart.gFnType(S => [async.Future$(S), [dart.fnType(async.Future$(S), [])], {permanent: core.bool, tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    put: dart.gFnType(S => [S, [S], {builder: dart.nullable(dart.fnType(S, [])), permanent: core.bool, tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    lazyPut: dart.gFnType(S => [dart.void, [dart.fnType(S, [])], {fenix: dart.nullable(core.bool), permanent: core.bool, tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    create: dart.gFnType(S => [dart.void, [dart.fnType(S, [])], {permanent: core.bool, tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    [_insert]: dart.gFnType(S => [dart.void, [], {fenix: core.bool, isSingleton: dart.nullable(core.bool), name: dart.nullable(core.String), permanent: core.bool}, {builder: dart.fnType(S, [])}], S => [dart.nullable(core.Object)]),
+    removeDependencyByRoute: dart.fnType(dart.void, [core.String]),
+    reloadDependencyByRoute: dart.fnType(dart.void, [core.String]),
+    [_initDependencies]: dart.gFnType(S => [dart.nullable(S), [], {name: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    [_registerRouteInstance]: dart.gFnType(S => [dart.void, [], {tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    getInstanceInfo: dart.gFnType(S => [get_instance.InstanceInfo, [], {tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    [_getDependency]: dart.gFnType(S => [dart.nullable(get_instance._InstanceBuilderFactory), [], {key: dart.nullable(core.String), tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    [_startController]: dart.gFnType(S => [S, [], {tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    putOrFind: dart.gFnType(S => [S, [dart.fnType(S, [])], {tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    find: dart.gFnType(S => [S, [], {tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    [_getKey]: dart.fnType(core.String, [core.Type, dart.nullable(core.String)]),
+    reset: dart.fnType(core.bool, [], {clearFactory: core.bool, clearRouteBindings: core.bool}, {}),
+    delete: dart.gFnType(S => [core.bool, [], {force: core.bool, key: dart.nullable(core.String), tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    deleteAll: dart.fnType(dart.void, [], {force: core.bool}, {}),
+    reloadAll: dart.fnType(dart.void, [], {force: core.bool}, {}),
+    reload: dart.gFnType(S => [dart.void, [], {closeInstance: core.bool, force: core.bool, key: dart.nullable(core.String), tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    isRegistered: dart.gFnType(S => [core.bool, [], {tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)]),
+    isPrepared: dart.gFnType(S => [core.bool, [], {tag: dart.nullable(core.String)}, {}], S => [dart.nullable(core.Object)])
   }));
-  dart.setSetterSignature(proxy_sliver.RenderSliverIgnorePointer, () => ({
-    __proto__: dart.getSetters(proxy_sliver.RenderSliverIgnorePointer.__proto__),
-    ignoring: core.bool,
-    ignoringSemantics: dart.nullable(core.bool)
-  }));
-  dart.setLibraryUri(proxy_sliver.RenderSliverIgnorePointer, I[1]);
-  dart.setFieldSignature(proxy_sliver.RenderSliverIgnorePointer, () => ({
-    __proto__: dart.getFields(proxy_sliver.RenderSliverIgnorePointer.__proto__),
-    [_ignoring]: dart.fieldType(core.bool),
-    [_ignoringSemantics]: dart.fieldType(dart.nullable(core.bool))
-  }));
-  var _offstage = dart.privateName(proxy_sliver, "_offstage");
-  proxy_sliver.RenderSliverOffstage = class RenderSliverOffstage extends proxy_sliver.RenderProxySliver {
-    get offstage() {
-      return this[_offstage];
+  dart.setLibraryUri(get_instance.GetInstance, I[0]);
+  dart.defineLazy(get_instance.GetInstance, {
+    /*get_instance.GetInstance._getInstance*/get _getInstance() {
+      return null;
+    },
+    set _getInstance(_) {},
+    /*get_instance.GetInstance._singl*/get _singl() {
+      return new (T.IdentityMapOfString$_InstanceBuilderFactory()).new();
+    },
+    /*get_instance.GetInstance._routesKey*/get _routesKey() {
+      return new (T.IdentityMapOfString$StringN()).new();
+    },
+    /*get_instance.GetInstance._routesByCreate*/get _routesByCreate() {
+      return new (T.IdentityMapOfStringN$HashSetOfFunction()).new();
     }
-    set offstage(value) {
-      if (value == null) dart.nullFailed(I[0], 305, 21, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 306, 12, "value != null");
-      if (value == this[_offstage]) return;
-      this[_offstage] = value;
-      this.markNeedsLayoutForSizedByParentChange();
+  }, false);
+  var dependency = dart.privateName(get_instance, "_InstanceBuilderFactory.dependency");
+  var builderFunc$ = dart.privateName(get_instance, "_InstanceBuilderFactory.builderFunc");
+  var _showInitLog = dart.privateName(get_instance, "_showInitLog");
+  const _is__InstanceBuilderFactory_default = Symbol('_is__InstanceBuilderFactory_default');
+  get_instance._InstanceBuilderFactory$ = dart.generic(S => {
+    var SN = () => (SN = dart.constFn(dart.nullable(S)))();
+    var VoidToS = () => (VoidToS = dart.constFn(dart.fnType(S, [])))();
+    class _InstanceBuilderFactory extends core.Object {
+      get dependency() {
+        return this[dependency];
+      }
+      set dependency(value) {
+        this[dependency] = SN().as(value);
+      }
+      get builderFunc() {
+        return this[builderFunc$];
+      }
+      set builderFunc(value) {
+        this[builderFunc$] = VoidToS().as(value);
+      }
+      [_showInitLog]() {
+        let t1, t0, t1$, t0$;
+        if (this.tag == null) {
+          t0 = get_main.Get;
+          t1 = "Instance \"" + dart.str(dart.wrapType(S)) + "\" has been created";
+          t0.log(t1);
+        } else {
+          t0$ = get_main.Get;
+          t1$ = "Instance \"" + dart.str(dart.wrapType(S)) + "\" has been created with tag \"" + dart.str(this.tag) + "\"";
+          t0$.log(t1$);
+        }
+      }
+      getDependency() {
+        if (dart.nullCheck(this.isSingleton)) {
+          if (this.dependency == null) {
+            this[_showInitLog]();
+            this.dependency = this.builderFunc();
+          }
+          return dart.nullCheck(this.dependency);
+        } else {
+          return this.builderFunc();
+        }
+      }
     }
-    performLayout() {
-      if (!(this.child != null)) dart.assertFailed(null, I[0], 315, 12, "child != null");
-      dart.nullCheck(this.child).layout(this.constraints, {parentUsesSize: true});
-      if (!dart.test(this.offstage))
-        this.geometry = dart.nullCheck(this.child).geometry;
-      else
-        this.geometry = sliver.SliverGeometry.zero;
-    }
-    hitTest(result, opts) {
-      if (result == null) dart.nullFailed(I[0], 324, 36, "result");
-      let mainAxisPosition = opts && 'mainAxisPosition' in opts ? opts.mainAxisPosition : null;
-      if (mainAxisPosition == null) dart.nullFailed(I[0], 324, 61, "mainAxisPosition");
-      let crossAxisPosition = opts && 'crossAxisPosition' in opts ? opts.crossAxisPosition : null;
-      if (crossAxisPosition == null) dart.nullFailed(I[0], 324, 95, "crossAxisPosition");
-      return !dart.test(this.offstage) && dart.test(super.hitTest(result, {mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition}));
-    }
-    hitTestChildren(result, opts) {
-      if (result == null) dart.nullFailed(I[0], 333, 44, "result");
-      let mainAxisPosition = opts && 'mainAxisPosition' in opts ? opts.mainAxisPosition : null;
-      if (mainAxisPosition == null) dart.nullFailed(I[0], 333, 69, "mainAxisPosition");
-      let crossAxisPosition = opts && 'crossAxisPosition' in opts ? opts.crossAxisPosition : null;
-      if (crossAxisPosition == null) dart.nullFailed(I[0], 333, 103, "crossAxisPosition");
-      return !dart.test(this.offstage) && this.child != null && dart.notNull(dart.nullCheck(dart.nullCheck(this.child).geometry).hitTestExtent) > 0 && dart.test(dart.nullCheck(this.child).hitTest(result, {mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition}));
-    }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 345, 30, "context");
-      if (offset == null) dart.nullFailed(I[0], 345, 46, "offset");
-      if (dart.test(this.offstage)) return;
-      context.paintChild(dart.nullCheck(this.child), offset);
-    }
-    visitChildrenForSemantics(visitor) {
-      if (visitor == null) dart.nullFailed(I[0], 352, 54, "visitor");
-      if (dart.test(this.offstage)) return;
-      super.visitChildrenForSemantics(visitor);
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 359, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T.DiagnosticsPropertyOfbool()).new("offstage", this.offstage));
-    }
-    debugDescribeChildren() {
-      if (this.child == null) return T.JSArrayOfDiagnosticsNode().of([]);
-      return T.JSArrayOfDiagnosticsNode().of([dart.nullCheck(this.child).toDiagnosticsNode({name: "child", style: dart.test(this.offstage) ? diagnostics.DiagnosticsTreeStyle.offstage : diagnostics.DiagnosticsTreeStyle.sparse})]);
-    }
-  };
-  (proxy_sliver.RenderSliverOffstage.new = function(opts) {
-    let offstage = opts && 'offstage' in opts ? opts.offstage : true;
-    if (offstage == null) dart.nullFailed(I[0], 288, 10, "offstage");
-    let sliver = opts && 'sliver' in opts ? opts.sliver : null;
-    if (!(offstage != null)) dart.assertFailed(null, I[0], 290, 15, "offstage != null");
-    this[_offstage] = offstage;
-    proxy_sliver.RenderSliverOffstage.__proto__.new.call(this);
-    this.child = sliver;
-  }).prototype = proxy_sliver.RenderSliverOffstage.prototype;
-  dart.addTypeTests(proxy_sliver.RenderSliverOffstage);
-  dart.addTypeCaches(proxy_sliver.RenderSliverOffstage);
-  dart.setGetterSignature(proxy_sliver.RenderSliverOffstage, () => ({
-    __proto__: dart.getGetters(proxy_sliver.RenderSliverOffstage.__proto__),
-    offstage: core.bool
-  }));
-  dart.setSetterSignature(proxy_sliver.RenderSliverOffstage, () => ({
-    __proto__: dart.getSetters(proxy_sliver.RenderSliverOffstage.__proto__),
-    offstage: core.bool
-  }));
-  dart.setLibraryUri(proxy_sliver.RenderSliverOffstage, I[1]);
-  dart.setFieldSignature(proxy_sliver.RenderSliverOffstage, () => ({
-    __proto__: dart.getFields(proxy_sliver.RenderSliverOffstage.__proto__),
-    [_offstage]: dart.fieldType(core.bool)
-  }));
-  const RenderProxySliver_RenderAnimatedOpacityMixin$36 = class RenderProxySliver_RenderAnimatedOpacityMixin extends proxy_sliver.RenderProxySliver {};
-  (RenderProxySliver_RenderAnimatedOpacityMixin$36.new = function(child) {
-    proxy_box.RenderAnimatedOpacityMixin$(sliver.RenderSliver)[dart.mixinNew].call(this);
-    RenderProxySliver_RenderAnimatedOpacityMixin$36.__proto__.new.call(this, child);
-  }).prototype = RenderProxySliver_RenderAnimatedOpacityMixin$36.prototype;
-  dart.applyMixin(RenderProxySliver_RenderAnimatedOpacityMixin$36, proxy_box.RenderAnimatedOpacityMixin$(sliver.RenderSliver));
-  proxy_sliver.RenderSliverAnimatedOpacity = class RenderSliverAnimatedOpacity extends RenderProxySliver_RenderAnimatedOpacityMixin$36 {};
-  (proxy_sliver.RenderSliverAnimatedOpacity.new = function(opts) {
-    let opacity = opts && 'opacity' in opts ? opts.opacity : null;
-    if (opacity == null) dart.nullFailed(I[0], 386, 32, "opacity");
-    let alwaysIncludeSemantics = opts && 'alwaysIncludeSemantics' in opts ? opts.alwaysIncludeSemantics : false;
-    if (alwaysIncludeSemantics == null) dart.nullFailed(I[0], 387, 10, "alwaysIncludeSemantics");
-    let sliver = opts && 'sliver' in opts ? opts.sliver : null;
-    if (!(opacity != null)) dart.assertFailed(null, I[0], 389, 15, "opacity != null");
-    if (!(alwaysIncludeSemantics != null)) dart.assertFailed(null, I[0], 390, 15, "alwaysIncludeSemantics != null");
-    proxy_sliver.RenderSliverAnimatedOpacity.__proto__.new.call(this);
-    this.opacity = opacity;
-    this.alwaysIncludeSemantics = alwaysIncludeSemantics;
-    this.child = sliver;
-  }).prototype = proxy_sliver.RenderSliverAnimatedOpacity.prototype;
-  dart.addTypeTests(proxy_sliver.RenderSliverAnimatedOpacity);
-  dart.addTypeCaches(proxy_sliver.RenderSliverAnimatedOpacity);
-  dart.setLibraryUri(proxy_sliver.RenderSliverAnimatedOpacity, I[1]);
-  dart.trackLibraries("packages/flutter/src/rendering/proxy_sliver.dart", {
-    "package:flutter/src/rendering/proxy_sliver.dart": proxy_sliver
+    (_InstanceBuilderFactory.new = function(isSingleton, builderFunc, permanent, isInit, fenix, tag) {
+      this[dependency] = null;
+      this.permanent = false;
+      this.isInit = false;
+      this.isSingleton = isSingleton;
+      this[builderFunc$] = builderFunc;
+      this.permanent = permanent;
+      this.isInit = isInit;
+      this.fenix = fenix;
+      this.tag = tag;
+      ;
+    }).prototype = _InstanceBuilderFactory.prototype;
+    dart.addTypeTests(_InstanceBuilderFactory);
+    _InstanceBuilderFactory.prototype[_is__InstanceBuilderFactory_default] = true;
+    dart.addTypeCaches(_InstanceBuilderFactory);
+    dart.setMethodSignature(_InstanceBuilderFactory, () => ({
+      __proto__: dart.getMethods(_InstanceBuilderFactory.__proto__),
+      [_showInitLog]: dart.fnType(dart.void, []),
+      getDependency: dart.fnType(S, [])
+    }));
+    dart.setLibraryUri(_InstanceBuilderFactory, I[0]);
+    dart.setFieldSignature(_InstanceBuilderFactory, () => ({
+      __proto__: dart.getFields(_InstanceBuilderFactory.__proto__),
+      isSingleton: dart.fieldType(dart.nullable(core.bool)),
+      fenix: dart.fieldType(core.bool),
+      dependency: dart.fieldType(dart.nullable(S)),
+      builderFunc: dart.fieldType(dart.fnType(S, [])),
+      permanent: dart.fieldType(core.bool),
+      isInit: dart.fieldType(core.bool),
+      tag: dart.fieldType(dart.nullable(core.String))
+    }));
+    return _InstanceBuilderFactory;
+  });
+  get_instance._InstanceBuilderFactory = get_instance._InstanceBuilderFactory$();
+  dart.addTypeTests(get_instance._InstanceBuilderFactory, _is__InstanceBuilderFactory_default);
+  dart.trackLibraries("packages/get/get_instance/src/get_instance.dart", {
+    "package:get/get_instance/src/get_instance.dart": get_instance
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["proxy_sliver.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;6BA2CoC;;AAChC,WAAqB,mCAAjB,AAAM,KAAD,cACP,AAAM,AAAuC,KAAxC,cAAc;IACvB;;AAIE,YAAO,AAAM;AACmC,MAA3C,AAAE,eAAP,mBAAc,mCAA6B;AACjB,MAA1B,gBAAgB,AAAE,eAAP;IACb;UAG2B,SAAgB;UAAhB;UAAgB;AACzC,UAAI,oBACF,AAAQ,AAA0B,OAA3B,YAAiB,eAAL,aAAQ,MAAM;IACrC;;UAGyC;UAAyB;;UAAkC;;AAClG,YAAO,AAEL,uBADkC,aAAhB,AAAE,eAAZ,AAAE,eAAP,uCAAiC,eAC5B,AAAE,eAAP,oBACD,MAAM,qBACY,gBAAgB,qBACf,iBAAiB;IAE1C;;6BAG0C;;AACxC,YAAO,AAAM,KAAD;AACZ,WAAa,YAAN,KAAK,EAAS;AACrB,YAAO;IACT;wBAGsC,OAAe;6BAAf;;UAAe;AACnD,YAAO,AAAM,KAAD;AACmB,4BAAoC,mCAAF,eAAhB,AAAM,KAAD;AACR,MAA9C,AAAgB,eAAD,qBAAqB,SAAS;IAC/C;;iDA9CiC;AAAjC;AACoB,IAAb,aAAQ,KAAK;EACpB;;;;;;;;;;;;;AA0EmC,YAAA,AAAc,uBAAI,iBAAU,KAAK,iBAAU;IAAI;;AAc5D;IAAQ;;UAEX;AACjB,YAAO,AAAM,KAAD;AACZ,YAAa,AAAO,aAAb,KAAK,KAAI,OAAa,aAAN,KAAK,KAAI;AAChC,UAAI,AAAS,kBAAG,KAAK,EACnB;AACS,+BAAqB;AACrB,uBAAa,AAAO,iBAAG;AAClB,MAAhB,iBAAW,KAAK;AAC+B,MAA/C,eAAkB,6BAAoB;AACtC,UAAI,kBAAkB,IAAI,6BACxB,AAAgC;AAClB,MAAhB;AACA,UAAI,UAAU,MAAK,AAAO,iBAAG,iBAAO,8BAClC,AAA0B;IAC9B;;AAOmC;IAAuB;;UAE1B;AAC9B,UAAI,AAAM,KAAD,IAAI,+BACX;AAC6B,MAA/B,gCAA0B,KAAK;AACL,MAA1B;IACF;UAG2B,SAAgB;UAAhB;UAAgB;AACzC,UAAI,gCAAgC,AAAE,eAAZ,AAAE,eAAP;AACnB,YAAI,AAAO,iBAAG;AAEA,UAAZ,aAAQ;AACR;;AAEF,YAAI,AAAO,iBAAG;AAEA,UAAZ,aAAQ;AAC0B,UAAlC,AAAQ,OAAD,YAAiB,eAAL,aAAQ,MAAM;AACjC;;AAEF,uBAAO;AAMN,QALD,aAAQ,AAAQ,OAAD,aACb,MAAM,EACN,cACM,kDACU,qBAAN;;IAGhB;;UAGmD;AACjD,UAAI,uBAAkB,iBAAU,eAAK,+BACnC,AAAO,AAAQ,OAAR,CAAM,eAAL;IACZ;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AACc,MAAlD,AAAW,UAAD,KAAK,mCAAe,WAAW;AAC8E,MAAvH,AAAW,UAAD,KAAK,iCAAa,kCAAiC,qCAAgC;IAC/F;;;QA7FS;;QACF;;QACS;UACJ,AAAkC,OAA3B,YAAoB,aAAR,OAAO,KAAI,OAAe,aAAR,OAAO,KAAI;UAChD,AAAuB,sBAAD;IACpB,iBAAE,OAAO;IACM,gCAAE,sBAAsB;IACzC,eAAW,6BAAoB,OAAO;AARlD;AASgB,IAAd,aAAQ,MAAM;EAChB;;;;;;;;;;;;;;;;;;;;;;;;;AAoHqB;IAAS;;UAEZ;AAChB,YAAO,AAAM,KAAD;AACZ,UAAI,AAAM,KAAD,IAAI,iBACX;AACe,MAAjB,kBAAY,KAAK;AACjB,UAAI,AAAmB,qCAA8B,eAAlB,2BACjC,AAA0B;IAC9B;;AAQ+B;IAAkB;0BAErB;AAC1B,UAAI,AAAM,KAAD,IAAI,0BACX;AACS,8BAAoB;AACL,MAA1B,2BAAqB,KAAK;AAC1B,UAAI,iBAAiB,IAAI,mCACvB,AAA0B;IAC9B;;;AAEwC;0BAAqB;IAAQ;;UAGpC;UAAyB;;UAAkC;;AAC1F,YACE,YADM,4BACG,cACP,MAAM,qBACY,gBAAgB,qBACf,iBAAiB;IAE1C;;UAGmD;AACjD,UAAI,iCAAkB,oCACpB,AAAO,AAAQ,OAAR,CAAM,eAAL;IACZ;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AAC2B,MAA/D,AAAW,UAAD,KAAK,wCAA0B,YAAY;AACiI,MAAtL,AAAW,UAAD,KAAK,wCAA0B,qBAAqB,iDAA0C,AAAkB,iCAAU,AAA0C,yBAA7B,qCAA+B;IAClL;;;QAhEgB;QACT;;QACC;UACI,AAAS,QAAD;IACL,kBAAE,QAAQ;IACD,2BAAE,iBAAiB;AAN3C;AAOgB,IAAd,aAAQ,MAAM;EAChB;;;;;;;;;;;;;;;;;;;;;;;AAgFqB;IAAS;;UAGZ;AAChB,YAAO,AAAM,KAAD;AACZ,UAAI,AAAM,KAAD,IAAI,iBACX;AACe,MAAjB,kBAAY,KAAK;AACsB,MAAvC;IACF;;AAIE,YAAO,AAAM;AACmC,MAA3C,AAAE,eAAP,mBAAc,mCAA6B;AAC3C,qBAAK;AACuB,QAA1B,gBAAgB,AAAE,eAAP;;AAEmB,QAA9B,gBAA0B;IAC9B;;UAGiC;UAAyB;;UAAkC;;AAC1F,YAAiB,YAAT,4BAAkB,cACxB,MAAM,qBACY,gBAAgB,qBACf,iBAAiB;IAExC;;UAGyC;UAAyB;;UAAkC;;AAClG,YAGE,YAHM,kBACH,sBAC+B,aAAhB,AAAE,eAAZ,AAAE,eAAP,uCAAiC,eAC5B,AAAE,eAAP,oBACD,MAAM,qBACY,gBAAgB,qBACf,iBAAiB;IAE1C;UAG2B,SAAgB;UAAhB;UAAgB;AACzC,oBAAI,gBACF;AACgC,MAAlC,AAAQ,OAAD,YAAiB,eAAL,aAAQ,MAAM;IACnC;;UAGmD;AACjD,oBAAI,gBACF;AACsC,MAAlC,gCAA0B,OAAO;IACzC;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AAC2B,MAA/D,AAAW,UAAD,KAAK,wCAA0B,YAAY;IACvD;;AAIE,UAAI,AAAM,oBACR,MAAwB;AAC1B,YAAwB,kCACjB,AAAE,eAAP,qCACQ,0BACC,iBAAgC,4CAAgC;IAG7E;;;QAtFO;;QACS;UACJ,AAAS,QAAD;IACL,kBAAE,QAAQ;AAJzB;AAKgB,IAAd,aAAQ,MAAM;EAChB;;;;;;;;;;;;;;;;;kEA9PiC;;;;;;;QA2VJ;;QACtB;;QACS;UACJ,AAAQ,OAAD;UACP,AAAuB,sBAAD;AALlC;AAMwB,IAAjB,eAAU,OAAO;AAC8B,IAA/C,8BAAyB,sBAAsB;AACtC,IAAd,aAAQ,MAAM;EAChB","file":"../../../../../../../E:/packages/flutter/src/rendering/proxy_sliver.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["get_instance.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../E:/packages/get/get_instance/src/get_instance.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__proxy_sliver: proxy_sliver
+    get_instance__src__get_instance: get_instance
   };
 }));
 
-//# sourceMappingURL=proxy_sliver.dart.lib.js.map
+//# sourceMappingURL=get_instance.dart.lib.js.map
