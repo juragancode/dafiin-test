@@ -18,4 +18,7 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
-
+  assets:
+   - assets/border_side.png
+   - assets/QR-Code.png
+   - assets/tomato.png

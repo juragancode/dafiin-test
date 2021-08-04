@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MyStatefulWidget(),
+              Center(child: MyStatefulWidget()),
               SizedBox(
                 height: 10,
               ),
@@ -51,8 +51,6 @@ class MyApp extends StatelessWidget {
 
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
   @override
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
@@ -61,7 +59,7 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 2),
+    duration: const Duration(seconds: 3),
     vsync: this,
   )..repeat(reverse: true);
   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
@@ -71,6 +69,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
     parent: _controller,
     curve: Curves.fastOutSlowIn,
   ));
+  late final Animation<double> _animation = CurvedAnimation(
+    parent: _controller,
+    curve: Curves.easeIn,
+  );
 
   @override
   void dispose() {
@@ -92,19 +94,31 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                 height: 300,
                 width: 300,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    border: Border.all(
-                        width: 2,
-                        color: Colors.cyan,
-                        style: BorderStyle.solid)),
-                child: Image.network(
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Stack(
+                  children: [
+                    Image.network(
+                        "https://www.nicepng.com/png/full/426-4264340_border-for-qr-code-area-parallel.png"),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: FadeTransition(
+                        opacity: _animation,
+                        child: Image.network(
+                            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black12,
-                borderRadius: BorderRadius.circular(50),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(50),
+                ),
               ),
             ),
             Center(
