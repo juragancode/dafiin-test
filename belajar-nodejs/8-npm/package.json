@@ -1,0 +1,16 @@
+{
+  "name": "dafin-npm",
+  "version": "1.0.0",
+  "description": "Dafin Belajar NodeJS",
+  "main": "dafin.js",
+  "scripts": {
+    "start": "node dafin.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dafin Overclock",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "validator": "^13.5.2"
+  }
+}
