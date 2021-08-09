@@ -7,6 +7,9 @@ const {
   cekDuplikat,
 } = require("./utils/contacts");
 const { body, validationResult, check } = require("express-validator");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
 
 const app = express();
 const port = 3000;
@@ -15,6 +18,18 @@ app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+
+//Konfigurasi flash
+app.use(cookieParser("secret"));
+app.use(
+  session({
+    cookie: { maxAge: 6000 },
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(flash());
 
 app.get("/", (req, res) => {
   const mahasiswa = [
@@ -53,8 +68,10 @@ app.get("/contact", (req, res) => {
     layout: "layouts/main_layouts",
     title: "Halaman Contact",
     contacts,
+    msg: req.flash("msg"),
   });
 });
+
 // tambah contact
 app.get("/contact/add", (req, res) => {
   res.render("add-contact", {
@@ -63,6 +80,16 @@ app.get("/contact/add", (req, res) => {
   });
 });
 
+// detail contact
+app.get("/contact/:nama", (req, res) => {
+  const contact = findContact(req.params.nama);
+
+  res.render("detail", {
+    title: "Halaman Detail Contact",
+    layout: "layouts/main_layouts",
+    contact,
+  });
+});
 app.post(
   "/contact",
   [
@@ -85,22 +112,13 @@ app.post(
         layout: "layouts/main_layouts",
         errors: errors.array(),
       });
+    } else {
+      addContact(req.body);
+      req.flash("msg", "Data berhasil ditambahkan");
+      res.redirect("/contact");
     }
-    // addContact(req.body);
-    // res.redirect("/contact");
   }
 );
-
-// detail contact
-app.get("/contact/:nama", (req, res) => {
-  const contact = findContact(req.params.nama);
-
-  res.render("detail", {
-    title: "Halaman Detail Contact",
-    layout: "layouts/main_layouts",
-    contact,
-  });
-});
 
 app.use((req, res) => {
   res.status(404);
