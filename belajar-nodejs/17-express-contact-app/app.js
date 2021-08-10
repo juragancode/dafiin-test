@@ -5,6 +5,8 @@ const {
   findContact,
   addContact,
   cekDuplikat,
+  deleteContact,
+  updateContacts,
 } = require("./utils/contacts");
 const { body, validationResult, check } = require("express-validator");
 const session = require("express-session");
@@ -80,16 +82,20 @@ app.get("/contact/add", (req, res) => {
   });
 });
 
-// detail contact
-app.get("/contact/:nama", (req, res) => {
+// Prosses delete contact
+app.get("/contact/delete/:nama", (req, res) => {
   const contact = findContact(req.params.nama);
-
-  res.render("detail", {
-    title: "Halaman Detail Contact",
-    layout: "layouts/main_layouts",
-    contact,
-  });
+  // Jika kontak tidak ada
+  if (!contact) {
+    res.status(404);
+    res.send("<h1>404</h1>");
+  } else {
+    deleteContact(req.params.nama);
+    req.flash("msg", "Data berhasil dihapus");
+    res.redirect("/contact");
+  }
 });
+
 app.post(
   "/contact",
   [
@@ -106,7 +112,6 @@ app.post(
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // return res.status(400).json({ errors: errors.array() });
       res.render("add-contact", {
         title: "Form Tambah Data Contact",
         layout: "layouts/main_layouts",
@@ -119,6 +124,57 @@ app.post(
     }
   }
 );
+//form ubah contact
+app.get("/contact/edit/:nama", (req, res) => {
+  const contact = findContact(req.params.nama);
+  res.render("edit-contact", {
+    title: "Form Ubah Data Contact",
+    layout: "layouts/main_layouts",
+    contact,
+  });
+});
+
+//proses ubah data
+app.post(
+  "/contact/update",
+  [
+    body("nama").custom((value, { req }) => {
+      const duplikat = cekDuplikat(value);
+      if (value !== req.body.oldNama && duplikat) {
+        throw new Error("Contact telah terdaftar");
+      }
+      return true;
+    }),
+    check("email", "Email tidak valid").isEmail(),
+    check("NoHandphone", "No Handphone tidak valid").isMobilePhone("id-ID"),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("edit-contact", {
+        title: "Form Ubah Data Contact",
+        layout: "layouts/main_layouts",
+        errors: errors.array(),
+        contact: req.body,
+      });
+    } else {
+      updateContacts(req.body);
+      req.flash("msg", "Data berhasil diubah");
+      res.redirect("/contact");
+    }
+  }
+);
+
+// detail contact
+app.get("/contact/:nama", (req, res) => {
+  const contact = findContact(req.params.nama);
+
+  res.render("detail", {
+    title: "Halaman Detail Contact",
+    layout: "layouts/main_layouts",
+    contact,
+  });
+});
 
 app.use((req, res) => {
   res.status(404);
