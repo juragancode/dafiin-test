@@ -1,3 +1,5 @@
+import 'package:esemes/app/controllers/auth_controller.dart';
+import 'package:esemes/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +7,7 @@ import 'package:lottie/lottie.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +29,7 @@ class LoginView extends GetView<LoginController> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Get.offAllNamed(Routes.HOME),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

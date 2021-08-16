@@ -29,31 +29,25 @@ class MyApp extends StatelessWidget {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: "Es Em Es",
-            initialRoute: Routes.LOGIN,
-            getPages: AppPages.routes,
-          );
-          // return FutureBuilder(
-          //     future: Future.delayed(Duration(seconds: 2)),
-          //     builder: (context, snapshot) {
-          //       if (snapshot.connectionState == ConnectionState.done) {
-          //         return Obx(
-          //           () => GetMaterialApp(
-          //             debugShowCheckedModeBanner: false,
-          //             title: "Es Em Es",
-          //             initialRoute: authC.isSkipIntro.isTrue
-          //                 ? authC.isAuth.isTrue
-          //                     ? Routes.HOME
-          //                     : Routes.LOGIN
-          //                 : Routes.INTRODUCTION,
-          //             getPages: AppPages.routes,
-          //           ),
-          //         );
-          //       }
-          //       return SplashScreen();
-          //     });
+          return FutureBuilder(
+              future: Future.delayed(Duration(seconds: 3)),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return Obx(
+                    () => GetMaterialApp(
+                      debugShowCheckedModeBanner: false,
+                      title: "Es Em Es",
+                      initialRoute: authC.isSkipIntro.isTrue
+                          ? authC.isAuth.isTrue
+                              ? Routes.HOME
+                              : Routes.LOGIN
+                          : Routes.INTRODUCTION,
+                      getPages: AppPages.routes,
+                    ),
+                  );
+                }
+                return SplashScreen();
+              });
         }
 
         // Otherwise, show something whilst waiting for initialization to complete

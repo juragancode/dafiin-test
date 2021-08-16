@@ -67,14 +67,11 @@ class IntroductionView extends GetView<IntroductionController> {
       ),
       done: Text("Register", style: TextStyle(fontWeight: FontWeight.w600)),
       dotsDecorator: DotsDecorator(
-        size: Size.square(10.0),
-        activeSize: Size(20.0, 10.0),
-        color: Colors.black26,
-        spacing: EdgeInsets.symmetric(horizontal: 3.0),
-        activeShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
-        ),
-      ),
+          size: Size.square(10.0),
+          activeSize: Size(20.0, 10.0),
+          color: Colors.black26,
+          spacing: EdgeInsets.symmetric(horizontal: 3.0),
+          activeColor: Colors.cyan),
     ));
   }
 }
