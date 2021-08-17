@@ -1,5 +1,4 @@
 import 'package:esemes/app/controllers/auth_controller.dart';
-import 'package:esemes/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,7 +28,7 @@ class LoginView extends GetView<LoginController> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
-                  onPressed: () => Get.offAllNamed(Routes.HOME),
+                  onPressed: () => authC.login(),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

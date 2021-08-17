@@ -40,31 +40,60 @@ class ProfileView extends GetView<ProfileController> {
               child: Column(
                 children: [
                   AvatarGlow(
-                    endRadius: 120,
-                    glowColor: Colors.cyan,
+                    endRadius: 130,
+                    glowColor: Color.fromARGB(
+                      255,
+                      250,
+                      0,
+                      100,
+                    ),
                     duration: Duration(seconds: 3),
                     child: Container(
                       margin: EdgeInsets.all(15),
                       height: Get.width * 0.45,
                       width: Get.width * 0.45,
-                      decoration: BoxDecoration(
-                        color: Colors.cyan,
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage("assets/logo/noimage.png"),
+                      child: Obx(
+                        () => ClipRRect(
+                          borderRadius: BorderRadius.circular(200),
+                          child: authC.user.value.photoUrl == 'noimage'
+                              ? Image.asset(
+                                  "assets/logo/noimage.png",
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.network(
+                                  authC.user.value.photoUrl!,
+                                  fit: BoxFit.fill,
+                                ),
                         ),
                       ),
                     ),
                   ),
-                  Text(
-                    "Dafin Overclock",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
+                  Obx(
+                    () => Text(
+                      "${authC.user.value.name}",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.cyan),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   Text(
-                    "dafinoc@gmail.com",
+                    "${authC.user.value.email}",
                     style: TextStyle(
+                      color: Colors.cyan,
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    "${authC.user.value.status}",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.lightBlue.shade900,
                       fontSize: 20,
                     ),
                     textAlign: TextAlign.center,
@@ -81,30 +110,34 @@ class ProfileView extends GetView<ProfileController> {
                   children: [
                     ListTile(
                       onTap: () => Get.toNamed(Routes.UPDATE_STATUS),
-                      leading: Icon(Icons.note_add_outlined),
+                      leading: Icon(Icons.update, color: Colors.cyan),
                       title: Text(
                         "Update status",
-                        style: TextStyle(color: Colors.black, fontSize: 22),
+                        style: TextStyle(color: Colors.cyan, fontSize: 22),
                       ),
                       trailing: Icon(Icons.arrow_right),
                     ),
                     ListTile(
                       onTap: () => Get.toNamed(Routes.EDIT_PROFILE),
-                      leading: Icon(Icons.person_rounded),
+                      leading: Icon(Icons.person_rounded, color: Colors.cyan),
                       title: Text(
                         "Edit Profile",
-                        style: TextStyle(color: Colors.black, fontSize: 22),
+                        style: TextStyle(color: Colors.cyan, fontSize: 22),
                       ),
                       trailing: Icon(Icons.arrow_right),
                     ),
                     ListTile(
                       onTap: () {},
-                      leading: Icon(Icons.color_lens_outlined),
+                      leading:
+                          Icon(Icons.color_lens_outlined, color: Colors.cyan),
                       title: Text(
                         "Change Theme",
-                        style: TextStyle(color: Colors.black, fontSize: 22),
+                        style: TextStyle(fontSize: 22, color: Colors.cyan),
                       ),
-                      trailing: Text("Light"),
+                      trailing: Text(
+                        "Light",
+                        style: TextStyle(fontSize: 14, color: Colors.cyan),
+                      ),
                     ),
                   ],
                 ),
@@ -118,11 +151,13 @@ class ProfileView extends GetView<ProfileController> {
                 children: [
                   Text(
                     "Es Em Es",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                        color: Colors.cyan, fontWeight: FontWeight.w500),
                   ),
                   Text(
                     "Ver 1.0.0",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                        color: Colors.cyan, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),

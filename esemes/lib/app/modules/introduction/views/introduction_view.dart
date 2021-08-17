@@ -18,7 +18,7 @@ class IntroductionView extends GetView<IntroductionController> {
           body: "Terhubung dengan orang-orang melalui Smartphone kamu",
           image: Container(
             width: Get.width * 0.6,
-            height: Get.height * 0.6,
+            height: Get.width * 0.6,
             child: Center(
               child: Lottie.asset("assets/lottie/main-laptop-duduk.json"),
             ),
@@ -29,7 +29,7 @@ class IntroductionView extends GetView<IntroductionController> {
           body: "Find, Chatting, Calling, with your friend",
           image: Container(
             width: Get.width * 0.6,
-            height: Get.height * 0.6,
+            height: Get.width * 0.6,
             child: Center(
               child: Lottie.asset("assets/lottie/ojek.json"),
             ),
@@ -40,7 +40,7 @@ class IntroductionView extends GetView<IntroductionController> {
           body: "Chatting through The World",
           image: Container(
             width: Get.width * 0.6,
-            height: Get.height * 0.6,
+            height: Get.width * 0.6,
             child: Center(
               child: Lottie.asset("assets/lottie/65837-clouds-in-the-sky.json"),
             ),
@@ -51,7 +51,7 @@ class IntroductionView extends GetView<IntroductionController> {
           body: "Daftarkan diri anda agar selalu terhubung dengan teman-teman",
           image: Container(
             width: Get.width * 0.6,
-            height: Get.height * 0.6,
+            height: Get.width * 0.6,
             child: Center(
               child: Lottie.asset("assets/lottie/register.json"),
             ),

@@ -1,57 +1,52 @@
 import 'package:esemes/app/controllers/auth_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
+import 'package:get_storage/get_storage.dart';
 import 'app/routes/app_pages.dart';
-import 'app/utils/errorpage.dart';
-import 'app/utils/loadingpage.dart';
 import 'app/utils/splashscreen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  await Firebase.initializeApp();
+  await GetStorage.init();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   final authC = Get.put(AuthController(), permanent: true);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // Initialize FlutterFire:
-      future: _initialization,
+      future: Future.delayed(Duration(milliseconds: 2950)),
       builder: (context, snapshot) {
-        // Check for errors
-        if (snapshot.hasError) {
-          return ErrorScreen();
-        }
-
-        // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return Obx(
-                    () => GetMaterialApp(
-                      debugShowCheckedModeBanner: false,
-                      title: "Es Em Es",
-                      initialRoute: authC.isSkipIntro.isTrue
-                          ? authC.isAuth.isTrue
-                              ? Routes.HOME
-                              : Routes.LOGIN
-                          : Routes.INTRODUCTION,
-                      getPages: AppPages.routes,
-                    ),
-                  );
-                }
-                return SplashScreen();
-              });
+          return Obx(
+            () => GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: "ChatApp",
+              theme: ThemeData(
+                brightness: Brightness.light,
+                primaryColor: Colors.white,
+                accentColor: Colors.black,
+                buttonColor: Colors.red[900],
+              ),
+              initialRoute: authC.isSkipIntro.isTrue
+                  ? authC.isAuth.isTrue
+                      ? Routes.HOME
+                      : Routes.LOGIN
+                  : Routes.INTRODUCTION,
+              getPages: AppPages.routes,
+            ),
+          );
         }
-
-        // Otherwise, show something whilst waiting for initialization to complete
-        return LoadingScreen();
+        return FutureBuilder(
+          future: authC.firstInitialized(),
+          builder: (context, snapshot) => SplashScreen(),
+        );
       },
     );
   }

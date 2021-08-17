@@ -1,11 +1,17 @@
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:esemes/app/controllers/auth_controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/edit_profile_controller.dart';
 
 class EditProfileView extends GetView<EditProfileController> {
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
+    controller.emailC.text = authC.user.value.email!;
+    controller.nameC.text = authC.user.value.name!;
+    controller.statusC.text = authC.user.value.status!;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -22,24 +28,36 @@ class EditProfileView extends GetView<EditProfileController> {
           children: [
             AvatarGlow(
               endRadius: 120,
-              glowColor: Colors.cyan,
+              glowColor: Color.fromARGB(
+                255,
+                200,
+                10,
+                50,
+              ),
               duration: Duration(seconds: 2),
               child: Container(
                 margin: EdgeInsets.all(15),
-                height: Get.width * 0.4,
-                width: Get.width * 0.4,
-                decoration: BoxDecoration(
-                  color: Colors.cyan,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/logo/noimage.png"),
+                height: Get.width * 0.45,
+                width: Get.width * 0.45,
+                child: Obx(
+                  () => ClipRRect(
+                    borderRadius: BorderRadius.circular(200),
+                    child: authC.user.value.photoUrl == 'noimage'
+                        ? Image.asset(
+                            "assets/logo/noimage.png",
+                            fit: BoxFit.cover,
+                          )
+                        : Image.network(
+                            authC.user.value.photoUrl!,
+                            fit: BoxFit.fill,
+                          ),
                   ),
                 ),
               ),
             ),
             SizedBox(height: 10),
             TextField(
+              readOnly: true,
               controller: controller.emailC,
               cursorColor: Colors.black,
               decoration: InputDecoration(
@@ -98,6 +116,11 @@ class EditProfileView extends GetView<EditProfileController> {
             TextField(
               controller: controller.statusC,
               cursorColor: Colors.black,
+              textInputAction: TextInputAction.done,
+              onEditingComplete: () {
+                authC.changeProfile(
+                    controller.nameC.text, controller.statusC.text);
+              },
               decoration: InputDecoration(
                 labelText: 'Status',
                 labelStyle:
@@ -166,7 +189,10 @@ class EditProfileView extends GetView<EditProfileController> {
                     borderRadius: BorderRadius.circular(40),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  authC.changeProfile(
+                      controller.nameC.text, controller.statusC.text);
+                },
                 child: Text(
                   "Save",
                   style: TextStyle(

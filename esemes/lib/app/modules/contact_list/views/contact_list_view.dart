@@ -1,3 +1,4 @@
+import 'package:esemes/app/controllers/auth_controller.dart';
 import 'package:esemes/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -7,38 +8,11 @@ import 'package:lottie/lottie.dart';
 import '../controllers/contact_list_controller.dart';
 
 class ContactListView extends GetView<ContactListController> {
-  final List<Widget> friends = List.generate(
-    20,
-    (i) => ListTile(
-      leading: CircleAvatar(
-        radius: 30,
-        backgroundColor: Colors.black26,
-        child: Image.asset(
-          "assets/logo/noimage.png",
-          fit: BoxFit.cover,
-        ),
-      ),
-      title: Text(
-        "Orang ke ${i + 1}",
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-      ),
-      subtitle: Text(
-        "orang${i + 1}@gmail.com",
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-      ),
-      trailing: GestureDetector(
-        onTap: () => Get.toNamed(Routes.ROOM_CHATS),
-        child: Chip(
-          label: Text("Message"),
-        ),
-      ),
-    ),
-  );
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(Get.height * 0.2),
         child: AppBar(
           backgroundColor: Colors.cyan,
           title: Text('Search'),
@@ -48,36 +22,44 @@ class ContactListView extends GetView<ContactListController> {
             icon: Icon(Icons.arrow_back),
           ),
           flexibleSpace: Padding(
-            padding: EdgeInsets.fromLTRB(30, 50, 30, 30),
+            padding: const EdgeInsets.fromLTRB(30, 50, 30, 20),
             child: Align(
               alignment: Alignment.bottomCenter,
               child: TextField(
+                onChanged: (value) => controller.searchFriend(
+                  value,
+                  authC.user.value.email!,
+                ),
                 controller: controller.searchC,
                 cursorColor: Colors.cyan,
-                cursorWidth: 3,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
                   border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.circular(30)),
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 1,
+                    ),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.circular(30)),
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                  hintText: 'Search your friend here..',
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 1,
+                    ),
+                  ),
+                  hintText: "Search new friend here..",
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 20,
+                  ),
                   suffixIcon: InkWell(
+                    borderRadius: BorderRadius.circular(50),
                     onTap: () {},
-                    borderRadius: BorderRadius.circular(30),
                     child: Icon(
                       Icons.search,
                       color: Colors.cyan,
-                      size: 28,
                     ),
                   ),
                 ),
@@ -85,19 +67,63 @@ class ContactListView extends GetView<ContactListController> {
             ),
           ),
         ),
+        preferredSize: Size.fromHeight(140),
       ),
-      body: friends.length == 0
-          ? Center(
-              child: Container(
-                height: Get.width * 0.7,
-                width: Get.width * 0.7,
-                child: Lottie.asset("assets/lottie/empty.json"),
+      body: Obx(
+        () => controller.tempSearch.length == 0
+            ? Center(
+                child: Container(
+                  width: Get.width * 0.7,
+                  height: Get.width * 0.7,
+                  child: Lottie.asset("assets/lottie/empty.json"),
+                ),
+              )
+            : ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: controller.tempSearch.length,
+                itemBuilder: (context, index) => ListTile(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  leading: CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.black26,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child:
+                          controller.tempSearch[index]["photoUrl"] == "noimage"
+                              ? Image.asset(
+                                  "assets/logo/noimage.png",
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.network(
+                                  controller.tempSearch[index]["photoUrl"],
+                                  fit: BoxFit.cover,
+                                ),
+                    ),
+                  ),
+                  title: Text(
+                    "${controller.tempSearch[index]["name"]}",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "${controller.tempSearch[index]["email"]}",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  trailing: GestureDetector(
+                    onTap: () => Get.toNamed(Routes.ROOM_CHATS),
+                    child: Chip(
+                      label: Text("Message"),
+                    ),
+                  ),
+                ),
               ),
-            )
-          : ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: friends.length,
-              itemBuilder: (context, i) => friends[i]),
+      ),
     );
   }
 }
