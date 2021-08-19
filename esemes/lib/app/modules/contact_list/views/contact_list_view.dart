@@ -1,8 +1,8 @@
 import 'package:esemes/app/controllers/auth_controller.dart';
-import 'package:esemes/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 import '../controllers/contact_list_controller.dart';
@@ -15,11 +15,22 @@ class ContactListView extends GetView<ContactListController> {
       appBar: PreferredSize(
         child: AppBar(
           backgroundColor: Colors.cyan,
-          title: Text('Search'),
+          title: Text(
+            'Search',
+            style: GoogleFonts.sourceCodePro(
+              fontSize: 22,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
+          ),
           centerTitle: true,
           leading: IconButton(
             onPressed: () => Get.back(),
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
           flexibleSpace: Padding(
             padding: const EdgeInsets.fromLTRB(30, 50, 30, 20),
@@ -116,7 +127,9 @@ class ContactListView extends GetView<ContactListController> {
                     ),
                   ),
                   trailing: GestureDetector(
-                    onTap: () => Get.toNamed(Routes.ROOM_CHATS),
+                    onTap: () => authC.addNewConnection(
+                      controller.tempSearch[index]["email"],
+                    ),
                     child: Chip(
                       label: Text("Message"),
                     ),

@@ -1,9 +1,9 @@
 import 'package:esemes/app/controllers/auth_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
 import 'app/routes/app_pages.dart';
 import 'app/utils/splashscreen.dart';
 
@@ -11,8 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await GetStorage.init();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) => runApp(MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,19 +20,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Future.delayed(Duration(milliseconds: 2950)),
+      future: Future.delayed(Duration(seconds: 3)),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Obx(
             () => GetMaterialApp(
               debugShowCheckedModeBanner: false,
-              title: "ChatApp",
-              theme: ThemeData(
-                brightness: Brightness.light,
-                primaryColor: Colors.white,
-                accentColor: Colors.black,
-                buttonColor: Colors.red[900],
-              ),
+              title: "Es Em Es",
               initialRoute: authC.isSkipIntro.isTrue
                   ? authC.isAuth.isTrue
                       ? Routes.HOME

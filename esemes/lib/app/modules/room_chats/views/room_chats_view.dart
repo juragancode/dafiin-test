@@ -1,4 +1,5 @@
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+import 'package:esemes/app/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -7,6 +8,7 @@ import '../controllers/room_chats_controller.dart';
 
 // ignore: must_be_immutable
 class RoomChatsView extends GetView<RoomChatsController> {
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,8 +51,8 @@ class RoomChatsView extends GetView<RoomChatsController> {
         ),
         body: WillPopScope(
           onWillPop: () {
-            if (controller.isEmojiShow.isTrue) {
-              controller.isEmojiShow.value = false;
+            if (controller.isShowEmoji.isTrue) {
+              controller.isShowEmoji.value = false;
             } else {
               Navigator.pop(context);
             }
@@ -74,7 +76,7 @@ class RoomChatsView extends GetView<RoomChatsController> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    bottom: controller.isEmojiShow.isTrue
+                    bottom: controller.isShowEmoji.isTrue
                         ? 5
                         : context.mediaQueryPadding.bottom),
                 decoration: BoxDecoration(shape: BoxShape.circle),
@@ -102,7 +104,7 @@ class RoomChatsView extends GetView<RoomChatsController> {
                           prefixIcon: IconButton(
                             onPressed: () {
                               controller.focusNode.unfocus();
-                              controller.isEmojiShow.toggle();
+                              controller.isShowEmoji.toggle();
                             },
                             icon: Icon(
                               Icons.emoji_emotions_outlined,
@@ -133,7 +135,11 @@ class RoomChatsView extends GetView<RoomChatsController> {
                         splashColor: Colors.cyanAccent,
                         focusColor: Colors.cyanAccent.shade700,
                         borderRadius: BorderRadius.circular(30),
-                        onTap: () {},
+                        onTap: () => controller.newChat(
+                          authC.user.value.email!,
+                          Get.arguments as Map<String, dynamic>,
+                          controller.chatC.text,
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(15),
                           child: Icon(
@@ -146,7 +152,7 @@ class RoomChatsView extends GetView<RoomChatsController> {
                   ],
                 ),
               ),
-              Obx(() => (controller.isEmojiShow.isTrue)
+              Obx(() => (controller.isShowEmoji.isTrue)
                   ? Container(
                       height: 300,
                       child: EmojiPicker(
@@ -154,7 +160,7 @@ class RoomChatsView extends GetView<RoomChatsController> {
                           controller.addEmojiToChat(emoji);
                         },
                         onBackspacePressed: () {
-                          controller.deleteEmojiFromChat();
+                          controller.deleteEmoji();
                         },
                         config: Config(
                             backspaceColor: Color(0xFF00BCD4),
