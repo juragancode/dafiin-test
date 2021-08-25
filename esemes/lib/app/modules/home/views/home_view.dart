@@ -13,9 +13,24 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   final authC = Get.find<AuthController>();
 
+  final ThemeData light = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: Color(0xFFB5EAEA),
+    accentColor: Colors.black,
+    buttonColor: Colors.cyan,
+  );
+
+  final ThemeData dark = ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: Color(0xFF4C4C6D),
+    accentColor: Colors.white,
+    buttonColor: Colors.cyan,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Get.theme.primaryColor,
       body: Column(
         children: [
           Material(
@@ -23,7 +38,6 @@ class HomeView extends GetView<HomeController> {
             child: Container(
               margin: EdgeInsets.only(top: context.mediaQueryPadding.top),
               decoration: BoxDecoration(
-                color: Colors.cyan,
                 border: Border(
                   bottom: BorderSide(
                     color: Colors.black38,
@@ -38,14 +52,13 @@ class HomeView extends GetView<HomeController> {
                     "Esemes",
                     style: GoogleFonts.robotoMono(
                       fontStyle: FontStyle.italic,
-                      color: Colors.white,
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Material(
+                    color: Colors.cyan,
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.white,
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () => Get.toNamed(Routes.PROFILE),
@@ -54,7 +67,6 @@ class HomeView extends GetView<HomeController> {
                         child: Icon(
                           Icons.person,
                           size: 35,
-                          color: Colors.cyan,
                         ),
                       ),
                     ),
@@ -205,6 +217,7 @@ class HomeView extends GetView<HomeController> {
         child: Icon(
           Icons.search,
           size: 30,
+          color: Colors.white,
         ),
         backgroundColor: Colors.cyan,
       ),

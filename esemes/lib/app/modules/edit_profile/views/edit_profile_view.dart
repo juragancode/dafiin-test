@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:esemes/app/controllers/auth_controller.dart';
 
@@ -62,8 +64,10 @@ class EditProfileView extends GetView<EditProfileController> {
               cursorColor: Colors.black,
               decoration: InputDecoration(
                 labelText: 'Email',
-                labelStyle:
-                    TextStyle(fontWeight: FontWeight.w600, color: Colors.cyan),
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
+                ),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 focusedBorder: OutlineInputBorder(
@@ -90,8 +94,10 @@ class EditProfileView extends GetView<EditProfileController> {
               cursorColor: Colors.black,
               decoration: InputDecoration(
                 labelText: 'Name',
-                labelStyle:
-                    TextStyle(fontWeight: FontWeight.w600, color: Colors.cyan),
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
+                ),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 focusedBorder: OutlineInputBorder(
@@ -123,8 +129,10 @@ class EditProfileView extends GetView<EditProfileController> {
               },
               decoration: InputDecoration(
                 labelText: 'Status',
-                labelStyle:
-                    TextStyle(fontWeight: FontWeight.w600, color: Colors.cyan),
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
+                ),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 focusedBorder: OutlineInputBorder(
@@ -151,7 +159,62 @@ class EditProfileView extends GetView<EditProfileController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("No Image"),
+                  GetBuilder<EditProfileController>(
+                    builder: (c) => c.pickedImage != null
+                        ? Column(
+                            children: [
+                              Container(
+                                height: 110,
+                                width: 125,
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      height: 100,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        image: DecorationImage(
+                                          image: FileImage(
+                                            File(c.pickedImage!.path),
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      top: -10,
+                                      right: -5,
+                                      child: IconButton(
+                                        onPressed: () => c.resetImage(),
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.cyan,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () => c
+                                    .uploadImage(authC.user.value.uid!)
+                                    .then((hasilKembalian) {
+                                  if (hasilKembalian != null) {
+                                    authC.updatePhotoUrl(hasilKembalian);
+                                  }
+                                }),
+                                child: Text(
+                                  "upload",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Text("No Image"),
+                  ),
                   TextButton(
                       style: TextButton.styleFrom(
                         elevation: 5,
@@ -161,7 +224,7 @@ class EditProfileView extends GetView<EditProfileController> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () => controller.selectImage(),
                       child: Text(
                         "Pilih file",
                         style: TextStyle(

@@ -25,6 +25,7 @@ class UpdateStatusView extends GetView<UpdateStatusController> {
           child: Column(
             children: [
               TextField(
+                autocorrect: false,
                 controller: controller.statusC,
                 cursorColor: Colors.black,
                 textInputAction: TextInputAction.done,
