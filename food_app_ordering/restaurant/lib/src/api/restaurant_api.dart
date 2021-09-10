@@ -1,12 +1,10 @@
 import 'dart:convert';
+
 import 'package:cmmn/cmmn.dart';
 import 'package:flutter/foundation.dart';
+import 'package:restaurant/src/api/mapper.dart';
 
-import './page.dart';
-import '../api/api_contract.dart';
-import '../api/mapper.dart';
-import '../domain/menu.dart';
-import '../domain/restaurant.dart';
+import '../../restaurant.dart';
 
 class RestaurantApi implements IRestaurantApi {
   final IHttpClient httpClient;
@@ -18,8 +16,8 @@ class RestaurantApi implements IRestaurantApi {
       {@required int page,
       @required int pageSize,
       @required String searchTerm}) async {
-    final endpoint =
-        baseUrl + '/search/page=$page&limit=$pageSize&term=$searchTerm';
+    final endpoint = baseUrl +
+        '/restaurants/search?page=$page&limit=$pageSize&query=$searchTerm';
     final result = await httpClient.get(endpoint);
     return _parseRestaurantsJson(result);
   }
@@ -27,14 +25,14 @@ class RestaurantApi implements IRestaurantApi {
   @override
   Future<Page> getAllRestaurants(
       {@required int page, @required int pageSize}) async {
-    final endpoint = baseUrl + '/restaurants/page=$page&limit=$pageSize';
+    final endpoint = baseUrl + '/restaurants?page=$page&limit=$pageSize';
     final result = await httpClient.get(endpoint);
     return _parseRestaurantsJson(result);
   }
 
   @override
   Future<Restaurant> getRestaurant({String id}) async {
-    final endpoint = baseUrl + "/restaurant/$id";
+    final endpoint = baseUrl + "/restaurants/restaurant/$id";
     final result = await httpClient.get(endpoint);
     if (result.status == Status.failure) return null;
     final json = jsonDecode(result.data);
@@ -45,14 +43,14 @@ class RestaurantApi implements IRestaurantApi {
   Future<Page> getRestaurantsByLocation(
       {int page, int pageSize, Location location}) async {
     final endpoint = baseUrl +
-        '/restaurant/page=$page&limit=$pageSize&longitude=${location.longitude}&latitude=${location.latitude}';
+        '/restaurants/location?page=$page&limit=$pageSize&longitude=${location.longitude}&latitude=${location.latitude}';
     final result = await httpClient.get(endpoint);
     return _parseRestaurantsJson(result);
   }
 
   @override
   Future<List<Menu>> getRestaurantMenu({String restaurantId}) async {
-    final endpoint = baseUrl + '/restaurnt/menu/$restaurantId';
+    final endpoint = baseUrl + '/restaurants/restaurant/menu/$restaurantId';
     final result = await httpClient.get(endpoint);
     return _parseRestaurantMenu(result);
   }

@@ -1,6 +1,6 @@
-import dotenv from 'dotenv'
-import faker from 'faker'
-import mongoose from 'mongoose'
+import dotenv from "dotenv";
+import faker from "faker";
+import mongoose from "mongoose";
 import {
   MenuDocument,
   MenuItemDocument,
@@ -8,51 +8,51 @@ import {
   MenuItemSchema,
   MenuModel,
   MenuSchema,
-} from '../../../../src/restaurant/data/models/MenuModel'
+} from "../../../../src/restaurant/data/models/MenuModel";
 import RestaurantSchema, {
   RestaurantDoc,
   RestaurantModel,
-} from '../../../../src/restaurant/data/models/RestaurantModel'
+} from "../../../../src/restaurant/data/models/RestaurantModel";
 
 const addFakeRestaurantsToDev = async () => {
-  dotenv.config()
-  const connectionStr = encodeURI(process.env.DEV_DB as string)
-  let client = new mongoose.Mongoose()
+  dotenv.config();
+  const connectionStr = encodeURI(process.env.DEV_DB as string);
+  let client = new mongoose.Mongoose();
   client.connect(connectionStr, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
-  })
+  });
 
   const model = client.model<RestaurantDoc>(
-    'Restaurant',
+    "Restaurant",
     RestaurantSchema
-  ) as RestaurantModel
+  ) as RestaurantModel;
 
-  const menuModel = client.model<MenuDocument>('Menu', MenuSchema) as MenuModel
+  const menuModel = client.model<MenuDocument>("Menu", MenuSchema) as MenuModel;
   const menuItemModel = client.model<MenuItemDocument>(
-    'MenuItem',
+    "MenuItem",
     MenuItemSchema
-  ) as MenuItemModel
+  ) as MenuItemModel;
 
-  await model.ensureIndexes()
+  await model.ensureIndexes();
   //console.log(restaurants())
-  const restaurantDocs = await model.insertMany(restaurants())
-  console.log(menus())
-  const menuDocs = await insertMenus(restaurantDocs, menuModel)
+  const restaurantDocs = await model.insertMany(restaurants());
+  console.log(menus());
+  const menuDocs = await insertMenus(restaurantDocs, menuModel);
 
-  await insertMenuItems(menuDocs, menuItemModel)
+  await insertMenuItems(menuDocs, menuItemModel);
 
   //   return restaurantDocs
-  console.log('done')
-  return
-}
+  console.log("done");
+  return;
+};
 
 function restaurants() {
   return Array(10)
     .fill(10)
     .map((_, idx) => {
-      const imgids = [292, 492, 835, 999]
+      const imgids = [292, 492, 835, 999];
 
       return {
         name: faker.company.companyName(),
@@ -71,18 +71,18 @@ function restaurants() {
           street: faker.address.streetName(),
           city: faker.address.city(),
           parish: faker.address.county(),
-          zone: '',
+          zone: "",
         },
-      }
-    })
+      };
+    });
 }
 
 function menus() {
-  const size = faker.random.number({ max: 5, min: 1 })
+  const size = faker.random.number({ max: 5, min: 1 });
   return Array(size)
     .fill(size)
     .map((_, idx) => {
-      const imgids = [292, 492, 835, 999]
+      const imgids = [292, 492, 835, 999];
 
       return {
         name: faker.commerce.productName(),
@@ -90,16 +90,16 @@ function menus() {
         image_url: `https://picsum.photos/id/${
           imgids[faker.random.number({ min: 0, max: 3 })]
         }/300`,
-      }
-    })
+      };
+    });
 }
 
 function menuItems() {
-  const size = faker.random.number({ max: 15, min: 5 })
+  const size = faker.random.number({ max: 15, min: 5 });
   return Array(size)
     .fill(size)
     .map((_, idx) => {
-      const imgids = [292, 492, 835, 999]
+      const imgids = [292, 492, 835, 999];
       return {
         name: faker.commerce.productName(),
         description: faker.commerce.productDescription(),
@@ -109,39 +109,39 @@ function menuItems() {
           }/300`,
         ],
         unit_price: faker.commerce.price(400, 6000),
-      }
-    })
+      };
+    });
 }
 
 async function insertMenuItems(
   menuDocs: MenuDocument[],
   menuItemModel: MenuItemModel
 ) {
-  const items: Array<{}> = []
+  const items: Array<{}> = [];
   menuDocs.forEach(async (menu) => {
     const itemsWithMenuId = menuItems().map((item) => {
-      return { menuId: menu.id, ...item }
-    })
-    items.push(...itemsWithMenuId)
-  })
+      return { menuId: menu.id, ...item };
+    });
+    items.push(...itemsWithMenuId);
+  });
 
-  await menuItemModel.insertMany(items)
+  await menuItemModel.insertMany(items);
 }
 
 async function insertMenus(
   restaurantDocs: RestaurantDoc[],
   menuModel: MenuModel
 ) {
-  const restaurantMenus: Array<{}> = []
+  const restaurantMenus: Array<{}> = [];
   restaurantDocs.forEach((res) => {
     const menu = menus().map((menu) => {
-      return { restaurantId: res.id, ...menu }
-    })
-    restaurantMenus.push(...menu)
-  })
+      return { restaurantId: res.id, ...menu };
+    });
+    restaurantMenus.push(...menu);
+  });
 
-  const menuDocs = await menuModel.insertMany(restaurantMenus)
-  return menuDocs
+  const menuDocs = await menuModel.insertMany(restaurantMenus);
+  return menuDocs;
 }
 
-addFakeRestaurantsToDev()
+addFakeRestaurantsToDev();

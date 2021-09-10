@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:food_app_ordering/models/User.dart';
 import 'package:food_app_ordering/states_management/auth/auth_cubit.dart';
 import 'package:food_app_ordering/states_management/auth/auth_state.dart';
+import 'package:food_app_ordering/ui/pages/auth/auth_page_adapter.dart';
 import 'package:food_app_ordering/ui/widgets/custom_flat_button.dart';
 import 'package:food_app_ordering/ui/widgets/custom_outline_button.dart';
 import 'package:food_app_ordering/ui/widgets/custom_text_field.dart';
@@ -13,8 +14,9 @@ import 'package:food_app_ordering/ui/widgets/custom_text_field.dart';
 class AuthPage extends StatefulWidget {
   final AuthManager _manager;
   final ISignUpService _signUpService;
+  final IAuthPageAdapter _adapter;
 
-  AuthPage(this._manager, this._signUpService);
+  AuthPage(this._manager, this._signUpService, this._adapter);
   @override
   _AuthPageState createState() => _AuthPageState();
 }
@@ -25,42 +27,48 @@ class _AuthPageState extends State<AuthPage> {
   String _username = '';
   String _email = '';
   String _password = '';
+  IAuthService service;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 110.0),
-              child: _buildLogo(),
-            ),
-            SizedBox(height: 50.0),
-            BlocConsumer<AuthCubit, AuthState>(builder: (_, state) {
-              return _buildUI();
-            }, listener: (context, state) {
-              if (state is LoadingState) {
-                _showLoader();
-              }
-              if (state is ErrorState) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      state.message,
-                      style: Theme.of(context)
-                          .textTheme
-                          .caption
-                          .copyWith(color: Colors.white, fontSize: 16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 110.0),
+                child: _buildLogo(),
+              ),
+              SizedBox(height: 50.0),
+              BlocConsumer<AuthCubit, AuthState>(builder: (_, state) {
+                return _buildUI();
+              }, listener: (context, state) {
+                if (state is LoadingState) {
+                  _showLoader();
+                }
+                if (state is AuthSuccessState) {
+                  widget._adapter.onAuthSuccess(context, service);
+                }
+                if (state is ErrorState) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        state.message,
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(color: Colors.white, fontSize: 16.0),
+                      ),
                     ),
-                  ),
-                );
-                _hideLoader();
-              }
-            })
-          ],
+                  );
+                  _hideLoader();
+                }
+              })
+            ],
+          ),
         ),
       ),
     );
@@ -94,7 +102,8 @@ class _AuthPageState extends State<AuthPage> {
         ]),
       );
 
-  _buildUI() => Expanded(
+  _buildUI() => Container(
+        height: 500,
         child: PageView(
           physics: NeverScrollableScrollPhysics(),
           controller: _controller,
@@ -115,12 +124,11 @@ class _AuthPageState extends State<AuthPage> {
               text: 'Sign in',
               size: Size(double.infinity, 54.0),
               onPressed: () {
-                BlocProvider.of<AuthCubit>(context).signin(
-                  widget._manager.email(
-                    email: _email,
-                    password: _password,
-                  ),
-                );
+                service = widget._manager.service(AuthType.email);
+                (service as EmailAuth)
+                    .credential(email: _email, password: _password);
+                BlocProvider.of<AuthCubit>(context)
+                    .signin(service, AuthType.email);
               },
             ),
             SizedBox(height: 30.0),
@@ -134,8 +142,9 @@ class _AuthPageState extends State<AuthPage> {
                 fit: BoxFit.fill,
               ),
               onPressed: () {
+                service = widget._manager.service(AuthType.google);
                 BlocProvider.of<AuthCubit>(context)
-                    .signin(widget._manager.google);
+                    .signin(service, AuthType.google);
               },
             ),
             SizedBox(height: 30),
@@ -175,7 +184,7 @@ class _AuthPageState extends State<AuthPage> {
           children: [
             CustomTextField(
               hint: 'Username',
-              obscureText: false,
+              inputAction: TextInputAction.next,
               fontSize: 18.0,
               fontWeight: FontWeight.normal,
               onChanged: (val) {
@@ -233,7 +242,8 @@ class _AuthPageState extends State<AuthPage> {
   List<Widget> _emailAndPassword() => [
         CustomTextField(
           hint: 'Email',
-          obscureText: false,
+          keyboardType: TextInputType.emailAddress,
+          inputAction: TextInputAction.next,
           fontSize: 18.0,
           fontWeight: FontWeight.normal,
           onChanged: (val) {
@@ -242,6 +252,7 @@ class _AuthPageState extends State<AuthPage> {
         ),
         SizedBox(height: 30.0),
         CustomTextField(
+          inputAction: TextInputAction.done,
           obscureText: true,
           hint: 'Password',
           fontSize: 18.0,

@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final double height;
   final void Function(String) onSubmitted;
   final TextInputAction inputAction;
+  final TextInputType keyboardType;
 
   CustomTextField(
       {this.hint,
@@ -18,7 +19,8 @@ class CustomTextField extends StatelessWidget {
       this.obscureText,
       this.height = 54,
       this.onSubmitted,
-      this.inputAction});
+      this.inputAction,
+      this.keyboardType});
 
   final _border = const OutlineInputBorder(
     borderRadius: BorderRadius.zero,
@@ -36,6 +38,8 @@ class CustomTextField extends StatelessWidget {
         onSubmitted: onSubmitted,
         onChanged: onChanged,
         textInputAction: inputAction,
+        obscureText: obscureText ?? false,
+        keyboardType: keyboardType ?? TextInputType.text,
         cursorColor: Colors.black,
         style: Theme.of(context).textTheme.overline.copyWith(
               color: Colors.black,

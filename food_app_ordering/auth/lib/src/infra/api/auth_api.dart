@@ -1,12 +1,11 @@
 import 'dart:convert';
 
-import 'package:async/async.dart';
-import 'package:auth/src/domain/token.dart';
-import 'package:http/http.dart' as http;
+import 'package:auth/src/infra/api/mapper.dart';
 
-import '../../domain/credential.dart';
+import '../../../auth.dart';
 import '../../infra/api/auth_api_contract.dart';
-import 'mapper.dart';
+import 'package:http/http.dart' as http;
+import 'package:async/async.dart';
 
 class AuthApi implements IAuthApi {
   final http.Client _client;

@@ -1,18 +1,18 @@
-import 'package:async/async.dart';
 import 'package:auth/auth.dart';
 import 'package:bloc/bloc.dart';
-
-import './auth_state.dart';
-import '../../cache/local_store_contract.dart';
-import '../../models/User.dart';
+import 'package:async/async.dart';
+import 'package:food_app_ordering/cache/local_store_contract.dart';
+import 'package:food_app_ordering/models/User.dart';
+import 'package:food_app_ordering/states_management/auth/auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final ILocalStore localStore;
   AuthCubit(this.localStore) : super(InitialState());
 
-  signin(IAuthService authService) async {
+  signin(IAuthService authService, AuthType type) async {
     _startLoading();
     final result = await authService.signIn();
+    localStore.saveAuthType(type);
     _setResultOfAuthState(result);
   }
 
@@ -41,9 +41,10 @@ class AuthCubit extends Cubit<AuthState> {
   void _setResultOfAuthState(Result<Token> result) {
     if (result.asError != null) {
       emit(ErrorState(result.asError.error));
-      return;
+    } else {
+      localStore.save(result.asValue.value);
+      emit(AuthSuccessState(result.asValue.value));
     }
-    emit(AuthSuccessState(result.asValue.value));
   }
 
   void _startLoading() {
